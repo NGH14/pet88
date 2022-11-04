@@ -50,6 +50,20 @@ router.get('/find/:id', async (req, res) => {
 	}
 });
 
+router.get('/find-hotel', async (req, res) => {
+	const { cheapestPrice, ...rest } = req.query;
+	const query = { ...rest };
+	if (cheapestPrice) {
+		query.cheapestPrice = { $gt: cheapestPrice };
+	}
+	try {
+		const hotel = await Hotel.find(query);
+		res.status(200).json(hotel);
+	} catch (err) {
+		res.status(400).json(err);
+	}
+});
+
 router.get('/', async (req, res) => {
 	try {
 		const hotels = await Hotel.find();
@@ -96,7 +110,8 @@ router.get('/countByType', async (req, res) => {
 		res.status(500).json(err);
 	}
 });
-router.get('/room/:id', async (req, res, next) => {
+
+router.get('/room/:id', async (req, res) => {
 	try {
 		const hotel = await Hotel.findById(req.params.id);
 		const list = await Promise.all(
