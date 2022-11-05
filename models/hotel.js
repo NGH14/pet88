@@ -16,11 +16,11 @@ const HotelSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	distance: {
-		type: String,
-		required: true,
-	},
+
 	photos: {
+		type: [String],
+	},
+	services: {
 		type: [String],
 	},
 	title: {
@@ -39,10 +39,7 @@ const HotelSchema = new mongoose.Schema({
 	rooms: {
 		type: [String],
 	},
-	cheapestPrice: {
-		type: Number,
-		required: true,
-	},
+
 	featured: {
 		type: Boolean,
 		default: false,
