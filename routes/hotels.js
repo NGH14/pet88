@@ -51,13 +51,17 @@ router.get('/find/:id', async (req, res) => {
 });
 
 router.get('/find-hotel', async (req, res) => {
-	const { cheapestPrice, ...rest } = req.query;
-	const query = { ...rest };
+	const { cheapestPrice, services, ...rest } = req.query;
 	if (cheapestPrice) {
-		query.cheapestPrice = { $gt: cheapestPrice };
+		rest.cheapestPrice = { $gt: cheapestPrice };
+	}
+	if (services) {
+		servicesArray = services.split(',');
+
+		rest.services = { $in: servicesArray };
 	}
 	try {
-		const hotel = await Hotel.find(query);
+		const hotel = await Hotel.find(rest);
 		res.status(200).json(hotel);
 	} catch (err) {
 		res.status(400).json(err);
