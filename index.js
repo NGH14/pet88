@@ -10,7 +10,8 @@ const middleware = require('./middleware/index');
 const userRoute = require('./routes/users');
 const hotelRoute = require('./routes/hotels');
 const roomRoute = require('./routes/rooms');
-const stripe = require('stripe')(process.env.STRIPE);
+const checkoutRoute = require('./routes/checkout');
+const orderRoute = require('./routes/orders');
 
 app.use(cors());
 app.use(express.json());
@@ -65,31 +66,5 @@ app.get('/api', (req, res) => {
 app.use('/api/user', userRoute);
 app.use('/api/hotel', hotelRoute);
 app.use('/api/hotel-room', roomRoute);
-
-app.post('/create-checkout-session', async (req, res) => {
-	// newHotel = req.body;
-	// 	res.json(newHotel);	const
-
-	const session = await stripe.checkout.sessions.create({
-		// customer_email: req.body.email,
-		line_items: [
-			{
-				price_data: {
-					currency: 'vnd',
-					product_data: {
-						name: 'Booking',
-						images: [
-							'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Google_web_search.png/1200px-Google_web_search.png',
-						],
-					},
-					unit_amount: 200000,
-				},
-				quantity: 1,
-			},
-		],
-		mode: 'payment',
-		success_url: 'http://localhost:3000/success',
-		cancel_url: 'http://localhost:3000/',
-	});
-	res.json({ url: session.url });
-});
+app.use('/api/checkout', checkoutRoute);
+app.use('/api/order', orderRoute);
