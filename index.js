@@ -12,6 +12,8 @@ const hotelRoute = require('./routes/hotels');
 const roomRoute = require('./routes/rooms');
 const checkoutRoute = require('./routes/checkout');
 const orderRoute = require('./routes/orders');
+const couponRoute = require('./routes/coupons');
+const promotionRoute = require('./routes/promotions');
 
 app.use(cors());
 app.use(express.json());
@@ -68,3 +70,5 @@ app.use('/api/hotel', hotelRoute);
 app.use('/api/hotel-room', roomRoute);
 app.use('/api/checkout', checkoutRoute);
 app.use('/api/order', orderRoute);
+app.use('/api/coupon', couponRoute);
+app.use('/api/promotion', promotionRoute);

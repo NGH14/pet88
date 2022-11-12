@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const stripe = require('stripe')(process.env.STRIPE);
+const stripe = require('../middleware/stripe.js');
 const { Order } = require('../models/orders.js');
 
 router.post('/create-checkout-session', async (req, res) => {
