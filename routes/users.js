@@ -35,6 +35,19 @@ router.delete('/:id', async (req, res) => {
 		});
 });
 
+router.put('/delete-multiple', async (req, res) => {
+	await getAuth()
+		.deleteUser(req.params.id)
+		.then(() => {
+			res.json('Successfully deleted user');
+		})
+		.catch((error) => {
+			res.json(`Error deleting user: ${error}`);
+		});
+
+	res.json(req.body);
+});
+
 router.post('/', async (req, res) => {
 	const newUser = req.body;
 	getAuth()

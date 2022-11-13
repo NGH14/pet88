@@ -53,11 +53,4 @@ router.put('/cancel/:id', async (req, res) => {
 	}
 });
 
-// if (type === 'success') {
-// 	await Order.findByIdAndUpdate(order._id, { paid: 1 });
-// }
-// if (type === 'cancel') {
-// 	await Order.findByIdAndDelete(order._id);
-// }
-
 module.exports = router;
