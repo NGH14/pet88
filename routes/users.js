@@ -1,7 +1,15 @@
 const express = require('express');
 
 const { getAuth } = require('firebase-admin/auth');
+const {
+	getFirestore,
+	Timestamp,
+	FieldValue,
+} = require('firebase-admin/firestore');
+
 const router = express.Router();
+
+const db = getFirestore();
 
 router.get('/', (req, res) => {
 	const listAllUsers = (nextPageToken) => {
@@ -24,6 +32,38 @@ router.get('/', (req, res) => {
 	listAllUsers();
 });
 
+router.get('/store', async (req, res) => {
+	const now = new Date();
+
+	const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+	const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+	try {
+		let startfulldate = Timestamp.fromDate(firstDay);
+		let endfulldate = Timestamp.fromDate(lastDay);
+
+		// var startfulldate = 1667205736;
+
+		db.collection('users')
+			.where('createAt', '<=', endfulldate)
+			.where('createAt', '>=', startfulldate)
+			.get()
+			.then((snapshot) => {
+				let jsonvalue = [];
+				snapshot.forEach((docs) => {
+					jsonvalue.push(docs.data());
+				});
+				res.send(jsonvalue);
+				return;
+			})
+			.catch((error) => {
+				res.status(500).json(error);
+			});
+	} catch (error) {
+		res.status(500).json(error);
+	}
+});
+
 router.delete('/:id', async (req, res) => {
 	await getAuth()
 		.deleteUser(req.params.id)
@@ -33,19 +73,6 @@ router.delete('/:id', async (req, res) => {
 		.catch((error) => {
 			res.json(`Error deleting user: ${error}`);
 		});
-});
-
-router.put('/delete-multiple', async (req, res) => {
-	await getAuth()
-		.deleteUser(req.params.id)
-		.then(() => {
-			res.json('Successfully deleted user');
-		})
-		.catch((error) => {
-			res.json(`Error deleting user: ${error}`);
-		});
-
-	res.json(req.body);
 });
 
 router.post('/', async (req, res) => {
