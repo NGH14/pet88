@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { Hotel } = require('../models/hotel.js');
 const { Room } = require('../models/room.js');
+const { route } = require('./users.js');
 
 router.post('/:id', async (req, res) => {
 	const hotelId = req.params.id;
@@ -62,6 +63,23 @@ router.get('/', async (req, res) => {
 	try {
 		const rooms = await Room.find();
 		res.status(200).json(rooms);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+router.put('/availability/:id', async (req, res) => {
+	// res.status(200).json('req');
+	try {
+		await Room.updateOne(
+			{ 'roomNumbers._id': req.params.id },
+			{
+				$push: {
+					'roomNumbers.$.unavailableDates': req.body.dates,
+				},
+			},
+		);
+		res.status(200).json('Room status has been updated.');
 	} catch (err) {
 		res.status(500).json(err);
 	}
