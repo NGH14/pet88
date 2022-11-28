@@ -7,55 +7,41 @@ const { Order } = require('../models/orders.js');
 const { Room } = require('../models/room.js');
 
 router.post('/create-checkout-session', async (req, res) => {
-	// try {
-	// 	const order = await Order.create({
-	// 		userID: req.body.userID,
-	// 		products: req.body.room,
-	// 		paid: 'processing',
-	// 		email: req.body.email,
-	// 		charge: checkoutPrice,
-	// 		roomNumber: req.body.roomList,
-	// 	});
-	// 	const session = await stripe.checkout.sessions.create({
-	// 		customer_email: req.body.email,
-	// 		metadata: {
-	// 			orderID: order._id.toString(),
-	// 		},
-	// 		line_items: [
-	// 			{
-	// 				price_data: {
-	// 					currency: 'vnd',
-	// 					product_data: {
-	// 						description: 'test',
-	// 						name: req.body.room.title,
-	// 						images: [req.body.photo],
-	// 					},
-	// 					unit_amount: checkoutPrice,
-	// 				},
-	// 				quantity: 1,
-	// 			},
-	// 			{
-	// 				price_data: {
-	// 					currency: 'vnd',
-	// 					product_data: {
-	// 						description: 'test',
-	// 						name: req.body.room.title,
-	// 						images: [req.body.photo],
-	// 					},
-	// 					unit_amount: checkoutPrice,
-	// 				},
-	// 				quantity: 1,
-	// 			},
-	// 		],
-	// 		mode: 'payment',
-	// 		success_url: `http://localhost:3000/checkout/success/${order._id}`,
-	// 		cancel_url: `http://localhost:3000/checkout/cancel/${order._id}`,
-	// 		allow_promotion_codes: true,
-	// 	});
-	// 	res.json({ url: session.url });
-	// } catch (err) {
-	// 	res.status(500).json(err);
-	// }
+	// res.json(req.body);
+	try {
+		const order = await Order.create({
+			userID: req.body.userID,
+			products: Object.keys(req.body.roomList),
+			paid: 'processing',
+			email: req.body.email,
+			price: req.body.price,
+		});
+
+		const session = await stripe.checkout.sessions.create({
+			customer_email: req.body.email,
+			line_items: [
+				{
+					price_data: {
+						currency: 'vnd',
+						product_data: {
+							description: `${req.body.days} days`,
+							name: 'Booking Pet88',
+							images: [req.body.photo],
+						},
+						unit_amount: req.body.price,
+					},
+					quantity: 1,
+				},
+			],
+			mode: 'payment',
+			success_url: `http://localhost:3000/checkout/success/${order._id}`,
+			cancel_url: `http://localhost:3000/checkout/cancel/${order._id}`,
+			allow_promotion_codes: true,
+		});
+		res.json({ url: session.url });
+	} catch (err) {
+		res.status(500).json(err);
+	}
 });
 
 router.get('/balance', async (req, res) => {
@@ -78,21 +64,23 @@ router.get('/payment-intent/:id', async (req, res) => {
 	}
 });
 
-router.post('/find-price', async (req, res) => {
+router.get('/find-price', async (req, res) => {
+	const dates = req.body.dates;
 	try {
 		const checkoutPrice = 0;
-		const roomNumber = await Room.find(
-			{
-				_id: { $eq: req.body.id },
+		const roomList = await Room.find({});
 
-				'roomNumbers.unavailableDates': { $nin: req.body.dates },
-			},
-			// { roomNumbers: { $slice: [0, 2] } },
-		);
+		const list = roomList.map((element) => {
+			return {
+				...element.toJSON(),
+				roomNumbers: element.roomNumbers.filter(
+					(rn) =>
+						!rn.unavailableDates.some((ud) => !dates.includes(ud)),
+				),
+			};
+		});
 
-		// const room = roomNumber.slice(0, 2);
-
-		res.json({ room, checkoutPrice });
+		res.json(list);
 	} catch (err) {
 		res.status(500).json(err);
 	}

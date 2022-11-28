@@ -141,9 +141,43 @@ router.get('/room/:id', async (req, res) => {
 				return Room.findById(room);
 			}),
 		);
+
 		res.status(200).json(list);
 	} catch (err) {
 		res.status(500).json(err);
+	}
+});
+
+router.post('/availability/:id', async (req, res) => {
+	try {
+		const dates = req.body.dates.map((d) =>
+			new Date(d).toISOString().slice(0, 10),
+		);
+		const hotel = await Hotel.findById(req.params.id);
+
+		const list = await Promise.all(
+			hotel.rooms.map((room) => {
+				return Room.findById(room);
+			}),
+		);
+
+		const listData = list
+			.map((element) => {
+				return {
+					...element.toJSON(),
+					roomNumbers: element.roomNumbers.filter(
+						(rn) =>
+							!rn.unavailableDates.some((ud) =>
+								dates.includes(ud.toISOString().slice(0, 10)),
+							),
+					),
+				};
+			})
+			.filter((data) => data.roomNumbers.length);
+
+		res.status(200).json(listData);
+	} catch (err) {
+		res.json(err);
 	}
 });
 

@@ -59,9 +59,31 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
+router.get('/availability/found', async (req, res) => {
+	try {
+		const dates = req.body.dates;
+		const roomList = await Room.find({
+			_id: req.body.id,
+		});
+		const list = roomList.map((element) => {
+			return {
+				...element.toJSON(),
+				roomNumbers: element.roomNumbers.filter(
+					(rn) =>
+						!rn.unavailableDates.some((ud) => !dates.includes(ud)),
+				),
+			};
+		});
+		res.json(list);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.get('/', async (req, res) => {
 	try {
 		const rooms = await Room.find();
+
 		res.status(200).json(rooms);
 	} catch (err) {
 		res.status(500).json(err);
