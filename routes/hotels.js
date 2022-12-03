@@ -127,45 +127,48 @@ router.post('/find-hotel-able', async (req, res) => {
 			new Date(d).toISOString().slice(0, 10),
 		);
 		const hotelList = await Hotel.find(rest);
-
-		const list = await Promise.all(
-			hotelList.map(async (_hotel) => {
-				const hotel = _hotel.toJSON();
-				return {
-					...hotel,
-					rooms: await Promise.all(
-						hotel.rooms.map((room) => Room.findById(room)),
-					),
-				};
-			}),
-		);
-
-		const listData = list
-			.flat()
-			.map((hotel) => {
-				return {
-					...hotel,
-					rooms: hotel.rooms.map((_room) => {
-						const room = _room.toJSON();
-						return {
-							...room,
-							roomNumbers: room.roomNumbers.filter(
-								(rn) =>
-									!rn.unavailableDates.some((ud) =>
-										dates.includes(
-											ud.toISOString().slice(0, 10),
-										),
-									),
-							),
-						};
-					}),
-				};
-			})
-			.filter((hotel) =>
-				hotel.rooms.some((rooms) => rooms.roomNumbers.length),
+		if (dates?.length > 0) {
+			const list = await Promise.all(
+				hotelList.map(async (_hotel) => {
+					const hotel = _hotel.toJSON();
+					return {
+						...hotel,
+						rooms: await Promise.all(
+							hotel.rooms.map((room) => Room.findById(room)),
+						),
+					};
+				}),
 			);
 
-		res.status(200).json(listData);
+			const listData = list
+				.flat()
+				.map((hotel) => {
+					return {
+						...hotel,
+						rooms: hotel.rooms.map((_room) => {
+							const room = _room.toJSON();
+							return {
+								...room,
+								roomNumbers: room.roomNumbers.filter(
+									(rn) =>
+										!rn.unavailableDates.some((ud) =>
+											dates.includes(
+												ud.toISOString().slice(0, 10),
+											),
+										),
+								),
+							};
+						}),
+					};
+				})
+				.filter((hotel) =>
+					hotel.rooms.some((rooms) => rooms.roomNumbers.length),
+				);
+
+			res.status(200).json(listData);
+		}
+
+		res.status(200).json(hotelList);
 	} catch (err) {
 		res.status(500).json(err);
 	}
