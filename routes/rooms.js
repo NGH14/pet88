@@ -107,4 +107,18 @@ router.put('/availability/:id', async (req, res) => {
 	}
 });
 
+router.patch('/multiple-delete', async (req, res) => {
+	try {
+		await Room.deleteMany({
+			_id: {
+				$in: req.body,
+			},
+		});
+		// res.status(200).json(a);
+		res.status(200).json('Departmet has been deleted.');
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 module.exports = router;
