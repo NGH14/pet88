@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const stripe = require('../middleware/stripe.js');
+const stripe = require('../services/stripe.js');
 
 router.post('/:id', async (req, res) => {
 	try {

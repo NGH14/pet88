@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const stripe = require('../middleware/stripe.js');
+const stripe = require('../services/stripe.js');
 const { Order } = require('../models/orders.js');
 const { Room } = require('../models/room.js');
 
