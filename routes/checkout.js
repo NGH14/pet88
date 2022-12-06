@@ -7,14 +7,16 @@ const { Order } = require('../models/orders.js');
 const { Room } = require('../models/room.js');
 
 router.post('/create-checkout-session', async (req, res) => {
-	// res.json(req.body);
 	try {
 		const order = await Order.create({
-			userID: req.body.userID,
-			products: Object.keys(req.body.roomList),
+			userID: req.body.userID || 'guest',
+			products: req.body.roomList,
 			paid: 'processing',
 			email: req.body.email,
 			price: req.body.price,
+			name: req.body.name,
+			phone: req.body.phone,
+			days: req.body.days,
 		});
 
 		const session = await stripe.checkout.sessions.create({
@@ -59,28 +61,6 @@ router.get('/payment-intent/:id', async (req, res) => {
 			query: `metadata['orderID']: "${req.params.id}"`,
 		});
 		res.json({ paymentIntent });
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
-
-router.get('/find-price', async (req, res) => {
-	const dates = req.body.dates;
-	try {
-		const checkoutPrice = 0;
-		const roomList = await Room.find({});
-
-		const list = roomList.map((element) => {
-			return {
-				...element.toJSON(),
-				roomNumbers: element.roomNumbers.filter(
-					(rn) =>
-						!rn.unavailableDates.some((ud) => !dates.includes(ud)),
-				),
-			};
-		});
-
-		res.json(list);
 	} catch (err) {
 		res.status(500).json(err);
 	}

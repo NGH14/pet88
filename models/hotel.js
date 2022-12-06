@@ -41,7 +41,9 @@ const HotelSchema = new mongoose.Schema(
 		rooms: {
 			type: [String],
 		},
-
+		grooming: {
+			type: [String],
+		},
 		featured: {
 			type: Boolean,
 			default: false,

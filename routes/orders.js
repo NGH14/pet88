@@ -13,6 +13,15 @@ router.get('/', async (req, res) => {
 	}
 });
 
+router.get('/:id', async (req, res) => {
+	try {
+		const orders = await Order.findById(req.params.id);
+		res.status(200).json(orders);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.get('/user/:id', async (req, res) => {
 	try {
 		const orders = await Order.find({ userID: req.params.id });
@@ -45,7 +54,7 @@ router.put('/success/:id', async (req, res) => {
 router.put('/cancel/:id', async (req, res) => {
 	try {
 		const updateOrder = await Order.findByIdAndUpdate(req.params.id, {
-			paid: 'success',
+			paid: 'fail',
 		});
 		res.status(200).json(updateOrder);
 	} catch (err) {

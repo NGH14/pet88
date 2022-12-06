@@ -91,7 +91,6 @@ router.get('/', async (req, res) => {
 });
 
 router.put('/availability/:id', async (req, res) => {
-	// res.status(200).json('req');
 	try {
 		await Room.updateOne(
 			{ 'roomNumbers._id': req.params.id },

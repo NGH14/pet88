@@ -10,10 +10,13 @@ const middleware = require('./services/index');
 const userRoute = require('./routes/users');
 const hotelRoute = require('./routes/hotels');
 const roomRoute = require('./routes/rooms');
+const groomingRoute = require('./routes/groomings');
+
 const checkoutRoute = require('./routes/checkout');
 const orderRoute = require('./routes/orders');
 const couponRoute = require('./routes/coupons');
 const promotionRoute = require('./routes/promotions');
+
 const { sendNodeMail } = require('./services/nodemailer');
 
 app.use(cors());
@@ -69,6 +72,7 @@ app.get('/api', (req, res) => {
 app.use('/api/user', userRoute);
 app.use('/api/hotel', hotelRoute);
 app.use('/api/hotel-room', roomRoute);
+app.use('/api/grooming', groomingRoute);
 app.use('/api/checkout', checkoutRoute);
 app.use('/api/order', orderRoute);
 app.use('/api/coupon', couponRoute);
