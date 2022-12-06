@@ -4,7 +4,6 @@ const router = express.Router();
 const { Hotel } = require('../models/hotel.js');
 const { Grooming } = require('../models/grooming.js');
 
-
 router.get('/', async (req, res) => {
 	try {
 		const rooms = await Grooming.find();
@@ -12,9 +11,30 @@ router.get('/', async (req, res) => {
 		res.status(200).json(rooms);
 	} catch (err) {
 		res.status(500).json(err);
-	} 
-})
+	}
+});
 
+router.get('/:id', async (req, res) => {
+	try {
+		const room = await Grooming.findById(req.params.id);
+		res.status(200).json(room);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+router.get('/room/:id', async (req, res) => {
+	try {
+		const rooms = await Grooming.find({ 'roomNumbers._id': req.params.id });
+		const room = rooms[0].roomNumbers.find(
+			(rId) => rId._id == req.params.id,
+		);
+
+		res.status(200).json(room);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
 
 router.post('/:id', async (req, res) => {
 	const hotelId = req.params.id;
@@ -32,6 +52,22 @@ router.post('/:id', async (req, res) => {
 		res.status(200).json(savedGrooming);
 	} catch (err) {
 		res.json(err);
+	}
+});
+
+router.put('/availability/:id', async (req, res) => {
+	try {
+		await Grooming.updateOne(
+			{ 'roomNumbers._id': req.params.id },
+			{
+				$push: {
+					'roomNumbers.$.unavailableDates': req.body.dates,
+				},
+			},
+		);
+		res.status(200).json('Grroming status has been updated.');
+	} catch (err) {
+		res.status(500).json(err);
 	}
 });
 

@@ -5,6 +5,7 @@ const router = express.Router();
 const stripe = require('../services/stripe.js');
 const { Order } = require('../models/orders.js');
 const { Room } = require('../models/room.js');
+const { sendNodeMail } = require('../services/nodemailer.js');
 
 router.post('/create-checkout-session', async (req, res) => {
 	try {
@@ -40,6 +41,7 @@ router.post('/create-checkout-session', async (req, res) => {
 			cancel_url: `http://localhost:3000/checkout/cancel/${order._id}`,
 			allow_promotion_codes: true,
 		});
+
 		res.json({ url: session.url });
 	} catch (err) {
 		res.status(500).json(err);

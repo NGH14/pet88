@@ -85,9 +85,10 @@ router.post('/find-grooming-able', async (req, res) => {
 	try {
 		const startDate = req.body.startDate;
 		const endDate = req.body.endDate;
+		const city = req.body.city;
 
 		const groomingList = await Hotel.find({
-			...req.body,
+			city,
 			services: { $in: [req.body.services] },
 		});
 		if (startDate && endDate) {
@@ -112,7 +113,7 @@ router.post('/find-grooming-able', async (req, res) => {
 						...hotel,
 						grooming: hotel.grooming
 							.map((_room) => {
-								const room = _room.toJSON();
+								const room = _room?.toJSON();
 								return {
 									...room,
 									roomNumbers: room.roomNumbers.filter(
@@ -129,12 +130,12 @@ router.post('/find-grooming-able', async (req, res) => {
 									),
 								};
 							})
-							.filter((grooming) => grooming.roomNumbers.length),
+							.filter((grooming) => grooming.roomNumbers?.length),
 					};
 				})
 				.filter((hotel) =>
 					hotel.grooming.some(
-						(grooming) => grooming.roomNumbers.length,
+						(grooming) => grooming.roomNumbers?.length,
 					),
 				);
 
@@ -148,19 +149,17 @@ router.post('/find-grooming-able', async (req, res) => {
 });
 
 router.post('/find-hotel-able', async (req, res) => {
-	const { cheapestPrice, services, dates, ...rest } = req.body;
-	if (cheapestPrice) {
-		rest.cheapestPrice = { $gt: cheapestPrice };
-	}
-	if (services) {
-		servicesArray = services.split(',');
-		rest.services = { $in: servicesArray };
-	}
+	const city = req.body?.city;
+
 	try {
-		const dates = req.body.dates.map((d) =>
+		const dates = req.body?.dates?.map((d) =>
 			new Date(d).toISOString().slice(0, 10),
 		);
-		const hotelList = await Hotel.find(rest);
+		const hotelList = await Hotel.find({
+			city,
+			services: { $in: [req.body.services] },
+		});
+
 		if (dates?.length > 0) {
 			const list = await Promise.all(
 				hotelList.map(async (_hotel) => {
@@ -180,10 +179,10 @@ router.post('/find-hotel-able', async (req, res) => {
 					return {
 						...hotel,
 						rooms: hotel.rooms.map((_room) => {
-							const room = _room.toJSON();
+							const room = _room?.toJSON();
 							return {
 								...room,
-								roomNumbers: room.roomNumbers.filter(
+								roomNumbers: room?.roomNumbers.filter(
 									(rn) =>
 										!rn.unavailableDates.some((ud) =>
 											dates.includes(
@@ -196,7 +195,7 @@ router.post('/find-hotel-able', async (req, res) => {
 					};
 				})
 				.filter((hotel) =>
-					hotel.rooms.some((r) => r.roomNumbers.length),
+					hotel.rooms.some((r) => r.roomNumbers?.length),
 				);
 
 			res.status(200).json(listData);
