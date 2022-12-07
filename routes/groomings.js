@@ -36,6 +36,65 @@ router.get('/room/:id', async (req, res) => {
 	}
 });
 
+router.get('/room/event/:id', async (req, res) => {
+	try {
+		const rooms = await Grooming.find({
+			'roomNumbers.unavailableDates': {
+				$elemMatch: { id: req.params.id },
+			},
+		});
+		const room = rooms[0].roomNumbers.find((r) =>
+			r.unavailableDates.find((item) => item.id == req.params.id),
+		);
+
+		res.status(200).json(room);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+router.put('/room/event/:id', async (req, res) => {
+	try {
+		const rooms = await Grooming.findOneAndUpdate(
+			{ 'roomNumbers.unavailableDates.id': req.params.id },
+			{
+				$set: {
+					'roomNumbers.0.unavailableDates.$[ud].startDate': 12345678910,
+				},
+			},
+			{
+				arrayFilters: [{ 'ud.id': req.params.id }],
+			},
+		).catch((err) => console.log(err));
+
+		res.status(200).json(rooms);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+router.put('/room/event/delete/:id', async (req, res) => {
+	try {
+		const rooms = await Grooming.updateOne(
+			{ _id: '639052acfad33d2f7e4c0460' },
+			{
+				$pull: {
+					'roomNumbers.$[].unavailableDates': { id: req.params.id },
+				},
+			},
+			// {
+			// 	arrayFilters: [
+			// 		{ 'rn.unavailableDates': { id: req.params.id } },
+			// 	],
+			// },
+		).catch((err) => console.log(err));
+
+		res.status(200).json(rooms);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.post('/:id', async (req, res) => {
 	const hotelId = req.params.id;
 	const newGrooming = new Grooming(req.body);
