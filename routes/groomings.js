@@ -135,4 +135,42 @@ router.put('/availability/:id', async (req, res) => {
 	}
 });
 
+router.delete('/:id', async (req, res) => {
+	try {
+		await Grooming.findByIdAndDelete(req.params.id);
+		res.status(200).json('Grooming has been deleted.');
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+router.put('/:id', async (req, res) => {
+	try {
+		const updatedGrooming = await Grooming.findByIdAndUpdate(
+			req.params.id,
+			{
+				$set: req.body,
+			},
+			{ new: true },
+		);
+		res.status(200).json(updatedGrooming);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
+router.patch('/multiple-delete', async (req, res) => {
+	try {
+		await Grooming.deleteMany({
+			_id: {
+				$in: req.body,
+			},
+		});
+		// res.status(200).json(a);
+		res.status(200).json('Departmet has been deleted.');
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 module.exports = router;

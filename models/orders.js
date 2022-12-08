@@ -12,6 +12,11 @@ const OrderSchema = new mongoose.Schema(
 		phone: String,
 		price: Number,
 		days: Number,
+		paymentMethod: String,
+		confirm: String,
+		start: String,
+		end: String,
+		service: String,
 	},
 	{ timestamps: true },
 );

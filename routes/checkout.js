@@ -5,7 +5,6 @@ const router = express.Router();
 const stripe = require('../services/stripe.js');
 const { Order } = require('../models/orders.js');
 const { Room } = require('../models/room.js');
-const { sendNodeMail } = require('../services/nodemailer.js');
 
 router.post('/create-checkout-session', async (req, res) => {
 	try {
@@ -18,6 +17,11 @@ router.post('/create-checkout-session', async (req, res) => {
 			name: req.body.name,
 			phone: req.body.phone,
 			days: req.body.days,
+			confirm: 'unconfimred',
+			start: req.body.start,
+			end: req.body.end,
+			paymentMethod: req.body.paymentMethod,
+			service: req.body.service,
 		});
 
 		const session = await stripe.checkout.sessions.create({
