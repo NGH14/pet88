@@ -17,8 +17,6 @@ const orderRoute = require('./routes/orders');
 const couponRoute = require('./routes/coupons');
 const promotionRoute = require('./routes/promotions');
 
-const { sendNodeMail } = require('./services/nodemailer');
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
@@ -77,5 +75,3 @@ app.use('/api/checkout', checkoutRoute);
 app.use('/api/order', orderRoute);
 app.use('/api/coupon', couponRoute);
 app.use('/api/promotion', promotionRoute);
-
-// sendNodeMail({ subject: 'test mail', recipient: 'vuhuunghia2001@gmail.com' });
