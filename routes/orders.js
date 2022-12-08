@@ -153,6 +153,30 @@ router.post('/cash', async (req, res) => {
 	}
 });
 
+router.post('/admin/grooming', async (req, res) => {
+	try {
+		const order = await Order.create({
+			userID: req.body.userID || 'guest',
+			products: req.body.roomList,
+			paid: 'unpaid',
+			email: req.body.email,
+			price: req.body.price,
+			name: req.body.name,
+			phone: req.body.phone,
+			days: req.body.days,
+			paymentMethod: 'cash',
+			confirm: 'confimred',
+			start: req.body.start,
+			end: req.body.end,
+			service: req.body.service,
+		});
+
+		res.status(200).json(order);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.put('/confirm/success/:id', async (req, res) => {
 	try {
 		const order = await Order.findByIdAndUpdate(req.params.id, {
