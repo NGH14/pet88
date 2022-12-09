@@ -65,6 +65,8 @@ router.put('/room/event/:id', async (req, res) => {
 						req.body.endDate,
 					'roomNumbers.0.unavailableDates.$[ud].title':
 						req.body.title,
+					'roomNumbers.0.unavailableDates.$[ud].order':
+						req.body.order,
 				},
 			},
 			{
@@ -80,21 +82,16 @@ router.put('/room/event/:id', async (req, res) => {
 
 router.put('/room/event/delete/:id', async (req, res) => {
 	try {
-		const rooms = await Grooming.updateOne(
+		await Grooming.updateOne(
 			{ 'roomNumbers.unavailableDates.id': req.params.id },
 			{
 				$pull: {
 					'roomNumbers.$[].unavailableDates': { id: req.params.id },
 				},
 			},
-			// {
-			// 	arrayFilters: [
-			// 		{ 'rn.unavailableDates': { id: req.params.id } },
-			// 	],
-			// },
 		).catch((err) => console.log(err));
 
-		res.status(200).json('Delete Success');
+		res.status(200).json(`Delete Success`);
 	} catch (err) {
 		res.status(500).json(err);
 	}
@@ -137,8 +134,8 @@ router.put('/availability/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
 	try {
-		await Grooming.findByIdAndDelete(req.params.id);
-		res.status(200).json('Grooming has been deleted.');
+		const grooming = await Grooming.findByIdAndDelete(req.params.id);
+		res.status(200).json(`Grooming has been deleted. ${grooming}`);
 	} catch (err) {
 		res.status(500).json(err);
 	}

@@ -56,6 +56,18 @@ router.put('/:id', async (req, res) => {
 	}
 });
 
+router.put('/status/:id', async (req, res) => {
+	try {
+		const updateOrder = await Order.findByIdAndUpdate(req.params.id, {
+			paid: req.body.paid,
+			confirm: req.body.confirm,
+		});
+		res.status(200).json(updateOrder);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.post('/cash', async (req, res) => {
 	try {
 		const order = await Order.create({
