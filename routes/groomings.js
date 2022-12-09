@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const { Hotel } = require('../models/hotel.js');
 const { Grooming } = require('../models/grooming.js');
+const { Order } = require('../models/orders.js');
 
 router.get('/', async (req, res) => {
 	try {

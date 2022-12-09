@@ -165,6 +165,97 @@ router.post('/cash', async (req, res) => {
 	}
 });
 
+router.post('/grooming/booking', async (req, res) => {
+	try {
+		const order = await Order.create({
+			userID: req.body.userID || 'guest',
+			products: req.body.roomList,
+			paid: 'unpaid',
+			email: req.body.email,
+			price: req.body.price,
+			name: req.body.name,
+			phone: req.body.phone,
+			days: req.body.days,
+			paymentMethod: req.body.paymentMethod,
+			confirm: 'unconfimred',
+			start: req.body.start,
+			end: req.body.end,
+			service: 'grooming',
+		});
+		const link = `http://localhost:3000/confirm/${order?.id}`;
+
+		const templateEN = `<div style="box-sizing: border-box;	
+		font-size: 14px;
+		line-height: 1.5;
+		padding: 15px;
+		color: #24292e;
+		background-color: #fff;
+		margin: 0;">
+			<div style='background-color:white;width:600px;margin:0 auto;color:black'>
+				<img
+					src='https://lh3.googleusercontent.com/49shb7GunRaPq4RZPQiv1MfUbe2pSjHF2DCloGNt8npjVBl6GCFAPMnCNIZmLOCChDG5sKQji7-9tlqZ8uesuc0XsaDk7k2YSKZ-2UtP_ShpCIUNFgSeEi1r58zHhIc2_AkYH-76=w300'
+					alt='Pet88'
+					style='display:block;max-width:100%;max-height:30px;'
+					class='CToWUd'
+					data-bit='iit'></img>
+					
+					<div style='line-height:1.8;'>
+						<p style="box-sizing: border-box;
+						margin-top: 8px!important;
+						margin-bottom: 8px;
+						font-size: 20px;
+						font-weight: 400!important;
+						line-height: 1.25!important;">Hi <strong>
+							${order?.name}</strong>,</p>
+						<div style='line-height:1.8;padding: 15px 0px;'> 
+					<p>	
+					Let's verify your booking service in Pet88 at Room 
+		</p>
+		<a href="${link}" target='_blank ' style="background-color: #28a745!important;box-sizing:border-box;
+		color: #fff;text-decoration: none;
+		display: inline-block;
+		font-size: inherit;
+		font-weight: 500;
+		line-height: 1.5;
+		white-space: nowrap;
+		vertical-align: middle;
+		border-radius: .5em;
+		padding: .75em 1.5em;
+		border: 1px solid #28a745;">
+		Confirm Booking.
+ </a> 
+		</div>
+		<hr style="box-sizing:content-box;height:0;overflow:hidden;background-color:transparent;border-bottom-color:#dfe2e5;border-bottom-style:solid;;border-width:0 0 1px">
+		<p>			
+			or copy this url to your browser 
+			<p> [
+				<a href="${link}" target='_blank' style="font-size: 13px;">
+				${link}	</a> ]
+			</p>
+		
+			</p>
+					<span   style="text-align: center;">
+						If you are not booking the service, please ignore this
+						email.
+					</span>
+				</div>
+			</div>
+		</div>
+		`;
+
+		sendNodeMail(
+			{
+				subject: `Pet88: Booking Confirmation`,
+				recipient: order.email,
+			},
+			templateEN,
+		);
+		res.status(200).json(order);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.post('/admin/grooming', async (req, res) => {
 	try {
 		const order = await Order.create({
