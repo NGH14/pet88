@@ -5,7 +5,6 @@ const HotelSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-
 		type: {
 			type: String,
 			required: true,
@@ -18,7 +17,6 @@ const HotelSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
-
 		photos: {
 			type: [String],
 		},

@@ -24,7 +24,6 @@ const GroomingSchema = new mongoose.Schema(
 		roomNumbers: [
 			{
 				number: Number,
-
 				unavailableDates: { type: [Object] },
 			},
 		],

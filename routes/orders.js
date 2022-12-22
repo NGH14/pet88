@@ -1,4 +1,5 @@
 const express = require('express');
+const MongoClient = require('mongodb');
 
 const router = express.Router();
 
@@ -56,7 +57,7 @@ router.put('/:id', async (req, res) => {
 	}
 });
 
-router.put('/status/:id', async (req, res) => {
+router.put('/update-status/:id', async (req, res) => {
 	try {
 		const updateOrder = await Order.findByIdAndUpdate(req.params.id, {
 			paid: req.body.paid,
@@ -297,6 +298,11 @@ router.put('/success/:id', async (req, res) => {
 			paid: 'success',
 			confirm: 'confimred',
 		});
+		const priceWithoutVAT = order.products.reduce(
+			(total, room) => Number(total) + Number(room.price),
+			0,
+		);
+		const VAT = MongoClient.Int32(order.price) - priceWithoutVAT;
 
 		const orderData = order.products
 			.map((ord) => {
@@ -1587,9 +1593,7 @@ Room Number																										</td>
 																												currency:
 																													'VND',
 																											}).format(
-																												(order.price *
-																													8) /
-																													100,
+																												VAT,
 																											)}
 																												
 																											</td>
@@ -2399,13 +2403,13 @@ Room Number																										</td>
 	</div>
 	
 	`;
-		sendNodeMail(
-			{
-				subject: `Pet88: Booking Success`,
-				recipient: order.email,
-			},
-			templateEN,
-		);
+		// sendNodeMail(
+		// 	{
+		// 		subject: `Pet88: Booking Success`,
+		// 		recipient: order.email,
+		// 	},
+		// 	templateEN,
+		// );
 		res.status(200).json(order);
 	} catch (err) {
 		res.status(500).json(err);
