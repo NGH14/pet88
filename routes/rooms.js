@@ -8,7 +8,6 @@ const { route } = require('./users.js');
 router.post('/:id', async (req, res) => {
 	const hotelId = req.params.id;
 	const newRoom = new Room(req.body);
-	// res.status(200).json({ hotelId, newRoom });
 
 	try {
 		const savedRoom = await newRoom.save();

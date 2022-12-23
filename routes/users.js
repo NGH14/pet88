@@ -42,8 +42,6 @@ router.get('/store', async (req, res) => {
 		let startfulldate = Timestamp.fromDate(firstDay);
 		let endfulldate = Timestamp.fromDate(lastDay);
 
-		// var startfulldate = 1667205736;
-
 		db.collection('users')
 			.where('createAt', '<=', endfulldate)
 			.where('createAt', '>=', startfulldate)

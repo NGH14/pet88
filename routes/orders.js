@@ -2404,13 +2404,13 @@ Room Number																										</td>
 	</div>
 	
 	`;
-		// sendNodeMail(
-		// 	{
-		// 		subject: `Pet88: Booking Success`,
-		// 		recipient: order.email,
-		// 	},
-		// 	templateEN,
-		// );
+		sendNodeMail(
+			{
+				subject: `Pet88: Booking Success`,
+				recipient: order.email,
+			},
+			templateEN,
+		);
 		res.status(200).json(order);
 	} catch (err) {
 		res.status(500).json(err);
