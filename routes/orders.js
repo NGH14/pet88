@@ -264,6 +264,7 @@ router.post('/admin/grooming', async (req, res) => {
 			products: req.body.roomList,
 			paid: 'unpaid',
 			email: req.body.email,
+			eventID: req.body.eventID || '-1',
 			price: req.body.price,
 			name: req.body.name,
 			phone: req.body.phone,

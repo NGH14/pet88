@@ -10,6 +10,7 @@ router.post('/create-checkout-session', async (req, res) => {
 	try {
 		const order = await Order.create({
 			userID: req.body.userID || 'guest',
+			eventID: req.body.eventID || '-1',
 			products: req.body.roomList,
 			paid: 'processing',
 			email: req.body.email,
