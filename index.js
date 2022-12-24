@@ -44,7 +44,6 @@ app.use(
 // app.use(middleware.decodeToken);
 
 const PORT = process.env.LOCAL_PORT || 5000;
-const DOMAIN = 'http://localhost:3000';
 
 mongoose.connection.on('disconnected', () => {
 	console.log('MongoDB disconnected!');

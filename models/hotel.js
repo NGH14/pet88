@@ -46,6 +46,8 @@ const HotelSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
+		open: String,
+		close: String,
 	},
 	{ timestamps: true },
 );
