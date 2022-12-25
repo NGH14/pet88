@@ -88,71 +88,1173 @@ router.post('/cash', async (req, res) => {
 		});
 		const link = `http://localhost:3000/confirm/${order?.id}`;
 
-		const templateEN = `<div style="box-sizing: border-box;	
-		font-size: 14px;
-		line-height: 1.5;
-		padding: 15px;
-		color: #24292e;
-		background-color: #fff;
-		margin: 0;">
-			<div style='background-color:white;width:600px;margin:0 auto;color:black'>
-				<img
-					src='https://lh3.googleusercontent.com/49shb7GunRaPq4RZPQiv1MfUbe2pSjHF2DCloGNt8npjVBl6GCFAPMnCNIZmLOCChDG5sKQji7-9tlqZ8uesuc0XsaDk7k2YSKZ-2UtP_ShpCIUNFgSeEi1r58zHhIc2_AkYH-76=w300'
-					alt='Pet88'
-					style='display:block;max-width:100%;max-height:30px;'
-					class='CToWUd'
-					data-bit='iit'></img>
-					
-					<div style='line-height:1.8;'>
-						<p style="box-sizing: border-box;
-						margin-top: 8px!important;
-						margin-bottom: 8px;
-						font-size: 20px;
-						font-weight: 400!important;
-						line-height: 1.25!important;">Hi <strong>
-							${order?.name}
-						</strong>,</p>
-						<div style='line-height:1.8;padding: 15px 0px;'> 
-					<p>	
-					Let's verify your booking in ${
-						order.days
-					} days with total cost is ${new Intl.NumberFormat('vi-VI', {
-			style: 'currency',
-			currency: 'VND',
-		}).format(order.price)}
-		</p>
-		<a href="${link}" target='_blank ' style="background-color: #28a745!important;box-sizing:border-box;
-		color: #fff;text-decoration: none;
-		display: inline-block;
-		font-size: inherit;
-		font-weight: 500;
-		line-height: 1.5;
-		white-space: nowrap;
-		vertical-align: middle;
-		border-radius: .5em;
-		padding: .75em 1.5em;
-		border: 1px solid #28a745;">
-		Confirm Booking.
- </a> 
-		</div>
-		<hr style="box-sizing:content-box;height:0;overflow:hidden;background-color:transparent;border-bottom-color:#dfe2e5;border-bottom-style:solid;;border-width:0 0 1px">
-		<p>			
-			or copy this url to your browser 
-			<p> [
-				<a href="${link}" target='_blank' style="font-size: 13px;">
-				${link}	</a> ]
-			</p>
-		
-			</p>
-					<span   style="text-align: center;">
-						If you are not booking the service, please ignore this
-						email.
-					</span>
-				</div>
-			</div>
-		</div>
-		`;
-
+		const templateEN = `<table
+		bgcolor="#F6F9FC"
+		border="0"
+		cellpadding="0"
+		cellspacing="0"
+		width="100%"
+		style="border: 0; margin: 0; padding: 0"
+	>
+		<tbody>
+			<tr>
+				<td style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<table
+						class="m_931622664052794565st-Wrapper"
+						align="center"
+						border="0"
+						cellpadding="0"
+						cellspacing="0"
+						style="width: 480px; min-width: 480px; max-width: 480px"
+					>
+						<tbody>
+							<tr>
+								<td>
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="480"
+										style="min-width: 480px"
+									>
+										<tbody>
+											<tr>
+												<td
+													align="center"
+													height="0"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														color: #ffffff;
+														display: none !important;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 0;
+														max-width: 0;
+														opacity: 0;
+														overflow: hidden;
+													"
+												>
+													<span
+														style="
+															color: #ffffff;
+															text-decoration: none;
+														"
+													>
+														New Booking from Pet88
+														${order?.id}
+														‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="58"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table cellpadding="0" cellspacing="0">
+										<tbody>
+											<tr>
+												<td
+													valign="middle"
+													height="32"
+													style="
+														border: 0;
+														border-collapse: collapse;
+														margin: 0;
+														padding: 0;
+														height: 32px;
+													"
+												>
+													<a
+														style="
+															border: 0;
+															margin: 0;
+															padding: 0;
+															text-decoration: none;
+															outline: 0;
+														"
+													>
+														<div>
+															<div
+																style="
+																	border-radius: 100%;
+																	width: 32px;
+																	height: 32px;
+																	text-align: center;
+																	background-color: white;
+																	background-position: center;
+																	background: url('https://ci5.googleusercontent.com/proxy/q1tYen2aQRj_lxwlOCoj1XagEi0TipjOz4V0l27ZLncb2yA5-d0ItYbzNlnRv8R_ZkBAs8oP_86agrcXQ-dWIkyOu-bt9g5b6s1AIYiz5MbSwc9DOekUF8Hp9aOFxYaw18z79Y9PYNAwm-Fc1k3eCKwfsxe02vN9FTlWmwXdkJ00WvcP5N3s=s0-d-e1-ft#https://files.stripe.com/files/MDB8YWNjdF8xTE9KWXJGbkZabEVuZjhyfGZfdGVzdF9TdDkxUWFlYU9EZVFXZXhKQU9JNkRaSFQ009KTmhTdZ');
+																	background-origin: border-box;
+																	background-size: contain;
+																	background-position: center;
+																	background-repeat: no-repeat;
+																	line-height: 100%;
+																"
+															>
+																<div>
+																	<div></div>
+																</div>
+															</div>
+														</div>
+													</a>
+												</td>
+												<td
+													style="
+														border: 0;
+														border-collapse: collapse;
+														margin: 0;
+														padding: 0;
+														width: 12px;
+													"
+												>
+													<span
+														style="
+															font-family: -apple-system,
+																BlinkMacSystemFont,
+																'Segoe UI', Roboto,
+																'Helvetica Neue',
+																Ubuntu, sans-serif;
+															text-decoration: none;
+														"
+													>
+														&nbsp;
+													</span>
+												</td>
+												<td
+													valign="middle"
+													style="
+														border: 0;
+														border-collapse: collapse;
+														margin: 0;
+														padding: 0;
+													"
+												>
+													<span
+														style="
+															font-family: -apple-system,
+																BlinkMacSystemFont,
+																'Segoe UI', Roboto,
+																'Helvetica Neue',
+																Ubuntu, sans-serif;
+															text-decoration: none;
+															font-weight: 500;
+															color: rgb(0, 0, 0);
+															font-size: 16px;
+														"
+													>
+														Pet88
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="32"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										cellpadding="0"
+										cellspacing="0"
+										style="width: 100%"
+									>
+										<tbody>
+											<tr>
+												<td align="">
+													<table
+														cellpadding="0"
+														cellspacing="0"
+														style="width: 100%"
+													>
+														<tbody>
+															<tr>
+																<td
+																	align=""
+																	style="
+																		border: 0;
+																		border-collapse: collapse;
+																		margin: 0;
+																		padding: 0;
+																		width: 100%;
+																		width: 482px;
+																		border-radius: 12px;
+																		background-color: #e3e8ee;
+																		padding: 1px;
+																	"
+																>
+																	<table
+																		cellpadding="0"
+																		cellspacing="0"
+																		style="
+																			width: 100%;
+																			background-color: #ffffff;
+																			border-radius: 12px;
+																		"
+																	>
+																		<tbody>
+																			<tr>
+																				<td
+																					style="
+																						border: 0;
+																						border-collapse: collapse;
+																						margin: 0;
+																						padding: 0;
+																					"
+																				>
+																					<table
+																						border="0"
+																						cellpadding="0"
+																						cellspacing="0"
+																						width="100%"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									height="32"
+																									style="
+																										border: 0;
+																										margin: 0;
+																										padding: 0;
+																										font-size: 1px;
+																										line-height: 1px;
+																										max-height: 1px;
+																									"
+																								>
+																									<div>
+																										&nbsp;
+																									</div>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+	
+																					<table
+																						cellpadding="0"
+																						cellspacing="0"
+																						style="
+																							width: 100%;
+																						"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									style="
+																										border: 0;
+																										border-collapse: collapse;
+																										margin: 0;
+																										padding: 0;
+																										min-width: 32px;
+																										width: 32px;
+																										font-size: 1px;
+																									"
+																								>
+																									&nbsp;
+																								</td>
+	
+																								<td
+																									style="
+																										border: 0;
+																										border-collapse: collapse;
+																										margin: 0;
+																										padding: 0;
+																									"
+																								>
+																									<table
+																										cellpadding="0"
+																										cellspacing="0"
+																										style="
+																											width: 100%;
+																										"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 100%;
+																													"
+																												>
+																													<table
+																														cellpadding="0"
+																														cellspacing="0"
+																														style="
+																															width: 100%;
+																														"
+																													>
+																														<tbody>
+																															<tr>
+																																<td
+																																	align=""
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		width: 100%;
+																																		padding-bottom: 2px;
+																																	"
+																																>
+																																	<span
+																																		style="
+																																			font-family: -apple-system,
+																																				BlinkMacSystemFont,
+																																				'Segoe UI',
+																																				Roboto,
+																																				'Helvetica Neue',
+																																				Ubuntu,
+																																				sans-serif;
+																																			text-decoration: none;
+																																			color: #7a7a7a;
+																																			font-size: 14px;
+																																			line-height: 20px;
+																																			font-weight: 500;
+																																		"
+																																	>
+																																		Booking
+																																		#${order.id}
+																																	</span>
+																																</td>
+																															</tr>
+																														</tbody>
+																													</table>
+	
+																													<table
+																														cellpadding="0"
+																														cellspacing="0"
+																														style="
+																															width: 100%;
+																														"
+																													>
+																														<tbody>
+																															<tr>
+																																<td
+																																	align=""
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		width: 100%;
+																																		padding-bottom: 2px;
+																																	"
+																																>
+																																	<span
+																																		style="
+																																			font-family: -apple-system,
+																																				BlinkMacSystemFont,
+																																				'Segoe UI',
+																																				Roboto,
+																																				'Helvetica Neue',
+																																				Ubuntu,
+																																				sans-serif;
+																																			text-decoration: none;
+																																			color: #1a1a1a;
+																																			font-size: 30px;
+																																			line-height: 40px;
+																																			font-weight: 600;
+																																		"
+																																	>
+																																		${new Intl.NumberFormat('vi-VI', {
+																																			style: 'currency',
+																																			currency:
+																																				'VND',
+																																		}).format(
+																																			order.price,
+																																		)}
+																																	</span>
+																																</td>
+																															</tr>
+																														</tbody>
+																													</table>
+	
+																													<table
+																														cellpadding="0"
+																														cellspacing="0"
+																														style="
+																															width: 100%;
+																														"
+																													>
+																														<tbody>
+																															<tr>
+																																<td
+																																	colspan="1"
+																																	height="16"
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		height: 16px;
+																																		font-size: 1px;
+																																		line-height: 1px;
+																																	"
+																																>
+																																	&nbsp;
+																																</td>
+																															</tr>
+	
+																															<tr>
+																																<td
+																																	height="1"
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		height: 1px;
+																																		font-size: 1px;
+																																		background-color: #ebebeb;
+																																		line-height: 1px;
+																																	"
+																																>
+																																	&nbsp;
+																																</td>
+																															</tr>
+	
+																															<tr>
+																																<td
+																																	colspan="1"
+																																	height="12"
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		height: 12px;
+																																		font-size: 1px;
+																																		line-height: 1px;
+																																	"
+																																>
+																																	&nbsp;
+																																</td>
+																															</tr>
+																														</tbody>
+																													</table>
+																												</td>
+	
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 76px;
+																														max-width: 76px;
+																													"
+																												>
+																													<img
+																														src="https://ci3.googleusercontent.com/proxy/o5UCuPdzAzCtI7SLxMFPHcFqXCTenDbWr2X09VB_-KDuRsrCnbbWru_HMkBBD_iNNclwRzsOEAf_M4Sy3QuFN_qbwGlIyIw-fe6T9O6o7EusXcpaz5AxYEEj8tBLyt63-kY=s0-d-e1-ft#https://stripe-images.s3.amazonaws.com/emails/Bookings_Booking_illustration.png"
+																														width="94"
+																														height="91"
+																														style="
+																															border: 0;
+																															margin: 0
+																																auto;
+																															padding: 0;
+																															display: block;
+																															border-radius: 8px;
+																														"
+																														alt="Booking illustration"
+																														class="CToWUd"
+																														data-bit="iit"
+																													/>
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+	
+																									<table
+																										cellpadding="0"
+																										cellspacing="0"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														vertical-align: top;
+																														white-space: nowrap;
+																													"
+																												>
+																													<span
+																														style="
+																															font-family: -apple-system,
+																																BlinkMacSystemFont,
+																																'Segoe UI',
+																																Roboto,
+																																'Helvetica Neue',
+																																Ubuntu,
+																																sans-serif;
+																															text-decoration: none;
+																															color: #7a7a7a;
+																															font-size: 14px;
+																															line-height: 16px;
+																														"
+																													>
+																														To
+																													</span>
+																												</td>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 24px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																													"
+																												>
+																													<span
+																														style="
+																															font-family: -apple-system,
+																																BlinkMacSystemFont,
+																																'Segoe UI',
+																																Roboto,
+																																'Helvetica Neue',
+																																Ubuntu,
+																																sans-serif;
+																															text-decoration: none;
+																															color: #1a1a1a;
+																															font-size: 14px;
+																															line-height: 16px;
+																														"
+																													>
+																														${order.name}
+																													</span>
+																												</td>
+																											</tr>
+	
+																											<tr>
+																												<td
+																													colspan="2"
+																													height="8"
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														height: 8px;
+																														font-size: 1px;
+																														line-height: 1px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																											</tr>
+	
+																											<tr>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														vertical-align: top;
+																														white-space: nowrap;
+																													"
+																												>
+																													<span
+																														style="
+																															font-family: -apple-system,
+																																BlinkMacSystemFont,
+																																'Segoe UI',
+																																Roboto,
+																																'Helvetica Neue',
+																																Ubuntu,
+																																sans-serif;
+																															text-decoration: none;
+																															color: #7a7a7a;
+																															font-size: 14px;
+																															line-height: 16px;
+																														"
+																													>
+																														From
+																													</span>
+																												</td>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 24px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																													"
+																												>
+																													<span
+																														style="
+																															font-family: -apple-system,
+																																BlinkMacSystemFont,
+																																'Segoe UI',
+																																Roboto,
+																																'Helvetica Neue',
+																																Ubuntu,
+																																sans-serif;
+																															text-decoration: none;
+																															color: #1a1a1a;
+																															font-size: 14px;
+																															line-height: 16px;
+																														"
+																													>
+																														Pet88
+																													</span>
+																												</td>
+																											</tr>
+	
+																											<tr>
+																												<td
+																													colspan="2"
+																													height="8"
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														height: 8px;
+																														font-size: 1px;
+																														line-height: 1px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+	
+																									<table
+																										border="0"
+																										cellpadding="0"
+																										cellspacing="0"
+																										width="100%"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													height="24"
+																													style="
+																														border: 0;
+																														margin: 0;
+																														padding: 0;
+																														font-size: 1px;
+																														line-height: 1px;
+																														max-height: 1px;
+																													"
+																												>
+																													<div>
+																														&nbsp;
+																													</div>
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+	
+																									<table
+																										cellpadding="0"
+																										cellspacing="0"
+																										style="
+																											width: 100%;
+																										"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													align=""
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 100%;
+																														text-align: center;
+																														background-color: #0074d4;
+																														border-radius: 6px;
+																														height: 44px;
+																													"
+																												>
+																													<a
+																														style="
+																															border: 0;
+																															margin: 0;
+																															padding: 0;
+																															text-decoration: none;
+																															outline: 0;
+																															display: block;
+																															text-align: center;
+																															padding-right: 60px;
+																															padding-left: 60px;
+																														"
+																														href="${link}"
+																														target="_blank"
+																													>
+																														<span
+																															style="
+																																font-family: -apple-system,
+																																	BlinkMacSystemFont,
+																																	'Segoe UI',
+																																	Roboto,
+																																	'Helvetica Neue',
+																																	Ubuntu,
+																																	sans-serif;
+																																text-decoration: none;
+																																font-weight: 500;
+																																font-size: 16px;
+																																line-height: 44px;
+																																color: rgb(
+																																	255,
+																																	255,
+																																	255
+																																);
+																															"
+																														>
+																															Confirm
+																															Booking
+																														</span>
+																													</a>
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+																								</td>
+	
+																								<td
+																									style="
+																										border: 0;
+																										border-collapse: collapse;
+																										margin: 0;
+																										padding: 0;
+																										min-width: 32px;
+																										width: 32px;
+																										font-size: 1px;
+																									"
+																								>
+																									&nbsp;
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+	
+																					<table
+																						border="0"
+																						cellpadding="0"
+																						cellspacing="0"
+																						width="100%"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									height="24"
+																									style="
+																										border: 0;
+																										margin: 0;
+																										padding: 0;
+																										font-size: 1px;
+																										line-height: 1px;
+																										max-height: 1px;
+																									"
+																								>
+																									<div>
+																										&nbsp;
+																									</div>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="20"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										cellpadding="0"
+										cellspacing="0"
+										style="width: 100%"
+									>
+										<tbody>
+											<tr>
+												<td align="">
+													<table
+														cellpadding="0"
+														cellspacing="0"
+														style="width: 100%"
+													>
+														<tbody>
+															<tr>
+																<td
+																	align=""
+																	style="
+																		border: 0;
+																		border-collapse: collapse;
+																		margin: 0;
+																		padding: 0;
+																		width: 100%;
+																		width: 482px;
+																		border-radius: 12px;
+																		background-color: #e3e8ee;
+																		padding: 1px;
+																	"
+																>
+																	<table
+																		cellpadding="0"
+																		cellspacing="0"
+																		style="
+																			width: 100%;
+																			background-color: #ffffff;
+																			border-radius: 12px;
+																		"
+																	>
+																		<tbody>
+																			<tr>
+																				<td
+																					style="
+																						border: 0;
+																						border-collapse: collapse;
+																						margin: 0;
+																						padding: 0;
+																					"
+																				>
+																					<table
+																						border="0"
+																						cellpadding="0"
+																						cellspacing="0"
+																						width="100%"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									height="32"
+																									style="
+																										border: 0;
+																										margin: 0;
+																										padding: 0;
+																										font-size: 1px;
+																										line-height: 1px;
+																										max-height: 1px;
+																									"
+																								>
+																									<div>
+																										&nbsp;
+																									</div>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+	
+																					<table
+																						cellpadding="0"
+																						cellspacing="0"
+																						style="
+																							width: 100%;
+																						"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									style="
+																										border: 0;
+																										border-collapse: collapse;
+																										margin: 0;
+																										padding: 0;
+																									"
+																								>
+																									<table
+																										cellpadding="0"
+																										cellspacing="0"
+																										style="
+																											width: 100%;
+																										"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														min-width: 32px;
+																														width: 32px;
+																														font-size: 1px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+	
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														font-family: -apple-system,
+																															BlinkMacSystemFont,
+																															'Segoe UI',
+																															Roboto,
+																															'Helvetica Neue',
+																															Ubuntu,
+																															sans-serif;
+																														font-size: 14px;
+																														line-height: 16px;
+																														color: #999999;
+																													"
+																												>
+																													Questions?
+																													Contact
+																													us
+																													at
+																													<a
+																														style="
+																															border: 0;
+																															margin: 0;
+																															padding: 0;
+																															color: #625afa !important;
+																															font-weight: bold;
+																															text-decoration: none;
+																															white-space: nowrap;
+																														"
+																														href="mailto:servicepet88@gmail.com"
+																														target="_blank"
+																														>servicepet88@gmail.com</a
+																													>.
+																												</td>
+	
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														min-width: 32px;
+																														width: 32px;
+																														font-size: 1px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+	
+																					<table
+																						border="0"
+																						cellpadding="0"
+																						cellspacing="0"
+																						width="100%"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									height="24"
+																									style="
+																										border: 0;
+																										margin: 0;
+																										padding: 0;
+																										font-size: 1px;
+																										line-height: 1px;
+																										max-height: 1px;
+																									"
+																								>
+																									<div>
+																										&nbsp;
+																									</div>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="20"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="32"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td
+					height="64"
+					colspan="3"
+					style="
+						border: 0;
+						margin: 0;
+						padding: 0;
+						font-size: 1px;
+						line-height: 1px;
+					"
+				>
+					<div>&nbsp;</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	`;
 		sendNodeMail(
 			{
 				subject: `Pet88: Booking Confirmation`,
@@ -185,64 +1287,1168 @@ router.post('/grooming/booking', async (req, res) => {
 		});
 		const link = `http://localhost:3000/confirm/${order?.id}`;
 
-		const templateEN = `<div style="box-sizing: border-box;	
-		font-size: 14px;
-		line-height: 1.5;
-		padding: 15px;
-		color: #24292e;
-		background-color: #fff;
-		margin: 0;">
-			<div style='background-color:white;width:600px;margin:0 auto;color:black'>
-				<img
-					src='https://lh3.googleusercontent.com/49shb7GunRaPq4RZPQiv1MfUbe2pSjHF2DCloGNt8npjVBl6GCFAPMnCNIZmLOCChDG5sKQji7-9tlqZ8uesuc0XsaDk7k2YSKZ-2UtP_ShpCIUNFgSeEi1r58zHhIc2_AkYH-76=w300'
-					alt='Pet88'
-					style='display:block;max-width:100%;max-height:30px;'
-					class='CToWUd'
-					data-bit='iit'></img>
-					
-					<div style='line-height:1.8;'>
-						<p style="box-sizing: border-box;
-						margin-top: 8px!important;
-						margin-bottom: 8px;
-						font-size: 20px;
-						font-weight: 400!important;
-						line-height: 1.25!important;">Hi <strong>
-							${order?.name}</strong>,</p>
-						<div style='line-height:1.8;padding: 15px 0px;'> 
-					<p>	
-					Let's verify your booking service in Pet88 at Room 
-		</p>
-		<a href="${link}" target='_blank ' style="background-color: #28a745!important;box-sizing:border-box;
-		color: #fff;text-decoration: none;
-		display: inline-block;
-		font-size: inherit;
-		font-weight: 500;
-		line-height: 1.5;
-		white-space: nowrap;
-		vertical-align: middle;
-		border-radius: .5em;
-		padding: .75em 1.5em;
-		border: 1px solid #28a745;">
-		Confirm Booking.
- </a> 
-		</div>
-		<hr style="box-sizing:content-box;height:0;overflow:hidden;background-color:transparent;border-bottom-color:#dfe2e5;border-bottom-style:solid;;border-width:0 0 1px">
-		<p>			
-			or copy this url to your browser 
-			<p> [
-				<a href="${link}" target='_blank' style="font-size: 13px;">
-				${link}	</a> ]
-			</p>
-		
-			</p>
-					<span   style="text-align: center;">
-						If you are not booking the service, please ignore this
-						email.
-					</span>
-				</div>
-			</div>
-		</div>
-		`;
+		const templateEN = `<table
+		bgcolor="#F6F9FC"
+		border="0"
+		cellpadding="0"
+		cellspacing="0"
+		width="100%"
+		style="border: 0; margin: 0; padding: 0"
+	>
+		<tbody>
+			<tr>
+				<td style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<table
+						class="m_931622664052794565st-Wrapper"
+						align="center"
+						border="0"
+						cellpadding="0"
+						cellspacing="0"
+						style="width: 480px; min-width: 480px; max-width: 480px"
+					>
+						<tbody>
+							<tr>
+								<td>
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="480"
+										style="min-width: 480px"
+									>
+										<tbody>
+											<tr>
+												<td
+													align="center"
+													height="0"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														color: #ffffff;
+														display: none !important;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 0;
+														max-width: 0;
+														opacity: 0;
+														overflow: hidden;
+													"
+												>
+													<span
+														style="
+															color: #ffffff;
+															text-decoration: none;
+														"
+													>
+														New Booking from Pet88
+														${order?.id}
+														‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="58"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table cellpadding="0" cellspacing="0">
+										<tbody>
+											<tr>
+												<td
+													valign="middle"
+													height="32"
+													style="
+														border: 0;
+														border-collapse: collapse;
+														margin: 0;
+														padding: 0;
+														height: 32px;
+													"
+												>
+													<a
+														style="
+															border: 0;
+															margin: 0;
+															padding: 0;
+															text-decoration: none;
+															outline: 0;
+														"
+													>
+														<div>
+															<div
+																style="
+																	border-radius: 100%;
+																	width: 32px;
+																	height: 32px;
+																	text-align: center;
+																	background-color: white;
+																	background-position: center;
+																	background: url('https://ci5.googleusercontent.com/proxy/q1tYen2aQRj_lxwlOCoj1XagEi0TipjOz4V0l27ZLncb2yA5-d0ItYbzNlnRv8R_ZkBAs8oP_86agrcXQ-dWIkyOu-bt9g5b6s1AIYiz5MbSwc9DOekUF8Hp9aOFxYaw18z79Y9PYNAwm-Fc1k3eCKwfsxe02vN9FTlWmwXdkJ00WvcP5N3s=s0-d-e1-ft#https://files.stripe.com/files/MDB8YWNjdF8xTE9KWXJGbkZabEVuZjhyfGZfdGVzdF9TdDkxUWFlYU9EZVFXZXhKQU9JNkRaSFQ009KTmhTdZ');
+																	background-origin: border-box;
+																	background-size: contain;
+																	background-position: center;
+																	background-repeat: no-repeat;
+																	line-height: 100%;
+																"
+															>
+																<div>
+																	<div></div>
+																</div>
+															</div>
+														</div>
+													</a>
+												</td>
+												<td
+													style="
+														border: 0;
+														border-collapse: collapse;
+														margin: 0;
+														padding: 0;
+														width: 12px;
+													"
+												>
+													<span
+														style="
+															font-family: -apple-system,
+																BlinkMacSystemFont,
+																'Segoe UI', Roboto,
+																'Helvetica Neue',
+																Ubuntu, sans-serif;
+															text-decoration: none;
+														"
+													>
+														&nbsp;
+													</span>
+												</td>
+												<td
+													valign="middle"
+													style="
+														border: 0;
+														border-collapse: collapse;
+														margin: 0;
+														padding: 0;
+													"
+												>
+													<span
+														style="
+															font-family: -apple-system,
+																BlinkMacSystemFont,
+																'Segoe UI', Roboto,
+																'Helvetica Neue',
+																Ubuntu, sans-serif;
+															text-decoration: none;
+															font-weight: 500;
+															color: rgb(0, 0, 0);
+															font-size: 16px;
+														"
+													>
+														Pet88
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="32"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										cellpadding="0"
+										cellspacing="0"
+										style="width: 100%"
+									>
+										<tbody>
+											<tr>
+												<td align="">
+													<table
+														cellpadding="0"
+														cellspacing="0"
+														style="width: 100%"
+													>
+														<tbody>
+															<tr>
+																<td
+																	align=""
+																	style="
+																		border: 0;
+																		border-collapse: collapse;
+																		margin: 0;
+																		padding: 0;
+																		width: 100%;
+																		width: 482px;
+																		border-radius: 12px;
+																		background-color: #e3e8ee;
+																		padding: 1px;
+																	"
+																>
+																	<table
+																		cellpadding="0"
+																		cellspacing="0"
+																		style="
+																			width: 100%;
+																			background-color: #ffffff;
+																			border-radius: 12px;
+																		"
+																	>
+																		<tbody>
+																			<tr>
+																				<td
+																					style="
+																						border: 0;
+																						border-collapse: collapse;
+																						margin: 0;
+																						padding: 0;
+																					"
+																				>
+																					<table
+																						border="0"
+																						cellpadding="0"
+																						cellspacing="0"
+																						width="100%"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									height="32"
+																									style="
+																										border: 0;
+																										margin: 0;
+																										padding: 0;
+																										font-size: 1px;
+																										line-height: 1px;
+																										max-height: 1px;
+																									"
+																								>
+																									<div>
+																										&nbsp;
+																									</div>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+	
+																					<table
+																						cellpadding="0"
+																						cellspacing="0"
+																						style="
+																							width: 100%;
+																						"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									style="
+																										border: 0;
+																										border-collapse: collapse;
+																										margin: 0;
+																										padding: 0;
+																										min-width: 32px;
+																										width: 32px;
+																										font-size: 1px;
+																									"
+																								>
+																									&nbsp;
+																								</td>
+	
+																								<td
+																									style="
+																										border: 0;
+																										border-collapse: collapse;
+																										margin: 0;
+																										padding: 0;
+																									"
+																								>
+																									<table
+																										cellpadding="0"
+																										cellspacing="0"
+																										style="
+																											width: 100%;
+																										"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 100%;
+																													"
+																												>
+																													<table
+																														cellpadding="0"
+																														cellspacing="0"
+																														style="
+																															width: 100%;
+																														"
+																													>
+																														<tbody>
+																															<tr>
+																																<td
+																																	align=""
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		width: 100%;
+																																		padding-bottom: 2px;
+																																	"
+																																>
+																																	<span
+																																		style="
+																																			font-family: -apple-system,
+																																				BlinkMacSystemFont,
+																																				'Segoe UI',
+																																				Roboto,
+																																				'Helvetica Neue',
+																																				Ubuntu,
+																																				sans-serif;
+																																			text-decoration: none;
+																																			color: #7a7a7a;
+																																			font-size: 14px;
+																																			line-height: 20px;
+																																			font-weight: 500;
+																																		"
+																																	>
+																																		Booking
+																																		from
+																																		Pet88
+																																	</span>
+																																</td>
+																															</tr>
+																														</tbody>
+																													</table>
+	
+																													<table
+																														cellpadding="0"
+																														cellspacing="0"
+																														style="
+																															width: 100%;
+																														"
+																													>
+																														<tbody>
+																															<tr>
+																																<td
+																																	align=""
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		width: 100%;
+																																		padding-bottom: 2px;
+																																	"
+																																>
+																																	<span
+																																		style="
+																																			font-family: -apple-system,
+																																				BlinkMacSystemFont,
+																																				'Segoe UI',
+																																				Roboto,
+																																				'Helvetica Neue',
+																																				Ubuntu,
+																																				sans-serif;
+																																			text-decoration: none;
+																																			color: #1a1a1a;
+																																			font-size: 14px;
+																																			line-height: 40px;
+																																			font-weight: 600;
+																																		"
+																																	>
+																																		#${order._id}
+																																	</span>
+																																</td>
+																															</tr>
+																														</tbody>
+																													</table>
+	
+																													<table
+																														cellpadding="0"
+																														cellspacing="0"
+																														style="
+																															width: 100%;
+																														"
+																													>
+																														<tbody>
+																															<tr>
+																																<td
+																																	colspan="1"
+																																	height="16"
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		height: 16px;
+																																		font-size: 1px;
+																																		line-height: 1px;
+																																	"
+																																>
+																																	&nbsp;
+																																</td>
+																															</tr>
+	
+																															<tr>
+																																<td
+																																	height="1"
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		height: 1px;
+																																		font-size: 1px;
+																																		background-color: #ebebeb;
+																																		line-height: 1px;
+																																	"
+																																>
+																																	&nbsp;
+																																</td>
+																															</tr>
+	
+																															<tr>
+																																<td
+																																	colspan="1"
+																																	height="12"
+																																	style="
+																																		border: 0;
+																																		border-collapse: collapse;
+																																		margin: 0;
+																																		padding: 0;
+																																		height: 12px;
+																																		font-size: 1px;
+																																		line-height: 1px;
+																																	"
+																																>
+																																	&nbsp;
+																																</td>
+																															</tr>
+																														</tbody>
+																													</table>
+																												</td>
+	
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 76px;
+																														max-width: 76px;
+																													"
+																												>
+																													<img
+																														src="https://ci3.googleusercontent.com/proxy/o5UCuPdzAzCtI7SLxMFPHcFqXCTenDbWr2X09VB_-KDuRsrCnbbWru_HMkBBD_iNNclwRzsOEAf_M4Sy3QuFN_qbwGlIyIw-fe6T9O6o7EusXcpaz5AxYEEj8tBLyt63-kY=s0-d-e1-ft#https://stripe-images.s3.amazonaws.com/emails/Bookings_Booking_illustration.png"
+																														width="94"
+																														height="91"
+																														style="
+																															border: 0;
+																															margin: 0
+																																auto;
+																															padding: 0;
+																															display: block;
+																															border-radius: 8px;
+																														"
+																														alt="Booking illustration"
+																														class="CToWUd"
+																														data-bit="iit"
+																													/>
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+	
+																									<table
+																										cellpadding="0"
+																										cellspacing="0"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														vertical-align: top;
+																														white-space: nowrap;
+																													"
+																												>
+																													<span
+																														style="
+																															font-family: -apple-system,
+																																BlinkMacSystemFont,
+																																'Segoe UI',
+																																Roboto,
+																																'Helvetica Neue',
+																																Ubuntu,
+																																sans-serif;
+																															text-decoration: none;
+																															color: #7a7a7a;
+																															font-size: 14px;
+																															line-height: 16px;
+																														"
+																													>
+																														To
+																													</span>
+																												</td>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 24px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																													"
+																												>
+																													<span
+																														style="
+																															font-family: -apple-system,
+																																BlinkMacSystemFont,
+																																'Segoe UI',
+																																Roboto,
+																																'Helvetica Neue',
+																																Ubuntu,
+																																sans-serif;
+																															text-decoration: none;
+																															color: #1a1a1a;
+																															font-size: 14px;
+																															line-height: 16px;
+																														"
+																													>
+																														${order.name}
+																													</span>
+																												</td>
+																											</tr>
+	
+																											<tr>
+																												<td
+																													colspan="2"
+																													height="8"
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														height: 8px;
+																														font-size: 1px;
+																														line-height: 1px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																											</tr>
+	
+																											<tr>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														vertical-align: top;
+																														white-space: nowrap;
+																													"
+																												>
+																													<span
+																														style="
+																															font-family: -apple-system,
+																																BlinkMacSystemFont,
+																																'Segoe UI',
+																																Roboto,
+																																'Helvetica Neue',
+																																Ubuntu,
+																																sans-serif;
+																															text-decoration: none;
+																															color: #7a7a7a;
+																															font-size: 14px;
+																															line-height: 16px;
+																														"
+																													>
+																														From
+																													</span>
+																												</td>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 24px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																													"
+																												>
+																													<span
+																														style="
+																															font-family: -apple-system,
+																																BlinkMacSystemFont,
+																																'Segoe UI',
+																																Roboto,
+																																'Helvetica Neue',
+																																Ubuntu,
+																																sans-serif;
+																															text-decoration: none;
+																															color: #1a1a1a;
+																															font-size: 14px;
+																															line-height: 16px;
+																														"
+																													>
+																														Pet88
+																													</span>
+																												</td>
+																											</tr>
+	
+																											<tr>
+																												<td
+																													colspan="2"
+																													height="8"
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														height: 8px;
+																														font-size: 1px;
+																														line-height: 1px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+	
+																									<table
+																										border="0"
+																										cellpadding="0"
+																										cellspacing="0"
+																										width="100%"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													height="24"
+																													style="
+																														border: 0;
+																														margin: 0;
+																														padding: 0;
+																														font-size: 1px;
+																														line-height: 1px;
+																														max-height: 1px;
+																													"
+																												>
+																													<div>
+																														&nbsp;
+																													</div>
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+	
+																									<table
+																										cellpadding="0"
+																										cellspacing="0"
+																										style="
+																											width: 100%;
+																										"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													align=""
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														width: 100%;
+																														text-align: center;
+																														background-color: #0074d4;
+																														border-radius: 6px;
+																														height: 44px;
+																													"
+																												>
+																													<a
+																														style="
+																															border: 0;
+																															margin: 0;
+																															padding: 0;
+																															text-decoration: none;
+																															outline: 0;
+																															display: block;
+																															text-align: center;
+																															padding-right: 60px;
+																															padding-left: 60px;
+																														"
+																														href="${link}"
+																														target="_blank"
+																													>
+																														<span
+																															style="
+																																font-family: -apple-system,
+																																	BlinkMacSystemFont,
+																																	'Segoe UI',
+																																	Roboto,
+																																	'Helvetica Neue',
+																																	Ubuntu,
+																																	sans-serif;
+																																text-decoration: none;
+																																font-weight: 500;
+																																font-size: 16px;
+																																line-height: 44px;
+																																color: rgb(
+																																	255,
+																																	255,
+																																	255
+																																);
+																															"
+																														>
+																															Confirm
+																															Booking
+																														</span>
+																													</a>
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+																								</td>
+	
+																								<td
+																									style="
+																										border: 0;
+																										border-collapse: collapse;
+																										margin: 0;
+																										padding: 0;
+																										min-width: 32px;
+																										width: 32px;
+																										font-size: 1px;
+																									"
+																								>
+																									&nbsp;
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+	
+																					<table
+																						border="0"
+																						cellpadding="0"
+																						cellspacing="0"
+																						width="100%"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									height="24"
+																									style="
+																										border: 0;
+																										margin: 0;
+																										padding: 0;
+																										font-size: 1px;
+																										line-height: 1px;
+																										max-height: 1px;
+																									"
+																								>
+																									<div>
+																										&nbsp;
+																									</div>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="20"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										cellpadding="0"
+										cellspacing="0"
+										style="width: 100%"
+									>
+										<tbody>
+											<tr>
+												<td align="">
+													<table
+														cellpadding="0"
+														cellspacing="0"
+														style="width: 100%"
+													>
+														<tbody>
+															<tr>
+																<td
+																	align=""
+																	style="
+																		border: 0;
+																		border-collapse: collapse;
+																		margin: 0;
+																		padding: 0;
+																		width: 100%;
+																		width: 482px;
+																		border-radius: 12px;
+																		background-color: #e3e8ee;
+																		padding: 1px;
+																	"
+																>
+																	<table
+																		cellpadding="0"
+																		cellspacing="0"
+																		style="
+																			width: 100%;
+																			background-color: #ffffff;
+																			border-radius: 12px;
+																		"
+																	>
+																		<tbody>
+																			<tr>
+																				<td
+																					style="
+																						border: 0;
+																						border-collapse: collapse;
+																						margin: 0;
+																						padding: 0;
+																					"
+																				>
+																					<table
+																						border="0"
+																						cellpadding="0"
+																						cellspacing="0"
+																						width="100%"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									height="32"
+																									style="
+																										border: 0;
+																										margin: 0;
+																										padding: 0;
+																										font-size: 1px;
+																										line-height: 1px;
+																										max-height: 1px;
+																									"
+																								>
+																									<div>
+																										&nbsp;
+																									</div>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+	
+																					<table
+																						cellpadding="0"
+																						cellspacing="0"
+																						style="
+																							width: 100%;
+																						"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									style="
+																										border: 0;
+																										border-collapse: collapse;
+																										margin: 0;
+																										padding: 0;
+																									"
+																								>
+																									<table
+																										cellpadding="0"
+																										cellspacing="0"
+																										style="
+																											width: 100%;
+																										"
+																									>
+																										<tbody>
+																											<tr>
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														min-width: 32px;
+																														width: 32px;
+																														font-size: 1px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+	
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														font-family: -apple-system,
+																															BlinkMacSystemFont,
+																															'Segoe UI',
+																															Roboto,
+																															'Helvetica Neue',
+																															Ubuntu,
+																															sans-serif;
+																														font-size: 14px;
+																														line-height: 16px;
+																														color: #999999;
+																													"
+																												>
+																													Questions?
+																													Contact
+																													us
+																													at
+																													<a
+																														style="
+																															border: 0;
+																															margin: 0;
+																															padding: 0;
+																															color: #625afa !important;
+																															font-weight: bold;
+																															text-decoration: none;
+																															white-space: nowrap;
+																														"
+																														href="mailto:servicepet88@gmail.com"
+																														target="_blank"
+																														>servicepet88@gmail.com</a
+																													>.
+																												</td>
+	
+																												<td
+																													style="
+																														border: 0;
+																														border-collapse: collapse;
+																														margin: 0;
+																														padding: 0;
+																														min-width: 32px;
+																														width: 32px;
+																														font-size: 1px;
+																													"
+																												>
+																													&nbsp;
+																												</td>
+																											</tr>
+																										</tbody>
+																									</table>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+	
+																					<table
+																						border="0"
+																						cellpadding="0"
+																						cellspacing="0"
+																						width="100%"
+																					>
+																						<tbody>
+																							<tr>
+																								<td
+																									height="24"
+																									style="
+																										border: 0;
+																										margin: 0;
+																										padding: 0;
+																										font-size: 1px;
+																										line-height: 1px;
+																										max-height: 1px;
+																									"
+																								>
+																									<div>
+																										&nbsp;
+																									</div>
+																								</td>
+																							</tr>
+																						</tbody>
+																					</table>
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="20"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+	
+									<table
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										width="100%"
+									>
+										<tbody>
+											<tr>
+												<td
+													height="32"
+													style="
+														border: 0;
+														margin: 0;
+														padding: 0;
+														font-size: 1px;
+														line-height: 1px;
+														max-height: 1px;
+													"
+												>
+													<div>&nbsp;</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td style="font-size: 16px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+			<tr>
+				<td
+					height="64"
+					colspan="3"
+					style="
+						border: 0;
+						margin: 0;
+						padding: 0;
+						font-size: 1px;
+						line-height: 1px;
+					"
+				>
+					<div>&nbsp;</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	`;
 
 		sendNodeMail(
 			{
@@ -2404,6 +4610,7 @@ Room Number																										</td>
 	</div>
 	
 	`;
+
 		sendNodeMail(
 			{
 				subject: `Pet88: Booking Success`,
