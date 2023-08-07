@@ -9,6 +9,9 @@ const OrderSchema = new mongoose.Schema(
 		address: String,
 		city: String,
 		paid: { type: String, defaultValue: 'processing' },
+		phone: String,
+		price: Number,
+		days: Number,
 	},
 	{ timestamps: true },
 );

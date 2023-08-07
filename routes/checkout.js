@@ -7,14 +7,16 @@ const { Order } = require('../models/orders.js');
 const { Room } = require('../models/room.js');
 
 router.post('/create-checkout-session', async (req, res) => {
-	// res.json(req.body);
 	try {
 		const order = await Order.create({
-			userID: req.body.userID,
-			products: Object.keys(req.body.roomList),
+			userID: req.body.userID || 'guest',
+			products: req.body.roomList,
 			paid: 'processing',
 			email: req.body.email,
 			price: req.body.price,
+			name: req.body.name,
+			phone: req.body.phone,
+			days: req.body.days,
 		});
 
 		const session = await stripe.checkout.sessions.create({
