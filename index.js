@@ -6,10 +6,12 @@ const app = express();
 var bodyParser = require('body-parser');
 const cors = require('cors');
 
-const middleware = require('./middleware/index');
+const middleware = require('./services/index');
 const userRoute = require('./routes/users');
 const hotelRoute = require('./routes/hotels');
 const roomRoute = require('./routes/rooms');
+const groomingRoute = require('./routes/groomings');
+
 const checkoutRoute = require('./routes/checkout');
 const orderRoute = require('./routes/orders');
 const couponRoute = require('./routes/coupons');
@@ -42,7 +44,6 @@ app.use(
 // app.use(middleware.decodeToken);
 
 const PORT = process.env.LOCAL_PORT || 5000;
-const DOMAIN = 'http://localhost:3000';
 
 mongoose.connection.on('disconnected', () => {
 	console.log('MongoDB disconnected!');
@@ -68,6 +69,7 @@ app.get('/api', (req, res) => {
 app.use('/api/user', userRoute);
 app.use('/api/hotel', hotelRoute);
 app.use('/api/hotel-room', roomRoute);
+app.use('/api/grooming', groomingRoute);
 app.use('/api/checkout', checkoutRoute);
 app.use('/api/order', orderRoute);
 app.use('/api/coupon', couponRoute);

@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const stripe = require('../middleware/stripe.js');
+const stripe = require('../services/stripe.js');
 const { Coupon } = require('../models/coupons.js');
 
 router.post('/', async (req, res) => {

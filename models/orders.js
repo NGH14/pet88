@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const OrderSchema = new mongoose.Schema(
 	{
 		userID: String,
+		eventID: String,
 		products: Object,
 		name: String,
 		email: String,
@@ -12,6 +13,11 @@ const OrderSchema = new mongoose.Schema(
 		phone: String,
 		price: Number,
 		days: Number,
+		paymentMethod: String,
+		confirm: String,
+		start: String,
+		end: String,
+		service: String,
 	},
 	{ timestamps: true },
 );

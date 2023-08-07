@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const stripe = require('../middleware/stripe.js');
+const stripe = require('../services/stripe.js');
 const { Order } = require('../models/orders.js');
 const { Room } = require('../models/room.js');
 
@@ -10,6 +10,7 @@ router.post('/create-checkout-session', async (req, res) => {
 	try {
 		const order = await Order.create({
 			userID: req.body.userID || 'guest',
+			eventID: req.body.eventID || '-1',
 			products: req.body.roomList,
 			paid: 'processing',
 			email: req.body.email,
@@ -17,6 +18,11 @@ router.post('/create-checkout-session', async (req, res) => {
 			name: req.body.name,
 			phone: req.body.phone,
 			days: req.body.days,
+			confirm: 'unconfimred',
+			start: req.body.start,
+			end: req.body.end,
+			paymentMethod: req.body.paymentMethod,
+			service: req.body.service,
 		});
 
 		const session = await stripe.checkout.sessions.create({
@@ -38,8 +44,8 @@ router.post('/create-checkout-session', async (req, res) => {
 			mode: 'payment',
 			success_url: `http://localhost:3000/checkout/success/${order._id}`,
 			cancel_url: `http://localhost:3000/checkout/cancel/${order._id}`,
-			allow_promotion_codes: true,
 		});
+
 		res.json({ url: session.url });
 	} catch (err) {
 		res.status(500).json(err);
@@ -61,28 +67,6 @@ router.get('/payment-intent/:id', async (req, res) => {
 			query: `metadata['orderID']: "${req.params.id}"`,
 		});
 		res.json({ paymentIntent });
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
-
-router.get('/find-price', async (req, res) => {
-	const dates = req.body.dates;
-	try {
-		const checkoutPrice = 0;
-		const roomList = await Room.find({});
-
-		const list = roomList.map((element) => {
-			return {
-				...element.toJSON(),
-				roomNumbers: element.roomNumbers.filter(
-					(rn) =>
-						!rn.unavailableDates.some((ud) => !dates.includes(ud)),
-				),
-			};
-		});
-
-		res.json(list);
 	} catch (err) {
 		res.status(500).json(err);
 	}

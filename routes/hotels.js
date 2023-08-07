@@ -1,4 +1,5 @@
 const express = require('express');
+const { Grooming } = require('../models/grooming.js');
 
 const router = express.Router();
 const { Hotel } = require('../models/hotel.js');
@@ -61,6 +62,7 @@ router.delete('/:id', async (req, res) => {
 router.get('/find/:id', async (req, res) => {
 	try {
 		const hotel = await Hotel.findById(req.params.id);
+
 		res.status(200).json(hotel);
 	} catch (err) {
 		res.status(500).json(err);
@@ -68,20 +70,81 @@ router.get('/find/:id', async (req, res) => {
 });
 
 router.get('/find-hotel', async (req, res) => {
-	const { cheapestPrice, services, ...rest } = req.query;
-	if (cheapestPrice) {
-		rest.cheapestPrice = { $gt: cheapestPrice };
-	}
-	if (services) {
-		servicesArray = services.split(',');
-
-		rest.services = { $in: servicesArray };
-	}
 	try {
-		const hotel = await Hotel.find(rest);
-		res.status(200).json(hotel);
+		const hotelList = await Hotel.find({
+			...req.body,
+			services: { $in: [req.body.services] },
+		});
+		res.status(200).json(hotelList);
 	} catch (err) {
-		res.status(400).json(err);
+		res.status(500).json(err);
+	}
+});
+
+router.post('/find-grooming-able', async (req, res) => {
+	try {
+		const startDate = req.body.startDate;
+		const endDate = req.body.endDate;
+		const city = req.body.city;
+
+		const groomingList = await Hotel.find({
+			city,
+			services: { $in: [req.body.services] },
+		});
+		if (startDate && endDate) {
+			const list = await Promise.all(
+				groomingList.map(async (_hotel) => {
+					const hotel = _hotel.toJSON();
+					return {
+						...hotel,
+						grooming: await Promise.all(
+							hotel.grooming.map((room) =>
+								Grooming.findById(room),
+							),
+						),
+					};
+				}),
+			);
+
+			const listData = list
+				.flat()
+				.map((hotel) => {
+					return {
+						...hotel,
+						grooming: hotel.grooming
+							.map((_room) => {
+								const room = _room?.toJSON();
+								return {
+									...room,
+									roomNumbers: room.roomNumbers.filter(
+										(rn) =>
+											!rn.unavailableDates.some((ud) => {
+												const foo =
+													(ud.startDate <= endDate &&
+														ud.startDate >=
+															startDate) ||
+													(ud.endDate >= startDate &&
+														ud.endDate <= endDate);
+												return foo;
+											}),
+									),
+								};
+							})
+							.filter((grooming) => grooming.roomNumbers?.length),
+					};
+				})
+				.filter((hotel) =>
+					hotel.grooming.some(
+						(grooming) => grooming.roomNumbers?.length,
+					),
+				);
+
+			res.status(200).json(listData);
+		}
+
+		res.status(200).json(groomingList);
+	} catch (err) {
+		res.status(500).json(err);
 	}
 });
 
@@ -148,6 +211,65 @@ router.get('/room/:id', async (req, res) => {
 	}
 });
 
+router.post('/find-hotel-able', async (req, res) => {
+	const city = req.body?.city;
+
+	try {
+		const dates = req.body?.dates?.map((d) =>
+			new Date(d).toISOString().slice(0, 10),
+		);
+		const hotelList = await Hotel.find({
+			city,
+			services: { $in: [req.body.services] },
+		});
+
+		if (dates?.length > 0) {
+			const list = await Promise.all(
+				hotelList.map(async (_hotel) => {
+					const hotel = _hotel.toJSON();
+					return {
+						...hotel,
+						rooms: await Promise.all(
+							hotel.rooms.map((room) => Room.findById(room)),
+						),
+					};
+				}),
+			);
+
+			const listData = list
+				.flat()
+				.map((hotel) => {
+					return {
+						...hotel,
+						rooms: hotel.rooms.map((_room) => {
+							const room = _room?.toJSON();
+							return {
+								...room,
+								roomNumbers: room?.roomNumbers.filter(
+									(rn) =>
+										!rn.unavailableDates.some((ud) =>
+											dates.includes(
+												ud.toISOString().slice(0, 10),
+											),
+										),
+								),
+							};
+						}),
+					};
+				})
+				.filter((hotel) =>
+					hotel.rooms.some((r) => r.roomNumbers?.length),
+				);
+
+			res.status(200).json(listData);
+		}
+
+		res.status(200).json(hotelList);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+
 router.post('/availability/:id', async (req, res) => {
 	try {
 		const dates = req.body.dates.map((d) =>
@@ -178,6 +300,45 @@ router.post('/availability/:id', async (req, res) => {
 		res.status(200).json(listData);
 	} catch (err) {
 		res.json(err);
+	}
+});
+
+router.post('/availability/grooming/:id', async (req, res) => {
+	try {
+		const startDate = req.body.startDate;
+		const endDate = req.body.endDate;
+
+		const hotel = await Hotel.findById(req.params.id);
+
+		const list = await Promise.all(
+			hotel.grooming.map((room) => {
+				return Grooming.findById(room);
+			}),
+		);
+
+		const listData = list
+			.map((_element) => {
+				const element = _element.toJSON();
+				return {
+					...element,
+					roomNumbers: element.roomNumbers.filter(
+						(rn) =>
+							!rn.unavailableDates.some((ud) => {
+								const foo =
+									(ud.startDate <= endDate &&
+										ud.startDate >= startDate) ||
+									(ud.endDate >= startDate &&
+										ud.endDate <= endDate);
+								return foo;
+							}),
+					),
+				};
+			})
+			.filter((data) => data.roomNumbers.length);
+
+		res.status(200).json(listData);
+	} catch (err) {
+		res.status(500).json(err);
 	}
 });
 
