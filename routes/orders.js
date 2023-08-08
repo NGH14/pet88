@@ -81,7 +81,7 @@ router.post('/cash', async (req, res) => {
 			phone: req.body.phone,
 			days: req.body.days,
 			paymentMethod: req.body.paymentMethod,
-			confirm: 'unconfimred',
+			confirm: 'unconfirmed',
 			start: req.body.start,
 			end: req.body.end,
 			service: req.body.service,
