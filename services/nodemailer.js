@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+const username = process.env.USERNAME;
+const password = process.env.PASSWORD;
 
 async function sendNodeMail(dataSend, template) {
 	// create reusable transporter object using the default SMTP transport
@@ -6,10 +8,10 @@ async function sendNodeMail(dataSend, template) {
 	let transporter = nodemailer.createTransport({
 		host: 'smtp.gmail.com',
 		port: 587,
-		secure: false, // true for 465, false for other ports
+		secure: false,
 		auth: {
-			user: 'servicepet88@gmail.com', // generated ethereal user
-			pass: 'exgvpfzrdykzdgvl', // generated ethereal password
+			user: username, // generated ethereal user
+			pass: password, // generated ethereal password
 		},
 	});
 
