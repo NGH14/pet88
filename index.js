@@ -50,7 +50,7 @@ mongoose.connection.on('disconnected', () => {
 });
 
 app.listen(PORT, () => {
-	const connectdb = async () => {
+	const connectDB = async () => {
 		try {
 			await mongoose.connect(process.env.MONGO);
 			console.log('MongoDB Connected');
@@ -58,7 +58,7 @@ app.listen(PORT, () => {
 			console.log(error);
 		}
 	};
-	connectdb();
+	connectDB();
 	console.log(`Server listening on ${PORT}`);
 });
 
