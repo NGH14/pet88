@@ -3,7 +3,7 @@ require('dotenv').config('');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const middleware = require('./services/index');
@@ -16,6 +16,8 @@ const checkoutRoute = require('./routes/checkout');
 const orderRoute = require('./routes/orders');
 const couponRoute = require('./routes/coupons');
 const promotionRoute = require('./routes/promotions');
+
+const PORT = process.env.LOCAL_PORT || 5001;
 
 app.use(cors());
 app.use(express.json());
@@ -42,8 +44,6 @@ app.use(
 	}),
 );
 // app.use(middleware.decodeToken);
-
-const PORT = process.env.LOCAL_PORT || 5000;
 
 mongoose.connection.on('disconnected', () => {
 	console.log('MongoDB disconnected!');
