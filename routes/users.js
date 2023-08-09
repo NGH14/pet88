@@ -4,7 +4,6 @@ const { getAuth } = require('firebase-admin/auth');
 const {
 	getFirestore,
 	Timestamp,
-	FieldValue,
 } = require('firebase-admin/firestore');
 
 const router = express.Router();
@@ -39,19 +38,19 @@ router.get('/store', async (req, res) => {
 	const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0);
 
 	try {
-		let startfulldate = Timestamp.fromDate(firstDay);
-		let endfulldate = Timestamp.fromDate(lastDay);
+		let startFullDate = Timestamp.fromDate(firstDay);
+		let endFullDate = Timestamp.fromDate(lastDay);
 
 		db.collection('users')
-			.where('createAt', '<=', endfulldate)
-			.where('createAt', '>=', startfulldate)
+			.where('createAt', '<=', endFullDate)
+			.where('createAt', '>=', startFullDate)
 			.get()
 			.then((snapshot) => {
-				let jsonvalue = [];
+				let jsonValue = [];
 				snapshot.forEach((docs) => {
-					jsonvalue.push(docs.data());
+					jsonValue.push(docs.data());
 				});
-				res.send(jsonvalue);
+				res.send(jsonValue);
 				return;
 			})
 			.catch((error) => {
