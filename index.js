@@ -11,7 +11,6 @@ const userRoute = require('./routes/users');
 const hotelRoute = require('./routes/hotels');
 const roomRoute = require('./routes/rooms');
 const groomingRoute = require('./routes/groomings');
-
 const checkoutRoute = require('./routes/checkout');
 const orderRoute = require('./routes/orders');
 const couponRoute = require('./routes/coupons');
