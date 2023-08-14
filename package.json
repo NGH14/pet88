@@ -19,10 +19,7 @@
     "stripe": "^10.16.0"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon --require dotenv/config index.js"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.20"
+    "start": "node --require dotenv/config index.js",
+    "dev": "node --watch --require dotenv/config index.js"
   }
 }
