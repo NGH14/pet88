@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
-const { Hotel } = require('../models/hotel.js');
-const { Grooming } = require('../models/grooming.js');
-const { Order } = require('../models/orders.js');
+import { Hotel } from '../models/hotel.js';
+import { Grooming } from '../models/grooming.js';
+import { Order } from '../models/orders.js';
 
 router.get('/', async (req, res) => {
 	try {
@@ -170,4 +170,4 @@ router.patch('/multiple-delete', async (req, res) => {
 	}
 });
 
-module.exports = router;
+export default router;

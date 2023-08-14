@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 const username = process.env.USERNAME;
 const password = process.env.PASSWORD;
 
@@ -25,4 +25,4 @@ async function sendNodeMail(dataSend, template) {
 	});
 }
 
-module.exports = { sendNodeMail: sendNodeMail };
+export default sendNodeMail;

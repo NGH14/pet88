@@ -1,3 +1,4 @@
-const stripe = require('stripe')(process.env.STRIPE);
+import stripeFactory from 'stripe';
+const stripe = stripeFactory(process.env.STRIPE);
 
-module.exports = stripe;
+export default stripe;

@@ -1,9 +1,9 @@
-const express = require('express');
-const { Grooming } = require('../models/grooming.js');
+import express from 'express';
+import { Grooming } from '../models/grooming.js';
 
 const router = express.Router();
-const { Hotel } = require('../models/hotel.js');
-const { Room } = require('../models/room.js');
+import { Hotel } from '../models/hotel.js';
+import { Room } from '../models/room.js';
 
 router.post('/', async (req, res) => {
 	const newHotel = new Hotel(req.body);
@@ -144,7 +144,7 @@ router.post('/find-grooming-able', async (req, res) => {
 
 		res.status(200).json(groomingList);
 	} catch (err) {
-		res.status(500).json(err);
+		res.json(err);
 	}
 });
 
@@ -155,7 +155,9 @@ router.get('/', async (req, res) => {
 
 		res.status(200).json(updatedHotel);
 	} catch (err) {
-		res.status(500).json(err);
+		res.sendStatus(500).send({
+			message: err.message || 'some error occured',
+		});
 	}
 });
 
@@ -342,4 +344,4 @@ router.post('/availability/grooming/:id', async (req, res) => {
 	}
 });
 
-module.exports = router;
+export default router;

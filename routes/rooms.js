@@ -1,9 +1,8 @@
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
-const { Hotel } = require('../models/hotel.js');
-const { Room } = require('../models/room.js');
-const { route } = require('./users.js');
+import { Hotel } from '../models/hotel.js';
+import { Room } from '../models/room.js';
 
 router.post('/:id', async (req, res) => {
 	const hotelId = req.params.id;
@@ -118,4 +117,4 @@ router.patch('/multiple-delete', async (req, res) => {
 	}
 });
 
-module.exports = router;
+export default router;

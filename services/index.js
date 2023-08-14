@@ -1,4 +1,4 @@
-const admin = require('../config/firebase-config');
+import admin from '../config/firebase-config.js';
 class Middleware {
 	async decodeToken(req, res, next) {
 		if (!req.headers.authorization)
@@ -17,4 +17,4 @@ class Middleware {
 	}
 }
 
-module.exports = new Middleware();
+export default new Middleware();

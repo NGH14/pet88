@@ -1,20 +1,21 @@
-require('dotenv').config('');
+import dotenv from 'dotenv';
 
-const express = require('express');
-const mongoose = require('mongoose');
+dotenv.config();
+
+import express from 'express';
+import mongoose from 'mongoose';
 const app = express();
-const bodyParser = require('body-parser');
-const cors = require('cors');
-
-const middleware = require('./services/index');
-const userRoute = require('./routes/users');
-const hotelRoute = require('./routes/hotels');
-const roomRoute = require('./routes/rooms');
-const groomingRoute = require('./routes/groomings');
-const checkoutRoute = require('./routes/checkout');
-const orderRoute = require('./routes/orders');
-const couponRoute = require('./routes/coupons');
-const promotionRoute = require('./routes/promotions');
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import middleware from './services/index.js';
+import userRoute from './routes/users.js';
+import hotelRoute from './routes/hotels.js';
+import roomRoute from './routes/rooms.js';
+import groomingRoute from './routes/groomings.js';
+import checkoutRoute from './routes/checkout.js';
+import orderRoute from './routes/orders.js';
+import couponRoute from './routes/coupons.js';
+import promotionRoute from './routes/promotions.js';
 
 const PORT = process.env.LOCAL_PORT || 5001;
 

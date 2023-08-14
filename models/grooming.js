@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const GroomingSchema = new mongoose.Schema(
 	{
 		hotelId: {
@@ -31,5 +31,4 @@ const GroomingSchema = new mongoose.Schema(
 	{ timestamps: true },
 );
 
-const Grooming = mongoose.model('Grooming', GroomingSchema);
-module.exports.Grooming = Grooming;
+export const Grooming = mongoose.model('Grooming', GroomingSchema);

@@ -1,10 +1,10 @@
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
 
-const stripe = require('../services/stripe.js');
-const { Order } = require('../models/orders.js');
-const { Room } = require('../models/room.js');
+import stripe from '../services/stripe.js';
+import { Order } from '../models/orders.js';
+import { Room } from '../models/room.js';
 
 router.post('/create-checkout-session', async (req, res) => {
 	try {
@@ -72,4 +72,4 @@ router.get('/payment-intent/:id', async (req, res) => {
 	}
 });
 
-module.exports = router;
+export default router;

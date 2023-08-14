@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
 
 const router = express.Router();
 
-const stripe = require('../services/stripe.js');
-const { Coupon } = require('../models/coupons.js');
+import stripe from '../services/stripe.js';
+import { Coupon } from '../models/coupons.js';
 
 router.post('/', async (req, res) => {
 	try {
@@ -57,4 +57,4 @@ router.delete('/:id', async (req, res) => {
 	}
 });
 
-module.exports = router;
+export default router;

@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const stripe = require('../services/stripe.js');
+import stripe from '../services/stripe.js';
 
 router.post('/:id', async (req, res) => {
 	try {
@@ -46,4 +46,4 @@ router.get('/id', async (req, res) => {
 	}
 });
 
-module.exports = router;
+export default router;

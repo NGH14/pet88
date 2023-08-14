@@ -1,10 +1,6 @@
-const express = require('express');
-
-const { getAuth } = require('firebase-admin/auth');
-const {
-	getFirestore,
-	Timestamp,
-} = require('firebase-admin/firestore');
+import express from 'express';
+import { getAuth } from 'firebase-admin/auth';
+import { getFirestore, Timestamp } from 'firebase-admin/firestore';
 
 const router = express.Router();
 
@@ -89,4 +85,4 @@ router.post('/', async (req, res) => {
 		});
 });
 
-module.exports = router;
+export default router;
