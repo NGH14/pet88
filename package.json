@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon -r dotenv/config index.js"
+    "dev": "nodemon --require dotenv/config index.js"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
