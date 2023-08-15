@@ -39,7 +39,7 @@ app.use(
 		extended: true,
 	}),
 );
-// app.use(middleware.decodeToken);
+app.use(middleware.decodeToken);
 
 mongoose.connection.on('disconnected', () => {
 	console.log('MongoDB disconnected!');

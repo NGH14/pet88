@@ -20,6 +20,6 @@
   },
   "scripts": {
     "start": "node --require dotenv/config index.js",
-    "dev": "node --watch --require dotenv/config index.js"
+    "dev": "node --watch -r dotenv/config index.js "
   }
 }
