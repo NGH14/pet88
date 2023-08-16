@@ -9,10 +9,7 @@ async function sendNodeMail(dataSend, template) {
 		host: 'smtp.gmail.com',
 		port: 587,
 		secure: false,
-		auth: {
-			user: username, // generated ethereal user
-			pass: password, // generated ethereal password
-		},
+		auth: JSON.parse(process.env.MAIL_ACCOUNT),
 	});
 
 	// send mail with defined transport object
