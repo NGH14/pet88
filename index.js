@@ -39,7 +39,7 @@ app.use(
 		extended: true,
 	}),
 );
-app.use(middleware.decodeToken);
+// app.use(middleware.decodeToken);
 
 mongoose.connection.on('disconnected', () => {
 	console.log('MongoDB disconnected!');
@@ -49,13 +49,13 @@ app.listen(PORT, () => {
 	const connectDB = async () => {
 		try {
 			await mongoose.connect(process.env.MONGO);
-			console.log('MongoDB Connected');
+			console.log('✅ MongoDB Connected');
 		} catch (error) {
 			console.log(error);
 		}
 	};
 	connectDB();
-	console.log(`Server listening on ${PORT}`);
+	console.log(`🌐 Server listening on ${PORT}`);
 });
 
 app.get('/api', (req, res) => {
