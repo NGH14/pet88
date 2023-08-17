@@ -6,6 +6,8 @@ import stripe from '../services/stripe.js';
 import { Order } from '../models/orders.js';
 import { Room } from '../models/room.js';
 
+const orderURL = process.env.CLIENT_URL + '/checkout';
+
 router.post('/create-checkout-session', async (req, res) => {
 	try {
 		const order = await Order.create({
@@ -42,8 +44,8 @@ router.post('/create-checkout-session', async (req, res) => {
 				},
 			],
 			mode: 'payment',
-			success_url: `http://localhost:3000/checkout/success/${order._id}`,
-			cancel_url: `http://localhost:3000/checkout/cancel/${order._id}`,
+			success_url: `${orderURL}/success/${order._id}`,
+			cancel_url: `${orderURL}/cancel/${order._id}`,
 		});
 
 		res.json({ url: session.url });
