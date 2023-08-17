@@ -150,7 +150,7 @@ router.post('/cash', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -175,7 +175,7 @@ router.post('/cash', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table cellpadding="0" cellspacing="0">
 										<tbody>
 											<tr>
@@ -273,7 +273,7 @@ router.post('/cash', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -298,7 +298,7 @@ router.post('/cash', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										cellpadding="0"
 										cellspacing="0"
@@ -373,7 +373,7 @@ router.post('/cash', async (req, res) => {
 																							</tr>
 																						</tbody>
 																					</table>
-	
+
 																					<table
 																						cellpadding="0"
 																						cellspacing="0"
@@ -396,7 +396,7 @@ router.post('/cash', async (req, res) => {
 																								>
 																									&nbsp;
 																								</td>
-	
+
 																								<td
 																									style="
 																										border: 0;
@@ -466,7 +466,7 @@ router.post('/cash', async (req, res) => {
 																															</tr>
 																														</tbody>
 																													</table>
-	
+
 																													<table
 																														cellpadding="0"
 																														cellspacing="0"
@@ -515,7 +515,7 @@ router.post('/cash', async (req, res) => {
 																															</tr>
 																														</tbody>
 																													</table>
-	
+
 																													<table
 																														cellpadding="0"
 																														cellspacing="0"
@@ -541,7 +541,7 @@ router.post('/cash', async (req, res) => {
 																																	&nbsp;
 																																</td>
 																															</tr>
-	
+
 																															<tr>
 																																<td
 																																	height="1"
@@ -559,7 +559,7 @@ router.post('/cash', async (req, res) => {
 																																	&nbsp;
 																																</td>
 																															</tr>
-	
+
 																															<tr>
 																																<td
 																																	colspan="1"
@@ -580,7 +580,7 @@ router.post('/cash', async (req, res) => {
 																														</tbody>
 																													</table>
 																												</td>
-	
+
 																												<td
 																													style="
 																														border: 0;
@@ -611,7 +611,7 @@ router.post('/cash', async (req, res) => {
 																											</tr>
 																										</tbody>
 																									</table>
-	
+
 																									<table
 																										cellpadding="0"
 																										cellspacing="0"
@@ -684,7 +684,7 @@ router.post('/cash', async (req, res) => {
 																													</span>
 																												</td>
 																											</tr>
-	
+
 																											<tr>
 																												<td
 																													colspan="2"
@@ -702,7 +702,7 @@ router.post('/cash', async (req, res) => {
 																													&nbsp;
 																												</td>
 																											</tr>
-	
+
 																											<tr>
 																												<td
 																													style="
@@ -770,7 +770,7 @@ router.post('/cash', async (req, res) => {
 																													</span>
 																												</td>
 																											</tr>
-	
+
 																											<tr>
 																												<td
 																													colspan="2"
@@ -790,7 +790,7 @@ router.post('/cash', async (req, res) => {
 																											</tr>
 																										</tbody>
 																									</table>
-	
+
 																									<table
 																										border="0"
 																										cellpadding="0"
@@ -817,7 +817,7 @@ router.post('/cash', async (req, res) => {
 																											</tr>
 																										</tbody>
 																									</table>
-	
+
 																									<table
 																										cellpadding="0"
 																										cellspacing="0"
@@ -885,7 +885,7 @@ router.post('/cash', async (req, res) => {
 																										</tbody>
 																									</table>
 																								</td>
-	
+
 																								<td
 																									style="
 																										border: 0;
@@ -902,7 +902,7 @@ router.post('/cash', async (req, res) => {
 																							</tr>
 																						</tbody>
 																					</table>
-	
+
 																					<table
 																						border="0"
 																						cellpadding="0"
@@ -941,7 +941,7 @@ router.post('/cash', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -966,7 +966,7 @@ router.post('/cash', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										cellpadding="0"
 										cellspacing="0"
@@ -1041,7 +1041,7 @@ router.post('/cash', async (req, res) => {
 																							</tr>
 																						</tbody>
 																					</table>
-	
+
 																					<table
 																						cellpadding="0"
 																						cellspacing="0"
@@ -1081,7 +1081,7 @@ router.post('/cash', async (req, res) => {
 																												>
 																													&nbsp;
 																												</td>
-	
+
 																												<td
 																													style="
 																														border: 0;
@@ -1119,7 +1119,7 @@ router.post('/cash', async (req, res) => {
 																														>servicepet88@gmail.com</a
 																													>.
 																												</td>
-	
+
 																												<td
 																													style="
 																														border: 0;
@@ -1140,7 +1140,7 @@ router.post('/cash', async (req, res) => {
 																							</tr>
 																						</tbody>
 																					</table>
-	
+
 																					<table
 																						border="0"
 																						cellpadding="0"
@@ -1179,7 +1179,7 @@ router.post('/cash', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -1204,7 +1204,7 @@ router.post('/cash', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -1349,7 +1349,7 @@ router.post('/grooming/booking', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -1374,7 +1374,7 @@ router.post('/grooming/booking', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table cellpadding="0" cellspacing="0">
 										<tbody>
 											<tr>
@@ -1472,7 +1472,7 @@ router.post('/grooming/booking', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -1497,7 +1497,7 @@ router.post('/grooming/booking', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										cellpadding="0"
 										cellspacing="0"
@@ -1572,7 +1572,7 @@ router.post('/grooming/booking', async (req, res) => {
 																							</tr>
 																						</tbody>
 																					</table>
-	
+
 																					<table
 																						cellpadding="0"
 																						cellspacing="0"
@@ -1595,7 +1595,7 @@ router.post('/grooming/booking', async (req, res) => {
 																								>
 																									&nbsp;
 																								</td>
-	
+
 																								<td
 																									style="
 																										border: 0;
@@ -1666,7 +1666,7 @@ router.post('/grooming/booking', async (req, res) => {
 																															</tr>
 																														</tbody>
 																													</table>
-	
+
 																													<table
 																														cellpadding="0"
 																														cellspacing="0"
@@ -1709,7 +1709,7 @@ router.post('/grooming/booking', async (req, res) => {
 																															</tr>
 																														</tbody>
 																													</table>
-	
+
 																													<table
 																														cellpadding="0"
 																														cellspacing="0"
@@ -1735,7 +1735,7 @@ router.post('/grooming/booking', async (req, res) => {
 																																	&nbsp;
 																																</td>
 																															</tr>
-	
+
 																															<tr>
 																																<td
 																																	height="1"
@@ -1753,7 +1753,7 @@ router.post('/grooming/booking', async (req, res) => {
 																																	&nbsp;
 																																</td>
 																															</tr>
-	
+
 																															<tr>
 																																<td
 																																	colspan="1"
@@ -1774,7 +1774,7 @@ router.post('/grooming/booking', async (req, res) => {
 																														</tbody>
 																													</table>
 																												</td>
-	
+
 																												<td
 																													style="
 																														border: 0;
@@ -1805,7 +1805,7 @@ router.post('/grooming/booking', async (req, res) => {
 																											</tr>
 																										</tbody>
 																									</table>
-	
+
 																									<table
 																										cellpadding="0"
 																										cellspacing="0"
@@ -1878,7 +1878,7 @@ router.post('/grooming/booking', async (req, res) => {
 																													</span>
 																												</td>
 																											</tr>
-	
+
 																											<tr>
 																												<td
 																													colspan="2"
@@ -1896,7 +1896,7 @@ router.post('/grooming/booking', async (req, res) => {
 																													&nbsp;
 																												</td>
 																											</tr>
-	
+
 																											<tr>
 																												<td
 																													style="
@@ -1964,7 +1964,7 @@ router.post('/grooming/booking', async (req, res) => {
 																													</span>
 																												</td>
 																											</tr>
-	
+
 																											<tr>
 																												<td
 																													colspan="2"
@@ -1984,7 +1984,7 @@ router.post('/grooming/booking', async (req, res) => {
 																											</tr>
 																										</tbody>
 																									</table>
-	
+
 																									<table
 																										border="0"
 																										cellpadding="0"
@@ -2011,7 +2011,7 @@ router.post('/grooming/booking', async (req, res) => {
 																											</tr>
 																										</tbody>
 																									</table>
-	
+
 																									<table
 																										cellpadding="0"
 																										cellspacing="0"
@@ -2079,7 +2079,7 @@ router.post('/grooming/booking', async (req, res) => {
 																										</tbody>
 																									</table>
 																								</td>
-	
+
 																								<td
 																									style="
 																										border: 0;
@@ -2096,7 +2096,7 @@ router.post('/grooming/booking', async (req, res) => {
 																							</tr>
 																						</tbody>
 																					</table>
-	
+
 																					<table
 																						border="0"
 																						cellpadding="0"
@@ -2135,7 +2135,7 @@ router.post('/grooming/booking', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -2160,7 +2160,7 @@ router.post('/grooming/booking', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										cellpadding="0"
 										cellspacing="0"
@@ -2235,7 +2235,7 @@ router.post('/grooming/booking', async (req, res) => {
 																							</tr>
 																						</tbody>
 																					</table>
-	
+
 																					<table
 																						cellpadding="0"
 																						cellspacing="0"
@@ -2275,7 +2275,7 @@ router.post('/grooming/booking', async (req, res) => {
 																												>
 																													&nbsp;
 																												</td>
-	
+
 																												<td
 																													style="
 																														border: 0;
@@ -2313,7 +2313,7 @@ router.post('/grooming/booking', async (req, res) => {
 																														>servicepet88@gmail.com</a
 																													>.
 																												</td>
-	
+
 																												<td
 																													style="
 																														border: 0;
@@ -2334,7 +2334,7 @@ router.post('/grooming/booking', async (req, res) => {
 																							</tr>
 																						</tbody>
 																					</table>
-	
+
 																					<table
 																						border="0"
 																						cellpadding="0"
@@ -2373,7 +2373,7 @@ router.post('/grooming/booking', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -2398,7 +2398,7 @@ router.post('/grooming/booking', async (req, res) => {
 											</tr>
 										</tbody>
 									</table>
-	
+
 									<table
 										border="0"
 										cellpadding="0"
@@ -2475,7 +2475,7 @@ router.post('/admin/grooming', async (req, res) => {
 			phone: req.body.phone,
 			days: req.body.days,
 			paymentMethod: 'cash',
-			confirm: 'confimred',
+			confirm: 'confirmed',
 			start: req.body.start,
 			end: req.body.end,
 			service: req.body.service,
@@ -2490,7 +2490,7 @@ router.post('/admin/grooming', async (req, res) => {
 router.put('/confirm/success/:id', async (req, res) => {
 	try {
 		const order = await Order.findByIdAndUpdate(req.params.id, {
-			confirm: 'confimred',
+			confirm: 'confirmed',
 		});
 		res.status(200).json(order);
 	} catch (err) {
@@ -2502,7 +2502,7 @@ router.put('/success/:id', async (req, res) => {
 	try {
 		const order = await Order.findByIdAndUpdate(req.params.id, {
 			paid: 'success',
-			confirm: 'confimred',
+			confirm: 'confirmed',
 		});
 		const priceWithoutVAT = order.products.reduce(
 			(total, room) => Number(total) + Number(room.price),
@@ -2533,7 +2533,7 @@ router.put('/success/:id', async (req, res) => {
 			width: 100%;
 		"
 	>
-	 ${ord.roomNumber}
+		${ord.roomNumber}
 	</td>
 	<td
 		width="8"
@@ -2570,11 +2570,11 @@ router.put('/success/:id', async (req, res) => {
 			line-height: 24px;
 		"
 	>
-	 ${new Intl.NumberFormat('vi-Vi', {
+		${new Intl.NumberFormat('vi-Vi', {
 			style: 'currency',
 			currency: 'VND',
 		}).format(ord.price)}</td>
-	 </tr>`;
+		</tr>`;
 			})
 			.toString()
 			.replace(/,/g, '');
@@ -2590,7 +2590,7 @@ router.put('/success/:id', async (req, res) => {
 		>
 			<div id=":1c5" class="a3s aiL msg-6583894312104824909">
 				<u></u>
-	
+
 				<div
 					bgcolor="#f6f9fc"
 					style="
@@ -2622,7 +2622,7 @@ router.put('/success/:id', async (req, res) => {
 									</div>
 								</td>
 							</tr>
-	
+
 							<tr>
 								<td style="border: 0; margin: 0; padding: 0">
 									<table
@@ -2705,7 +2705,7 @@ router.put('/success/:id', async (req, res) => {
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<div
 														style="
 															background-color: #f6f9fc;
@@ -2962,7 +2962,7 @@ router.put('/success/:id', async (req, res) => {
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														class="m_-6583894312104824909st-Width m_-6583894312104824909st-Width--mobile"
 														border="0"
@@ -3021,7 +3021,7 @@ router.put('/success/:id', async (req, res) => {
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														class="m_-6583894312104824909st-Spacer m_-6583894312104824909st-Width m_-6583894312104824909st-Width--mobile"
 														border="0"
@@ -3051,7 +3051,7 @@ router.put('/success/:id', async (req, res) => {
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														border="0"
 														cellpadding="0"
@@ -3378,7 +3378,7 @@ router.put('/success/:id', async (req, res) => {
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														class="m_-6583894312104824909st-Spacer m_-6583894312104824909st-Width m_-6583894312104824909st-Width--mobile"
 														border="0"
@@ -3408,7 +3408,7 @@ router.put('/success/:id', async (req, res) => {
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														class="m_-6583894312104824909st-Width m_-6583894312104824909st-Width--mobile"
 														border="0"
@@ -3692,7 +3692,7 @@ router.put('/success/:id', async (req, res) => {
 																												width: 100%;
 																											"
 																										>
-Room Number																										</td>
+	Room Number																										</td>
 																										<td
 																											width="8"
 																											style="
@@ -3838,7 +3838,7 @@ Room Number																										</td>
 																													&nbsp;
 																												</td>
 																											</tr>
-	
+
 																											<tr>
 																												<td
 																													bgcolor="e6ebf1"
@@ -3857,7 +3857,7 @@ Room Number																										</td>
 																													&nbsp;
 																												</td>
 																											</tr>
-	
+
 																											<tr>
 																												<td
 																													colspan="3"
@@ -3875,7 +3875,7 @@ Room Number																										</td>
 																													&nbsp;
 																												</td>
 																											</tr>
-	
+
 																											<tr>
 																												<td
 																													style="
@@ -4053,7 +4053,7 @@ Room Number																										</td>
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														class="m_-6583894312104824909st-Divider m_-6583894312104824909st-Width m_-6583894312104824909st-Width--mobile"
 														border="0"
@@ -4163,7 +4163,7 @@ Room Number																										</td>
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														class="m_-6583894312104824909st-Width m_-6583894312104824909st-Width--mobile"
 														border="0"
@@ -4435,7 +4435,7 @@ Room Number																										</td>
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														width="100%"
 														style="
@@ -4465,7 +4465,7 @@ Room Number																										</td>
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														style="
 															border: 0;
@@ -4551,7 +4551,7 @@ Room Number																										</td>
 															</tr>
 														</tbody>
 													</table>
-	
+
 													<table
 														width="100%"
 														style="
@@ -4591,7 +4591,7 @@ Room Number																										</td>
 							</tr>
 						</tbody>
 					</table>
-	
+
 					<img
 						alt=""
 						src="https://ci3.googleusercontent.com/proxy/Or3ZXxuwPTiLpGslRvwwqqmx256jvevKr2JbScVyJ_W9eK8lwAZpQXu9M7QdIxKVK82XRruekaoeqshS4_gfyuh-uSdkPj27k8jIcbnSR1EzbzZ6nYabMHPy_DDkaPGm0vyvg-jQeVddGfBaEHiDknoMYeHAqEixPdqpWLuMao5QiPKsuQeMSume16IbzDjGS8qJFh58tIyYAurIABA6=s0-d-e1-ft#http://59.email.stripe.com/CI0/0101018474eb9832-addbd926-0ff3-47e0-a651-17f3e00cc2d7-000000/EbPbrQLPldniVFg1Di6k8nttRkE-9URk2SywUeAddg4=274"
@@ -4604,10 +4604,10 @@ Room Number																										</td>
 				</div>
 			</div>
 		</div>
-	
+
 		<div class="hi"></div>
 	</div>
-	
+
 	`;
 
 		sendNodeMail(
