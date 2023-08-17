@@ -152,8 +152,6 @@ router.get('/', async (req, res) => {
 	try {
 		const hotels = await Hotel.find();
 		res.status(200).json(hotels);
-
-		res.status(200).json(updatedHotel);
 	} catch (err) {
 		res.sendStatus(500).send({
 			message: err.message || 'some error occured',
@@ -264,9 +262,9 @@ router.post('/find-hotel-able', async (req, res) => {
 				);
 
 			res.status(200).json(listData);
+		} else {
+			res.status(200).json(hotelList);
 		}
-
-		res.status(200).json(hotelList);
 	} catch (err) {
 		res.status(500).json(err);
 	}
