@@ -55,7 +55,7 @@ app.listen(PORT, () => {
 		}
 	};
 	connectDB();
-	console.log(`🌐 Server listening on ${PORT}`);
+	console.log(`✅ Server listening on ${PORT}`);
 });
 
 app.get('/api', (req, res) => {
