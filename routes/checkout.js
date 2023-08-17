@@ -18,7 +18,7 @@ router.post('/create-checkout-session', async (req, res) => {
 			name: req.body.name,
 			phone: req.body.phone,
 			days: req.body.days,
-			confirm: 'unconfimred',
+			confirm: 'unconfirmed',
 			start: req.body.start,
 			end: req.body.end,
 			paymentMethod: req.body.paymentMethod,
