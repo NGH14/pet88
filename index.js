@@ -13,6 +13,8 @@ import orderRoute from './routes/orders.js';
 import couponRoute from './routes/coupons.js';
 import promotionRoute from './routes/promotions.js';
 
+import cloudinary from './services/cloudinary.js';
+
 const PORT = process.env.LOCAL_PORT || 5001;
 
 app.use(cors());
@@ -61,6 +63,29 @@ app.listen(PORT, () => {
 app.get('/api', (req, res) => {
 	res.json({ message: 'Hello from server!' });
 });
+
+async function createFolder(folderName) {
+	try {
+		const result = await cloudinary.api.create_folder(folderName);
+		cloudinary.uploader.upload(
+			'https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg',
+			{ public_id: 'test_upload2', folder: folderName },
+			(error, result) => {
+				if (error) {
+					console.error('Error uploading file:', error);
+				} else {
+					console.log('File uploaded successfully:');
+				}
+			},
+		);
+		console.log('Folder created:', result);
+	} catch (error) {
+		console.error('Error creating folder:', error);
+	}
+}
+
+// Call the function to create a folder
+createFolder('test2');
 
 app.use('/api/user', userRoute);
 app.use('/api/hotel', hotelRoute);
