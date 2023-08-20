@@ -12,8 +12,8 @@ import checkoutRoute from './routes/checkout.js';
 import orderRoute from './routes/orders.js';
 import couponRoute from './routes/coupons.js';
 import promotionRoute from './routes/promotions.js';
-
 import cloudinary from './services/cloudinary.js';
+import sharp from 'sharp';
 
 const PORT = process.env.LOCAL_PORT || 5001;
 
@@ -43,41 +43,45 @@ app.use(
 );
 // app.use(middleware.decodeToken);
 
-mongoose.connection.on('disconnected', () => {
-	console.log('MongoDB disconnected!');
-});
+// mongoose.connection.on('disconnected', () => {
+// 	console.log('MongoDB disconnected!');
+// });
 
-app.listen(PORT, () => {
-	const connectDB = async () => {
-		try {
-			await mongoose.connect(process.env.MONGO);
-			console.log('✅ MongoDB Connected');
-		} catch (error) {
-			console.log(error);
-		}
-	};
-	connectDB();
-	console.log(`✅ Server listening on ${PORT}`);
-});
+// app.listen(PORT, () => {
+// 	const connectDB = async () => {
+// 		try {
+// 			await mongoose.connect(process.env.MONGO);
+// 			console.log('✅ MongoDB Connected');
+// 		} catch (error) {
+// 			console.log(error);
+// 		}
+// 	};
+// 	connectDB();
+// 	console.log(`✅ Server listening on ${PORT}`);
+// });
 
-app.get('/api', (req, res) => {
-	res.json({ message: 'Hello from server!' });
-});
+// app.get('/api', (req, res) => {
+// 	res.json({ message: 'Hello from server!' });
+// });
 
 async function createFolder(folderName) {
 	try {
+		const data = await sharp('./Olympic_flag.jpg').webp().toBuffer();
+
 		const result = await cloudinary.api.create_folder(folderName);
-		cloudinary.uploader.upload(
-			'https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg',
-			{ public_id: 'test_upload2', folder: folderName },
-			(error, result) => {
-				if (error) {
-					console.error('Error uploading file:', error);
-				} else {
-					console.log('File uploaded successfully:');
-				}
-			},
-		);
+		cloudinary.uploader
+			.upload_stream(
+				data,
+				{ public_id: 'test_upload2', folder: folderName },
+				(error, result) => {
+					if (error) {
+						console.error('Error uploading file:', error);
+					} else {
+						console.log('File uploaded successfully:');
+					}
+				},
+			)
+			.end(data);
 		console.log('Folder created:', result);
 	} catch (error) {
 		console.error('Error creating folder:', error);
