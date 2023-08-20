@@ -71,7 +71,6 @@ async function createFolder(folderName) {
 		const result = await cloudinary.api.create_folder(folderName);
 		cloudinary.uploader
 			.upload_stream(
-				data,
 				{ public_id: 'test_upload2', folder: folderName },
 				(error, result) => {
 					if (error) {
