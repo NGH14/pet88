@@ -53,3 +53,6 @@ const HotelSchema = new mongoose.Schema(
 );
 
 export const Hotel = mongoose.model('Hotel', HotelSchema);
+
+export const getAllHotel = () => Hotel.find();
+export const getHotelByID = (id) => Hotel.findById(id);

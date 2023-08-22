@@ -2,7 +2,7 @@ import express from 'express';
 import { Grooming } from '../models/grooming.js';
 
 const router = express.Router();
-import { Hotel } from '../models/hotel.js';
+import { Hotel, getAllHotel, getHotelByID } from '../models/hotel.js';
 import { Room } from '../models/room.js';
 
 router.post('/', async (req, res) => {
@@ -61,7 +61,7 @@ router.delete('/:id', async (req, res) => {
 
 router.get('/find/:id', async (req, res) => {
 	try {
-		const hotel = await Hotel.findById(req.params.id);
+		const hotel = await getHotelByID(req.params.id);
 
 		res.status(200).json(hotel);
 	} catch (err) {
@@ -150,11 +150,11 @@ router.post('/find-grooming-able', async (req, res) => {
 
 router.get('/', async (req, res) => {
 	try {
-		const hotels = await Hotel.find();
+		const hotels = await getAllHotel();
 		res.status(200).json(hotels);
 	} catch (err) {
 		res.sendStatus(500).send({
-			message: err.message || 'some error occured',
+			message: err.message || 'some error occurred',
 		});
 	}
 });
