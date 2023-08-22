@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import stripe from '../services/stripe.js';
+import stripe from '../config/stripe.js';
 
 router.post('/:id', async (req, res) => {
 	try {

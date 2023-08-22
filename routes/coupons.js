@@ -2,7 +2,7 @@ import express from 'express';
 
 const router = express.Router();
 
-import stripe from '../services/stripe.js';
+import stripe from '../config/stripe.js';
 import { Coupon } from '../models/coupons.js';
 
 router.post('/', async (req, res) => {

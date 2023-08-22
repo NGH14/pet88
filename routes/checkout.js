@@ -1,7 +1,7 @@
 import express from 'express';
 
 const router = express.Router();
-import stripe from '../services/stripe.js';
+import stripe from '../config/stripe.js';
 import { Order } from '../models/orders.js';
 
 const orderURL = process.env.CLIENT_URL + '/checkout';
