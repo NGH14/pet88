@@ -1,8 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
-const app = express();
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import cloudinary from './config/cloudinary.js';
+import sharp from 'sharp';
+import multer from 'multer';
+
 import middleware from './services/auth.js';
 import userRoute from './routes/users.js';
 import hotelRoute from './routes/hotels.js';
@@ -12,9 +15,8 @@ import checkoutRoute from './routes/checkout.js';
 import orderRoute from './routes/orders.js';
 import couponRoute from './routes/coupons.js';
 import promotionRoute from './routes/promotions.js';
-import cloudinary from './services/cloudinary.js';
-import sharp from 'sharp';
-import multer from 'multer';
+
+const app = express();
 const PORT = process.env.LOCAL_PORT || 5001;
 
 app.use(cors());
@@ -76,25 +78,20 @@ app.get('/api', (req, res) => {
 let upload = multer();
 
 app.post('/test-image', upload.single('image'), async (req, res) => {
-	try {
-		const data = await sharp(req.file.buffer).webp().toBuffer();
-		const result = await cloudinary.api.create_folder('test3');
-		cloudinary.uploader
-			.upload_stream(
-				{ public_id: 'test_upload2', folder: 'test2' },
-				(error, result) => {
-					if (error) {
-						console.error('Error uploading file:', error);
-					} else {
-						console.log('File uploaded successfully:');
-					}
-				},
-			)
-			.end(data);
-		res.json('Uploaded');
-	} catch (error) {
-		res.status(500).send(error);
-	}
+	const data = await sharp(req.file.buffer).webp().toBuffer();
+	const folder = await cloudinary.api.create_folder('test3');
+	cloudinary.uploader
+		.upload_stream(
+			{ public_id: 'test_upload2', folder: folder?.name },
+			(error, result) => {
+				if (error) {
+					res.status(500).send(error);
+				} else {
+					res.json('File uploaded successfully:');
+				}
+			},
+		)
+		.end(data);
 });
 
 app.use('/api/user', userRoute);
