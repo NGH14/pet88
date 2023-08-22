@@ -2,9 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import cloudinary from './config/cloudinary.js';
 import sharp from 'sharp';
 import multer from 'multer';
+import cloudinary from './config/cloudinary.js';
 
 import middleware from './services/auth.js';
 import userRoute from './routes/users.js';

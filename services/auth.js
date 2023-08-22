@@ -1,4 +1,4 @@
-import admin from '../config/firebase-config.js';
+import admin from '../config/firebase.js';
 class Middleware {
 	async decodeToken(req, res, next) {
 		if (!req.headers.authorization)
