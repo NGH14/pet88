@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const app = express();
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import middleware from './services/index.js';
+import middleware from './services/auth.js';
 import userRoute from './routes/users.js';
 import hotelRoute from './routes/hotels.js';
 import roomRoute from './routes/rooms.js';
@@ -14,7 +14,7 @@ import couponRoute from './routes/coupons.js';
 import promotionRoute from './routes/promotions.js';
 import cloudinary from './services/cloudinary.js';
 import sharp from 'sharp';
-
+import multer from 'multer';
 const PORT = process.env.LOCAL_PORT || 5001;
 
 app.use(cors());
@@ -43,35 +43,45 @@ app.use(
 );
 // app.use(middleware.decodeToken);
 
-// mongoose.connection.on('disconnected', () => {
-// 	console.log('MongoDB disconnected!');
+mongoose.connection.on('disconnected', () => {
+	console.log('MongoDB disconnected!');
+});
+
+app.listen(PORT, () => {
+	const connectDB = async () => {
+		try {
+			await mongoose.connect(process.env.MONGO);
+			console.log('✅ MongoDB Connected');
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	connectDB();
+	console.log(`✅ Server listening on ${PORT}`);
+});
+
+app.get('/api', (req, res) => {
+	res.json({ message: 'Hello from server!' });
+});
+
+// let storage = multer.diskStorage({
+// 	destination: function (req, file, cb) {
+// 		cb(null, 'uploads');
+// 	},
+// 	filename: function (req, file, cb) {
+// 		cb(null, file.fieldname + '-' + Date.now());
+// 	},
 // });
 
-// app.listen(PORT, () => {
-// 	const connectDB = async () => {
-// 		try {
-// 			await mongoose.connect(process.env.MONGO);
-// 			console.log('✅ MongoDB Connected');
-// 		} catch (error) {
-// 			console.log(error);
-// 		}
-// 	};
-// 	connectDB();
-// 	console.log(`✅ Server listening on ${PORT}`);
-// });
+let upload = multer();
 
-// app.get('/api', (req, res) => {
-// 	res.json({ message: 'Hello from server!' });
-// });
-
-async function createFolder(folderName) {
+app.post('/test-image', upload.single('image'), async (req, res) => {
 	try {
-		const data = await sharp('./Olympic_flag.jpg').webp().toBuffer();
-
-		const result = await cloudinary.api.create_folder(folderName);
+		const data = await sharp(req.file.buffer).webp().toBuffer();
+		const result = await cloudinary.api.create_folder('test3');
 		cloudinary.uploader
 			.upload_stream(
-				{ public_id: 'test_upload2', folder: folderName },
+				{ public_id: 'test_upload2', folder: 'test2' },
 				(error, result) => {
 					if (error) {
 						console.error('Error uploading file:', error);
@@ -81,14 +91,11 @@ async function createFolder(folderName) {
 				},
 			)
 			.end(data);
-		console.log('Folder created:', result);
+		res.json('Uploaded');
 	} catch (error) {
-		console.error('Error creating folder:', error);
+		res.status(500).send(error);
 	}
-}
-
-// Call the function to create a folder
-createFolder('test2');
+});
 
 app.use('/api/user', userRoute);
 app.use('/api/hotel', hotelRoute);
