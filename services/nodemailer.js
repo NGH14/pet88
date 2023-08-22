@@ -1,10 +1,6 @@
 import nodemailer from 'nodemailer';
-const username = process.env.USERNAME;
-const password = process.env.PASSWORD;
 
 async function sendNodeMail(dataSend, template) {
-	// create reusable transporter object using the default SMTP transport
-
 	let transporter = nodemailer.createTransport({
 		host: 'smtp.gmail.com',
 		port: 587,
