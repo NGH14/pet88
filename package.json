@@ -22,7 +22,8 @@
     "stripe": "^10.16.0"
   },
   "scripts": {
-    "start": "node -r dotenv/config index.js",
+    "start": "doppler run -- node index.js",
+    
     "dev": "node --watch --require dotenv/config index.js "
   }
 }
