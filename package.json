@@ -24,6 +24,6 @@
   "scripts": {
     "start": "doppler run -- node index.js",
     
-    "dev": "node --watch --require dotenv/config index.js "
+    "dev": "doppler run node --watch index.js"
   }
 }
