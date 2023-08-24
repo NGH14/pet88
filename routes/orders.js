@@ -7,88 +7,88 @@ import { Order } from '../models/orders.js';
 import sendNodeMail from '../services/nodemailer.js';
 
 router.get('/', async (req, res) => {
-	try {
-		const orders = await Order.find();
-		res.status(200).json(orders);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+    try {
+        const orders = await Order.find();
+        res.status(200).json(orders);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.get('/:id', async (req, res) => {
-	try {
-		const orders = await Order.findById(req.params.id);
-		res.status(200).json(orders);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+    try {
+        const orders = await Order.findById(req.params.id);
+        res.status(200).json(orders);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.get('/user/:id', async (req, res) => {
-	try {
-		const orders = await Order.find({ userID: req.params.id });
-		res.status(200).json(orders);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+    try {
+        const orders = await Order.find({ userID: req.params.id });
+        res.status(200).json(orders);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.delete('/:id', async (req, res) => {
-	try {
-		await Order.findByIdAndDelete(req.params.id);
-		res.status(200).json('Order has been deleted.');
-	} catch (err) {
-		res.status(500).json(err);
-	}
+    try {
+        await Order.findByIdAndDelete(req.params.id);
+        res.status(200).json('Order has been deleted.');
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.put('/:id', async (req, res) => {
-	try {
-		const updateOrder = await Order.findByIdAndUpdate(
-			req.params.id,
-			{
-				$set: req.body,
-			},
-			{ new: true },
-		);
-		res.status(200).json(updateOrder);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+    try {
+        const updateOrder = await Order.findByIdAndUpdate(
+            req.params.id,
+            {
+                $set: req.body,
+            },
+            { new: true },
+        );
+        res.status(200).json(updateOrder);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.put('/update-status/:id', async (req, res) => {
-	try {
-		const updateOrder = await Order.findByIdAndUpdate(req.params.id, {
-			paid: req.body.paid,
-			confirm: req.body.confirm,
-		});
-		res.status(200).json(updateOrder);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+    try {
+        const updateOrder = await Order.findByIdAndUpdate(req.params.id, {
+            paid: req.body.paid,
+            confirm: req.body.confirm,
+        });
+        res.status(200).json(updateOrder);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.post('/cash', async (req, res) => {
-	try {
-		const order = await Order.create({
-			userID: req.body.userID || 'guest',
-			products: req.body.roomList,
-			paid: 'unpaid',
-			email: req.body.email,
-			price: req.body.price,
-			name: req.body.name,
-			phone: req.body.phone,
-			days: req.body.days,
-			paymentMethod: req.body.paymentMethod,
-			confirm: 'unconfirmed',
-			start: req.body.start,
-			end: req.body.end,
-			service: req.body.service,
-		});
-		const link = `http://localhost:3000/confirm/${order?.id}`;
+    try {
+        const order = await Order.create({
+            userID: req.body.userID || 'guest',
+            products: req.body.roomList,
+            paid: 'unpaid',
+            email: req.body.email,
+            price: req.body.price,
+            name: req.body.name,
+            phone: req.body.phone,
+            days: req.body.days,
+            paymentMethod: req.body.paymentMethod,
+            confirm: 'unconfirmed',
+            start: req.body.start,
+            end: req.body.end,
+            service: req.body.service,
+        });
+        const link = `http://localhost:3000/confirm/${order?.id}`;
 
-		const templateEN = `<table
+        const templateEN = `<table
 		bgcolor="#F6F9FC"
 		border="0"
 		cellpadding="0"
@@ -504,12 +504,12 @@ router.post('/cash', async (req, res) => {
 																																		"
 																																	>
 																																		${new Intl.NumberFormat('vi-VI', {
-																																			style: 'currency',
-																																			currency:
+        style: 'currency',
+        currency:
 																																				'VND',
-																																		}).format(
-																																			order.price,
-																																		)}
+    }).format(
+        order.price,
+    )}
 																																	</span>
 																																</td>
 																															</tr>
@@ -1254,39 +1254,39 @@ router.post('/cash', async (req, res) => {
 		</tbody>
 	</table>
 	`;
-		sendNodeMail(
-			{
-				subject: `Pet88: Booking Confirmation`,
-				recipient: order.email,
-			},
-			templateEN,
-		);
-		res.status(200).json(order);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+        sendNodeMail(
+            {
+                subject: 'Pet88: Booking Confirmation',
+                recipient: order.email,
+            },
+            templateEN,
+        );
+        res.status(200).json(order);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.post('/grooming/booking', async (req, res) => {
-	try {
-		const order = await Order.create({
-			userID: req.body.userID || 'guest',
-			products: req.body.roomList,
-			paid: 'unpaid',
-			email: req.body.email,
-			price: req.body.price,
-			name: req.body.name,
-			phone: req.body.phone,
-			days: req.body.days,
-			paymentMethod: req.body.paymentMethod,
-			confirm: 'unconfimred',
-			start: req.body.start,
-			end: req.body.end,
-			service: 'grooming',
-		});
-		const link = `http://localhost:3000/confirm/${order?.id}`;
+    try {
+        const order = await Order.create({
+            userID: req.body.userID || 'guest',
+            products: req.body.roomList,
+            paid: 'unpaid',
+            email: req.body.email,
+            price: req.body.price,
+            name: req.body.name,
+            phone: req.body.phone,
+            days: req.body.days,
+            paymentMethod: req.body.paymentMethod,
+            confirm: 'unconfimred',
+            start: req.body.start,
+            end: req.body.end,
+            service: 'grooming',
+        });
+        const link = `http://localhost:3000/confirm/${order?.id}`;
 
-		const templateEN = `<table
+        const templateEN = `<table
 		bgcolor="#F6F9FC"
 		border="0"
 		cellpadding="0"
@@ -2449,70 +2449,70 @@ router.post('/grooming/booking', async (req, res) => {
 	</table>
 	`;
 
-		sendNodeMail(
-			{
-				subject: `Pet88: Booking Confirmation`,
-				recipient: order.email,
-			},
-			templateEN,
-		);
-		res.status(200).json(order);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+        sendNodeMail(
+            {
+                subject: 'Pet88: Booking Confirmation',
+                recipient: order.email,
+            },
+            templateEN,
+        );
+        res.status(200).json(order);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.post('/admin/grooming', async (req, res) => {
-	try {
-		const order = await Order.create({
-			userID: req.body.userID || 'guest',
-			products: req.body.roomList,
-			paid: 'unpaid',
-			email: req.body.email,
-			eventID: req.body.eventID || '-1',
-			price: req.body.price,
-			name: req.body.name,
-			phone: req.body.phone,
-			days: req.body.days,
-			paymentMethod: 'cash',
-			confirm: 'confirmed',
-			start: req.body.start,
-			end: req.body.end,
-			service: req.body.service,
-		});
+    try {
+        const order = await Order.create({
+            userID: req.body.userID || 'guest',
+            products: req.body.roomList,
+            paid: 'unpaid',
+            email: req.body.email,
+            eventID: req.body.eventID || '-1',
+            price: req.body.price,
+            name: req.body.name,
+            phone: req.body.phone,
+            days: req.body.days,
+            paymentMethod: 'cash',
+            confirm: 'confirmed',
+            start: req.body.start,
+            end: req.body.end,
+            service: req.body.service,
+        });
 
-		res.status(200).json(order);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+        res.status(200).json(order);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.put('/confirm/success/:id', async (req, res) => {
-	try {
-		const order = await Order.findByIdAndUpdate(req.params.id, {
-			confirm: 'confirmed',
-		});
-		res.status(200).json(order);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+    try {
+        const order = await Order.findByIdAndUpdate(req.params.id, {
+            confirm: 'confirmed',
+        });
+        res.status(200).json(order);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.put('/success/:id', async (req, res) => {
-	try {
-		const order = await Order.findByIdAndUpdate(req.params.id, {
-			paid: 'success',
-			confirm: 'confirmed',
-		});
-		const priceWithoutVAT = order.products.reduce(
-			(total, room) => Number(total) + Number(room.price),
-			0,
-		);
-		const VAT = MongoClient.Int32(order.price) - priceWithoutVAT;
+    try {
+        const order = await Order.findByIdAndUpdate(req.params.id, {
+            paid: 'success',
+            confirm: 'confirmed',
+        });
+        const priceWithoutVAT = order.products.reduce(
+            (total, room) => Number(total) + Number(room.price),
+            0,
+        );
+        const VAT = MongoClient.Int32(order.price) - priceWithoutVAT;
 
-		const orderData = order.products
-			.map((ord) => {
-				return `<tr>
+        const orderData = order.products
+            .map((ord) => {
+                return `<tr>
 	<td
 		style="
 			border: 0;
@@ -2571,15 +2571,15 @@ router.put('/success/:id', async (req, res) => {
 		"
 	>
 		${new Intl.NumberFormat('vi-Vi', {
-			style: 'currency',
-			currency: 'VND',
-		}).format(ord.price)}</td>
+        style: 'currency',
+        currency: 'VND',
+    }).format(ord.price)}</td>
 		</tr>`;
-			})
-			.toString()
-			.replace(/,/g, '');
+            })
+            .toString()
+            .replace(/,/g, '');
 
-		const templateEN = `
+        const templateEN = `
 	<div class="">
 		<div class="aHl"></div>
 		<div id=":1bt" tabindex="-1"></div>
@@ -2691,12 +2691,12 @@ router.put('/success/:id', async (req, res) => {
 																		[#${order._id}]
 																		Amount paid
 																		${new Intl.NumberFormat('vi-Vi', {
-																			style: 'currency',
-																			currency:
+        style: 'currency',
+        currency:
 																				'VND',
-																		}).format(
-																			order.price,
-																		)}
+    }).format(
+        order.price,
+    )}
 																		Date paid
 																		${new Date(order.createdAt).toLocaleString()}
 																		‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌<wbr />&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;‌&nbsp;
@@ -3159,12 +3159,12 @@ router.put('/success/:id', async (req, res) => {
 																					"
 																				>
 																				${new Intl.NumberFormat('vi-Vi', {
-																					style: 'currency',
-																					currency:
+        style: 'currency',
+        currency:
 																						'VND',
-																				}).format(
-																					order.price,
-																				)}
+    }).format(
+        order.price,
+    )}
 																				</td>
 																			</tr>
 																		</tbody>
@@ -3795,12 +3795,12 @@ router.put('/success/:id', async (req, res) => {
 																													line-height: 24px;
 																												"
 																											>${new Intl.NumberFormat('vi-Vi', {
-																												style: 'currency',
-																												currency:
+        style: 'currency',
+        currency:
 																													'VND',
-																											}).format(
-																												VAT,
-																											)}
+    }).format(
+        VAT,
+    )}
 																												
 																											</td>
 																										</tr>
@@ -3939,12 +3939,12 @@ router.put('/success/:id', async (req, res) => {
 																												>
 																													<strong
 																														>${new Intl.NumberFormat('vi-Vi', {
-																															style: 'currency',
-																															currency:
+        style: 'currency',
+        currency:
 																																'VND',
-																														}).format(
-																															order.price,
-																														)}</strong
+    }).format(
+        order.price,
+    )}</strong
 																													>
 																												</td>
 																											</tr>
@@ -4610,28 +4610,28 @@ router.put('/success/:id', async (req, res) => {
 
 	`;
 
-		sendNodeMail(
-			{
-				subject: `Pet88: Booking Success`,
-				recipient: order.email,
-			},
-			templateEN,
-		);
-		res.status(200).json(order);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+        sendNodeMail(
+            {
+                subject: 'Pet88: Booking Success',
+                recipient: order.email,
+            },
+            templateEN,
+        );
+        res.status(200).json(order);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 router.put('/cancel/:id', async (req, res) => {
-	try {
-		const updateOrder = await Order.findByIdAndUpdate(req.params.id, {
-			paid: 'fail',
-		});
-		res.status(200).json(updateOrder);
-	} catch (err) {
-		res.status(500).json(err);
-	}
+    try {
+        const updateOrder = await Order.findByIdAndUpdate(req.params.id, {
+            paid: 'fail',
+        });
+        res.status(200).json(updateOrder);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 export default router;
