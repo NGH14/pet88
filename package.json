@@ -22,8 +22,10 @@
     "stripe": "^10.16.0"
   },
   "scripts": {
-    "start": "doppler run -- node index.js",
-    
+    "start": "doppler run node index.js",
     "dev": "doppler run node --watch index.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.47.0"
   }
 }
