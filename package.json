@@ -8,6 +8,9 @@
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-syntax-import-assertions": "^7.20.0",
     "@sendgrid/mail": "^7.7.0",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/multer": "^1.4.7",
     "body-parser": "^1.20.1",
     "cloudinary": "^1.40.0",
     "cors": "^2.8.5",
@@ -22,8 +25,8 @@
     "stripe": "^10.16.0"
   },
   "scripts": {
-    "start": "doppler run node index.js",
-    "dev": "doppler run node --watch index.js"
+    "start": "doppler run node src",
+    "dev": "doppler run nodemon"
   },
   "devDependencies": {
     "eslint": "^8.47.0",
