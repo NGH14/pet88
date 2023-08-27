@@ -3,11 +3,11 @@
 		"module": "NodeNext",
 		"target": "ESNext",
 		"baseUrl": "src",
-		"outDir": "dist",
+		"outDir": "build",
 		"sourceMap": true,
 		"noImplicitAny": true,
 		"allowJs": true
 	},
 	"include": ["src/**/*"],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules, dist"]
 }
