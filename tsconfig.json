@@ -1,12 +1,14 @@
 {
 	"compilerOptions": {
-		"module": "NodeNext",
+		"module": "ESNext",
 		"target": "ESNext",
 		"baseUrl": "src",
 		"outDir": "build",
 		"sourceMap": true,
 		"noImplicitAny": true,
-		"allowJs": true
+		"allowJs": true,
+		"esModuleInterop": true,
+		"moduleResolution": "node"
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules", "build"]

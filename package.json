@@ -26,14 +26,15 @@
     "stripe": "^10.16.0"
   },
   "scripts": {
-    "start": "doppler run && node src",
-    "build": "tsc ",
+    "start": "doppler run node dist/index.min.js",
+    "build": "tsc",
     "dev": "doppler run nodemon"
   },
   "devDependencies": {
     "eslint": "^8.47.0",
     "gulp": "^4.0.2",
     "gulp-rename": "^2.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "gulp-uglify": "^3.0.2",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
