@@ -26,8 +26,7 @@
     "stripe": "^10.16.0"
   },
   "scripts": {
-    "start": "doppler run node dist/index.min.js",
-    "build": "tsc",
+    "start": "doppler run node build/index.min.js",
     "dev": "doppler run nodemon"
   },
   "devDependencies": {
