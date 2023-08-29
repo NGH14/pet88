@@ -10,4 +10,3 @@ esbuild.build({
 	outdir: 'build',
 	platform: 'node',
 });
-
