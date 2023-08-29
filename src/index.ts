@@ -9,7 +9,7 @@ import cloudinary from './config/cloudinary.js';
 import checkoutRoute from './routes/checkout.js';
 import couponRoute from './routes/coupons.js';
 import groomingRoute from './routes/groomings.js';
-import hotelRoute from './routes/hotels.js';
+import hotelRoute from './routes/department.js';
 import orderRoute from './routes/orders.js';
 import promotionRoute from './routes/promotions.js';
 import roomRoute from './routes/rooms.js';
@@ -54,7 +54,7 @@ mongoose.connection.on('disconnected', () => {
 app.listen(PORT, () => {
 	const connectDB = async () => {
 		try {
-			mongoose.connect(process?.env?.MONGO || "");
+			mongoose.connect( `mongodb+srv://vuhuunghia2001:2xcatc4e1n5pw8hf@pet88.yus2iqq.mongodb.net/?retryWrites=true&w=majority`|| "",  {dbName: process.env.DB} );
 			console.log('✅ MongoDB Connected');
 		} catch (error) {
 			console.log(error);
@@ -87,11 +87,10 @@ app.post('/test-image', upload.single('image'), async (req, res) => {
 		.end(data);
 });
 
-// app.use('/', router());
 
 app.use('/api/user', userRoute);
-app.use('/api/hotel', hotelRoute);
-app.use('/api/hotel-room', roomRoute);
+app.use('/api/department', hotelRoute);
+app.use('/api/department-room', roomRoute);
 app.use('/api/grooming', groomingRoute);
 app.use('/api/checkout', checkoutRoute);
 app.use('/api/order', orderRoute);
