@@ -61,4 +61,4 @@ gulp.task('dev-doppler', () => {
 });
 
 gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler', 'server'));
-gulp.task('dev', gulp.series('prd-doppler', 'setup-doppler', 'server'));
+gulp.task('dev', gulp.series('dev-doppler', 'setup-doppler', 'server'));
