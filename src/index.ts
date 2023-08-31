@@ -6,16 +6,11 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 import sharp from 'sharp';
 import cloudinary from './config/cloudinary.js';
-import checkoutRoute from './routes/checkout.js';
-import couponRoute from './routes/coupons.js';
-import groomingRoute from './routes/groomings.js';
-import hotelRoute from './routes/department.js';
-import orderRoute from './routes/orders.js';
-import promotionRoute from './routes/promotions.js';
-import roomRoute from './routes/rooms.js';
 import './config/firebase.js';
 
-import userRoute from './routes/users.js';
+import rootRouter from './routes';
+
+import { connectDB } from './config/mongodb.js';
 
 
 const app = express();
@@ -47,19 +42,8 @@ app.use(
 );
 // app.use(middleware.decodeToken);
 
-mongoose.connection.on('disconnected', () => {
-	console.log('MongoDB disconnected!');
-});
 
 app.listen(PORT, () => {
-	const connectDB = async () => {
-		try {
-			mongoose.connect( `mongodb+srv://vuhuunghia2001:2xcatc4e1n5pw8hf@pet88.yus2iqq.mongodb.net/?retryWrites=true&w=majority`|| "",  {dbName: process.env.DB} );
-			console.log('✅ MongoDB Connected');
-		} catch (error) {
-			console.log(error);
-		}
-	};
 	connectDB();
 	console.log(`✅ Server listening on ${PORT}`);
 });
@@ -87,12 +71,5 @@ app.post('/test-image', upload.single('image'), async (req, res) => {
 		.end(data);
 });
 
+app.use('/', rootRouter);
 
-app.use('/api/user', userRoute);
-app.use('/api/department', hotelRoute);
-app.use('/api/department-room', roomRoute);
-app.use('/api/grooming', groomingRoute);
-app.use('/api/checkout', checkoutRoute);
-app.use('/api/order', orderRoute);
-app.use('/api/coupon', couponRoute);
-app.use('/api/promotion', promotionRoute);
