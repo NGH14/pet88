@@ -43,11 +43,25 @@ gulp.task('server', function () {
 });
 
 gulp.task('prd-doppler', () => {
-	return gulp
-		.src('./doppler.yaml')
-		.pipe(replace('be-dev', 'prd'))
-		.on('end', () => log.info('✅ Changed Doppler Config'))
-		.pipe(gulp.dest('./'));
+	var fs = require('fs'),
+		extraFile = 'doppler.yaml';
+
+	if (fs.existsSync(extraFile)) {
+		return gulp
+			.src('doppler.yaml')
+			.pipe(replace('dev', 'prd'))
+			.pipe(gulp.dest('./'));
+	} else {
+		return gulp
+			.src('./')
+			.pipe(
+				file(
+					'doppler.yaml',
+					'setup:\nproject: pet88\nconfig: be\nbranch: prd',
+				),
+			)
+			.pipe(gulp.dest('./'));
+	}
 });
 
 gulp.task('dev-doppler', () => {
@@ -55,10 +69,7 @@ gulp.task('dev-doppler', () => {
 		extraFile = 'doppler.yaml';
 
 	if (fs.existsSync(extraFile)) {
-		return gulp
-			.src('./')
-			.pipe(replace('prd', 'be-dev'))
-			.pipe(gulp.dest('./'));
+		return gulp.src('./').pipe(replace('prd', 'dev')).pipe(gulp.dest('./'));
 	} else {
 		return gulp
 			.src('./')
