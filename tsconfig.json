@@ -4,14 +4,14 @@
 		"target": "ESNext",
 		"baseUrl": "src",
 		"outDir": "build",
+		"allowImportingTsExtensions": true,
 		"sourceMap": true,
 		"noImplicitAny": true,
 		"allowJs": true,
 		"esModuleInterop": true,
 		"moduleResolution": "node",
-		"noEmit": true,
-		"allowImportingTsExtensions": true
+		"noEmit": true
 	},
-	"include": ["src/**/*", "middleware/auth.js"],
+	"include": ["src/**/*", "middleware/auth.js", "tests/*"],
 	"exclude": ["node_modules", "build"]
 }
