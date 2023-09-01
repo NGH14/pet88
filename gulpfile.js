@@ -6,10 +6,7 @@ const replace = require('gulp-replace');
 const exec = require('gulp-exec');
 const log = require('fancy-log');
 const util = require('util');
-
-util.inspect.stye = '';
-
-gulp.on('error', (errors) => log.error(errors).process.exit.bind(process, 1));
+const file = require('gulp-file');
 
 gulp.task('setup-doppler', function () {
 	const options = {
@@ -54,11 +51,26 @@ gulp.task('prd-doppler', () => {
 });
 
 gulp.task('dev-doppler', () => {
-	return gulp
-		.src('./doppler.yaml')
-		.pipe(replace('prd', 'be-dev'))
-		.pipe(gulp.dest('./'));
+	var fs = require('fs'),
+		extraFile = 'doppler.yaml';
+
+	if (fs.existsSync(extraFile)) {
+		return gulp
+			.src('./')
+			.pipe(replace('prd', 'be-dev'))
+			.pipe(gulp.dest('./'));
+	} else {
+		return gulp
+			.src('./')
+			.pipe(
+				file(
+					'doppler.yaml',
+					'setup:\nproject: pet88\nconfig: be\nbranch: dev',
+				),
+			)
+			.pipe(gulp.dest('./'));
+	}
 });
 
-gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler', 'server'));
-gulp.task('dev', gulp.series('dev-doppler', 'setup-doppler', 'server'));
+gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler'));
+gulp.task('dev', gulp.series('dev-doppler', 'setup-doppler'));
