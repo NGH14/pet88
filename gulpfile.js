@@ -82,6 +82,25 @@ gulp.task('dev-doppler', () => {
 			.pipe(gulp.dest('./'));
 	}
 });
+gulp.task('test-doppler', () => {
+	var fs = require('fs'),
+		extraFile = 'doppler.yaml';
+
+	if (fs.existsSync(extraFile)) {
+		return gulp.src('./').pipe(replace('prd', 'dev')).pipe(gulp.dest('./'));
+	} else {
+		return gulp
+			.src('./')
+			.pipe(
+				file(
+					'doppler.yaml',
+					'setup:\nproject: pet88\nconfig: be\nbranch: test',
+				),
+			)
+			.pipe(gulp.dest('./'));
+	}
+});
 
 gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler'));
 gulp.task('dev', gulp.series('dev-doppler', 'setup-doppler'));
+gulp.task('test', gulp.series('test-doppler', 'setup-doppler'));
