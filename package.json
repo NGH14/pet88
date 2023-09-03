@@ -30,7 +30,7 @@
     "start:prd": "gulp start:prd & doppler run nodemon",
     "build": "node esbuild.config.js",
     "dev": "gulp dev & doppler run nodemon",
-    "test": "mocha -r ts-node/register 'tests/**/*.ts'"
+    "test": "gulp test & doppler run -- mocha -r ts-node/register tests/**/*.ts --timeout 10000 --exit"
   },
   "devDependencies": {
     "@types/chai": "^4.3.5",
