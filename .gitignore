@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+
+doppler.yaml
+
 # testing
 /coverage
 
@@ -26,5 +29,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
-
-doppler.yaml
