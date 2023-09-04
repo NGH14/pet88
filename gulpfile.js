@@ -53,10 +53,7 @@ gulp.task('prd-doppler', () => {
 		return gulp
 			.src('./')
 			.pipe(
-				file(
-					'doppler.yaml',
-					'setup:\nproject: pet88\nconfig: be\nbranch: prd',
-				),
+				file('doppler.yaml', 'setup:\nproject: pet88\nconfig: be\nbranch: prd'),
 			)
 			.pipe(gulp.dest('./'));
 	}
@@ -74,10 +71,7 @@ gulp.task('dev-doppler', () => {
 		return gulp
 			.src('./')
 			.pipe(
-				file(
-					'doppler.yaml',
-					'setup:\nproject: pet88\nconfig: be\nbranch: dev',
-				),
+				file('doppler.yaml', 'setup:\nproject: pet88\nconfig: be\nbranch: dev'),
 			)
 			.pipe(gulp.dest('./'));
 	}
@@ -88,12 +82,12 @@ gulp.task('test-doppler', () => {
 
 	if (fs.existsSync(extraFile)) {
 		return gulp
-			.src('./')
+			.src(extraFile)
 			.pipe(replace(/(?:prd|dev)/g, 'test'))
 			.pipe(gulp.dest('./'));
 	} else {
 		return gulp
-			.src(extraFile)
+			.src('./')
 			.pipe(
 				file(
 					'doppler.yaml',
