@@ -32,7 +32,8 @@ describe('Department', () => {
 
 	describe('/GET departments', () => {
 		it('should GET the empty array', () => {
-			chai.request(app)
+			chai
+				.request(app)
 				.get(endPoint)
 				.end((_err, res) => {
 					res.should.have.status(200);
@@ -41,26 +42,26 @@ describe('Department', () => {
 				});
 		});
 		it('should GET a department by the given id', async () => {
-			const newDepartment = await createNewDepartment(sample)
-			chai.request(app)
+			const newDepartment = await createNewDepartment(sample);
+			chai
+				.request(app)
 				.get(endPoint + newDepartment._id)
 				.end((err, res) => {
-							res.should.have.status(200);
-							res.body.should.be.a('object');
-							res.body.should.have.property('_id');
-							res.body.should.have.property('type');
-							res.body.should.have.property('services');
-							res.body.should.have.property('city');
-							res.body.should.have.property('title');
-							res.body.should.have.property('_id').eql(newDepartment.id);
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('_id');
+					res.body.should.have.property('type');
+					res.body.should.have.property('services');
+					res.body.should.have.property('city');
+					res.body.should.have.property('title');
+					res.body.should.have.property('_id').eql(newDepartment.id);
 				});
-			});
-
+		});
 	});
 	describe('/POST department', () => {
-
 		it('should POST department ', () => {
-			chai.request(app)
+			chai
+				.request(app)
 				.post(endPoint)
 				.set('content-type', 'application/json')
 				.send(JSON.stringify(sample))
@@ -77,13 +78,32 @@ describe('Department', () => {
 
 		it('should not POST department city field', () => {
 			const { city, ...sampleWithoutCityField } = sample;
-			chai.request(app).post(endPoint).set('content-type', 'application/json').send(JSON.stringify(sampleWithoutCityField)).end((_err, res) => {
-					res.should.status(500)
+			chai
+				.request(app)
+				.post(endPoint)
+				.set('content-type', 'application/json')
+				.send(JSON.stringify(sampleWithoutCityField))
+				.end((_err, res) => {
+					res.should.status(500);
 					res.body.should.be.a('object');
 					res.body.should.have.property('errors');
-					res.body.errors.should.have.property('city')
+					res.body.errors.should.have.property('city');
 				});
 		});
-		
+	});
+
+	describe('/PUT/:id department', () => {
+		it('should UPDATE a department given the id', async () => {
+			const newDepartment = await createNewDepartment(sample);
+			chai
+				.request(app)
+				.put(endPoint + newDepartment._id)
+				.send({ city: 'Da Nang' })
+				.end((_err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.book.should.have.property('city').eql('Da Nang');
+				});
+		});
 	});
 });
