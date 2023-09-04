@@ -24,7 +24,6 @@ gulp.task('setup-doppler', function () {
 		.on('end', () => log.info('✅ Setup Doppler Success'))
 		.pipe(exec.reporter(reportOptions));
 });
-
 gulp.task('server', function () {
 	const options = {
 		continueOnError: false, // default = false, true means don't emit error event
@@ -41,15 +40,14 @@ gulp.task('server', function () {
 		.pipe(exec(() => `npm start`, options))
 		.pipe(exec.reporter(reportOptions));
 });
-
 gulp.task('prd-doppler', () => {
 	var fs = require('fs'),
 		extraFile = 'doppler.yaml';
 
 	if (fs.existsSync(extraFile)) {
 		return gulp
-			.src('doppler.yaml')
-			.pipe(replace('dev', 'prd'))
+			.src(extraFile)
+			.pipe(replace(/(?:test|dev)/g, 'prd'))
 			.pipe(gulp.dest('./'));
 	} else {
 		return gulp
@@ -63,13 +61,15 @@ gulp.task('prd-doppler', () => {
 			.pipe(gulp.dest('./'));
 	}
 });
-
 gulp.task('dev-doppler', () => {
 	var fs = require('fs'),
 		extraFile = 'doppler.yaml';
 
 	if (fs.existsSync(extraFile)) {
-		return gulp.src('./').pipe(replace('prd', 'dev')).pipe(gulp.dest('./'));
+		return gulp
+			.src(extraFile)
+			.pipe(replace(/(?:test|prd)/g, 'dev'))
+			.pipe(gulp.dest('./'));
 	} else {
 		return gulp
 			.src('./')
@@ -87,10 +87,13 @@ gulp.task('test-doppler', () => {
 		extraFile = 'doppler.yaml';
 
 	if (fs.existsSync(extraFile)) {
-		return gulp.src('./').pipe(replace('prd', 'dev')).pipe(gulp.dest('./'));
-	} else {
 		return gulp
 			.src('./')
+			.pipe(replace(/(?:prd|dev)/g, 'test'))
+			.pipe(gulp.dest('./'));
+	} else {
+		return gulp
+			.src(extraFile)
 			.pipe(
 				file(
 					'doppler.yaml',
