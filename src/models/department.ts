@@ -42,10 +42,6 @@ const DepartmentSchema = new mongoose.Schema(
 		grooming: {
 			type: [String],
 		},
-		featured: {
-			type: Boolean,
-			default: false,
-		},
 		open: String,
 		close: String,
 	},
@@ -57,6 +53,17 @@ export const Department = mongoose.model('Department', DepartmentSchema);
 export const getAllDepartment = () => Department.find();
 export const getDepartmentByID = (id: string) => Department.findById(id);
 export const createNewDepartment = (values: Record<string, string | Array<object> | Object>) => new Department(values).save();
-export const deleteDepartment = (id: string) => Department.findByIdAndUpdate(id);
+
+export const createListDepartments = (values: Record<string, any>) => Department.create(values);
+export const deleteDepartment = (id: string) => Department.findByIdAndDelete(id);
+
+export const deleteDepartments= (listId: Array<string>) => Department.deleteMany({
+	_id: {
+		$in: listId,
+	},
+});
 export const updateDepartment = (id: string, values: Record<string, string | Array<object> | Object>) => Department.findByIdAndUpdate(id, values, { returnDocument: 'after' }
 )
+
+
+
