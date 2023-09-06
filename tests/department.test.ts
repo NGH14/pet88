@@ -18,7 +18,7 @@ chai.use(chaiHttp);
 describe('Department API', () => {
 	const sample = {
 		name: 'test new api',
-		type: 'owner',	
+		type: 'owner',
 		city: randCity(),
 		address: randStreetAddress(),
 		title: 'Best Hotel in the City',
@@ -44,22 +44,24 @@ describe('Department API', () => {
 				});
 			done();
 		});
-		it('should GET a department by the given id',  (done) => {
-			let newDepartment = new Department(sample)
-			newDepartment.save((_, department) => {chai
-				.request(app)
-				.get(endPoint + department._id)
-				.end((_err, res) => {
-					res.should.have.status(200);
-					res.body.should.be.a('object');
-					res.body.should.have.property('_id');
-					res.body.should.have.property('type');
-					res.body.should.have.property('services');
-					res.body.should.have.property('city');
-					res.body.should.have.property('title');
-					res.body.should.have.property('_id').eql(department.id);
-			})});
-			done()
+		it('should GET a department by the given id', (done) => {
+			let newDepartment = new Department(sample);
+			newDepartment.save((_, department) => {
+				chai
+					.request(app)
+					.get(endPoint + department._id)
+					.end((_err, res) => {
+						res.should.have.status(200);
+						res.body.should.be.a('object');
+						res.body.should.have.property('_id');
+						res.body.should.have.property('type');
+						res.body.should.have.property('services');
+						res.body.should.have.property('city');
+						res.body.should.have.property('title');
+						res.body.should.have.property('_id').eql(department.id);
+					});
+			});
+			done();
 		});
 	});
 	describe('/POST department', () => {
@@ -108,22 +110,22 @@ describe('Department API', () => {
 					res.body.should.be.a('array');
 					res.body.length.should.be.eql(2);
 				});
-				done()
+			done();
 		});
 	});
 
 	describe('/PUT/:id department', () => {
 		it('should UPDATE a department given the id', (done) => {
 			let newDepartment = new Department(sample);
-				chai
-					.request(app)
-					.put(endPoint + newDepartment._id)
-					.send({ city: 'Da Nang' })
-					.end((_err, res) => {
-						res.should.have.status(200);
-						res.body.should.be.a('object');
-						res.body.should.have.property('city').eql('Da Nang');
-					});
+			chai
+				.request(app)
+				.put(endPoint + newDepartment._id)
+				.send({ city: 'Da Nang' })
+				.end((_err, res) => {
+					res.should.have.status(200);
+					res.body.should.be.a('object');
+					res.body.should.have.property('city').eql('Da Nang');
+				});
 			done();
 		});
 	});
@@ -156,10 +158,9 @@ describe('Department API', () => {
 				.send(JSON.stringify(listID))
 				.end((_err, res) => {
 					res.should.have.status(200);
-					res.body.should.be.contain("deleted")
+					res.body.should.be.contain('deleted');
 				});
 			done();
-
 		});
 	});
 });
