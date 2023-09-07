@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const GroomingSchema = new mongoose.Schema(
 	{
-		hotelId: {
+		departmentID: {
 			type: String,
 			required: true,
 		},
