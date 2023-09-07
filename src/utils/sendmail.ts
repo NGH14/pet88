@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
+import SendmailTransport from 'nodemailer/lib/sendmail-transport';
 
-async function sendMail(dataSend, template) {
+async function sendMail(dataSend: nodemailer.SendMailOptions, template: SendmailTransport) {
 	let transporter = nodemailer.createTransport({
 		host: 'smtp.gmail.com',
 		port: 587,
@@ -9,9 +10,9 @@ async function sendMail(dataSend, template) {
 	});
 
 	// send mail with defined transport object
-	await transporter.sendMail({
+		transporter.sendMail({
 		from: '"Pet88 Service" <servicepet88@gmail.com>', // sender address
-		to: dataSend.recipient, // list of receivers
+		to: dataSend.to, // list of receivers
 		subject: dataSend.subject, // Subject line
 		text: dataSend.text || '', // plain text body
 		html: template, // html body
@@ -19,3 +20,4 @@ async function sendMail(dataSend, template) {
 }
 
 export default sendMail;
+	
