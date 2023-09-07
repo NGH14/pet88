@@ -1,8 +1,8 @@
 import nodemailer from 'nodemailer';
-import SendmailTransport from 'nodemailer/lib/sendmail-transport';
 
-async function sendMail(dataSend: nodemailer.SendMailOptions, template: SendmailTransport) {
-	let transporter = nodemailer.createTransport({
+
+async function sendMail(dataSend: nodemailer.SendMailOptions, template: string) {
+	let transport = nodemailer.createTransport({
 		host: 'smtp.gmail.com',
 		port: 587,
 		secure: false,
@@ -10,7 +10,7 @@ async function sendMail(dataSend: nodemailer.SendMailOptions, template: Sendmail
 	});
 
 	// send mail with defined transport object
-		transporter.sendMail({
+	transport.sendMail({
 		from: '"Pet88 Service" <servicepet88@gmail.com>', // sender address
 		to: dataSend.to, // list of receivers
 		subject: dataSend.subject, // Subject line
