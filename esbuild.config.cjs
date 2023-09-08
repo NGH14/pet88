@@ -1,7 +1,7 @@
 const esbuild = require('esbuild');
 
 esbuild.build({
-	entryPoints: [`src/*`],
+	entryPoints: ['src/*'],
 	bundle: true,
 	minify: true,
 	external: ['node_module', 'sharp'],
