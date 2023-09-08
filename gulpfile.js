@@ -1,12 +1,13 @@
-const gulp = require('gulp');
-const uglify = require('gulp-uglify');
-const rename = require('gulp-rename');
-const ts = require('gulp-typescript');
-const replace = require('gulp-replace');
-const exec = require('gulp-exec');
-const log = require('fancy-log');
-const util = require('util');
-const file = require('gulp-file');
+import gulp from 'gulp';
+import uglify from 'gulp-uglify';
+import rename from 'gulp-rename';
+import ts from 'gulp-typescript';
+import replace from 'gulp-replace';
+import exec from 'gulp-exec';
+import log from 'fancy-log';
+import util from 'util';
+import file from 'gulp-file';
+import fs from 'fs';
 
 gulp.task('setup-doppler', function () {
 	const options = {
@@ -41,8 +42,7 @@ gulp.task('server', function () {
 		.pipe(exec.reporter(reportOptions));
 });
 gulp.task('prd-doppler', () => {
-	var fs = require('fs'),
-		extraFile = 'doppler.yaml';
+	const extraFile = 'doppler.yaml';
 
 	if (fs.existsSync(extraFile)) {
 		return gulp
@@ -59,8 +59,7 @@ gulp.task('prd-doppler', () => {
 	}
 });
 gulp.task('dev-doppler', () => {
-	var fs = require('fs'),
-		extraFile = 'doppler.yaml';
+	const extraFile = 'doppler.yaml';
 
 	if (fs.existsSync(extraFile)) {
 		return gulp
@@ -77,8 +76,7 @@ gulp.task('dev-doppler', () => {
 	}
 });
 gulp.task('test-doppler', () => {
-	var fs = require('fs'),
-		extraFile = 'doppler.yaml';
+	const extraFile = 'doppler.yaml';
 
 	if (fs.existsSync(extraFile)) {
 		return gulp
