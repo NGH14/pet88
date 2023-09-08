@@ -9,6 +9,7 @@ import {
 import chaiHttp from 'chai-http';
 import { app } from '../src/index.ts';
 import { connectDB } from '../src/config/mongodb.js';
+
 import { randCity, randStreetAddress } from '@ngneat/falso';
 
 const should = chai.should();
@@ -25,7 +26,7 @@ describe('Department API', () => {
 		desc: 'hotel description',
 		services: ['grooming', 'hotel'],
 	};
-	const endPoint = '/api/departments/';
+	const baseUrl = '/api/departments/';
 	beforeEach((done) => {
 		connectDB();
 		Department.deleteMany({}, (err) => {});
@@ -36,7 +37,7 @@ describe('Department API', () => {
 		it('should GET the empty array', (done) => {
 			chai
 				.request(app)
-				.get(endPoint)
+				.get(baseUrl)
 				.end((_err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('array');
@@ -49,7 +50,7 @@ describe('Department API', () => {
 			newDepartment.save((_, department) => {
 				chai
 					.request(app)
-					.get(endPoint + department._id)
+					.get(baseUrl + department._id)
 					.end((_err, res) => {
 						res.should.have.status(200);
 						res.body.should.be.a('object');
@@ -68,7 +69,7 @@ describe('Department API', () => {
 		it('should POST department ', (done) => {
 			chai
 				.request(app)
-				.post(endPoint)
+				.post(baseUrl)
 				.set('content-type', 'application/json')
 				.send(JSON.stringify(sample))
 				.end((_err, res) => {
@@ -87,7 +88,7 @@ describe('Department API', () => {
 			const { city, ...sampleWithoutCityField } = sample;
 			chai
 				.request(app)
-				.post(endPoint)
+				.post(baseUrl)
 				.set('content-type', 'application/json')
 				.send(JSON.stringify(sampleWithoutCityField))
 				.end((_err, res) => {
@@ -102,7 +103,7 @@ describe('Department API', () => {
 		it('should POST departments', (done) => {
 			chai
 				.request(app)
-				.post(endPoint + 'list')
+				.post(baseUrl + 'list')
 				.set('content-type', 'application/json')
 				.send(JSON.stringify([sample, sample]))
 				.end((_err, res) => {
@@ -119,7 +120,7 @@ describe('Department API', () => {
 			let newDepartment = new Department(sample);
 			chai
 				.request(app)
-				.put(endPoint + newDepartment._id)
+				.put(baseUrl + newDepartment._id)
 				.send({ city: 'Da Nang' })
 				.end((_err, res) => {
 					res.should.have.status(200);
@@ -136,7 +137,7 @@ describe('Department API', () => {
 			newDepartment.save((_, department) => {
 				chai
 					.request(app)
-					.del(endPoint + department._id)
+					.del(baseUrl + department._id)
 					.end((_err, res) => {
 						res.should.have.status(200);
 					});
@@ -153,7 +154,7 @@ describe('Department API', () => {
 			);
 			chai
 				.request(app)
-				.patch(endPoint + 'multiple-delete')
+				.patch(baseUrl + 'multiple-delete')
 				.set('content-type', 'application/json')
 				.send(JSON.stringify(listID))
 				.end((_err, res) => {
