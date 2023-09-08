@@ -1,13 +1,8 @@
 import chai from 'chai';
 
-import mongoose from 'mongoose';
-import {
-	Department,
-	createListDepartments,
-	createNewDepartment,
-} from '../src/models/department.ts';
+import {Department} from '../src/models/department.ts';
 import chaiHttp from 'chai-http';
-import { app } from '../src/index.ts';
+import { app } from '../src/app.ts';
 import { connectDB } from '../src/config/mongodb.js';
 
 import { randCity, randStreetAddress } from '@ngneat/falso';
@@ -17,6 +12,8 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 describe('Department API', () => {
+	const baseUrl = '/api/v1/departments/';
+
 	const sample = {
 		name: 'test new api',
 		type: 'owner',
@@ -26,7 +23,7 @@ describe('Department API', () => {
 		desc: 'hotel description',
 		services: ['grooming', 'hotel'],
 	};
-	const baseUrl = '/api/departments/';
+
 	beforeEach((done) => {
 		connectDB();
 		Department.deleteMany({}, (err) => {});

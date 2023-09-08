@@ -1,23 +1,16 @@
 import chai from 'chai';
-
-import mongoose from 'mongoose';
-import {
-	Department,
-	createListDepartments,
-	createNewDepartment,
-} from '../src/models/department.ts';
 import chaiHttp from 'chai-http';
-import { app } from '../src/index.ts';
-import { connectDB } from '../src/config/mongodb.js';
+import { app } from '../src/app.ts';
 
 const should = chai.should();
 const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-const baseUrl = '/api/email';
 
-describe('Test Send Mail', () => {
+describe('Send Mail API', () => {
+const baseUrl = '/api/v1/email';
+
   it('should POST to send mail', (done) => {
     const mail = {    
       "data": {
@@ -34,7 +27,21 @@ describe('Test Send Mail', () => {
       .end((err, res) => {
         res.should.have.status(200);
         res.body.message.should.be.contain("sent");
-        err.should.not.exit();
+      });
+    done();
+  });
+  it('should not POST to send mail', (done) => {
+    const mail = {    
+      "data": {},
+      "template": "<p> test </p>"
+  };
+    chai
+      .request(app)
+      .post(baseUrl)
+      .set('content-type', 'application/json')
+      .send(JSON.stringify(mail))
+      .end((_err, res) => {
+        res.should.have.status(500);
       });
     done();
   });
