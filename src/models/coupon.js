@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 
 const CouponSchema = new mongoose.Schema(
 	{
-		_id: String,
 		created: Date,
 		currency: String,
 		duration: String,
