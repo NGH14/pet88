@@ -24,13 +24,13 @@ const baseUrl = '/api/v1/email';
       .post(baseUrl)
       .set('content-type', 'application/json')
       .send(JSON.stringify(mail))
-      .end((err, res) => {
+      .end((_err, res) => {
         res.should.have.status(200);
         res.body.message.should.be.contain("sent");
       });
     done();
   });
-  it('should not POST to send mail', (done) => {
+  it('should not POST to send the missing data mail', (done) => {
     const mail = {    
       "data": {},
       "template": "<p> test </p>"
