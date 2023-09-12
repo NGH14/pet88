@@ -4,11 +4,7 @@ import swaggerUi from 'swagger-ui-express';
 import packageJSON from '../../package.json' assert { type: 'json' };
 import logger from './logger.ts';
 
-
-
 function swaggerDocs(app: Express, PORT: number) {
-
-
 	const options: swaggerJsdoc.Options = {
 		definition: {
 			openapi: '3.0.0',
@@ -39,7 +35,7 @@ function swaggerDocs(app: Express, PORT: number) {
 		},
 		apis: ['./src/routes/*.js', './src/routes/*.ts'],
 	};
-	
+
 	const swaggerSpec = swaggerJsdoc(options);
 
 	app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
@@ -52,7 +48,7 @@ function swaggerDocs(app: Express, PORT: number) {
 	logger.log({
 		level: 'info',
 		message: 'Docs available at',
-    data: `http://localhost:${PORT}/docs`
+		data: `http://localhost:${PORT}/docs`,
 	});
 }
 
