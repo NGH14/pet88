@@ -1,9 +1,18 @@
-import { connectDB } from "./config/mongodb";
+import { connectDB } from './config/mongodb.js';
 
-import {app} from './index.ts';
-const PORT:number = Number(process.env.LOCAL_PORT || 5001);
+import { app } from './app.ts';
+import logger from '../src/utils/logger.ts';
+import swaggerDocs from '../src/utils/swagger.ts';
+const PORT: number = Number(process.env.LOCAL_PORT || 5001);
 
 app.listen(PORT, () => {
+
 	connectDB();
-	console.log(`✅ Server listening on ${PORT}`);
+	if (process.env.NODE_ENV == "development") swaggerDocs(app, PORT);
+
+	logger.log({
+		level: 'info',
+		message: 'Server listening on',
+    data: `http://localhost:${PORT}`
+	});
 });
