@@ -6,9 +6,8 @@ import multer from 'multer';
 import sharp from 'sharp';
 import cloudinary from './config/cloudinary.js';
 import './config/firebase.js';
+
 import rootRouter from './routes/index.ts';
-import swaggerUI from "swagger-ui-express";
-import swaggerJSDoc from 'swagger-jsdoc';
 
 
 export const app = express();
@@ -63,19 +62,4 @@ app.use(
 
 app.use('/api/v1/', rootRouter);
 
-const swaggerOptions = {
-  swaggerDefinition: {
-    info: {
-			version: "1.1.0",
-      title: "Rest API",
-      description: "A simple rest API",
-      servers: ["http://localhost:3001"]
-			
-    }
-  },
-  apis: ["./routes/users.js"]
-};
-
-const swaggerDocs = swaggerJSDoc(swaggerOptions);
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
