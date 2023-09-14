@@ -4,6 +4,7 @@ import { app } from '../src/app.ts';
 
 const should = chai.should();
 const expect = chai.expect;
+import { randCity, randStreetAddress } from '@ngneat/falso';
 
 chai.use(chaiHttp);
 
@@ -14,7 +15,7 @@ const baseUrl = '/api/v1/email';
   it('should POST to send mail', (done) => {
     const mail = {    
       "data": {
-       "subject": "Pet88: Booking Confirmation",
+       "subject": "Pet88: Test Send Mail",
         "to": "vuhuunghia2001@gmail.com"
       },
       "template": "<p> test </p>"
