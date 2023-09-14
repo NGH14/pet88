@@ -8,9 +8,15 @@ const UserSchema = new mongoose.Schema(
 		email: {
 			type: String,
 			required: true,
+			unique: true,
+		},
+		password: {
+			type:String,
+			require: true,
+			minLength: 6,
 		},
 		emailVerified: {
-			type: String,
+			type: Boolean,
 			required: true,
 		},
 		displayName: {
@@ -27,7 +33,10 @@ const UserSchema = new mongoose.Schema(
 		},
     note: {
       type: String,
-    }
+    },
+		refreshToken: {
+			type: String,
+		}
 	},
 	{ timestamps: true },
 );
