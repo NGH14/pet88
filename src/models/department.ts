@@ -49,14 +49,11 @@ const DepartmentSchema = new mongoose.Schema(
 );
 
 export const Department = mongoose.model('Department', DepartmentSchema);
-
 export const getAllDepartment = () => Department.find();
 export const getDepartmentByID = (id: string) => Department.findById(id);
 export const createNewDepartment = (values: Record<string, string | Array<object> | Object>) => new Department(values).save();
-
 export const createListDepartments = (values: Record<string, any>) => Department.create(values);
 export const deleteDepartment = (id: string) => Department.findByIdAndDelete(id);
-
 export const deleteDepartments= (listId: Array<string>) => Department.deleteMany({
 	_id: {
 		$in: listId,
