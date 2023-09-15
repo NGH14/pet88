@@ -12,15 +12,34 @@ import roomRoute from './rooms.js';
 import userRoute from './users.js';
 import emailRoute from './email.ts'
 
+/**
+ * @swagger
+ * /health-check:
+ *  get:
+ *     tags:
+ *     - Healthcheck
+ *     description: Responds if the app is up and running
+ *     responses:
+ *       200:
+ *         description: App is up and running
+ */
+rootRouter.get('/health-check', (req, res) => {
+  const data = {
+    uptime: process.uptime(),
+    message: 'Ok',
+    date: new Date()
+  }
+  res.status(200).send(data);
+});
 
 rootRouter.use('/users', userRoute);
 rootRouter.use('/departments', departmentRoute);
-rootRouter.use('/department-room', roomRoute);
-rootRouter.use('/grooming', groomingRoute);
-rootRouter.use('/checkout', checkoutRoute);
-rootRouter.use('/order', orderRoute);
-rootRouter.use('/coupon', couponRoute);
-rootRouter.use('/promotion', promotionRoute);
+rootRouter.use('/department-rooms', roomRoute);
+rootRouter.use('/groomings', groomingRoute);
+rootRouter.use('/checkouts', checkoutRoute);
+rootRouter.use('/orders', orderRoute);
+rootRouter.use('/coupons', couponRoute);
+rootRouter.use('/promotions', promotionRoute);
 rootRouter.use('/email', emailRoute);
 
 
