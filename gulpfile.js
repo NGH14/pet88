@@ -1,11 +1,7 @@
 import gulp from 'gulp';
-import uglify from 'gulp-uglify';
-import rename from 'gulp-rename';
-import ts from 'gulp-typescript';
 import replace from 'gulp-replace';
 import exec from 'gulp-exec';
 import log from 'fancy-log';
-import util from 'util';
 import file from 'gulp-file';
 import fs from 'fs';
 
