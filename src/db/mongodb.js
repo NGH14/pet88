@@ -1,13 +1,17 @@
 import mongoose from 'mongoose';
+import logger from '../utils/logger.ts';
 
 export const connectDB = async () => {
 	try {
 		mongoose.connect(process.env.MONGO, { dbName: process.env.DB });
+		logger.log({ level: 'info', message: 'MongoDB Connected' });
 	} catch (error) {
-		console.log(error);
+		logger.log({
+			level: 'error',
+			message: error,
+		});
 	}
 };
-
 mongoose.connection.on('disconnected', () => {
-	console.log('MongoDB Disconnected');
+	logger.log({ level: 'info', message: 'MongoDB Disconnected' });
 });
