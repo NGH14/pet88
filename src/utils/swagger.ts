@@ -9,7 +9,7 @@ function swaggerDocs(app: Express, PORT: number) {
 		definition: {
 			openapi: '3.0.0',
 			info: {
-				title: 'REST API Docs',
+				title: 'Pet88 REST API Docs',
 				version: packageJSON.version,
 			},
 			servers: [
