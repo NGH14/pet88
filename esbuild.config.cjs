@@ -5,8 +5,8 @@ esbuild.build({
 	bundle: true,
 	minify: true,
 	external: ['node_module', 'sharp'],
-	legalComments: 'none',
 	loader: { '.node': 'file' },
+	legalComments: 'none',
 	outdir: 'build',
 	platform: 'node',
 });
