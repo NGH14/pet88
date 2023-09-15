@@ -1,4 +1,4 @@
-import { connectDB } from './config/mongodb.js';
+import { connectDB } from './db/mongodb.js';
 
 import { app } from './app.ts';
 import logger from '../src/utils/logger.ts';
