@@ -11,9 +11,9 @@
 	},
 	"rules": {
 		"quotes": ["error", "single"],
-		// we want to force semicolons
+		// I want to force semicolons
 		"semi": ["error", "always"],
-		// we want to avoid extraneous spaces
+		// I want to avoid extraneous spaces
 		"no-multi-spaces": ["error"]
 	},
 	"ignorePatterns": ["node_modules", "coverage", "dist", "*.*js"]
