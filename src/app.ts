@@ -6,14 +6,13 @@ import multer from 'multer';
 import sharp from 'sharp';
 import cloudinary from './config/cloudinary.js';
 import './config/firebase.js';
-
+import ErrorHandler from "./middleware/error.ts"
 import rootRouter from './routes/index.ts';
 
 
-export const app = express();
+const app = express();
 
 app.use(cors());
-app.use(express.json());
 app.use(express.static('public'));
 app.use(express.json({ limit: '10mb' }));
 app.use(
@@ -36,6 +35,7 @@ app.use(
 		extended: true,
 	}),
 );
+app.use(ErrorHandler)
 
 
 // app.use(middleware.decodeToken);
@@ -62,4 +62,5 @@ app.use(
 
 app.use('/api/v1/', rootRouter);
 
+export default app;
 
