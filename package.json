@@ -13,7 +13,7 @@
 		"@types/multer": "^1.4.7",
 		"@types/node": "^20.5.6",
 		"body-parser": "^1.20.1",
-		"chai-http": "^4.4.0",
+		"chai-http": "^4.4.0",	
 		"cloudinary": "^1.40.0",
 		"cors": "^2.8.5",
 		"dayjs": "^1.11.9",
@@ -30,11 +30,11 @@
 		"winston": "^3.10.0"
 	},
 	"scripts": {
-		"start": "doppler run node build/server.cjs",
+		"start": "npm run test & doppler run -- node build/server.cjs",
 		"start:prd": "gulp start:prd & doppler run -- nodemon",
 		"build": "node esbuild.config.cjs",
 		"dev": "gulp dev & doppler run -- nodemon",
-		"test": "gulp test & doppler run -- mocha -r ts-node/register tests/*.ts  --loader=ts-node/esm --no-warnings --timeout 10000 --exit"
+		"test": "gulp test & doppler run -- mocha -b -r ts-node/register tests/*.ts  --loader=ts-node/esm --no-warnings --timeout 10000 --exit"
 	},
 	"devDependencies": {
 		"@ngneat/falso": "^7.1.0",
