@@ -4,7 +4,8 @@ import logger from '../utils/logger.ts';
 export const connectDB = async () => {
 	try {
 		mongoose.connect(process.env.MONGO, { dbName: process.env.DB });
-		logger.log({ level: 'info', message: 'MongoDB Connected' });
+		if (process.env.NODE_ENV !== 'test')
+			logger.log({ level: 'info', message: 'MongoDB Connected' });
 	} catch (error) {
 		logger.log({
 			level: 'error',
