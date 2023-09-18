@@ -35,7 +35,6 @@ app.use(
 		extended: true,
 	}),
 );
-app.use(ErrorHandler)
 
 
 // app.use(middleware.decodeToken);
@@ -61,6 +60,8 @@ app.use(ErrorHandler)
 // });
 
 app.use('/api/v1/', rootRouter);
+app.use(ErrorHandler)
+
 
 export default app;
 
