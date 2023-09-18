@@ -1,17 +1,16 @@
 import express from 'express';
 
 const router = express.Router();
-import { Department } from '../models/department.ts';
+import Department from '../models/department.ts';
 import { Grooming } from '../models/grooming.js';
-import { Order } from '../models/orders.js';
 
 router.get('/', async (_req, res) => {
 	try {
 		const rooms = await Grooming.find();
 
 		res.status(200).json(rooms);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -19,8 +18,8 @@ router.get('/:id', async (req, res) => {
 	try {
 		const room = await Grooming.findById(req.params.id);
 		res.status(200).json(room);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -30,8 +29,8 @@ router.get('/room/:id', async (req, res) => {
 		const room = rooms[0].roomNumbers.find((rId) => rId._id == req.params.id);
 
 		res.status(200).json(room);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -47,8 +46,8 @@ router.get('/room/event/:id', async (req, res) => {
 		);
 
 		res.status(200).json(room);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -67,11 +66,11 @@ router.put('/room/event/:id', async (req, res) => {
 			{
 				arrayFilters: [{ 'ud.id': req.params.id }],
 			},
-		).catch((err) => console.log(err));
+		).catch((error) => console.log(error));
 
 		res.status(200).json('Update Success');
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -84,11 +83,11 @@ router.put('/room/event/delete/:id', async (req, res) => {
 					'roomNumbers.$[].unavailableDates': { id: req.params.id },
 				},
 			},
-		).catch((err) => console.log(err));
+		).catch((error) => console.log(error));
 
 		res.status(200).json('Delete Success');
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -102,12 +101,12 @@ router.post('/:id', async (req, res) => {
 			await Department.findByIdAndUpdate(hotelId, {
 				$push: { grooming: savedGrooming._id },
 			});
-		} catch (err) {
-			res.status(500).json(err);
+		} catch (error) {
+			res.status(500).json(error);
 		}
 		res.status(200).json(savedGrooming);
-	} catch (err) {
-		res.json(err);
+	} catch (error) {
+		res.json(error);
 	}
 });
 
@@ -122,8 +121,8 @@ router.put('/availability/:id', async (req, res) => {
 			},
 		);
 		res.status(200).json('Grroming status has been updated.');
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -131,8 +130,8 @@ router.delete('/:id', async (req, res) => {
 	try {
 		const grooming = await Grooming.findByIdAndDelete(req.params.id);
 		res.status(200).json(`Grooming has been deleted. ${grooming}`);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -146,8 +145,8 @@ router.put('/:id', async (req, res) => {
 			{ new: true },
 		);
 		res.status(200).json(updatedGrooming);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -159,8 +158,8 @@ router.patch('/multiple-delete', async (req, res) => {
 			},
 		});
 		res.status(200).json('Departmet has been deleted.');
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 

@@ -12,8 +12,8 @@ router.post('/', async (req, res) => {
 			duration: 'repeat',
 		});
 		res.status(200).json(promotionCode);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -22,8 +22,8 @@ router.get('/', async (req, res) => {
 		const coupons = await stripe.coupons.list({});
 
 		res.status(200).json(coupons);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -31,8 +31,8 @@ router.get('/:id', async (req, res) => {
 	try {
 		const coupon = await stripe.coupons.retrieve(req.params.id);
 		res.status(200).json(coupon);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -42,8 +42,8 @@ router.put('/:id', async (req, res) => {
 			metadata: { order_id: '6735' },
 		});
 		res.status(200).json(coupon);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -51,8 +51,8 @@ router.delete('/:id', async (req, res) => {
 	try {
 		await stripe.coupons.del(req.params.id);
 		res.status(200).json('Delete Successful');
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 

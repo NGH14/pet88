@@ -1,7 +1,7 @@
 import express from 'express';
 
 const router = express.Router();
-import { Department } from '../models/department.ts';
+import Department from '../models/department.ts';
 import { Room } from '../models/room.js';
 
 router.post('/:id', async (req, res) => {
@@ -14,12 +14,12 @@ router.post('/:id', async (req, res) => {
 			await Department.findByIdAndUpdate(hotelId, {
 				$push: { rooms: savedRoom._id },
 			});
-		} catch (err) {
-			res.status(500).json(err);
+		} catch (error) {
+			res.status(500).json(error);
 		}
 		res.status(200).json(savedRoom);
-	} catch (err) {
-		res.json(err);
+	} catch (error) {
+		res.json(error);
 	}
 });
 
@@ -33,8 +33,8 @@ router.put('/:id', async (req, res) => {
 			{ new: true },
 		);
 		res.status(200).json(updatedRoom);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -42,8 +42,8 @@ router.delete('/:id', async (req, res) => {
 	try {
 		await Room.findByIdAndDelete(req.params.id);
 		res.status(200).json('Room has been deleted.');
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -51,8 +51,8 @@ router.get('/:id', async (req, res) => {
 	try {
 		const room = await Room.findById(req.params.id);
 		res.status(200).json(room);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -66,14 +66,13 @@ router.get('/availability/found', async (req, res) => {
 			return {
 				...element.toJSON(),
 				roomNumbers: element.roomNumbers.filter(
-					(rn) =>
-						!rn.unavailableDates.some((ud) => !dates.includes(ud)),
+					(rn) => !rn.unavailableDates.some((ud) => !dates.includes(ud)),
 				),
 			};
 		});
 		res.json(list);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -82,8 +81,8 @@ router.get('/', async (req, res) => {
 		const rooms = await Room.find();
 
 		res.status(200).json(rooms);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -98,8 +97,8 @@ router.put('/availability/:id', async (req, res) => {
 			},
 		);
 		res.status(200).json('Room status has been updated.');
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -112,8 +111,8 @@ router.patch('/multiple-delete', async (req, res) => {
 		});
 		// res.status(200).json(a);
 		res.status(200).json('Departmet has been deleted.');
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
