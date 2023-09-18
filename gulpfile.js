@@ -5,6 +5,25 @@ import log from 'fancy-log';
 import file from 'gulp-file';
 import fs from 'fs';
 
+gulp.task('set-dev-node-env', function (done) {
+	process.env.NODE_ENV = 'development';
+	log.info('✅ Set-up environment development');
+
+	done();
+});
+
+gulp.task('set-prd-node-env', function (done) {
+	process.env.NODE_ENV = 'production';
+	log.info('✅ Set-up environment production');
+	done();
+});
+
+gulp.task('set-test-node-env', function (done) {
+	process.env.NODE_ENV = 'test';
+	log.info('✅ Set-up environment test');
+	done();
+});
+
 gulp.task('setup-doppler', function () {
 	const options = {
 		continueOnError: false, // default = false, true means don't emit error event
@@ -92,6 +111,15 @@ gulp.task('test-doppler', () => {
 	}
 });
 
-gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler'));
-gulp.task('dev', gulp.series('dev-doppler', 'setup-doppler'));
-gulp.task('test', gulp.series('test-doppler', 'setup-doppler'));
+gulp.task(
+	'start:prd',
+	gulp.series('set-prd-node-env', 'prd-doppler', 'setup-doppler'),
+);
+gulp.task(
+	'dev',
+	gulp.series('set-dev-node-env', 'dev-doppler', 'setup-doppler'),
+);
+gulp.task(
+	'test',
+	gulp.series('set-test-node-env', 'test-doppler', 'setup-doppler'),
+);
