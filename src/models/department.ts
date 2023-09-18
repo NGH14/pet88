@@ -1,4 +1,30 @@
 import mongoose from 'mongoose';
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     departments:
+ *       type: object
+ *       required:
+ *         - title
+ *         - author
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: The auto-generated id of the departments
+ *         title:
+ *           type: string
+ *           description: The book title
+ *         author:
+ *           type: string
+ *           description: The book author
+ *       example:
+ *         id: d5fE_asz
+ *         title: The New Turing Omnibus
+ *         author: Alexander K. Dewdney
+ **/
+
 const DepartmentSchema = new mongoose.Schema(
 	{
 		name: {
@@ -48,19 +74,8 @@ const DepartmentSchema = new mongoose.Schema(
 	{ timestamps: true },
 );
 
-export const Department = mongoose.model('Department', DepartmentSchema);
-export const getAllDepartment = () => Department.find();
-export const getDepartmentByID = (id: string) => Department.findById(id);
-export const createNewDepartment = (values: Record<string, string | Array<object> | Object>) => new Department(values).save();
-export const createListDepartments = (values: Record<string, any>) => Department.create(values);
-export const deleteDepartment = (id: string) => Department.findByIdAndDelete(id);
-export const deleteDepartments= (listId: Array<string>) => Department.deleteMany({
-	_id: {
-		$in: listId,
-	},
-});
-export const updateDepartment = (id: string, values: Record<string, string | Array<object> | Object>) => Department.findByIdAndUpdate(id, values, { returnDocument: 'after' }
-)
+const Department = mongoose.model('Department', DepartmentSchema);
 
+export default Department;
 
 
