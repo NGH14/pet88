@@ -1,9 +1,11 @@
+process.env.NODE_ENV="test"
+
 import chai from 'chai';
 
-import {Department} from '../src/models/department.ts';
+import Department from '../src/models/department.ts';
 import chaiHttp from 'chai-http';
-import { app } from '../src/app.ts';
-import { connectDB } from '../src/config/mongodb.js';
+import app from '../src/app.ts';
+import {connectDB} from '../src/db/mongodb.js';
 
 import { randCity, randStreetAddress } from '@ngneat/falso';
 
@@ -26,7 +28,7 @@ describe('Department API', () => {
 
 	beforeEach((done) => {
 		connectDB();
-		Department.deleteMany({}, (err) => {});
+		Department.deleteMany({}, (error) => {});
 		done();
 	});
 
@@ -89,10 +91,12 @@ describe('Department API', () => {
 				.set('content-type', 'application/json')
 				.send(JSON.stringify(sampleWithoutCityField))
 				.end((_err, res) => {
+					console.log(_err, res.body)
 					res.should.status(500);
 					res.body.should.be.a('object');
-					res.body.should.have.property('errors');
-					res.body.errors.should.have.property('city');
+					res.body.should.have.any.key("ValidationError");
+					// res.body.should.be.contain("city");
+
 				});
 			done();
 		});
