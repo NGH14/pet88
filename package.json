@@ -35,7 +35,7 @@
 		"start:prd": "gulp start:prd & doppler run -- nodemon",
 		"build": "node esbuild.config.cjs",
 		"dev": "gulp dev & doppler run -- nodemon",
-		"test": "gulp test & doppler run -- mocha -b -r ts-node/register tests/*.ts  --loader=ts-node/esm --no-warnings --timeout 10000 --exit"
+		"test": "gulp test & doppler run -- mocha -r ts-node/register tests/*.ts  --loader=ts-node/esm --no-warnings --timeout 10000"
 	},
 	"devDependencies": {
 		"@ngneat/falso": "^7.1.0",
