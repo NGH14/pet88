@@ -72,7 +72,7 @@ gulp.task('test-doppler', () => {
 	} else {
 		return gulp
 			.src('./')
-			.pipe(file('doppler.yaml', 'setup:\n project: pet88\n config: be_test'))
+			.pipe(file('doppler.yaml', 'setup:\n project: pet88\nconfig: be_test'))
 			.pipe(gulp.dest('./'));
 	}
 });
