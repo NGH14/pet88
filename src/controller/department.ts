@@ -1,94 +1,126 @@
-import express from 'express';
-import {
-	createListDepartments,
-	createNewDepartment,
-	deleteDepartment,
-	deleteDepartments,
-	getAllDepartment,
-	getDepartmentByID,
-	updateDepartment,
-} from '@models/department.ts';
+import { Request, Response, NextFunction } from 'express';
+import Department from '../models/department.ts';
 
 export async function CreateDepartment(
-	req: express.Request,
-	res: express.Response,
+	req: Request,
+	res: Response,
+	next: NextFunction,
 ) {
 	try {
-		const savedDepartment = await createNewDepartment(req.body);
-		res.status(200).json(savedDepartment);
-	} catch (err) {
-		res.status(500).json(err);
+		const savedDepartment = await new Department(req.body).save();
+		res.status(200).json({
+			success: true,
+			status: 200,
+			message: "Create Department Success",
+			data: savedDepartment,
+		});
+		next();
+	} catch (error) {
+		next(error);
 	}
 }
 
 export async function CreateDepartments(
-	req: express.Request,
-	res: express.Response,
+	req: Request,
+	res: Response,
+	next: NextFunction,
 ) {
 	try {
-		const savedDepartments = await createListDepartments(req.body);
-		res.status(200).json(savedDepartments);
-	} catch (err) {
-		res.status(500).json(err);
+		const savedDepartments = await Department.create(req.body);
+		res.status(200).json({
+			success: true,
+			status: 200,
+			message: "Create Departments Success",
+			data: savedDepartments,
+		});
+		next();
+	} catch (error) {
+		next(error);
 	}
 }
 
 export async function GetAllDepartment(
-	_: express.Request,
-	res: express.Response,
+	_: Request,
+	res: Response,
+	next: NextFunction,
 ) {
 	try {
-		const listDepartments = await getAllDepartment();
-		res.status(200).json(listDepartments);
-	} catch (err) {
-		res.status(500).json(err);
+		const listDepartments = await Department.find();
+		res.status(200).json({
+			success: true,
+			status: 200,
+			message: "Get Departments Success",
+			data: listDepartments,
+		});
+		next();
+	} catch (error) {
+		next(error);
 	}
 }
 
 export async function UpdateDepartmentByID(
-	req: express.Request,
-	res: express.Response,
+	req: Request,
+	res: Response,
+	next: NextFunction,
 ) {
 	try {
-		const updatedDepartment = await updateDepartment(req.params.id, req.body);
-
+		const updatedDepartment = await Department.findByIdAndUpdate(
+			req.params.id,
+			req.body,
+		);
 		res.status(200).json(updatedDepartment);
-	} catch (err) {
-		res.status(500).json(err);
+		next();
+	} catch (error) {
+		next(error);
 	}
 }
 
 export async function DeleteDepartmentByID(
-	req: express.Request,
-	res: express.Response,
+	req: Request,
+	res: Response,
+	next: NextFunction,
 ) {
 	try {
-		await deleteDepartment(req.params.id);
+		await Department.findByIdAndDelete(req.params.id);
 		res.status(200).json({ message: `Department has been deleted` });
-	} catch (err) {
-		res.status(500).json(err);
+		next();
+	} catch (error) {
+		next(error);
 	}
 }
 export async function DeleteDepartments(
-	req: express.Request,
-	res: express.Response,
+	req: Request,
+	res: Response,
+	next: NextFunction,
 ) {
 	try {
-		await deleteDepartments(req.body);
+		await Department.deleteMany({
+			_id: {
+				$in: req.body,
+			},
+		});
 		res.status(200).json(`Departments has been deleted`);
-	} catch (err) {
-		res.status(500).json(err);
+		next();
+	} catch (error) {
+		next(error);
 	}
 }
 
-export async function FindDepartmentByID(
-	req: express.Request,
-	res: express.Response,
+export async function GetDepartmentByID(
+	req: Request,
+	res: Response,
+	next: NextFunction,
 ) {
 	try {
-		const Department = await getDepartmentByID(req.params.id);
-		res.status(200).json(Department);
-	} catch (err) {
-		res.status(500).json(err);
+		const department = await Department.findById(req.params.id);
+		if (!department) return res.status(404).send();
+		res.status(200).json({
+			success: true,
+			status: 200,
+			message: "Get Department Success",
+			data: department,
+		});		next();
+	} catch (error) {
+		next(error);
 	}
 }
