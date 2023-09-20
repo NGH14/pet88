@@ -6,7 +6,9 @@ const ErrorHandler = (
 	res: Response,
 	next: NextFunction,
 ) => {
+	if (process.env.NODE_ENV === "test") return ;
 	const status = error.statusCode || 500;
+	
 	res.status(status).json({
 		success: false,
 		status,
