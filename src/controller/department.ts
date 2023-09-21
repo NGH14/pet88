@@ -1,5 +1,12 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 import Department from '../models/department.ts';
+
+type Params = {};
+type ResBody = {};
+type ReqBody = {};
+type ReqQuery = {
+    page: number;
+}
 
 export async function CreateDepartment(
 	req: Request,
@@ -8,13 +15,7 @@ export async function CreateDepartment(
 ) {
 	try {
 		const savedDepartment = await new Department(req.body).save();
-		res.status(200).json({
-			success: true,
-			status: 200,
-			message: "Create Department Success",
-			data: savedDepartment,
-		});
-		next();
+		res.status(200).json(savedDepartment);
 	} catch (error) {
 		next(error);
 	}
@@ -27,32 +28,25 @@ export async function CreateDepartments(
 ) {
 	try {
 		const savedDepartments = await Department.create(req.body);
-		res.status(200).json({
-			success: true,
-			status: 200,
-			message: "Create Departments Success",
-			data: savedDepartments,
-		});
+		res.status(200).json(savedDepartments);
 		next();
 	} catch (error) {
 		next(error);
 	}
 }
 
-export async function GetAllDepartment(
-	_: Request,
-	res: Response,
-	next: NextFunction,
-) {
+export  const  GetAllDepartment: RequestHandler<Params, ResBody, ReqBody, ReqQuery> = async (
+	req,
+	res,
+	next
+) => {
+	const page: number = req?.query?.page  || 0;
+	const itemsPerPage: number = 3;
 	try {
-		const listDepartments = await Department.find();
-		res.status(200).json({
-			success: true,
-			status: 200,
-			message: "Get Departments Success",
-			data: listDepartments,
-		});
-		next();
+		const listDepartments = await Department.find()
+			.skip(page * itemsPerPage)
+			.limit(itemsPerPage);
+		res.status(200).json(listDepartments);
 	} catch (error) {
 		next(error);
 	}
@@ -117,9 +111,10 @@ export async function GetDepartmentByID(
 		res.status(200).json({
 			success: true,
 			status: 200,
-			message: "Get Department Success",
+			message: 'Get Department Success',
 			data: department,
-		});		next();
+		});
+		next();
 	} catch (error) {
 		next(error);
 	}

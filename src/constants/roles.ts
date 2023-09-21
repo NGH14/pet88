@@ -1,4 +1,4 @@
-export enum Roles {
+const enum Roles {
   Admin = "ADMIN",
   Lead ="LEAD",
   ProjectManager = "PROJECT_MANAGER",
@@ -6,3 +6,5 @@ export enum Roles {
   STAFF = "STAFF",
   User = "USER",
 }
+
+export default Roles;
