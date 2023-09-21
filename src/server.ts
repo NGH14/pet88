@@ -7,12 +7,20 @@ const PORT: number = Number(process.env.LOCAL_PORT || 5001);
 
 app.listen(PORT, () => {
 	connectDB();
-	if (process.env.NODE_ENV == 'development') swaggerDocs(app, PORT);
-	if (process.env.NODE_ENV !== 'test') {
-		logger.log({
+
+	switch (process.env.NODE_ENV) {
+		case "development":
+			swaggerDocs(app, PORT);
+			logger.log({
 			level: 'info',
 			message: 'Server listening on',
 			data: `http://localhost:${PORT}`,
 		});
+			break;
+		case "test":
+			break;
+	
+		default:
+			break;
 	}
 });
