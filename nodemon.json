@@ -2,6 +2,6 @@
 	"watch": ["src"],
 	"ext": ".ts,.js",
 	"exec": "ts-node --esm ./src/server.ts",
-	"delay": "3",
+	"delay": "10",
 	"ignore": ["node_module", "dist", "*.test.ts"]
 }
