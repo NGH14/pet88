@@ -7,7 +7,7 @@ const ErrorHandler = (
 	next: NextFunction,
 ) => {
 	if (process.env.NODE_ENV === "test") return ;
-	const status = error.statusCode || 500;
+	const status = error.status || 500;
 	
 	res.status(status).json({
 		success: false,
