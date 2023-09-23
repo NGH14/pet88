@@ -1,6 +1,28 @@
-import mongoose from 'mongoose';
-const UserSchema = new mongoose.Schema(
+import Roles from './../constants/roles.ts';
+import mongoose, {Model, Document} from 'mongoose';
+
+export interface IUser {
+  name: string;
+  email: string;
+  passwordHash: string;
+  emailVerified: boolean;
+  displayName: string;
+  photos?: string[];
+  roles: string[];
+  metadata: {
+    lastSignInTime?: string;
+    creationTime?: string;
+    lastRefreshTime?: string;
+  };
+  note?: string;
+  refreshToken?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+const UserSchema = new mongoose.Schema<IUser>(
 	{
+		
 		name: {
 			type: String,
 			required: true,
@@ -26,6 +48,11 @@ const UserSchema = new mongoose.Schema(
 		photos: {
 			type: [String],
 		},
+		roles: {
+			type: [String],
+			required: true,
+			default: [Roles.User],
+		},
 		metadata: {
       lastSignInTime: String,
       creationTime: String,
@@ -41,5 +68,5 @@ const UserSchema = new mongoose.Schema(
 	{ timestamps: true },
 );
 
- const User = mongoose.model('User', UserSchema);
- export default User;
+ const UserModel = mongoose.model<IUser>('User', UserSchema);
+ export default UserModel;
