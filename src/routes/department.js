@@ -1,31 +1,74 @@
+/**
+ * @swagger
+ * tags:
+ *   name: departments
+ *   description: The departments managing API
+ */
+
 import express from 'express';
 import { Grooming } from '../models/grooming.js';
+import paginateResults from '../middleware/pagination.ts';
 
-const router = express.Router();
-import { Department } from '../models/department.ts';
+import Department from '../models/department.ts';
 import { Room } from '../models/room.js';
 import {
 	CreateDepartment,
 	CreateDepartments,
 	DeleteDepartmentByID,
 	DeleteDepartments,
-	FindDepartmentByID,
+	GetDepartmentByID,
 	GetAllDepartment,
 	UpdateDepartmentByID,
 } from '../controller/department.ts';
 
+const router = express.Router();
+
 router.post('/', CreateDepartment);
 router.post('/list', CreateDepartments);
 
-router.get('/', GetAllDepartment);
+/**
+ * @swagger
+ * /departments:
+ *  get:
+ *     tags: [departments]
+ *     description: Responds show all departments
+ *     responses:
+ *       200:
+ *         description: Get list departments success
+ */
+router.get('/', paginateResults(Department), GetAllDepartment);
+
+/**
+ * @swagger
+ * /departments/{id}:
+ *   get:
+ *     summary: Get the department by id
+ *     tags: [departments]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The departments id
+ *     responses:
+ *       200:
+ *         description: The department description by id
+ *         contents:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/department'
+ *       404:
+ *         description: The department was not found
+ */
+
+router.get('/:id', GetDepartmentByID);
 
 router.put('/:id', UpdateDepartmentByID);
 
 router.delete('/:id', DeleteDepartmentByID);
 
 router.patch('/multiple-delete', DeleteDepartments);
-
-router.get('/:id', FindDepartmentByID);
 
 router.get('/find-hotel', async (req, res) => {
 	try {
@@ -34,8 +77,8 @@ router.get('/find-hotel', async (req, res) => {
 			services: { $in: [req.body.services] },
 		});
 		res.status(200).json(DepartmentList);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -95,8 +138,8 @@ router.post('/find-grooming-able', async (req, res) => {
 		}
 
 		res.status(200).json(groomingList);
-	} catch (err) {
-		res.json(err);
+	} catch (error) {
+		res.json(error);
 	}
 });
 
@@ -109,8 +152,8 @@ router.get('/by-city', async (req, res) => {
 			}),
 		);
 		res.status(200).json(list);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -125,8 +168,8 @@ router.get('/room/:id', async (req, res) => {
 		);
 
 		res.status(200).json(list);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -182,8 +225,8 @@ router.post('/find-department-able', async (req, res) => {
 		} else {
 			res.status(200).json(DepartmentList);
 		}
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 
@@ -215,8 +258,8 @@ router.post('/availability/:id', async (req, res) => {
 			.filter((data) => data.roomNumbers.length);
 
 		res.status(200).json(listData);
-	} catch (err) {
-		res.json(err);
+	} catch (error) {
+		res.json(error);
 	}
 });
 
@@ -252,8 +295,8 @@ router.post('/availability/grooming/:id', async (req, res) => {
 			.filter((data) => data.roomNumbers.length);
 
 		res.status(200).json(listData);
-	} catch (err) {
-		res.status(500).json(err);
+	} catch (error) {
+		res.status(500).json(error);
 	}
 });
 

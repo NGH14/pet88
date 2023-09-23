@@ -16,6 +16,8 @@ import {
 	CreateUsers,
 	DeleteUserByEmail,
 } from '../controller/user.ts';
+import UserModel from "../models/user.js"
+import paginateResults from '../middleware/pagination.ts';
 
 const router = express.Router();
 
@@ -29,10 +31,10 @@ const router = express.Router();
  *       200:
  *         description: Get list users success
  */
-router.get('/', GetAllUser);
+router.get('/', paginateResults(UserModel), GetAllUser);
 router.get('/:id', GetUserByID);
 
-router.post('/', CreateUser);
+router.post('/', CreateUsers);
 router.post('/list', CreateUsers);
 
 router.put('/:id', UpdateUserById);
