@@ -7,8 +7,10 @@ export async function GetAllUser(
 	next: NextFunction,
 ) {
 	try {
-		const listUsers = await User.find();
-		res.status(200).json(listUsers);
+		const { results, paginationInfo } = res.locals.paginatedResults;
+
+		// Send the paginated results as a response
+		res.status(200).json({ results, paginationInfo });
 	} catch (error) {
 		next(error);
 	}
@@ -20,9 +22,9 @@ export async function CreateUsers(
 	next: NextFunction,
 ) {
 	try {
+		console.log(req.body);
 		const savedUsers = await User.create(req.body);
 		res.status(200).json(savedUsers);
-		next();
 	} catch (error) {
 		next(error);
 	}
@@ -36,7 +38,6 @@ export async function CreateUser(
 	try {
 		const savedUser = await new User(req.body).save();
 		res.status(200).json(savedUser);
-		next();
 	} catch (error) {
 		next(error);
 	}
