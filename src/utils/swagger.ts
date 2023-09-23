@@ -33,7 +33,7 @@ function swaggerDocs(app: Express, PORT: number) {
 				},
 			],
 		},
-		apis: ['./src/routes/*.js', './src/routes/*.ts'],
+		apis: ['./src/routes/*.js', './src/routes/*.ts','./src/models/*.ts'],
 	};
 
 	const swaggerSpec = swaggerJsdoc(options);
