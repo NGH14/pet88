@@ -5,8 +5,9 @@ type Params = {};
 type ResBody = {};
 type ReqBody = {};
 type ReqQuery = {
-    page: number;
-}
+	page: number;
+	limit: number;
+};
 
 export async function CreateDepartment(
 	req: Request,
@@ -35,22 +36,23 @@ export async function CreateDepartments(
 	}
 }
 
-export  const  GetAllDepartment: RequestHandler<Params, ResBody, ReqBody, ReqQuery> = async (
-	req,
-	res,
-	next
-) => {
-	const page: number = req?.query?.page  || 0;
-	const itemsPerPage: number = 3;
+export const GetAllDepartment: RequestHandler<
+	Params,
+	ResBody,
+	ReqBody,
+	ReqQuery
+> = async (req, res, next) => {
+	
 	try {
-		const listDepartments = await Department.find()
-			.skip(page * itemsPerPage)
-			.limit(itemsPerPage);
-		res.status(200).json(listDepartments);
+		const { results, paginationInfo } = res.locals.paginatedResults;
+
+		// Send the paginated results as a response
+		res.status(200).json({ results, paginationInfo });
+		next();
 	} catch (error) {
 		next(error);
 	}
-}
+};
 
 export async function UpdateDepartmentByID(
 	req: Request,
