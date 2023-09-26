@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { Model, Document } from 'mongoose';
+import { PAGE_LIMIT, PAGE_NUMBER } from '../constants/pagination.ts';
 
 interface PaginationInfo {
   next?: {
@@ -45,34 +46,27 @@ const paginateResults = (model: Model<any>) => {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    let page: number = Number(req.query.page);
-    let limit: number = Number(req.query.limit);
+    const page: number = Number(req.query.page) || PAGE_NUMBER;
+    const limit: number = Number(req.query.limit) || PAGE_LIMIT;
+
     const skip: number = (page - 1) * limit;
-  
-    if (isNaN(page) || page < 1) {
-      page = 1; 
-    }
-  
-    if (isNaN(limit) || limit < 1) {
-      limit = 5;
-    }
+
     
     try {
   
       const totalDocuments = await model.countDocuments();
       const paginationInfo = getPaginationInfo(page, limit, totalDocuments);
 
-      const results = await model
+      const data = await model
         .find()
         .limit(limit)
         .skip((page - 1) * limit)
         .exec();
 
       res.locals.paginatedResults = {
-        results,
+        data,
         paginationInfo,
       };
-
       next();
     } catch (error) {
       next(error)
