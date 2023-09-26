@@ -32,7 +32,6 @@ rootRouter.get('/health-check', (req, res) => {
   }
   res.status(200).send(data);
 });
-rootRouter.use(ErrorHandler)
 rootRouter.use('/users', userRoute);
 rootRouter.use('/departments', departmentRoute);
 rootRouter.use('/department-rooms', roomRoute);
