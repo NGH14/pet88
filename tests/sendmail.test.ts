@@ -16,7 +16,7 @@ const baseUrl = '/api/v1/email';
     const mail = {    
       "data": {
        "subject": "Pet88: Test Send Mail",
-        "to": "vuhuunghia2001@gmail.com"
+        "to": "servicepet88@gmail.com"
       },
       "template": "<p> test </p>"
   };
