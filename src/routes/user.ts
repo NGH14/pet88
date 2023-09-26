@@ -29,7 +29,30 @@ const router = express.Router();
  *     description: Responds show all users
  *     responses:
  *       200:
- *         description: Get list users success
+ *         description: A paginated list of users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   description: List of users
+ *                   items:
+ *                     $ref: '#/components/schemas/User' 
+ *                 paginationInfo:
+ *                   type: object
+ *                   description: Pagination information
+ *                   properties:
+ *                     currentPage:
+ *                       type: integer
+ *                       description: The current page number
+ *                     totalPages:
+ *                       type: integer
+ *                       description: The total number of pages
+ *                     totalItems:
+ *                       type: integer
+ *                       description: The total number of items
  */
 router.get('/', paginateResults(UserModel), GetAllUser);
 router.get('/:id', GetUserByID);
