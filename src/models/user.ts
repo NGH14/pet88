@@ -53,7 +53,7 @@ import mongoose, { Model, Document } from 'mongoose';
  *           description: User's refresh token.
  */
 
-export interface IUser {
+export interface IUser extends Document {
 	name: string;
 	email: string;
 	passwordHash: string;
@@ -118,6 +118,6 @@ const UserSchema = new mongoose.Schema<IUser>(
 	},
 	{ timestamps: true },
 );
-
+	
 const UserModel = mongoose.model<IUser>('User', UserSchema);
 export default UserModel;
