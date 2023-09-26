@@ -61,12 +61,147 @@ router.get('/', paginateResults(Department), GetAllDepartment);
  *       404:
  *         description: The department was not found
  */
-
 router.get('/:id', GetDepartmentByID);
 
+/**
+ * @swagger
+ * /departments/{id}:
+ *   put:
+ *     summary: Update a department by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: The ID of the department to update
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - in: body
+ *         name: department
+ *         description: The updated department data
+ *         required: true
+ *         schema:
+ *           $ref: '#/components/schemas/Department'
+ *     responses:
+ *       200:
+ *         description: Department updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 status:
+ *                   type: number
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   $ref: '#/components/schemas/Department'
+ *       404:
+ *         description: Department not found
+ *     tags:
+ *       - Departments
+ */
 router.put('/:id', UpdateDepartmentByID);
 
+/**
+ * @swagger
+ * /departments/{id}:
+ *   delete:
+ *     summary: Delete a department by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: The ID of the department to delete
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Department deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 status:
+ *                   type: number
+ *                 message:
+ *                   type: string
+ *       404:
+ *         description: Department not found
+ *     tags:
+ *       - Departments
+ */
+
+/**
+ * @swagger
+ * /departments/multiple-delete:
+ *   patch:
+ *     summary: Delete multiple departments
+ *     requestBody:
+ *       description: List of department IDs to delete
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: array
+ *             items:
+ *               type: string
+ *     responses:
+ *       200:
+ *         description: Departments deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 status:
+ *                   type: number
+ *                 message:
+ *                   type: string
+ *     tags:
+ *       - Departments
+ */
 router.delete('/:id', DeleteDepartmentByID);
+
+/**
+ * @swagger
+ * /departments/{id}:
+ *   get:
+ *     summary: Get a department by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: The ID of the department to retrieve
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Department retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 status:
+ *                   type: number
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   $ref: '#/components/schemas/Department'
+ *       404:
+ *         description: Department not found
+ *     tags:
+ *       - Departments
+ */
 
 router.patch('/multiple-delete', DeleteDepartments);
 
@@ -77,8 +212,9 @@ router.get('/find-hotel', async (req, res) => {
 			services: { $in: [req.body.services] },
 		});
 		res.status(200).json(DepartmentList);
+		next();
 	} catch (error) {
-		res.status(500).json(error);
+		next(error);
 	}
 });
 
