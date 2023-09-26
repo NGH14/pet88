@@ -11,6 +11,7 @@ interface PaginationInfo {
     page: number;
     limit: number;
   };
+  totalDocuments?: number
 }
 
 const getPaginationInfo = (
@@ -21,7 +22,7 @@ const getPaginationInfo = (
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
-  const paginationInfo: PaginationInfo = {};
+  const paginationInfo: PaginationInfo = {totalDocuments};
 
   if (endIndex < totalDocuments) {
     paginationInfo.next = {
@@ -54,8 +55,9 @@ const paginateResults = (model: Model<any>) => {
     
     try {
   
-      const totalDocuments = await model.countDocuments();
-      const paginationInfo = getPaginationInfo(page, limit, totalDocuments);
+      const totalDocuments = await model.countDocuments({});
+      console.log(totalDocuments)
+      const paginationInfo: PaginationInfo = getPaginationInfo(page, limit, totalDocuments);
 
       const data = await model
         .find()
