@@ -44,10 +44,10 @@ export const GetAllDepartment: RequestHandler<
 > = async (req, res, next) => {
 	
 	try {
-		const { results, paginationInfo } = res.locals.paginatedResults;
+		const { data, paginationInfo } = res.locals.paginatedResults;
 
-		// Send the paginated results as a response
-		res.status(200).json({ results, paginationInfo });
+		// Send the paginated da a response
+		res.status(200).json({ data, paginationInfo });
 		next();
 	} catch (error) {
 		next(error);
