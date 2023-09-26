@@ -1,7 +1,8 @@
-import mongoose from 'mongoose';
+import mongoose, {Document, Types, Schema} from 'mongoose';
 
-interface IDepartment {
-  name: string;
+export interface IDepartment extends Document {
+  _id: Types.ObjectId;
+	name: string;
   type: string;
   owner: mongoose.Types.ObjectId;
   city: string;
@@ -85,10 +86,9 @@ interface IDepartment {
  *         - desc
  */
 
-
-
 const DepartmentSchema = new mongoose.Schema<IDepartment>(
 	{
+		
 		name: {
 			type: String,
 			required: true,
