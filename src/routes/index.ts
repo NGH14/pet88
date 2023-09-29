@@ -1,7 +1,4 @@
 import express from 'express';
-
-const rootRouter = express.Router();
-
 import departmentRoute from "./department.js"
 import checkoutRoute from './checkout.js';
 import couponRoute from './coupon.js';
@@ -10,8 +7,12 @@ import orderRoute from './order.js';
 import promotionRoute from './promotion.js';
 import roomRoute from './rooms.js';
 import userRoute from './user.js';
+import authRoute from './auth.ts'
 import emailRoute from './email.ts'
 import ErrorHandler from '../middleware/error.js';
+
+const rootRouter = express.Router();
+
 
 /**
  * @swagger
@@ -24,6 +25,7 @@ import ErrorHandler from '../middleware/error.js';
  *       200:
  *         description: App is up and running
  */
+
 rootRouter.get('/health-check', (req, res) => {
   const data = {
     uptime: process.uptime(),
@@ -33,6 +35,7 @@ rootRouter.get('/health-check', (req, res) => {
   res.status(200).send(data);
 });
 rootRouter.use('/users', userRoute);
+rootRouter.use('/auth', authRoute);
 rootRouter.use('/departments', departmentRoute);
 rootRouter.use('/department-rooms', roomRoute);
 rootRouter.use('/groomings', groomingRoute);
