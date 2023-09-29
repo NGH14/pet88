@@ -1,13 +1,5 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
-import Department from '../models/department.ts';
-
-type Params = {};
-type ResBody = {};
-type ReqBody = {};
-type ReqQuery = {
-	page: number;
-	limit: number;
-};
+import Department, { IDepartment } from '../models/department.ts';
 
 export async function CreateDepartment(
 	req: Request,
@@ -15,7 +7,7 @@ export async function CreateDepartment(
 	next: NextFunction,
 ) {
 	try {
-		const savedDepartment = await new Department(req.body).save();
+		const savedDepartment: IDepartment = await new Department(req.body).save();
 		res.status(200).json(savedDepartment);
 	} catch (error) {
 		next(error);
@@ -28,7 +20,7 @@ export async function CreateDepartments(
 	next: NextFunction,
 ) {
 	try {
-		const savedDepartments = await Department.create(req.body);
+		const savedDepartments:IDepartment = await Department.create(req.body);
 		res.status(200).json(savedDepartments);
 		next();
 	} catch (error) {
@@ -36,13 +28,11 @@ export async function CreateDepartments(
 	}
 }
 
-export const GetAllDepartment: RequestHandler<
-	Params,
-	ResBody,
-	ReqBody,
-	ReqQuery
-> = async (req, res, next) => {
-	
+export function GetAllDepartment(
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) {
 	try {
 		const { data, paginationInfo } = res.locals.paginatedResults;
 
@@ -52,7 +42,7 @@ export const GetAllDepartment: RequestHandler<
 	} catch (error) {
 		next(error);
 	}
-};
+}
 
 export async function UpdateDepartmentByID(
 	req: Request,
