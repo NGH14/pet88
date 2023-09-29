@@ -6,4 +6,3 @@ export enum Roles {
   STAFF = "STAFF",
   User = "USER",
 }
-
