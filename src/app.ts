@@ -7,16 +7,17 @@ import cloudinary from './config/cloudinary.js';
 import './config/firebase.js';
 import ErrorHandler from './middleware/error.ts';
 import rootRouter from './routes/index.ts';
+import corsOptions from './config/cors.ts';
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+app.use(cors(corsOptions));
 app.use(express.static('public'));
 app.use(express.json({ limit: '10mb' }));
 app.use(
 	express.urlencoded({
-		limit: '10mb',
 		extended: true,
+		limit: '10mb',
 		parameterLimit: 50000,
 	}),
 );
@@ -28,9 +29,9 @@ app.use(
 
 app.use(
 	bodyParser.urlencoded({
+		extended: true,
 		limit: '50mb',
 		parameterLimit: 100000,
-		extended: true,
 	}),
 );
 
