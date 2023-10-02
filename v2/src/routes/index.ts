@@ -33,6 +33,7 @@ rootRouter.get('/health-check', (req, res) => {
   }
   res.status(200).send(data);
 });
+
 rootRouter.use('/users', userRoute);
 rootRouter.use('/auth', authRoute);
 rootRouter.use('/departments', departmentRoute);
