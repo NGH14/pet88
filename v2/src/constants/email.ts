@@ -5,6 +5,6 @@ export const SENDER = {
 export const EMAIL_HOSTING = {
 	host: DEFAULT_HOST,
 	port: 587,
-	secure: false,
+	secure: true,
 	auth: JSON.parse(process.env.MAIL_ACCOUNT),
 };
