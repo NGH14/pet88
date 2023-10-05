@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { Model, Document } from 'mongoose';
-import { PAGE_LIMIT, PAGE_NUMBER } from '../constants/pagination.ts';
+import { MAXIMUM_LIMIT, PAGE_LIMIT, PAGE_NUMBER } from '../constants/pagination.ts';
 
 interface PaginationInfo {
   next?: {
@@ -12,6 +12,8 @@ interface PaginationInfo {
     limit: number;
   };
   totalDocuments?: number
+  totalPages?: number
+
 }
 
 const getPaginationInfo = (
@@ -47,16 +49,19 @@ const paginateResults = (model: Model<any>) => {
     res: Response,
     next: NextFunction
   ): Promise<void> => {
-    const page: number = Number(req.query.page) || PAGE_NUMBER;
-    const limit: number = Number(req.query.limit) || PAGE_LIMIT;
-
+    const { page = PAGE_NUMBER, limit = PAGE_LIMIT } = req.query;
     const skip: number = (page - 1) * limit;
 
-    
+    if (page < 1) {
+      return next({ message: 'Invalid page number.' , status: 400});
+    }
+
+    if (limit < 1 || limit > MAXIMUM_LIMIT) {
+      return next({ message: 'Invalid limit.' , status: 400});
+    }
+
     try {
-  
       const totalDocuments = await model.countDocuments({});
-      console.log(totalDocuments)
       const paginationInfo: PaginationInfo = getPaginationInfo(page, limit, totalDocuments);
 
       const data = await model
@@ -69,6 +74,7 @@ const paginateResults = (model: Model<any>) => {
         data,
         paginationInfo,
       };
+
       next();
     } catch (error) {
       next(error)
