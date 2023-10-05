@@ -9,12 +9,13 @@ async function sendMail(
 
 	// send mail with defined transport object
 	 const info = await transport.sendMail({
-		from: `" ${SENDER.email} " <${SENDER.name}>`,
+		from: `"${SENDER.name}" <${SENDER.email}>`,
 		to: dataSend.to, // list of receivers
 		subject: dataSend.subject, // Subject line
 		text: dataSend.text || '', // plain text body
 		html: template, // html body
 	});
+
 	return info
 }
 

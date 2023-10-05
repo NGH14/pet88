@@ -3,8 +3,8 @@ export const SENDER = {
 	name: 'Pet88 Service',
 };
 export const EMAIL_HOSTING = {
-	host: DEFAULT_HOST,
+	host: 'smtp.gmail.com',
 	port: 587,
-	secure: true,
+	secure: false,
 	auth: JSON.parse(process.env.MAIL_ACCOUNT),
 };
