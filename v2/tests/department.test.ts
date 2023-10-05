@@ -72,12 +72,12 @@ describe('Department API', () => {
 				.send(JSON.stringify(sample))
 				.end((_err, res) => {
 					res.should.have.status(200);
-					res.body.data.should.be.a('object');
-					res.body.data.should.have.property('_id');
-					res.body.data.should.have.property('type');
-					res.body.data.should.have.property('services');
-					res.body.data.should.have.property('city');
-					res.body.data.should.have.property('title');
+					res.body.should.be.a('object');
+					res.body.should.have.property('_id');
+					res.body.should.have.property('type');
+					res.body.should.have.property('services');
+					res.body.should.have.property('city');
+					res.body.should.have.property('title');
 				});
 			done();
 		});
@@ -105,8 +105,8 @@ describe('Department API', () => {
 				.send(JSON.stringify([sample, sample]))
 				.end((_err, res) => {
 					res.should.have.status(200);
-					res.body.data.should.be.a('array');
-					res.body.data.length.should.be.eql(2);
+					res.body.should.be.a('array');
+					res.body.length.should.be.eql(2);
 				});
 			done();
 		});
