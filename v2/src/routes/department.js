@@ -7,7 +7,7 @@
 
 import express from 'express';
 import { Grooming } from '../models/grooming.js';
-import paginateResults from '../middleware/pagination.ts';
+import pagination from '../middleware/pagination.ts';
 
 import Department from '../models/department.ts';
 import { Room } from '../models/room.js';
@@ -38,7 +38,7 @@ router.post('/list', CreateDepartments);
  *      - departments
  *
  */
-router.get('/', paginateResults(Department), GetAllDepartment);
+router.get('/', pagination(Department), GetAllDepartment);
 
 /**
  * @swagger
