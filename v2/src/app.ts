@@ -3,6 +3,9 @@ import cors from 'cors';
 import express from 'express';
 import multer from 'multer';
 import sharp from 'sharp';
+import helmet from 'helmet';
+
+
 import cloudinary from './config/cloudinary.js';
 import './config/firebase.js';
 import ErrorHandler from './middleware/error.ts';
@@ -11,6 +14,7 @@ import corsOptions from './config/cors.ts';
 
 const app = express();
 
+app.use(helmet());
 app.use(cors(corsOptions));
 app.use(express.static('public'));
 app.use(express.json({ limit: '10mb' }));
