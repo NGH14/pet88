@@ -29,15 +29,19 @@ router.post('/list', CreateDepartments);
 /**
  * @swagger
  * /departments:
- *  get:
- *     description: Responds show all departments
+ *   get:
+ *     description: Responds with a list of all departments
  *     responses:
  *       200:
- *         description: Get list departments success
+ *         description: Get list of departments success
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Department'
  *     tags:
- *      - departments
- *
+ *       - departments
  */
+
 router.get('/', pagination(Department), GetAllDepartment);
 
 /**
@@ -58,13 +62,12 @@ router.get('/', pagination(Department), GetAllDepartment);
  *         contents:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/department'
+ *               $ref: '#/components/schemas/Department'
  *       404:
  *         description: The department was not found
  *     tags:
  *      - departments
- *
- *
+ 
  */
 router.get('/:id', GetDepartmentByID);
 
