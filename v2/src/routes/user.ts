@@ -55,10 +55,36 @@ const router = express.Router();
  *                       description: The total number of items
  */
 router.get('/', paginateResults(UserModel), GetAllUser);
+
+/**
+ * @swagger
+ * /users/{id}:
+ *   get:
+ *     tags: [users]
+ *     summary: Get a user by ID
+ *     description: Retrieve a user's information by their ID.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         description: The ID of the user to retrieve.
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: Successful response with user data.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       '404':
+ *         description: User not found.
+ *       '500':
+ *         description: Internal server error.
+ */
 router.get('/:id', GetUserByID);
 
 router.post('/', CreateUsers);
-router.post('/list', CreateUsers);
 
 router.put('/:id', UpdateUserById);
 

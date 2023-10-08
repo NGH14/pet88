@@ -15,22 +15,7 @@ export async function GetAllUser(
 		next(error);
 	}
 }
-
 export async function CreateUsers(
-	req: Request,
-	res: Response,
-	next: NextFunction,
-) {
-	
-	try {
-		const savedUsers = await User.create(req.body);
-		res.status(200).json(savedUsers);
-	} catch (error) {
-		next(error);
-	}
-}
-
-export async function CreateUser(
 	req: Request,
 	res: Response,
 	next: NextFunction,
