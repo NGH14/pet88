@@ -1,8 +1,7 @@
+import swaggerDocs  from './utils/swagger.ts';
 import { connectDB } from './db/mongodb.js';
-
 import app from './app.ts';
 import logger from '../src/utils/logger.ts';
-import swaggerDocs from '../src/utils/swagger.ts';
 import { Environment } from './constants/environment.ts';
 const PORT: number = Number(process.env.LOCAL_PORT || 5001);
 app.listen(PORT, () => {
@@ -10,6 +9,7 @@ app.listen(PORT, () => {
 
 	switch (process.env.NODE_ENV) {
 		case Environment.Development:
+			
 			swaggerDocs(app, PORT);
 			logger.log({
 			level: 'info',

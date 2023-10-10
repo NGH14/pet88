@@ -41,8 +41,6 @@ app.use(
 
 // app.use(middleware.decodeToken);
 
-
-
 app.use('/api/v2/', rootRouter);
 app.use(ErrorHandler);
 
