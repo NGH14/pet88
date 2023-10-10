@@ -7,7 +7,6 @@
 
 import express from 'express';
 import {
-	CreateUser,
 	GetAllUser,
 	UpdateUserById,
 	DeleteUserById,
@@ -44,15 +43,9 @@ const router = express.Router();
  *                   type: object
  *                   description: Pagination information
  *                   properties:
- *                     currentPage:
- *                       type: integer
- *                       description: The current page number
- *                     totalPages:
- *                       type: integer
- *                       description: The total number of pages
- *                     totalItems:
- *                       type: integer
- *                       description: The total number of items
+ *                     hasMore:
+ *                       type: boolean
+ *                       description: the exist next page in pagination
  */
 router.get('/', paginateResults(UserModel), GetAllUser);
 
@@ -83,6 +76,37 @@ router.get('/', paginateResults(UserModel), GetAllUser);
  *         description: Internal server error.
  */
 router.get('/:id', GetUserByID);
+
+/**
+ * @swagger
+ *  /users:
+ *   post:
+ *     tags: [users]
+ *     summary: Create a new user
+ *     description: Create a new user with the provided data.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'  
+ *     responses:
+ *       200:
+ *         description: Successfully created a new user
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'  
+ *       500:
+ *         description: Internal server error
+ *     parameters:
+ *       - in: body
+ *         name: user
+ *         description: The user object to create.
+ *         required: true
+ *         schema:
+ *           $ref: '#/components/schemas/User'  # Replace with your User schema reference
+ */
 
 router.post('/', CreateUsers);
 
