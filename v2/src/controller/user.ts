@@ -21,8 +21,8 @@ export async function CreateUsers(
 	next: NextFunction,
 ) {
 	try {
-		const savedUser = await new User(req.body).save();
-		res.status(200).json(savedUser);
+		const savedUsers = await new User(req.body).save();
+		res.status(200).json(savedUsers);
 	} catch (error) {
 		next(error);
 	}
