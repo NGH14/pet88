@@ -3,6 +3,7 @@ import falso from '@ngneat/falso';
 const generateFakePerson = () => ({
 	email: falso.randEmail(),
 	name: falso.randFullName(),
+	passwordHash: falso.password(),
 });
 
 const numberOfDocuments = 100;
