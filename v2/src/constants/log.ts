@@ -1,6 +1,6 @@
-export enum Environment {
+export enum Log {
 	Error = 'error',
 	Info = 'info',
-	warning = 'test',
+	Warning = 'test',
 	Debug = 'debug',
 }
