@@ -1,10 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { Model, Document } from 'mongoose';
+
 import {
 	MAXIMUM_LIMIT,
 	PAGE_LIMIT,
 	PAGE_NUMBER,
 } from '../constants/pagination.ts';
+import { PaginationMessage } from '../constants/message.js';
 
 interface PaginationInfo {
 	hasMore?: Boolean;
@@ -41,14 +43,19 @@ const pagination = (model: Model<any>) => {
 	): Promise<void> => {
 		const page: number = Number(req.query.page) || PAGE_NUMBER;
 		const limit: number = Number(req.query.limit) || PAGE_LIMIT;
-
 		const skip: number = (page - 1) * limit;
 		if (page < 1) {
-			return next({ message: 'Invalid page number.', status: 400 });
+			return next({
+				message: PaginationMessage.PAGE_NUMBER_ERROR,
+				status: 400,
+			});
 		}
 
 		if (limit < 1 || limit > MAXIMUM_LIMIT) {
-			return next({ message: 'Invalid limit.', status: 400 });
+			return next({
+				message: PaginationMessage.PAGE_NUMBER_ERROR,
+				status: 400,
+			});
 		}
 
 		try {

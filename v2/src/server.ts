@@ -1,25 +1,28 @@
-import swaggerDocs  from './utils/swagger.ts';
+import swaggerDocs from './utils/swagger.ts';
 import { connectDB } from './db/mongodb.js';
 import app from './app.ts';
 import logger from '../src/utils/logger.ts';
 import { Environment } from './constants/environment.ts';
-const PORT: number = Number(process.env.LOCAL_PORT || 5001);
-app.listen(PORT, () => {
+import { LogLevel } from './constants/log.ts';
+import { SERVER_PORT, serverListeningMessage } from './constants/server.ts';
+
+
+app.listen(SERVER_PORT, () => {
 	connectDB();
 
 	switch (process.env.NODE_ENV) {
-		case Environment.Development:
-			
-			swaggerDocs(app, PORT);
+		case Environment.DEVELOPMENT:
+			swaggerDocs(app, SERVER_PORT);
+
 			logger.log({
-			level: 'info',
-			message: 'Server listening on',
-			data: `http://localhost:${PORT}`,
-		});
+				level: LogLevel.INFO,
+				message: serverListeningMessage,
+				data: `http://localhost:${SERVER_PORT}`,
+			});
 			break;
-		case Environment.Testing:
+		case Environment.TESTING:
 			break;
-	
+
 		default:
 			break;
 	}
