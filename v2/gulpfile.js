@@ -4,6 +4,7 @@ import exec from 'gulp-exec';
 import log from 'fancy-log';
 import file from 'gulp-file';
 import fs from 'fs';
+import rename from 'gulp-rename';
 
 gulp.task('setup-doppler', function () {
 	const options = {
@@ -76,6 +77,18 @@ gulp.task('test-doppler', () => {
 			.pipe(file('doppler.yaml', 'setup:\n project: pet88\nconfig: be_test'))
 			.pipe(gulp.dest('./'));
 	}
+});
+
+gulp.task('rename-files', () => {
+	return gulp
+		.src('./src/db/*')
+		.pipe(
+			rename(function (path) {
+				path.dirname += '/' + path.basename;
+				return path;
+			}),
+		)
+		.pipe(gulp.dest('.'));
 });
 
 gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler'));
