@@ -4,7 +4,7 @@ import app from './app.ts';
 import logger from '../src/utils/logger.ts';
 import { Environment } from './constants/environment.ts';
 import { LogLevel } from './constants/log.ts';
-import { SERVER_PORT, serverListeningMessage } from './constants/server.ts';
+import { SERVER_PORT, serverListeningMessage } from './constants/app.ts';
 
 
 app.listen(SERVER_PORT, () => {
