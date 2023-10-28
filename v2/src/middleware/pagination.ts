@@ -5,8 +5,8 @@ import {
 	MAXIMUM_LIMIT,
 	PAGE_LIMIT,
 	PAGE_NUMBER,
-} from '../constants/pagination.ts';
-import { PaginationMessage } from '../constants/message.js';
+} from '../constant/pagination.ts';
+import { PaginationMessage } from '../constant/message.js';
 
 interface PaginationInfo {
 	hasMore?: Boolean;

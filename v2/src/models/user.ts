@@ -1,4 +1,4 @@
-import {Roles} from './../constants/roles.ts';
+import {Roles} from './../constant/roles.ts';
 import mongoose, { Model, Document } from 'mongoose';
 
 /**

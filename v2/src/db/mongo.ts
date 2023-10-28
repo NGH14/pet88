@@ -1,7 +1,7 @@
 import mongoose, { ConnectOptions } from 'mongoose';
 import logger from '../utils/logger.ts';
-import { Environment } from '../constants/environment.ts';
-import { LogLevel } from '../constants/log.js';
+import { Environment } from '../constant/environment.ts';
+import { LogLevel } from '../constant/log.js';
 
 export const connectDB = async () => {
 	try {

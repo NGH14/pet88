@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import { EMAIL_HOSTING, SENDER } from '../constants/email.ts';
+import { EMAIL_HOSTING, SENDER } from '../constant/email.ts';
 
 async function sendMail(
 	dataSend: nodemailer.SendMailOptions,

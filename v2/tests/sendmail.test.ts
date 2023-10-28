@@ -5,7 +5,7 @@ import sendMail from '../src/utils/sendmail.ts';
 const should = chai.should();
 const expect = chai.expect;
 import { randCity, randStreetAddress } from '@ngneat/falso';
-import { SENDER } from '../src/constants/email.ts';
+import { SENDER } from '../src/constant/email.ts';
 
 chai.use(chaiHttp);
 

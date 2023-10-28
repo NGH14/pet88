@@ -1,10 +1,10 @@
 import swaggerDocs from './utils/swagger.ts';
-import { connectDB } from './db/mongodb.js';
+import { connectDB } from './db/mongo.js';
 import app from './app.ts';
 import logger from '../src/utils/logger.ts';
-import { Environment } from './constants/environment.ts';
-import { LogLevel } from './constants/log.ts';
-import { SERVER_PORT, serverListeningMessage } from './constants/app.ts';
+import { Environment } from './constant/environment.ts';
+import { LogLevel } from './constant/log.ts';
+import { SERVER_PORT, serverListeningMessage } from './constant/app.ts';
 
 
 app.listen(SERVER_PORT, () => {

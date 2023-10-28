@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { ERROR_MESSAGE_DEFAULT } from '../constants/error.ts';
-import { Environment } from '../constants/environment.js';
+import { ERROR_MESSAGE_DEFAULT } from '../constant/error.ts';
+import { Environment } from '../constant/environment.js';
 
 const ErrorHandler = (
 	error: any,
