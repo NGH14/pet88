@@ -81,14 +81,14 @@ gulp.task('test-doppler', () => {
 
 gulp.task('rename-files', () => {
 	return gulp
-		.src('./src/db/*')
+		.src('./src/*/*.{ts,js}')
 		.pipe(
-			rename(function (path) {
-				path.dirname += '/' + path.basename;
+			rename((path) => {
+				path.basename = path.basename + '.' + path.dirname;
 				return path;
 			}),
 		)
-		.pipe(gulp.dest('.'));
+		.pipe(gulp.dest('./test'));
 });
 
 gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler'));
