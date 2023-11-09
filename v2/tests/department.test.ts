@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import Department from '../src/models/department.ts';
 import chaiHttp from 'chai-http';
 import app from '../src/app.ts';
-import { connectDB } from '../src/db/mongodb.ts';
+import { connectDB } from '../src/db/mongo.ts';
 
 import { randCity, randStreetAddress } from '@ngneat/falso';
 
