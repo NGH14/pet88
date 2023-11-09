@@ -5,17 +5,7 @@ import log from 'fancy-log';
 import file from 'gulp-file';
 import fs from 'fs';
 import rename from 'gulp-rename';
-
-gulp.task('setup-doppler', function () {
-	const options = {
-		continueOnError: true, // default = false, true means don't emit error event
-		pipeStdout: false, // default = false, true means stdout is written to file.contents
-	};
-	return gulp
-		.src('./')
-		.pipe(exec(() => `doppler setup --no-interactive`, options))
-		.on('end', () => log.info('✅ Setup Doppler Success'));
-});
+import { setUpDoppler } from './src/tasks/doppler.task.js';
 
 gulp.task('server', function () {
 	const options = {
@@ -33,6 +23,7 @@ gulp.task('server', function () {
 		.pipe(exec(() => `npm start`, options))
 		.pipe(exec.reporter(reportOptions));
 });
+
 gulp.task('prd-doppler', () => {
 	const extraFile = 'doppler.yaml';
 
@@ -91,6 +82,20 @@ gulp.task('rename-files', () => {
 		.pipe(gulp.dest('./test'));
 });
 
-gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler'));
-gulp.task('dev', gulp.series('dev-doppler', 'setup-doppler'));
-gulp.task('test', gulp.series('test-doppler', 'setup-doppler'));
+gulp.task('update-import-path', function () {
+	// Rename the mongo.ts file to mongo.db.ts.
+	// gulp
+	// 	.src('./src/db/mongo.ts')
+	// 	.pipe(rename('mongo.db.ts'))
+	// 	.pipe(gulp.dest('./src/db'));
+
+	// Update the import path in all other files that reference mongo.ts.
+	return gulp
+		.src('./**/*.{js,ts}')
+		.pipe(replace(/mongo.ts/g, 'mongo.db.ts'))
+		.pipe(gulp.dest('.'));
+});
+
+// gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler'));
+gulp.task('dev', gulp.series('dev-doppler', setUpDoppler));
+gulp.task('test', gulp.series('test-doppler', setUpDoppler));
