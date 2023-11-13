@@ -11,16 +11,16 @@ app.listen(SERVER_PORT, () => {
 	connectDB();
 
 	switch (process.env.NODE_ENV) {
-		case Environment.DEVELOPMENT:
+		case Environment.Development:
 			swaggerDocs(app, SERVER_PORT);
 
 			logger.log({
-				level: LogLevel.INFO,
+				level: LogLevel.Info,
 				message: serverListeningMessage,
 				data: `http://localhost:${SERVER_PORT}`,
 			});
 			break;
-		case Environment.TESTING:
+		case Environment.Testing:
 			break;
 
 		default:

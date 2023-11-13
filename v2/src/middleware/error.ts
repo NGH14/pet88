@@ -8,15 +8,15 @@ const ErrorHandler = (
 	res: Response,
 	next: NextFunction,
 ) => {
-	if (process.env.NODE_ENV === Environment.TESTING) return ;
+	if (process.env.NODE_ENV === Environment.Testing) return;
 	const status = error.status || 500;
-	
+
 	res.status(status).json({
 		success: false,
 		status,
 		message: error.message || ERROR_MESSAGE_DEFAULT,
 		// Just show to stack (file directory got error) when development
-		stack: process.env.NODE_ENV !== Environment.DEVELOPMENT ? {} : error.stack,
+		stack: process.env.NODE_ENV !== Environment.Development ? {} : error.stack,
 	});
 };
 
