@@ -1,6 +1,8 @@
 {
+	"$schema": "https://json.schemastore.org/tsconfig",  
+
 	"compilerOptions": {
-		"module": "NodeNext",
+		"module": "ESNext",
 		"target": "ESNext",
 		"baseUrl": ".",
 		"outDir": "build",
@@ -15,6 +17,11 @@
 		"noEmit": true,
 		"resolveJsonModule": true
 	},
+	"ts-node": {
+    "esm": true,
+  },
+
+	"lib": ["esnext"],
 
 	"include": ["src/**/*.ts", "tests/*.ts"],
 	"exclude": ["node_modules", "build"]
