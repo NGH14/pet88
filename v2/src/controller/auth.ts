@@ -1,29 +1,27 @@
 import * as bcrypt from 'bcrypt';
 import { Request, Response, NextFunction } from 'express';
 import UserModel from '../models/user.ts';
-
-const SALT_ROUND: number = 10;
+import { SALT_ROUND } from "../constant/auth.ts";
 
 export const registerUser = async (
 	req: Request,
 	res: Response,
 	next: NextFunction,
 ): Promise<void> => {
-	const { username, email, password, emailVerified, displayName, photos } =
+	const { email, password, emailVerified, displayName, photos } =
 		req.body;
 
 	try {
 		const hashedPassword: string = await bcrypt.hash(password, SALT_ROUND);
-		const user = new UserModel({
-			username,
+		const newUser = new UserModel({
 			email,
-			passwordHash: hashedPassword,
+			password: hashedPassword,
 			emailVerified,
 			displayName,
 			photos,
 		});
-		await user.save();
-		res.status(201).json({ message: 'Registration successful', data: user });
+		await newUser.save();
+		res.status(201).json({ message: 'Registration successful', data: newUser });
 		next();
 	} catch (error) {
 		next(error);
@@ -34,14 +32,19 @@ export const login = async (
 	req: Request,
 	res: Response,
 	next: NextFunction,
-): Promise<void> => {
+): Promise<Response> => {
 	const { email, password } = req.body;
 	try {
 		const user = await UserModel.findOne({ email });
+		
 		if (!user) res.status(404).json({ message: `Email ${email} not exist` });
-		const isMatch = await bcrypt.compare(password, user.passwordHash);
 
-		res.status(201).json({ message: 'Login successful', data: isMatch });
+		const isMatch = await bcrypt.compare(password, user.password);
+		
+		if (!isMatch) {
+			 return res.status(401).json({ message: 'Login Failed' });
+		} 
+		res.status(200).json({ message: 'Login successful' });
 	} catch (error) {
 		next(error);
 	}
