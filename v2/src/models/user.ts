@@ -1,4 +1,4 @@
-import {Roles} from './../constant/roles.ts';
+import { Roles } from './../constant/roles.ts';
 import mongoose, { Model, Document } from 'mongoose';
 
 /**
@@ -14,7 +14,7 @@ import mongoose, { Model, Document } from 'mongoose';
  *         email:
  *           type: string
  *           description: The user's email address.
- *         passwordHash:
+ *         password:
  *           type: string
  *           description: The hashed password.
  *         emailVerified:
@@ -54,13 +54,12 @@ import mongoose, { Model, Document } from 'mongoose';
  */
 
 export interface IUser extends Document {
-	username: string;
 	email: string;
-	passwordHash: string;
+	password: string;
 	emailVerified: boolean;
 	displayName: string;
 	photos?: string[];
-	roles: string[];
+	roles: string;
 	metadata: {
 		lastSignInTime?: string;
 		creationTime?: string;
@@ -74,16 +73,12 @@ export interface IUser extends Document {
 
 const UserSchema = new mongoose.Schema<IUser>(
 	{
-		username: {
-			type: String,
-			required: true,
-		},
 		email: {
 			type: String,
 			required: true,
 			unique: true,
 		},
-		passwordHash: {
+		password: {
 			type: String,
 			require: true,
 			minLength: 6,
@@ -99,9 +94,9 @@ const UserSchema = new mongoose.Schema<IUser>(
 			type: [String],
 		},
 		roles: {
-			type: [String],
+			type: String,
 			required: true,
-			default: [Roles.User],
+			default: Roles.User,
 		},
 		metadata: {
 			lastSignInTime: String,
@@ -117,6 +112,6 @@ const UserSchema = new mongoose.Schema<IUser>(
 	},
 	{ timestamps: true },
 );
-	
+
 const UserModel = mongoose.model<IUser>('User', UserSchema);
 export default UserModel;
