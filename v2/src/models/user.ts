@@ -59,7 +59,7 @@ export interface IUser extends Document {
 	emailVerified: boolean;
 	displayName: string;
 	photos?: string[];
-	roles: string;
+	roles: Roles;
 	metadata: {
 		lastSignInTime?: string;
 		creationTime?: string;

@@ -1,3 +1,6 @@
+import { Roles } from './../constant/roles.ts';
+import { auth } from '../middleware/auth.ts';
+
 /**
  * @swagger
  * tags:
@@ -15,7 +18,7 @@ import {
 	CreateUsers,
 	DeleteUserByEmail,
 } from '../controller/user.ts';
-import UserModel from "../models/user.js"
+import UserModel from '../models/user.js';
 import paginateResults from '../middleware/pagination.ts';
 
 const router = express.Router();
@@ -38,7 +41,7 @@ const router = express.Router();
  *                   type: array
  *                   description: List of users
  *                   items:
- *                     $ref: '#/components/schemas/User' 
+ *                     $ref: '#/components/schemas/User'
  *                 paginationInfo:
  *                   type: object
  *                   description: Pagination information
@@ -47,7 +50,7 @@ const router = express.Router();
  *                       type: boolean
  *                       description: the exist next page in pagination
  */
-router.get('/', paginateResults(UserModel), GetAllUser);
+router.get('/', auth, paginateResults(UserModel), GetAllUser);
 
 /**
  * @swagger
@@ -75,7 +78,7 @@ router.get('/', paginateResults(UserModel), GetAllUser);
  *       '500':
  *         description: Internal server error.
  */
-router.get('/:id', GetUserByID);
+router.get('/:id', (req, res, next) => auth(Roles.Admin, req, res, next), GetUserByID);
 
 /**
  * @swagger
@@ -89,14 +92,14 @@ router.get('/:id', GetUserByID);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'  
+ *             $ref: '#/components/schemas/User'
  *     responses:
  *       200:
  *         description: Successfully created a new user
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/User'  
+ *               $ref: '#/components/schemas/User'
  *       500:
  *         description: Internal server error
  *     parameters:
@@ -108,7 +111,7 @@ router.get('/:id', GetUserByID);
  *           $ref: '#/components/schemas/User'  # Replace with your User schema reference
  */
 
-router.post('/', CreateUsers);
+router.post('/', auth, CreateUsers);
 
 router.put('/:id', UpdateUserById);
 
