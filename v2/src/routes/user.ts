@@ -78,7 +78,7 @@ router.get('/', auth, paginateResults(UserModel), GetAllUser);
  *       '500':
  *         description: Internal server error.
  */
-router.get('/:id', (req, res, next) => auth(Roles.Admin, req, res, next), GetUserByID);
+router.get('/:id', (req, res, next) => auth([Roles.Admin, Roles.User], req, res, next), GetUserByID);
 
 /**
  * @swagger

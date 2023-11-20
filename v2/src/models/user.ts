@@ -59,7 +59,7 @@ export interface IUser extends Document {
 	emailVerified: boolean;
 	displayName: string;
 	photos?: string[];
-	roles: Roles;
+	roles: string[];
 	metadata: {
 		lastSignInTime?: string;
 		creationTime?: string;
@@ -94,9 +94,9 @@ const UserSchema = new mongoose.Schema<IUser>(
 			type: [String],
 		},
 		roles: {
-			type: String,
+			type: [String],
 			required: true,
-			default: Roles.User,
+			default: [Roles.User],
 		},
 		metadata: {
 			lastSignInTime: String,
