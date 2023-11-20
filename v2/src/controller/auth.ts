@@ -48,7 +48,7 @@ export const login = async (
 				.json({ message: 'Login Failed: Invalid username or password' });
 		}
 		const userToken = jwt.sign(
-			{ id: user.id, role: user.roles },
+			{ id: user.id, roles: user.roles },
 			process.env.JWT_SECRET_KEY,
 			{ expiresIn: JWT_TOKEN_EXPIRE_TIME},
 		);
