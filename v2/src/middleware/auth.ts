@@ -30,12 +30,12 @@ async function auth(
       }
       if (roles) {
         console.log({roles, user: user.roles })
-        return roles.some((x) => user.roles.includes(x))
+        return roles.some((accessRoles) => user.roles.includes(accessRoles))
           ? next()
           : res
             .status(403)
             .json(
-              `Unauthorized: The client has the necessary credentials but is not authorized to access the requested resource.`,
+              `Access denied: Incorrect permissions`,
             );
       }
       next();

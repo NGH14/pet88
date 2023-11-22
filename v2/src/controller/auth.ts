@@ -40,7 +40,7 @@ export const login = async (
 
 		if (!user) res.status(404).json({ message: `Email ${email} not exist` });
 
-		const isMatch = await bcrypt.compare(password, user.password);
+		const isMatch = await bcrypt.compare(password, user.password);	
 
 		if (!isMatch) {
 			return res
@@ -52,6 +52,7 @@ export const login = async (
 			process.env.JWT_SECRET_KEY,
 			{ expiresIn: JWT_TOKEN_EXPIRE_TIME},
 		);
+		
 		res.status(200).json({ message: 'Login successful', data: userToken });
 	} catch (error) {
 		next(error);
