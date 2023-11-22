@@ -7,7 +7,7 @@ import logger from './logger.ts';
 function swaggerDocs(app: Express, PORT: number) {
 	const options: swaggerJsdoc.Options = {
 		definition: {
-			openapi: '3.0.0',
+			openapi: '3.0.1',
 			info: {
 				title: 'Pet88 REST API Docs',
 				version: packageJSON.version,
@@ -18,6 +18,8 @@ function swaggerDocs(app: Express, PORT: number) {
 					description: 'Development server',
 				},
 			],
+			
+			explorer: true,
 			components: {
 				securitySchemes: {
 					bearerAuth: {
