@@ -49,12 +49,13 @@ export async function UpdateDepartmentByID(
 	res: Response,
 	next: NextFunction,
 ) {
+	const id = req.params.id;
 	try {
 		const updatedDepartment = await Department.findByIdAndUpdate(
 			req.params.id,
 			req.body,
 		);
-		res.status(200).json(updatedDepartment);
+		res.status(200).json({message: `Update Department ${id} Success`});
 		next();
 	} catch (error) {
 		next(error);
