@@ -2,21 +2,19 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../src/app.ts';
 import sendMail from '../src/utils/sendmail.ts';
-const should = chai.should();
-const expect = chai.expect;
 import { randCity, randStreetAddress } from '@ngneat/falso';
 import { SENDER } from '../src/constant/email.ts';
 
+const should = chai.should();
 chai.use(chaiHttp);
 
 describe('Send Mail API', () => {
-	const baseUrl = '/api/v2/' + 'email';
+	const baseUrl = '/api/v2/email/';
 
-	it('should POST to send mail', async () => {
+	it('should POST to send mail', (done) => {
 		const dataSend = {
 			to: SENDER.email,
 			subject: 'Test email',
-			text: 'This is a test email.',
 		};
 
 		const template = `
@@ -29,8 +27,20 @@ describe('Send Mail API', () => {
 			</body>
 		</html>`;
 
-		const info = await sendMail(dataSend, template);
-
-		info.response.should.contain(250);
+		chai
+			.request(app)
+			.post(baseUrl)
+			.set('content-type', 'application/json')
+			.send(JSON.stringify({
+				"data": {
+					"subject": "Pet88: Test Send Mail",
+					"to": "servicepet88@gmail.com"
+				},
+				"template": "<p> test </p>"
+			}))
+			.end((_err, res) => {
+				res.should.have.status(200);
+			});
+		done();
 	});
 });

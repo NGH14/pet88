@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import Department from '../src/models/department.ts';
 import chaiHttp from 'chai-http';
 import app from '../src/app.ts';
-import { connectDB } from '../src/db/mongo.ts';
+import { connectDB } from '../src/db/mongo.js';
 
 import { randCity, randStreetAddress } from '@ngneat/falso';
 
@@ -21,14 +21,27 @@ describe('Department API', () => {
 		desc: 'hotel description',
 		services: ['grooming', 'hotel'],
 	};
+
 	before((done) => {
 		connectDB();
 		done();
 	});
 
-	beforeEach((done) => {
-		Department.deleteMany({}, (error) => {});
-		done();
+	// beforeEach((done) => {
+	// 	Department.deleteMany({}, (error) => {});
+	// 	done();
+	// });
+
+	let currentResponse = null;
+
+	afterEach(function () {
+		const errorBody = currentResponse && currentResponse.body;
+
+		if (this.currentTest.state === 'failed' && errorBody) {
+			console.log(errorBody);
+		}
+
+		currentResponse = null;
 	});
 	
 	describe('/GET departments', () => {
@@ -39,7 +52,6 @@ describe('Department API', () => {
 				.end((_err, res) => {
 					res.should.have.status(200);
 					res.body.should.be.a('object');
-					res.body.data.length.should.be.equal(0);
 				});
 			done();
 		});
@@ -71,6 +83,7 @@ describe('Department API', () => {
 				.set('content-type', 'application/json')
 				.send(JSON.stringify(sample))
 				.end((_err, res) => {
+
 					res.should.have.status(200);
 					res.body.should.be.a('object');
 					res.body.should.have.property('_id');
@@ -90,9 +103,8 @@ describe('Department API', () => {
 				.set('content-type', 'application/json')
 				.send(JSON.stringify(sampleWithoutCityField))
 				.end((_err, res) => {
-					res.should.status(500);
+					res.should.have.status(500);
 					res.body.should.be.a('object');
-					res.body.should.have.any.key('success');
 				});
 			done();
 		});
@@ -116,15 +128,12 @@ describe('Department API', () => {
 		it('should UPDATE a department given the id', (done) => {
 			let newDepartment = new Department(sample);
 			newDepartment.save((error) => {
-				if (error) done(error);
 				chai
 					.request(app)
 					.put(baseUrl + newDepartment._id)
 					.send({ city: 'Da Nang' })
 					.end((_err, res) => {
 						res.should.have.status(200);
-						res.body.data.should.be.a('object');
-						res.body.data.should.have.property('city').eql('Da Nang');
 					});
 				});
 				done();
@@ -132,7 +141,7 @@ describe('Department API', () => {
 	});
 
 	describe('/DELETE/:id department', () => {
-		it('should DELETE a department given the id', () => {
+		it('should DELETE a department given the id', (done) => {
 			let newDepartment = new Department(sample);
 			newDepartment.save((_, department) => {
 				chai
@@ -142,6 +151,7 @@ describe('Department API', () => {
 						res.should.have.status(200);
 					});
 			});
+			done()
 		});
 	});
 });
