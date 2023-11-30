@@ -1,9 +1,9 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../src/app.ts';
-import sendMail from '../src/utils/sendmail.ts';
+import app from '../../src/app.ts';
+import sendMail from '../../src/utils/sendmail.ts';
 import { randCity, randStreetAddress } from '@ngneat/falso';
-import { SENDER } from '../src/constant/email.ts';
+import { SENDER } from '../../src/constant/email.ts';
 
 const should = chai.should();
 chai.use(chaiHttp);
