@@ -27,10 +27,10 @@ describe('Department API', () => {
 		done();
 	});
 
-	// beforeEach((done) => {
-	// 	Department.deleteMany({}, (error) => {});
-	// 	done();
-	// });
+	beforeEach((done) => {
+		Department.deleteMany({}, (error) => {});
+		done();
+	});
 
 	let currentResponse = null;
 
