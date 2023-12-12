@@ -4,8 +4,5 @@ module.exports = {
     "reportDir=tests/.reports/[name]",
     'overwrite=true',
    " reportFilename=[status]-[name]-report",
-    "timestamp= shortDate",
-    'reportTitle=My\ Custom\ Title',
-    'showPassed=true'
-  ],
-};
+    "timestamp= shortDate",        'showPassed=true'
+  ],};
