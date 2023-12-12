@@ -70,6 +70,7 @@ gulp.task('test-doppler', () => {
 	}
 });
 
+
 gulp.task('rename-files', () => {
 	return gulp
 		.src('./src/*/*.{ts,js}')
@@ -80,20 +81,6 @@ gulp.task('rename-files', () => {
 			}),
 		)
 		.pipe(gulp.dest('./test'));
-});
-
-gulp.task('update-import-path', function () {
-	// Rename the mongo.ts file to mongo.db.ts.
-	// gulp
-	// 	.src('./src/db/mongo.ts')
-	// 	.pipe(rename('mongo.db.ts'))
-	// 	.pipe(gulp.dest('./src/db'));
-
-	// Update the import path in all other files that reference mongo.ts.
-	return gulp
-		.src('./**/*.{js,ts}')
-		.pipe(replace(/mongo.ts/g, 'mongo.db.ts'))
-		.pipe(gulp.dest('.'));
 });
 
 // gulp.task('start:prd', gulp.series('prd-doppler', 'setup-doppler'));
