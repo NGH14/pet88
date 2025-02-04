@@ -1,1 +1,0 @@
-export const ERROR_MESSAGE_DEFAULT = "Something went wrong"
