@@ -12,9 +12,10 @@
     "date-fns": "^2.29.3",
     "firebase": "^9.12.0",
     "framer-motion": "^7.5.3",
-    "i18next": "^21.8.4",
-    "i18next-browser-languagedetector": "^8.0.2",
+    "i18next": "^21.10.0",
+    "i18next-browser-languagedetector": "^8.0.3",
     "i18next-http-backend": "^3.0.2",
+    "i18next-parser": "^9.1.0",
     "memfs": "^4.17.0",
     "react": "^18.1.0",
     "react-before-after-slider-component": "^1.1.5",
@@ -47,7 +48,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "chromatic": "npx chromatic --project-token=b60e7e753a90"
+    "chromatic": "npx chromatic --project-token=b60e7e753a90",
+    "extract": "i18next --config i18nconfig.js"
   },
   "eslintConfig": {
     "extends": [
@@ -92,6 +94,7 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "babel-eslint": "^10.1.0",
+    "babel-plugin-i18next-extract": "^1.0.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "chromatic": "^6.7.4",
     "eslint": "^9.20.1",
