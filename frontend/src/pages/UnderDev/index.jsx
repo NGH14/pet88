@@ -5,7 +5,7 @@ import './style.css';
 import { NavLink } from 'react-router';
 
 export default function UnderDev() {
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	return (
 		<>
 			<section className='underpage'>
