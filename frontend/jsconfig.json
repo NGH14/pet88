@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"baseUrl": "src",
+		"paths": {
+			"assets": ["./assets"],
+			"assets/*": ["./assets/*"],
+			"components": ["./components"],
+			"components/*": ["./components/*"],
+			"context": ["./context"],
+			"context/*": ["./context/*"],
+			"routes": ["./routes"],
+			"routes/*": ["./routes/*"],
+			"utils": ["./utils"],
+			"utils/*": ["./utils/*"],
+			"hooks": ["./hooks"],
+			"hooks/*": ["./hooks/*"],
+			"pages": ["./pages"],
+			"pages/*": ["./pages/*"]
+		}
+	},
+	"include": ["src", "./**/*.js", "./**/*.jsx"],
+	"exclude": ["node_modules", "**/node_modules", "dist"]
+}
