@@ -39,7 +39,9 @@ module.exports = {
   // useKeysAsDefaultValue: false,
   // Whether to use the keys as the default value; ex. "Hello": "Hello", "World": "World"
   // The option `defaultValue` will not work if this is set to true
-
-  verbose: true,
+  verbose: false,
+  // defaultValue: true,
   // Display info about the parsing including some stats
+
+  defaultValue: (_locale, _namespace, key) => key.match(/^(.*(?=::\w*)|.*(?!::\w*))/g)?.[0],
 };
