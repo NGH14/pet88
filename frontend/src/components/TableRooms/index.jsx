@@ -66,10 +66,10 @@ export default function TableRooms() {
 	const { token } = UserAuth();
 	const [searchDataSource, setSearchDataSource] =
 		React.useState(listRoomCategorys);
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const [page, setPage] = React.useState(1);
 
-	const { lang } = UserLanguage();
+	
 
 	const [previewOpen, setPreviewOpen] = React.useState(false);
 	const [previewImage, setPreviewImage] = React.useState('');
