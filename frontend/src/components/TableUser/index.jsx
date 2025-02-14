@@ -78,7 +78,7 @@ export default function TableUser() {
 	const [form] = Form.useForm();
 	const { token, forgotPassword } = UserAuth();
 	const [searchDataSource, setSearchDataSource] = React.useState(listUsers);
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const [openModalMultiDelete, setOpenModalMultiDelete] = useState(false);
 	const [openModalDelete, setOpenModalDelete] = useState(false);
 	const [openModalResetPassword, setOpenModalResetPassword] = useState(false);
@@ -90,7 +90,7 @@ export default function TableUser() {
 		setConfirmLoadingModalResetPassword,
 	] = useState(false);
 	const API = process.env.REACT_APP_API;
-	const { lang } = UserLanguage();
+	
 	useEffect(() => {
 		// newUserMonthly();
 		getAllUserData();
@@ -497,7 +497,7 @@ export default function TableUser() {
 						<Form.Item name='dob' label={t('Date of Birth')}>
 							<DatePicker
 								disabledDate={(current) => current > moment()}
-								format={lang === 'vi_VN' ? 'DD-MM-YYYY' : null}
+								format={i18n.language === 'vi_VN' ? 'DD-MM-YYYY' : null}
 							/>
 						</Form.Item>
 						<Form.Item name='gender' label={t('Gender')}>
@@ -686,7 +686,7 @@ export default function TableUser() {
 											current > moment()
 										}
 										format={
-											lang === 'vi_VN' ? 'DD-MM-YYYY' : null
+											i18n.language === 'vi_VN' ? 'DD-MM-YYYY' : null
 										}
 									/>
 								</Form.Item>
