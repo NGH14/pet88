@@ -53,10 +53,10 @@ export default function TableGrooming() {
 	const { token } = UserAuth();
 	const [searchDataSource, setSearchDataSource] =
 		React.useState(listGroomings);
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const [page, setPage] = React.useState(1);
 
-	const { lang } = UserLanguage();
+	
 
 	const [hotelData, setHotelData] = React.useState([]);
 
