@@ -60,7 +60,7 @@ export default function TableHotel() {
 
 	const [form] = Form.useForm();
 	const [searchDataSource, setSearchDataSource] = React.useState(listHotels);
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const {
 		CreateHotel,
 		DeleteHotel,
