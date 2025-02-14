@@ -1,0 +1,31 @@
+@import './assets/font/font.css';
+
+body {
+	overflow: auto;
+	height: 100dvh;
+	width: 100dvw;
+}
+
+textarea {
+	padding: 12px;
+	resize: none;
+	min-height: fit-content;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Lato', 'Proxima Nova' sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	height: 100%;
+	caret-color: transparent;
+	scroll-behavior: smooth;
+	transition: all ease-in 1s;
+	font-size: 62.5%;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
