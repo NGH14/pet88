@@ -14,8 +14,11 @@
     "framer-motion": "^7.5.3",
     "i18next": "^21.10.0",
     "i18next-browser-languagedetector": "^8.0.3",
+    "i18next-chained-backend": "^4.6.2",
     "i18next-http-backend": "^3.0.2",
+    "i18next-localstorage-backend": "^4.2.0",
     "i18next-parser": "^9.1.0",
+    "i18next-resources-to-backend": "^1.2.1",
     "memfs": "^4.17.0",
     "react": "^18.1.0",
     "react-before-after-slider-component": "^1.1.5",
@@ -27,7 +30,7 @@
     "react-draggable": "^4.4.5",
     "react-google-button": "^0.7.2",
     "react-hook-form": "^7.37.0",
-    "react-i18next": "^11.16.9",
+    "react-i18next": "^11.18.6",
     "react-icons": "^4.6.0",
     "react-router": "^7.1.5",
     "react-scripts": "5.0.1",
@@ -49,7 +52,7 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "chromatic": "npx chromatic --project-token=b60e7e753a90",
-    "extract": "i18next --config i18nconfig.js"
+    "extract": "i18next --config i18nextract.cjs"
   },
   "eslintConfig": {
     "extends": [
