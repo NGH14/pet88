@@ -27,7 +27,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import 'moment/locale/vi';
 // import 'moment/locale/en';
-import { UserLanguage } from 'context/LanguageContext';
 
 import viVN from 'antd/locale/vi_VN';
 import { useTranslation } from 'react-i18next';
@@ -94,7 +93,6 @@ const langMessage = {
 };
 
 export const CalendarAdmin = () => {
-	const { lang } = UserLanguage();
 	const [allEvents, setAllEvents] = useState(events);
 	const [setEvent] = useState({});
 	const [selectedGroomingRoomId, setSelectedGroomingRoomId] = useState('');
@@ -119,7 +117,7 @@ export const CalendarAdmin = () => {
 	const [disabled, setDisabled] = useState(false);
 	const [userData, setUserData] = React.useState([]);
 	const [userDataOption, setUserDataOption] = React.useState([]);
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const localizer = momentLocalizer(moment);
 	const [openCreateModal, setOpenCreateModal] = useState(false);
 	const [openDetailModal, setOpenDetailModal] = useState(false);
@@ -133,7 +131,7 @@ export const CalendarAdmin = () => {
 		right: 0,
 	});
 	const draggleRef = useRef(null);
-	moment.locale(lang);
+	moment.locale(i18n.language);
 
 	React.useEffect(() => form.resetFields());
 
@@ -349,9 +347,9 @@ export const CalendarAdmin = () => {
 
 	const { messages } = useMemo(
 		() => ({
-			messages: langMessage[lang],
+			messages: langMessage[i18n.language],
 		}),
-		[lang],
+		[i18n.language],
 	);
 	console.log(accountType);
 	const handleSelectSlot = ({ start, end }) => {
@@ -538,7 +536,7 @@ export const CalendarAdmin = () => {
 		selecteDetaildDate();
 	};
 	return (
-		<ConfigProvider locale={lang === 'vi-VN' && viVN}>
+		<ConfigProvider locale={i18n.language === 'vi-VN' && viVN}>
 			<section className='calendar-container'>
 				<Modal
 					title={
@@ -1193,7 +1191,7 @@ export const CalendarAdmin = () => {
 					messages={messages}
 					localizer={localizer}
 					date={defaultDate}
-					culture={lang}
+					culture={i18n.language}
 					events={allEvents}
 					defaultView='day'
 					onNavigate={onNavigate}
