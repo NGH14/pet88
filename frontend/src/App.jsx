@@ -4,21 +4,20 @@ import { BrowserRouter, Routes } from 'react-router';
 
 import { AuthContextProvider } from 'context/AuthContext';
 import { ToastContainer } from 'react-toastify';
-import i18n from 'i18next';
 import { LanguageContextProvider } from 'context/LanguageContext';
 import { SearchContextProvider } from 'context/SearchContext';
-import ListRoutes from 'routes/ListRoutes';
-
+import { withNamespaces } from 'react-i18next';
 import { routes } from './routes/';
-import 'react-toastify/dist/ReactToastify.css';
+import ListRoutes from 'routes/ListRoutes';
+import i18n from 'i18next';
 
+import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import './App.css';
 
 function App() {
 	return (
 		<AuthContextProvider>
-			<LanguageContextProvider>
 				<I18nextProvider i18n={i18n}>
 					<SearchContextProvider>
 						<BrowserRouter>
@@ -37,9 +36,8 @@ function App() {
 						</BrowserRouter>
 					</SearchContextProvider>
 				</I18nextProvider>
-			</LanguageContextProvider>
 		</AuthContextProvider>
 	);
 }
 
-export default App;
+export default (App);
