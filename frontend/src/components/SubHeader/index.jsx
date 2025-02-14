@@ -17,7 +17,7 @@ function SubNavBar() {
 	const locate = useLocation();
 	const navigate = useNavigate();
 	// const { user, SignOut } = UserAuth();
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const [navBg, setNavBg] = useState(false);
 	const scrollPosition = useScrollPosition();
 
