@@ -144,10 +144,7 @@ export default function BookingConfirm() {
 								}}
 							>
 								{' '}
-								{t(
-									` 
-									Thank you for choosing Pet88`,
-								)}
+								{t(`Thank you for choosing Pet88`)}
 							</p>
 						</section>
 					</section>
