@@ -23,17 +23,16 @@ import AppHeader from 'components/Navbar';
 import './style.css';
 
 import viVN from 'antd/es/locale/vi_VN';
-import { UserLanguage } from 'context/LanguageContext';
 import { useTranslation } from 'react-i18next';
 
 const { Header, Content } = Layout;
 
 export default function PaymentSuccess() {
-	const { lang } = UserLanguage();
-	const { t } = useTranslation();
+	
+	const { t, i18n } = useTranslation();
 
 	return (
-		<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+		<ConfigProvider locale={i18n.language === 'vi_VN' && viVN}>
 			<Layout className='departhtLayout'>
 				<Header>
 					<SubNavBar></SubNavBar>

@@ -35,15 +35,15 @@ const { Step } = Steps;
 const { Header, Content, Footer } = Layout;
 
 export default function PaymentSuccess() {
-	const { lang } = UserLanguage();
-	const { t } = useTranslation();
+	
+	const { t, i18n } = useTranslation();
 	const navigate = useNavigate();
 
 	const handleClick = () => {
 		navigate('/', { replace: true });
 	};
 	return (
-		<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+		<ConfigProvider locale={i18n.language === 'vi_VN' && viVN}>
 			<Layout className='departhtLayout'>
 				<Header>
 					<SubNavBar></SubNavBar>

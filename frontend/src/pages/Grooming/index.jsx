@@ -57,8 +57,8 @@ export default function Department() {
 			? location.state.photos[0]
 			: 'https://res.cloudinary.com/dggxjymsy/image/upload/v1667986972/pet88_upload/e10adb13acb1f3da8724a9149a58bd00_jwdh7h.jpg';
 
-	const { lang } = UserLanguage();
-	const { t } = useTranslation();
+	
+	const { t, i18n } = useTranslation();
 	const [openDetailModal, setOpenDetailModal] = useState(false);
 
 	useEffect(() => {
@@ -197,7 +197,7 @@ export default function Department() {
 
 	return (
 		<section>
-			<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+			<ConfigProvider locale={i18n.language === 'vi_VN' && viVN}>
 				<Layout className='departhtLayout'>
 					<Header>
 						<SubNavBar></SubNavBar>
@@ -399,7 +399,7 @@ export default function Department() {
 													}}
 													placement='bottomLeft'
 													format={
-														lang === 'vi_VN'
+														i18n.language === 'vi_VN'
 															? `HH:mm, DD-MM-YYYY`
 															: 'HH:mm, YYYY-MM-DD '
 													}

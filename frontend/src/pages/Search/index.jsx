@@ -65,8 +65,8 @@ export default function Search() {
 		return dates;
 	};
 
-	const { lang } = UserLanguage();
-	const { t } = useTranslation();
+	
+	const { t, i18n } = useTranslation();
 	const fetchHotelData = async (value) => {
 		const city = value?.city;
 		const alldates =
@@ -121,7 +121,7 @@ export default function Search() {
 
 	return (
 		<section>
-			<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+			<ConfigProvider locale={i18n.language === 'vi_VN' && viVN}>
 				<Layout className='hotelLayout'>
 					<Header>
 						<SubNavBar></SubNavBar>
@@ -236,7 +236,7 @@ export default function Search() {
 														placement='bottomLeft'
 														className='form-item_bookingdepartpage'
 														format={
-															lang === 'vi_VN'
+															i18n.language === 'vi_VN'
 																? 'DD-MM-YYYY'
 																: null
 														}
@@ -255,7 +255,7 @@ export default function Search() {
 														}}
 														placement='bottomLeft'
 														format={
-															lang === 'vi_VN'
+															i18n.language === 'vi_VN'
 																? `HH:mm, DD-MM-YYYY`
 																: 'HH:mm, YYYY-MM-DD '
 														}

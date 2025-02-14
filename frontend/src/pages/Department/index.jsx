@@ -54,8 +54,8 @@ export default function Department() {
 	const currentDate = moment();
 	const futureMonth = moment(currentDate).add(1, 'M');
 	const futureWeek = moment(currentDate).add(1, 'W');
-	const { lang } = UserLanguage();
-	const { t } = useTranslation();
+	
+	const { t, i18n } = useTranslation();
 
 	useEffect(() => {
 		handleLoadData();
@@ -199,7 +199,7 @@ export default function Department() {
 
 	return (
 		<section>
-			<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+			<ConfigProvider locale={i18n.language === 'vi_VN' && viVN}>
 				<Layout className='departhtLayout'>
 					<Header>
 						<SubNavBar></SubNavBar>
@@ -335,7 +335,7 @@ export default function Department() {
 													placement='bottomLeft'
 													className='form-item_bookingdepartpage'
 													format={
-														lang === 'vi_VN'
+														i18n.language === 'vi_VN'
 															? 'DD-MM-YYYY'
 															: null
 													}

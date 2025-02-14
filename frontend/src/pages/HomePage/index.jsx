@@ -65,7 +65,7 @@ const cardVariants = {
 
 function HomePage() {
 	const [t] = useTranslation();
-	const { lang } = UserLanguage();
+	
 	const [countUp, setCountUp] = React.useState(false);
 
 	React.useEffect(() => {
@@ -73,7 +73,7 @@ function HomePage() {
 	});
 
 	return (
-		<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+		<ConfigProvider locale={i18n.language === 'vi_VN' && viVN}>
 			<Layout className='mainLayout' id='top'>
 				<Header>
 					<SubNavBar></SubNavBar>

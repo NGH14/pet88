@@ -31,8 +31,8 @@ const { Step } = Steps;
 const { Header, Content, Footer } = Layout;
 
 export default function PaymentCancel() {
-	const { lang } = UserLanguage();
-	const { t } = useTranslation();
+	
+	const { t, i18n } = useTranslation();
 	const navigate = useNavigate();
 
 	const fetchDeleteData = async () => {
@@ -55,7 +55,7 @@ export default function PaymentCancel() {
 	const location = useLocation();
 	const id = location.pathname.split('/')[3];
 	return (
-		<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+		<ConfigProvider locale={i18n.language === 'vi_VN' && viVN}>
 			<Layout className='departhtLayout'>
 				<Header>
 					<SubNavBar></SubNavBar>

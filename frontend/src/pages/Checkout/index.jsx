@@ -45,8 +45,8 @@ export default function Checkout() {
 			? location.state.photos[0]
 			: 'https://res.cloudinary.com/dggxjymsy/image/upload/v1667986972/pet88_upload/e10adb13acb1f3da8724a9149a58bd00_jwdh7h.jpg';
 
-	const { lang } = UserLanguage();
-	const { t } = useTranslation();
+	
+	const { t, i18n } = useTranslation();
 	const { search } = SearchData();
 	const navigate = useNavigate();
 
@@ -106,10 +106,10 @@ export default function Checkout() {
 		}
 	};
 
-	moment.locale(lang);
+	moment.locale(i18n.language);
 
 	const checkInDate =
-		search.datesHotels?.length > 0 && lang === 'vi_VN'
+		search.datesHotels?.length > 0 && i18n.language === 'vi_VN'
 			? moment(new Date(search.datesHotels[0]).getTime()).format(
 					'ddd, DD MMMM YYYY',
 			  )
@@ -118,7 +118,7 @@ export default function Checkout() {
 			  );
 
 	const checkOutDate =
-		search.datesHotels?.length > 0 && lang === 'vi_VN'
+		search.datesHotels?.length > 0 && i18n.language === 'vi_VN'
 			? moment(new Date(search.datesHotels[1]).getTime()).format(
 					'ddd, DD MMMM YYYY',
 			  )
@@ -127,7 +127,7 @@ export default function Checkout() {
 			  );
 
 	return (
-		<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+		<ConfigProvider locale={i18n.language === 'vi_VN' && viVN}>
 			<Layout className='departhtLayout'>
 				<Header>
 					<SubNavBar></SubNavBar>
