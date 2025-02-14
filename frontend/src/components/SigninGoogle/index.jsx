@@ -21,7 +21,7 @@ const antIcon = (
 export default function SignInGoogle({ ...props }) {
 	const { googleSignIn, AddUserToDB, user } = UserAuth();
 	const [loading, setLoading] = useState(false);
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const handleGoogleSignIn = async () => {
 		setLoading(true);
 		try {
