@@ -48,7 +48,7 @@ function getItem(label, key, icon, children) {
 export default function Admin() {
 	const location = useLocation();
 	const [loading, setLoading] = useState(false);
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const { user } = UserAuth();
 	const navigate = useNavigate();
 	const [collapsed, setCollapsed] = useState(true);
