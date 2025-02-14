@@ -39,7 +39,8 @@ const Account = () => {
 	const [loadingOrder, setLoadingOrder] = useState(false);
 	const navigate = useNavigate();
 	const [passwordLoading, setPasswordLoading] = useState(false);
-	const { lang } = UserLanguage();
+		const { t, i18n } = useTranslation();
+
 	const {
 		user,
 		updateProfile,
@@ -55,7 +56,6 @@ const Account = () => {
 	const [orderList, setOrderList] = React.useState([]);
 	const [gender, setGender] = React.useState(user?.gender);
 	const [phone, setPhone] = React.useState(user?.phone);
-	const { t } = useTranslation();
 	const [openModalResetPassword, setOpenModalResetPassword] = useState(false);
 
 	const [
@@ -236,7 +236,7 @@ const Account = () => {
 	};
 
 	return (
-		<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+		<ConfigProvider locale={i18n.language === 'vi_VN' && viVN}>
 			<Layout className='mainLayout accountLayout'>
 				<Header>
 					<SubNavBar></SubNavBar>
@@ -378,7 +378,7 @@ const Account = () => {
 														current > moment()
 													}
 													format={
-														lang === 'vi_VN'
+														i18n.language === 'vi_VN'
 															? 'DD-MM-YYYY'
 															: null
 													}
