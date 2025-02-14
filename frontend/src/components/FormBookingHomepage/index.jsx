@@ -20,12 +20,12 @@ import { SearchData } from '../../context/SearchContext';
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
+
 const FormBookingHomepage = () => {
 	const [form] = Form.useForm();
 	const navigate = useNavigate();
 	const [type, setType] = useState('hotel');
-	const { lang } = UserLanguage();
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const currentDate = moment();
 	const futureMonth = moment(currentDate).add(1, 'M');
 	const futureWeek = moment(currentDate).add(1, 'W');
@@ -162,7 +162,7 @@ const FormBookingHomepage = () => {
 							placeholder={[t('Drop off'), t('Pick up')]}
 							placement='bottomRight'
 							className='form-item_bookinghomepage'
-							format={lang === 'vi_VN' ? 'DD-MM-YYYY' : null}
+							format={i18n.language === 'vi_VN' ? 'DD-MM-YYYY' : null}
 						/>
 					</Form.Item>
 				) : null}
@@ -182,7 +182,7 @@ const FormBookingHomepage = () => {
 							use12Hours
 							placement='bottomLeft'
 							format={
-								lang === 'vi_VN'
+								i18n.language === 'vi_VN'
 									? `HH:mm A, DD-MM-YYYY`
 									: 'HH:mm A, YYYY-MM-DD '
 							}
