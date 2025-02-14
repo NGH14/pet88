@@ -1,0 +1,70 @@
+
+
+.adminsite-layout .adminsite-layout-background {
+  display: flex;
+  flex-direction: row;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: flex-end;
+  padding: 18px 24px;
+  white-space: pre;
+  min-height: 80px;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  
+}
+
+.ant-layout-sider-children {
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-layout-sider-children{
+  background-color: white;
+  border-right: 0.5px solid rgb(224, 225, 226);
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 10px 0px;
+}
+  
+.logo_admin-container {
+    padding: 15px;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+
+  .ant-layout-header  {
+    all: unset;
+    
+  }
+
+  .table_deletemulpti{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .table_deletemulpti-deselect {
+    font-weight: 600;
+  }
+
+  .table_deletemulpti-delete {
+    font-weight: 600;
+
+
+  border-radius: 5px;  }
+
+  .table_deletemulpti-span {
+    font-weight: 400;
+    color: #999;
+    text-transform: lowercase;
+  }
+
+  @media (max-width: 800px) {
+    .admin-sitebar {
+      display: none;
+    }
+
+
+  }
