@@ -32,7 +32,7 @@ function AppHeader() {
 	const [navBg, setNavBg] = useState(false);
 	const { user, SignOut } = UserAuth();
 	const [visible, setVisible] = useState(false);
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 
 	const handleSignOut = async (e) => {
 		e.preventDefault();
