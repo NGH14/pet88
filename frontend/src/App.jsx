@@ -1,11 +1,10 @@
 import * as React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter, Routes } from 'react-router';
-
 import { AuthContextProvider } from 'context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import { SearchContextProvider } from 'context/SearchContext';
-import { withNamespaces } from 'react-i18next';
 import { routes } from './routes/';
 import ListRoutes from 'routes/ListRoutes';
 import i18n from 'i18next';
@@ -17,8 +16,9 @@ import './App.css';
 function App() {
 	return (
 		<AuthContextProvider>
-				<I18nextProvider i18n={i18n}>
-					<SearchContextProvider>
+			<I18nextProvider i18n={i18n}>
+				<SearchContextProvider>
+					<ThemeProvider theme={styledTheme}>
 						<BrowserRouter>
 							<ToastContainer
 								position='top-right'
@@ -33,8 +33,9 @@ function App() {
 							/>
 							<Routes>{ListRoutes(routes)}</Routes>
 						</BrowserRouter>
-					</SearchContextProvider>
-				</I18nextProvider>
+					</ThemeProvider>
+				</SearchContextProvider>
+			</I18nextProvider>
 		</AuthContextProvider>
 	);
 }
