@@ -18,7 +18,7 @@ function App() {
 		<AuthContextProvider>
 			<I18nextProvider i18n={i18n}>
 				<SearchContextProvider>
-					<ThemeProvider theme={styledTheme}>
+					{/* <ThemeProvider> */}
 						<BrowserRouter>
 							<ToastContainer
 								position='top-right'
@@ -33,7 +33,7 @@ function App() {
 							/>
 							<Routes>{ListRoutes(routes)}</Routes>
 						</BrowserRouter>
-					</ThemeProvider>
+					{/* </ThemeProvider> */}
 				</SearchContextProvider>
 			</I18nextProvider>
 		</AuthContextProvider>

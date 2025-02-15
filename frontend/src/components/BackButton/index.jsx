@@ -15,7 +15,7 @@ export default function BackButton() {
 			onClick={() => navigate(-1)}
 			style={{ color: '#F76A1A', paddingLeft: 0, marginBlock: 10 }}
 		>
-			${t('Back')}
+			${t('back')}
 		</Button>
 	);
 }

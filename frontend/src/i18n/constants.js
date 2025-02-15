@@ -1,5 +1,5 @@
-import vi_VN from './locales/vi_VN/translation.json';
-import en_US from './locales/en_US/translation.json';
+import {vi_VN, en_US} from './locales';
+
 
 const resources = {
 	vi_VN: {
