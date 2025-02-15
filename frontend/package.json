@@ -4,6 +4,7 @@
   "version": "2.0.0",
   "private": true,
   "dependencies": {
+    "@uidotdev/usehooks": "^2.4.1",
     "ant-table-extensions": "^1.1.7",
     "antd": "^5.23.4",
     "axios": "^1.1.3",
