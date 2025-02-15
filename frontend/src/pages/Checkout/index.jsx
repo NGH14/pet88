@@ -24,7 +24,7 @@ import FooterWave from 'components/Footer';
 import AppHeader from 'components/Navbar';
 import SubNavBar from 'components/SubHeader';
 import { UserAuth } from '../../context/AuthContext';
-import { UserLanguage } from '../../context/LanguageContext';
+
 import { SearchData } from '../../context/SearchContext';
 import './style.css';
 
