@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router';
 
 import { useTranslation } from 'react-i18next';
 import './style.css';
-import { SearchData } from '../../context/SearchContext';
+import { SearchData } from 'context/SearchContext';
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
