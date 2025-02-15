@@ -12,7 +12,7 @@ const resources = {
 };
 
 
-const i18nInit = {
+const i18nConfig = {
   resources,
   fallbackLng: 'en_US',
   interpolation: {
@@ -25,4 +25,4 @@ const i18nInit = {
   },
 }
 
-export default i18nInit;
+export default i18nConfig;

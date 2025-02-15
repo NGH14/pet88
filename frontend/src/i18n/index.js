@@ -4,12 +4,12 @@ import httpBackend from 'i18next-http-backend';
 import localStorageBackend from 'i18next-localstorage-backend';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next } from 'react-i18next';
-import i18nInit from './constants.js';
+import i18nConfig from './constants.js';
 
 i18n.on('languageChanged', (lng) => {
 	localStorage.setItem('lang', lng);
 });
 
-i18n.use(httpBackend).use(detector).use(initReactI18next).init(i18nInit);
+i18n.use(httpBackend).use(detector).use(initReactI18next).init(i18nConfig);
 
 export default i18n;
