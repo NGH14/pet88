@@ -4,7 +4,6 @@ import { BrowserRouter, Routes } from 'react-router';
 
 import { AuthContextProvider } from 'context/AuthContext';
 import { ToastContainer } from 'react-toastify';
-import { LanguageContextProvider } from 'context/LanguageContext';
 import { SearchContextProvider } from 'context/SearchContext';
 import { withNamespaces } from 'react-i18next';
 import { routes } from './routes/';
