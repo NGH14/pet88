@@ -13,7 +13,7 @@ import {
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { UserLanguage } from '../../context/LanguageContext';
+
 import { useTranslation } from 'react-i18next';
 import './style.css';
 import { SearchData } from '../../context/SearchContext';
