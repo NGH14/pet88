@@ -1,4 +1,4 @@
-import {vi_VN, en_US} from './locales';
+import {vi_VN, en_US} from './locales/translations.mjs';
 
 
 const resources = {
