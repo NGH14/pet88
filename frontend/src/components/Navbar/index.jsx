@@ -45,7 +45,7 @@ function AppHeader() {
 	};
 
 	const showDrawer = () => {
-		document.body.style.overflow = 'hidden !important';
+		document.body.style.overflow = 'hidden';
 		setVisible(true);
 	};
 
