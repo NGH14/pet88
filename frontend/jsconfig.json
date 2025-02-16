@@ -15,7 +15,9 @@
 			"hooks": ["./hooks"],
 			"hooks/*": ["./hooks/*"],
 			"pages": ["./pages"],
-			"pages/*": ["./pages/*"]
+			"pages/*": ["./pages/*"],
+			"constants": ["./constants"],
+			"constants/*": ["./constants/*"]
 		}
 	},
 	"include": ["src", "./**/*.js", "./**/*.jsx"],

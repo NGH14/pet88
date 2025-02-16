@@ -1,24 +1,25 @@
-import {vi_VN, en_US} from './locales/translations.mjs';
+import { ENGLISH, VIETNAMESE } from './locales/translations.mjs';
 
+import { ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE, LOCALE_KEY } from 'constants/i18n.mjs';
 
 const resources = {
-	vi_VN: {
-		translation: vi_VN,
+	[ENGLISH_LOCALE_CODE]: {
+		translation: ENGLISH,
 	},
-	en_US: {
-		translation: en_US,
+	[VIETNAM_LOCALE_CODE]: {
+		translation: VIETNAMESE,
 	},
 };
 
 const i18nConfig = {
 	resources,
-	fallbackLng: 'en_US',
+	fallbackLng: ENGLISH_LOCALE_CODE,
 	interpolation: {
 		escapeValue: false,
 	},
 	detection: {
 		order: ['localStorage'],
-		lookupLocalStorage: 'lang',
+		lookupLocalStorage: LOCALE_KEY,
 		checkWhitelist: true,
 	},
 };

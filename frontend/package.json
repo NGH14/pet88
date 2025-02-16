@@ -53,7 +53,7 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "chromatic": "npx chromatic --project-token=b60e7e753a90",
-    "extract": "i18next --config ./src/config/extract.config.cjs"
+    "extract": "i18next --config ./src/config/extract.config.mjs"
   },
   "eslintConfig": {
     "extends": [

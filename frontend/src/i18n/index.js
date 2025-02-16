@@ -5,9 +5,10 @@ import localStorageBackend from 'i18next-localstorage-backend';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { initReactI18next } from 'react-i18next';
 import i18nConfig from './config.mjs';
+import { LOCALE_KEY } from 'constants/i18n.mjs';
 
 i18n.on('languageChanged', (lng) => {
-	localStorage.setItem('lang', lng);
+	localStorage.setItem(LOCALE_KEY, lng);
 });
 
 i18n.use(httpBackend).use(detector).use(initReactI18next).init(i18nConfig);

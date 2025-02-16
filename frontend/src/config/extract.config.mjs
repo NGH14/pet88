@@ -1,4 +1,6 @@
-module.exports = {
+import { VIETNAM_LOCALE_CODE, ENGLISH_LOCALE_CODE } from "../constants/i18n.mjs";
+
+export default {
   createOldCatalogs: false,
   // Save the \_old files
 
@@ -21,7 +23,7 @@ module.exports = {
   // lineEnding: 'auto',
   // Control the line ending. See options at https://github.com/ryanve/eol
 
-  locales: ['en_US', 'vi_VN'],
+  locales: [ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE],
   // An array of the locales in your applications
 
   output: 'src/i18n/locales/$LOCALE/$NAMESPACE.json',
