@@ -1,4 +1,4 @@
-import { ENGLISH, VIETNAMESE } from './locales/translations.mjs';
+import { ENGLISH, VIETNAMESE } from './locales/translations.js';
 
 import { ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE, LOCALE_KEY } from 'constants/i18n.mjs';
 
@@ -11,8 +11,10 @@ const RESOURCES = {
 	},
 };
 
+console.log(RESOURCES)
+
 const i18nConfig = {
-	RESOURCES,
+	resources: RESOURCES,
 	fallbackLng: ENGLISH_LOCALE_CODE,
 	interpolation: {
 		escapeValue: false,
@@ -20,7 +22,6 @@ const i18nConfig = {
 	detection: {
 		order: ['localStorage'],
 		lookupLocalStorage: LOCALE_KEY,
-		checkWhitelist: true,
 	},
 };
 
