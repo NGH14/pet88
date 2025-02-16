@@ -11,8 +11,6 @@ const RESOURCES = {
 	},
 };
 
-console.log(RESOURCES)
-
 const i18nConfig = {
 	resources: RESOURCES,
 	fallbackLng: ENGLISH_LOCALE_CODE,
