@@ -2,7 +2,7 @@ import { ENGLISH, VIETNAMESE } from './locales/translations.mjs';
 
 import { ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE, LOCALE_KEY } from 'constants/i18n.mjs';
 
-const resources = {
+const RESOURCES = {
 	[ENGLISH_LOCALE_CODE]: {
 		translation: ENGLISH,
 	},
@@ -12,7 +12,7 @@ const resources = {
 };
 
 const i18nConfig = {
-	resources,
+	RESOURCES,
 	fallbackLng: ENGLISH_LOCALE_CODE,
 	interpolation: {
 		escapeValue: false,
