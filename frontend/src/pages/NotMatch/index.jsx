@@ -2,9 +2,9 @@ import './style.css';
 import React from 'react';
 import { useNavigate } from 'react-router';
 
-import { Button } from '../../components/Button/index';
-import CatVideo from '../../assets/video/pet_animation.mp4';
-import CatPoster from '../../assets/images/cat_animation.webp';
+import { Button } from 'components/Button/index';
+import CatVideo from 'assets/video/cat_waving.mp4';
+import CatPoster from 'assets/images/cat_animation.webp';
 
 export default function NotMatchPage() {
 	const navigate = useNavigate();
