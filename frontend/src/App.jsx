@@ -5,6 +5,7 @@ import { BrowserRouter, Routes } from 'react-router';
 import { AuthContextProvider } from 'context/AuthContext';
 import { ToastContainer } from 'react-toastify';
 import { SearchContextProvider } from 'context/SearchContext';
+import {ConfigProvider} from 'antd'
 import { routes } from './routes/';
 import ListRoutes from 'routes/ListRoutes';
 import i18n from 'i18next';
@@ -19,6 +20,7 @@ function App() {
 			<I18nextProvider i18n={i18n}>
 				<SearchContextProvider>
 					{/* <ThemeProvider> */}
+					<ConfigProvider theme={{ cssVar: true, hashed: false }}>
 						<BrowserRouter>
 							<ToastContainer
 								position='top-right'
@@ -33,6 +35,7 @@ function App() {
 							/>
 							<Routes>{ListRoutes(routes)}</Routes>
 						</BrowserRouter>
+					</ConfigProvider>
 					{/* </ThemeProvider> */}
 				</SearchContextProvider>
 			</I18nextProvider>
