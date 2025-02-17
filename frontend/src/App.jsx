@@ -19,24 +19,25 @@ function App() {
 		<AuthContextProvider>
 			<I18nextProvider i18n={i18n}>
 				<SearchContextProvider>
-					{/* <ThemeProvider> */}
-					<ConfigProvider theme={{ cssVar: true, hashed: false }}>
-						<BrowserRouter>
-							<ToastContainer
-								position='top-right'
-								autoClose={3500}
-								hideProgressBar={false}
-								newestOnTop={false}
-								closeOnClick
-								pauseOnFocusLoss
-								draggable
-								pauseOnHover
-								theme='light'
-							/>
-							<Routes>{ListRoutes(routes)}</Routes>
-						</BrowserRouter>
-					</ConfigProvider>
-					{/* </ThemeProvider> */}
+					<ThemeProvider>
+						<ConfigProvider theme={{ cssVar: true, hashed: false }}>
+							<GlobalStyle />
+							<BrowserRouter>
+								<ToastContainer
+									position='top-right'
+									autoClose={3500}
+									hideProgressBar={false}
+									newestOnTop={false}
+									closeOnClick
+									pauseOnFocusLoss
+									draggable
+									pauseOnHover
+									theme='light'
+								/>
+								<Routes>{ListRoutes(routes)}</Routes>
+							</BrowserRouter>
+						</ConfigProvider>
+					</ThemeProvider>
 				</SearchContextProvider>
 			</I18nextProvider>
 		</AuthContextProvider>

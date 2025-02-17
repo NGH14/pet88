@@ -1,15 +1,15 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { UserAuth } from '../../context/AuthContext';
+import { UserAuth } from 'context/AuthContext';
 import {Spinner }from 'components/Spinner';
 import { collection, getDocs } from 'firebase/firestore';
-import { storage } from '../../utils/firebase';
+import { storage } from 'utils/firebase';
 import { useNavigate, useLocation, NavLink } from 'react-router';
 import { toast } from 'react-toastify';
 import { Space, Table, Tag, ConfigProvider, Button } from 'antd';
 import { CSVLink } from 'react-csv';
 import { useTranslation } from 'react-i18next';
-import logoWhite from '../../assets/images/logo-text.png';
+import logoWhite from 'assets/images/logo-text.png';
 import viVN from 'antd/es/locale/vi_VN';
 
 import {
@@ -23,16 +23,16 @@ import { Breadcrumb, Layout, Menu } from 'antd';
 import './style.css';
 import SubNavBar from 'components/SubHeader';
 
-import TableUser from './../../components/TableUser/index';
-import TableHotel from '../../components/TableHotel';
+import TableUser from 'components/TableUser/index';
+import TableHotel from 'components/TableHotel';
 import { RiCalendarEventLine, RiCoupon3Line } from 'react-icons/ri';
 import { MdOutlinePayments } from 'react-icons/md';
 import { CgUserList } from 'react-icons/cg';
-import { CalendarAdmin } from './../../components/Calendar/CalendarAdmin';
-import TableRooms from '../../components/TableRooms';
-import TableGrooming from './../../components/TableGrooming/index';
-import TableOrder from '../../components/TableOrder';
-import ChangeLanguage from './../../components/ChangeLanguage/index';
+import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
+import TableRooms from 'components/TableRooms';
+import TableGrooming from 'components/TableGrooming/index';
+import TableOrder from 'components/TableOrder';
+import ChangeLanguage from 'components/ChangeLanguage/index';
 
 const { Header, Content, Sider } = Layout;
 
