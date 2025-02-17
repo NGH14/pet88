@@ -56,7 +56,6 @@ export default function Admin() {
 
 	const items = [
 		getItem(t('Appointment'), '/admin', <RiCalendarEventLine />),
-
 		getItem(t('Business'), 'depart', <ReconciliationOutlined />, [
 			getItem(t('Departments'), '/admin/management-hotel'),
 			getItem(t('Hotel Service'), '/admin/management-room-category'),
