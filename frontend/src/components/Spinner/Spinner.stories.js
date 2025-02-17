@@ -1,8 +1,8 @@
-import { Notification } from 'components/Notification/';
+import { Spinner } from 'components/Spinner/';
 
 export default {
   title: 'COMPONENTS/Spinner',
-  component: Notification,
+  component: Spinner,
   parameters: {
     layout: 'centered',
   },
