@@ -13,7 +13,7 @@ import i18n from 'i18next';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import './App.css';
-import { GlobalStyle } from 'styles/global.style';
+import { GlobalStyle } from 'styles/global.style.js';
 
 function App() {
 	return (
@@ -34,8 +34,8 @@ function App() {
 								pauseOnHover
 								theme='light'
 							/>
-							<Routes>{ListRoutes(routes)}</Routes>
 							<GlobalStyle />
+							<Routes>{ListRoutes(routes)}</Routes>
 						</BrowserRouter>
 					</ConfigProvider>
 					{/* </ThemeProvider> */}
