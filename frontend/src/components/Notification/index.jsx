@@ -51,16 +51,8 @@ export const Notification = ({
 				autoClose={autoCloseAfter}
 				transition={transition}
 				theme={theme}
-				// position='top-right'
 				hideProgressBar={progressHide}
 				newestOnTop={newestOnTop}
-				// closeOnClick={true}
-				// rtl={false}
-				// style={{ width: 'auto', minWidth: '20rem' }}
-				// // pauseOnHover={true}
-				// // pauseOnFocusLoss={false}
-				// // draggable={true}
-				// // draggablePercent={20}
 				{...props}
 			/>
 		</>
@@ -76,14 +68,5 @@ Notification.propTypes = {
 	progressHide: PropTypes.bool,
 	types: PropTypes.oneOf(['error', 'info', 'warning','success', 'default']),
 	theme: PropTypes.oneOf(['light', 'dark', 'colored']),
-};
-
-Notification.defaultProps = {
-	message: 'This is message',
-	autoCloseAfter: 5000,
-	newestOnTop: false,
-	progressHide: false,
-	types: 'default',
-	theme: 'colored',
 };
 
