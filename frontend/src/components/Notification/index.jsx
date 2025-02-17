@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Button } from '../Button';
@@ -19,7 +18,7 @@ export const Notification = ({
 	types,
 	...props
 }) => {
-	const messageContent = message ? message : 'Message';
+	const messageContent = message ||  'Message';
 
 	const notify = () => {
 		switch (types) {

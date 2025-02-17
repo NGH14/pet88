@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useEffect } from 'react';
 import { UserAuth } from '../../context/AuthContext';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import {Spinner }from 'components/Spinner';
 import { collection, getDocs, Timestamp } from 'firebase/firestore';
 import {
 	Table,

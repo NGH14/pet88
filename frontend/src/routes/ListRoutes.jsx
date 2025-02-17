@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Route } from 'react-router';
-import LoadingSpinner from 'components/LoadingSpinner';
+import {Spinner} from 'components/Spinner';
 import { PrivateRoute } from './PrivateRoute';
 
 const ListRoutes = (list) => {

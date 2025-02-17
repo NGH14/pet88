@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { UserAuth } from '../../context/AuthContext';
 import { useNavigate, useLocation } from 'react-router';
 import InValidDisplay from './../../components/InvalidCodeReset/index';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import {Spinner }from 'components/Spinner';
 import { useTranslation } from 'react-i18next';
 function useQuery() {
 	return new URLSearchParams(useLocation().search);

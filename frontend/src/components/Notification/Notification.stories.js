@@ -1,4 +1,4 @@
-import { Notification } from 'components/Notification/';
+import { Notification } from './index.jsx';
 
 export default {
   title: 'COMPONENTS/Notification',
@@ -10,6 +10,7 @@ export default {
 
   argTypes: { onClick: { action: 'closed' } },
 };
+
 const Template = (args) => <Notification {...args} />;
 const configDefault = {
   message: 'This is message',

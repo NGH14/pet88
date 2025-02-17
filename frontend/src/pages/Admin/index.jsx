@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { UserAuth } from '../../context/AuthContext';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import {Spinner }from 'components/Spinner';
 import { collection, getDocs } from 'firebase/firestore';
 import { storage } from '../../utils/firebase';
 import { useNavigate, useLocation, NavLink } from 'react-router';

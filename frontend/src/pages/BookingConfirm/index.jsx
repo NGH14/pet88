@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
 import './style.css';
 import { useLocation } from 'react-router';
-import LoadingSpinner from '../../components/LoadingSpinner';
+import {Spinner }from 'components/Spinner';
 import { useTranslation } from 'react-i18next';
 import { BsCheck2Circle } from 'react-icons/bs';
 import axios from 'axios';

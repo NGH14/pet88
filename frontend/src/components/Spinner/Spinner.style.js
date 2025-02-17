@@ -2,14 +2,13 @@ import { styled } from 'styled-components';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 
-export const LoadingWrapper = styled.section`
+export const SpinnerWrapper = styled.section`
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: rgb(241, 241, 241);
 	position: relative;
-  height: ${(props) => props.height ?? '100vh'}}
+  height: ${(props) => props.height || '100vh'}}
 `;
 
 export const StyledSpin = styled(Spin)`
@@ -17,5 +16,5 @@ export const StyledSpin = styled(Spin)`
 `;
 
 export const SpinIcon = styled(LoadingOutlined)`
-	font-size: ${(props) => props.fontSize ?? '100px !important'};
+	font-size: ${(props) => `${props.fontSize} !important` || '100px !important'};
 `;
