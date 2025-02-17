@@ -53,7 +53,6 @@ export default function Admin() {
 	const navigate = useNavigate();
 	const [collapsed, setCollapsed] = useState(true);
 	const [openUpdate, setOpenUpdate] = useState(false);
-	const { lang, SetLanguage } = UserLanguage();
 
 	const items = [
 		getItem(t('Appointment'), '/admin', <RiCalendarEventLine />),
@@ -85,7 +84,7 @@ export default function Admin() {
 		<LoadingSpinner />
 	) : (
 		<>
-			<ConfigProvider locale={lang === 'vi_VN' && viVN}>
+			<ConfigProvider locale={i18n.lang === 'vi_VN' && viVN}>
 				<Layout
 					style={{
 						minHeight: '100vh',
