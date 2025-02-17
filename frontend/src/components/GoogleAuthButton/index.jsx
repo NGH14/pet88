@@ -9,7 +9,6 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 
 const SignUpButton = styled.p`
-	font-family: 'Nunito Sans', sans-serif;
 	border-radius: 40px;
 	background-color: rgb(249 107 24);
 	padding: 12px 24px;
@@ -25,7 +24,6 @@ const SignUpButton = styled.p`
 `;
 
 const SignInButton = styled.a`.
-font-family: 'Nunito Sans', sans-serif;
 font-weight: 700;
 margin-bottom: 0;
 &:hover,

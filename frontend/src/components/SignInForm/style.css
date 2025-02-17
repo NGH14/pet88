@@ -6,7 +6,6 @@
 	margin: 0px 4.5em;
 	max-width: 100%;
 	padding: 10px 15px;
-	font-family: 'Nunito Sans', sans-serif;
 	max-width: 500px;
 	margin: auto;
 }
@@ -92,7 +91,6 @@ label {
 }
 
 .loginform-forgotpassword {
-	font-family: 'Nunito Sans', sans-serif;
 
 	margin-block: calc(-1em) 1.5em;
 	text-align: right;
