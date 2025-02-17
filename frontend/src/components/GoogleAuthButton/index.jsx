@@ -48,7 +48,7 @@ function AuthButton({ TextColor, FullWitdh }) {
 							style={{
 								transition: 'color 0.5s ease-in-out',
 								color: TextColor,
-								fontFamily: 'Nunito Sans',
+								
 							}}>
 							{t('Sign in')}
 						</SignInButton>

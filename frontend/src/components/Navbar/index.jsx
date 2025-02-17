@@ -14,15 +14,13 @@ import './style.css';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { UserAuth } from 'context/AuthContext';
-import {NavBar} from "./navbar.style.js"
+import { NavBar } from './navbar.style.js';
 import { StyledNavLink } from '../NavLink/NavLink.style.js';
 
 const pages = [
-	{ title: 'home', url: '/#top' },
-	{ title: 'about', url: '/#about' },
-	{ title: 'service', url: '/#service' },
+	{ title: 'About', url: '/#about' },
+	{ title: 'Service', url: '/#service' },
 ];
-
 
 function AppHeader() {
 	const locate = useLocation();
@@ -77,7 +75,7 @@ function AppHeader() {
 								TextColor={visible || navBg ? 'black' : 'white'}
 							></ChangeLanguage>
 						}
-						placement="top"
+						placement='top'
 						width={300}
 						className='pet88-menu'
 						onClose={onClose}
@@ -97,7 +95,7 @@ function AppHeader() {
 								transition: 'color 0.3s ease-in-out',
 
 								color: visible || navBg ? 'black' : 'white',
-								fontFamily: 'Nunito Sans',
+								
 								textTransform: 'uppercase',
 								fontWeight: 700,
 								fontSize: 16,
@@ -118,7 +116,7 @@ function AppHeader() {
 										transition: 'color 0.3s ease-in-out',
 
 										color: visible || navBg ? 'black' : 'white',
-										fontFamily: 'Nunito Sans',
+										
 										textTransform: 'uppercase',
 										fontWeight: 700,
 										fontSize: 16,
@@ -137,8 +135,7 @@ function AppHeader() {
 									transition: 'color 0.3s ease-in-out',
 
 									color: visible || navBg ? 'black' : 'white',
-									fontFamily: 'Nunito Sans',
-									textTransform: 'uppercase',
+									
 									fontWeight: 700,
 									fontSize: 16,
 									padding: 15,
@@ -156,8 +153,7 @@ function AppHeader() {
 									transition: 'color 0.3s ease-in-out',
 
 									color: visible || navBg ? 'black' : 'white',
-									fontFamily: 'Nunito Sans',
-									textTransform: 'uppercase',
+									
 									fontWeight: 700,
 									fontSize: 16,
 									padding: 15,
@@ -193,11 +189,7 @@ function AppHeader() {
 				<section className='mobileHidden'>
 					{pages.map((page) => {
 						return (
-							<StyledNavLink
-								key={page.title}
-								to={page.url}
-					
-							>
+							<StyledNavLink key={page.title} to={page.url}>
 								{t(page.title)}
 							</StyledNavLink>
 						);

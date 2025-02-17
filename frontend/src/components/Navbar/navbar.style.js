@@ -10,6 +10,6 @@ export const NavBar = styled.nav`
   
   font-weight: bold;
   color: black;
-  text-transform: uppercase;
+  text-transform: capitalize;
 `;
 
