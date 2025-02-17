@@ -55,43 +55,64 @@ function AppHeader() {
 	return (
 		<>
 			<NavBar>
-						<section className='mobileVisible'>
-							<Button
-								onClick={showDrawer}
-								type='text'
-								icon={
-									<MenuOutlined
-										style={{
-											transition: 'color 0.5s ease-in-out',
-											color: navBg ? 'black' : 'white',
-										}}
-									/>
-								}
-								ghost
-							></Button>
-							<Drawer
-								footer={
-									<ChangeLanguage
-										fullWidth
-										TextColor={visible || navBg ? 'black' : 'white'}
-									></ChangeLanguage>
-								}
-								width={300}
-								className='pet88-menu'
-								placement='left'
-								onClose={onClose}
-								closeIcon={<CloseOutlined />}
-								open={visible}
-								bodyStyle={{
-									padding: '0',
-									background: 'transparent',
+				<section className='mobileVisible'>
+					<Button
+						onClick={showDrawer}
+						type='text'
+						icon={
+							<MenuOutlined
+								style={{
+									transition: 'color 0.5s ease-in-out',
+									color: navBg ? 'black' : 'white',
 								}}
-								headerStyle={{
-									border: 'none',
-									paddingLeft: 10,
-								}}
-							>
-								<p
+							/>
+						}
+						ghost
+					></Button>
+					<Drawer
+						footer={
+							<ChangeLanguage
+								fullWidth
+								TextColor={visible || navBg ? 'black' : 'white'}
+							></ChangeLanguage>
+						}
+						width={300}
+						className='pet88-menu'
+						placement='left'
+						onClose={onClose}
+						closeIcon={<CloseOutlined />}
+						open={visible}
+						bodyStyle={{
+							padding: '0',
+							background: 'transparent',
+						}}
+						headerStyle={{
+							border: 'none',
+							paddingLeft: 10,
+						}}
+					>
+						<p
+							style={{
+								transition: 'color 0.3s ease-in-out',
+
+								color: visible || navBg ? 'black' : 'white',
+								fontFamily: 'Nunito Sans',
+								textTransform: 'uppercase',
+								fontWeight: 700,
+								fontSize: 16,
+								borderTop: '1px solid black',
+								margin: 0,
+							}}
+						>
+							{' '}
+						</p>
+
+						{pages.map((page, _) => {
+							return (
+								<NavLink
+									key={page.title}
+									to='about'
+									// to={page.url}
 									style={{
 										transition: 'color 0.3s ease-in-out',
 
@@ -100,122 +121,97 @@ function AppHeader() {
 										textTransform: 'uppercase',
 										fontWeight: 700,
 										fontSize: 16,
-										borderTop: '1px solid black',
-										margin: 0,
+										padding: 15,
+										borderBottom: '1px solid black',
 									}}
 								>
-									{' '}
-								</p>
-
-								{pages.map((page, _) => {
-									return (
-										<NavLink
-											key={page.title}
-											to='about'
-											// to={page.url}
-											style={{
-												transition: 'color 0.3s ease-in-out',
-
-												color: visible || navBg ? 'black' : 'white',
-												fontFamily: 'Nunito Sans',
-												textTransform: 'uppercase',
-												fontWeight: 700,
-												fontSize: 16,
-												padding: 15,
-												borderBottom: '1px solid black',
-											}}
-										>
-											{t(page.title)}
-										</NavLink>
-									);
-								})}
-								{user && (
-									<NavLink
-										to='./account'
-										style={{
-											transition: 'color 0.3s ease-in-out',
-
-											color: visible || navBg ? 'black' : 'white',
-											fontFamily: 'Nunito Sans',
-											textTransform: 'uppercase',
-											fontWeight: 700,
-											fontSize: 16,
-											padding: 15,
-											borderBottom: '1px solid black',
-										}}
-									>
-										{t('account')}
-									</NavLink>
-								)}
-
-								{user?.role === 'admin' && (
-									<NavLink
-										to='/admin'
-										style={{
-											transition: 'color 0.3s ease-in-out',
-
-											color: visible || navBg ? 'black' : 'white',
-											fontFamily: 'Nunito Sans',
-											textTransform: 'uppercase',
-											fontWeight: 700,
-											fontSize: 16,
-											padding: 15,
-											borderBottom: '1px solid black',
-										}}
-									>
-										{t('Admin Centre')}
-									</NavLink>
-								)}
-
-								<section className='drawer-auth'>
-									<AuthButton
-										TextColor={visible ? 'black' : 'white'}
-										FullWitdh={visible ? true : false}
-									/>
-								</section>
-							</Drawer>
-						</section>
-						<section className='flexleft'>
-							<section className='logo'>
-								<NavLink to='/'>
-									<img
-										src={Logo}
-										alt=''
-										style={{
-											maxHeight: 30,
-											transition: 'all 0.3s ease-in-out',
-										}}
-									/>
+									{t(page.title)}
 								</NavLink>
-							</section>
+							);
+						})}
+						{user && (
+							<NavLink
+								to='./account'
+								style={{
+									transition: 'color 0.3s ease-in-out',
 
-							<section className='mobileHidden'>
-								{pages.map((page, _) => {
-									return (
-										<NavLink
-											key={page.title}
-											to={page.url}
-											style={{
-												transition: 'color 0.3s ease-in-out',
+									color: visible || navBg ? 'black' : 'white',
+									fontFamily: 'Nunito Sans',
+									textTransform: 'uppercase',
+									fontWeight: 700,
+									fontSize: 16,
+									padding: 15,
+									borderBottom: '1px solid black',
+								}}
+							>
+								{t('account')}
+							</NavLink>
+						)}
 
-												color: "#999",
-												textTransform: 'uppercase',
-												fontWeight: 700,
-												fontSize: 16,
-												marginInline: 10,
-											}}
-										>
-											{t(page.title)}
-										</NavLink>
-									);
-								})}
-							</section>
+						{user?.role === 'admin' && (
+							<NavLink
+								to='/admin'
+								style={{
+									transition: 'color 0.3s ease-in-out',
+
+									color: visible || navBg ? 'black' : 'white',
+									fontFamily: 'Nunito Sans',
+									textTransform: 'uppercase',
+									fontWeight: 700,
+									fontSize: 16,
+									padding: 15,
+									borderBottom: '1px solid black',
+								}}
+							>
+								{t('Admin Centre')}
+							</NavLink>
+						)}
+
+						<section className='drawer-auth'>
+							<AuthButton
+								TextColor={visible ? 'black' : 'white'}
+								FullWitdh={visible ? true : false}
+							/>
 						</section>
+					</Drawer>
+				</section>
+				<section className='flexleft'>
+					<section className='logo'>
+						<NavLink to='/'>
+							<img
+								src={Logo}
+								alt=''
+								style={{
+									maxHeight: 30,
+									transition: 'all 0.3s ease-in-out',
+								}}
+							/>
+						</NavLink>
+					</section>
+				</section>
+				<section className='mobileHidden'>
+					{pages.map((page) => {
+						return (
+							<NavLink
+								key={page.title}
+								to={page.url}
+								style={{
+									transition: 'color 0.3s ease-in-out',
+									textTransform: 'uppercase',
+									fontWeight: 700,
+									marginInline: 10,
+								}}
+							>
+								{t(page.title)}
+							</NavLink>
+						);
+					})}
+				</section>
 
-						<section className='mobileHidden'>
-							<AuthButton TextColor={visible || navBg ? 'black' : 'white'} />
-						</section>
-					</NavBar>
+				<section className='mobileHidden'>
+					<AuthButton TextColor={visible || navBg ? 'black' : 'white'} />
+				</section>
+			</NavBar>
 		</>
 	);
 }

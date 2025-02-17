@@ -1,6 +1,5 @@
 import { Button, message, Steps } from 'antd';
 import React, { useState } from 'react';
-import 'antd/dist/antd.css';
 import './steps.css';
 const { Step } = Steps;
 

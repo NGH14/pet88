@@ -1,10 +1,14 @@
 import { styled } from 'styled-components';
 
 export const NavBar = styled.nav`
-	display: flex;
-	justify-content: space-between;
+  width: 100%;
+	
+  display: flex;
+	justify-content: space-around;
 	align-items: center;
 	gap: 20px;
-	margin-right: auto;
-  width: 90%;
+  
+  font-weight: bold;
+  color: black;
+  text-transform: uppercase;
 `;

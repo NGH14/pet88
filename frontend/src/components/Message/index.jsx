@@ -1,7 +1,6 @@
 import { Button as AntdButton, message as antdMessage } from 'antd';
 
 import React from 'react';
-import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 
 import './style.css';
 const info = () => {

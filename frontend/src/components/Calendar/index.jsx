@@ -11,7 +11,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 
-import events from '../../data/events';
+import events from '../../mocks/events';
 import { useState } from 'react';
 import { useCallback } from 'react';
 

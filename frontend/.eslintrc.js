@@ -11,7 +11,11 @@ module.exports = {
 		ecmaVersion: 2020,
 		sourceType: 'module',
 	},
-	extends: ['eslint:recommended', 'plugin:react/recommended'],
+	extends: [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:storybook/recommended"
+    ],
 	"plugins": ["only-warn"],
 	settings: {
 		'import/resolver': {
