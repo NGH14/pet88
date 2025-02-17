@@ -11,7 +11,6 @@ import ListRoutes from 'routes/ListRoutes';
 import i18n from 'i18next';
 
 import 'react-toastify/dist/ReactToastify.css';
-import './index.css';
 import './App.css';
 import { GlobalStyle } from 'styles/global.style.js';
 
