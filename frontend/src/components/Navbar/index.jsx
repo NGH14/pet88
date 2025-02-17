@@ -196,12 +196,7 @@ function AppHeader() {
 							<StyledNavLink
 								key={page.title}
 								to={page.url}
-								style={{
-									transition: 'color 0.3s ease-in-out',
-									textTransform: 'uppercase',
-									fontWeight: 700,
-									marginInline: 10,
-								}}
+					
 							>
 								{t(page.title)}
 							</StyledNavLink>

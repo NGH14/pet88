@@ -2,22 +2,15 @@
 	"compilerOptions": {
 		"baseUrl": "src",
 		"paths": {
-			"assets": ["./assets"],
 			"assets/*": ["./assets/*"],
-			"components": ["./components"],
 			"components/*": ["./components/*"],
-			"context": ["./context"],
 			"context/*": ["./context/*"],
-			"routes": ["./routes"],
 			"routes/*": ["./routes/*"],
-			"utils": ["./utils"],
 			"utils/*": ["./utils/*"],
-			"hooks": ["./hooks"],
 			"hooks/*": ["./hooks/*"],
-			"pages": ["./pages"],
 			"pages/*": ["./pages/*"],
-			"constants": ["./constants"],
-			"constants/*": ["./constants/*"]
+			"constants/*": ["./constants/*"],
+			"styles/*": ["./styles/*"]
 		}
 	},
 	"include": ["src", "./**/*.js", "./**/*.jsx"],

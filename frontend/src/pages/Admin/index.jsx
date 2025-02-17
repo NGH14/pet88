@@ -80,7 +80,7 @@ export default function Admin() {
 	// }, [user]);
 
 	return loading ? (
-		<LoadingSpinner />
+		<Spinner />
 	) : (
 		<>
 			<ConfigProvider locale={i18n.lang === 'vi_VN' && viVN}>
