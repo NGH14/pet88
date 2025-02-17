@@ -12,3 +12,4 @@ export const NavBar = styled.nav`
   color: black;
   text-transform: uppercase;
 `;
+

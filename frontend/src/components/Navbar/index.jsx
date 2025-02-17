@@ -15,6 +15,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { UserAuth } from 'context/AuthContext';
 import {NavBar} from "./navbar.style.js"
+import { StyledNavLink } from '../NavLink/NavLink.style.js';
 
 const pages = [
 	{ title: 'home', url: '/#top' },
@@ -76,9 +77,9 @@ function AppHeader() {
 								TextColor={visible || navBg ? 'black' : 'white'}
 							></ChangeLanguage>
 						}
+						placement="top"
 						width={300}
 						className='pet88-menu'
-						placement='left'
 						onClose={onClose}
 						closeIcon={<CloseOutlined />}
 						open={visible}
@@ -192,7 +193,7 @@ function AppHeader() {
 				<section className='mobileHidden'>
 					{pages.map((page) => {
 						return (
-							<NavLink
+							<StyledNavLink
 								key={page.title}
 								to={page.url}
 								style={{
@@ -203,7 +204,7 @@ function AppHeader() {
 								}}
 							>
 								{t(page.title)}
-							</NavLink>
+							</StyledNavLink>
 						);
 					})}
 				</section>

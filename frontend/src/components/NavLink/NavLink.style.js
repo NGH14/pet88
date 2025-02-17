@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router';
 import styled from 'styled-components';
 
 export const NavbarContainer = styled.nav`
@@ -9,13 +9,11 @@ export const NavbarContainer = styled.nav`
 	flex-direction: column;
 `;
 
-export const NavbarLinkContainer = styled.div`
+export const NavbarLinkContainer = styled.section`
 	display: flex;
 `;
-export const NavbarLink = styled(Link)`
-	color: white;
-	font-size: x-large;
-	font-family: Arial, Helvetica, sans-serif;
+export const StyledNavLink = styled(NavLink)`
+	color: #171111;
 	text-decoration: none;
 	margin: 10px;
 	&:hover,

@@ -10,7 +10,7 @@ const ListRoutes = (list) => {
 				key={index}
 				path={route.path}
 				element={
-					<Suspense fallback={<LoadingSpinner />}>
+					<Suspense fallback={<Spinner />}>
 						{route.private ? (
 							<PrivateRoute>
 								<route.element />
