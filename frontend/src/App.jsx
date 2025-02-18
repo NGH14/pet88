@@ -10,7 +10,6 @@ import { routes } from './routes/';
 import ListRoutes from 'routes/ListRoutes';
 import i18n from 'i18next';
 
-import 'react-toastify/dist/ReactToastify.css';
 import 'styles/style.css';
 import { GlobalStyle } from 'styles/global.style.js';
 
@@ -21,8 +20,13 @@ function App() {
 			<AuthContextProvider>
 				<I18nextProvider i18n={i18n}>
 					<SearchContextProvider>
-						{/* <ThemeProvider> */}
-						<ConfigProvider theme={{ cssVar: true, hashed: false }}>
+						<ConfigProvider
+							theme={{
+								token: {
+									fontFamily: 'Quicksand, serif',
+								},
+							}}
+						>
 							<BrowserRouter>
 								<ToastContainer
 									position='top-right'
@@ -38,7 +42,6 @@ function App() {
 								<Routes>{ListRoutes(routes)}</Routes>
 							</BrowserRouter>
 						</ConfigProvider>
-						{/* </ThemeProvider> */}
 					</SearchContextProvider>
 				</I18nextProvider>
 			</AuthContextProvider>
