@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const Header = styled.section`
+const Header = styled.nav`
 	width: 100%;
 `;
 
-export const SubHeader = styled(Header)`
+export const StyledSubHeader = styled(Header)`
 	padding: 10px;
 	display: flex;
 	justify-content: flex-end;

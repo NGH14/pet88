@@ -10,7 +10,7 @@ import { useLocation, NavLink, useNavigate } from 'react-router';
 import { UserAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
 
-import { SubHeader } from './style.js';
+import { StyledSubHeader } from './SubHeader.style.js';
 
 function SubNavBar() {
 	const locate = useLocation();
@@ -49,9 +49,9 @@ function SubNavBar() {
 	// 	/>
 	// );
 	return (
-		<SubHeader className="mobileHidden">
+		<StyledSubHeader>
 			<ChangeLanguage />
-		</SubHeader>
+		</StyledSubHeader>
 	);
 }
 
