@@ -4,6 +4,7 @@ export const color = styled.css`
   --primary-color: #f76a1a;
   --pure-black: #171111;
   --dark-gray: #333333;
+  --gray-300: #f3f3f3;
   --pure-white: #fafafa;
   --light-white: #f7f6f1;
 `;

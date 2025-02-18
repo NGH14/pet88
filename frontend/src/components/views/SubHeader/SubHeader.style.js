@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Header = styled.nav`
+  background-color: var(--gray-300);
   width: 100%;
 `;
 
