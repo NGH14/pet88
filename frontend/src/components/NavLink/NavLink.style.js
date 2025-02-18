@@ -1,23 +1,22 @@
 import { NavLink } from 'react-router';
 import styled from 'styled-components';
 
-
 export const NavbarContainer = styled.nav`
-	width: 100%;
-	height: 50px;
-	display: flex;
-	flex-direction: column;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const StyledNavLink = styled(NavLink)`
-	color: #171111;
-	font-weight: bold;
-	text-decoration: none;
-	margin: 10px;
-	font-size: 1.5em;
-	&:hover,
-	&:focus,
-	&:active {
-		color: var(--primary-color) !important;
-	}
+  color: #171111;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px;
+  font-size: 1.5em;
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--primary-color) !important;
+  }
 `;

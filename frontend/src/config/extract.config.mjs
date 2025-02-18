@@ -1,4 +1,4 @@
-import { VIETNAM_LOCALE_CODE, ENGLISH_LOCALE_CODE } from "../constants/i18n.mjs";
+import { VIETNAM_LOCALE_CODE, ENGLISH_LOCALE_CODE } from '../constants/i18n.mjs';
 
 export default {
   createOldCatalogs: false,
@@ -17,7 +17,7 @@ export default {
     jsx: ['JsxLexer'],
     tsx: ['JsxLexer'],
 
-    default: ['JsxLexer'],
+    default: ['JsxLexer']
   },
 
   // lineEnding: 'auto',
@@ -45,5 +45,5 @@ export default {
   // defaultValue: true,
   // Display info about the parsing including some stats
 
-  defaultValue: (_locale, _namespace, key) => key.match(/^(.*(?=::\w*)|.*(?!::\w*))/g)?.[0],
+  defaultValue: (_locale, _namespace, key) => key.match(/^(.*(?=::\w*)|.*(?!::\w*))/g)?.[0]
 };

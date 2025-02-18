@@ -14,39 +14,39 @@ import 'styles/import.css';
 import { GlobalStyle } from 'styles/global.style.js';
 
 function App() {
-	return (
-		<>
-			<GlobalStyle />
-			<AuthContextProvider>
-				<I18nextProvider i18n={i18n}>
-					<SearchContextProvider>
-						<ConfigProvider
-							theme={{
-								token: {
-									fontFamily: 'Quicksand, serif',
-								},
-							}}
-						>
-							<BrowserRouter>
-								<ToastContainer
-									position='top-right'
-									autoClose={3500}
-									hideProgressBar={false}
-									newestOnTop={false}
-									closeOnClick
-									pauseOnFocusLoss
-									draggable
-									pauseOnHover
-									theme='light'
-								/>
-								<Routes>{ListRoutes(routes)}</Routes>
-							</BrowserRouter>
-						</ConfigProvider>
-					</SearchContextProvider>
-				</I18nextProvider>
-			</AuthContextProvider>
-		</>
-	);
+  return (
+    <>
+      <GlobalStyle />
+      <ToastContainer
+        position="top-right"
+        autoClose={3500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <AuthContextProvider>
+        <I18nextProvider i18n={i18n}>
+          <SearchContextProvider>
+            <ConfigProvider
+              theme={{
+                token: {
+                  fontFamily: 'Quicksand, serif'
+                }
+              }}
+            >
+              <BrowserRouter>
+                <Routes>{ListRoutes(routes)}</Routes>
+              </BrowserRouter>
+            </ConfigProvider>
+          </SearchContextProvider>
+        </I18nextProvider>
+      </AuthContextProvider>
+    </>
+  );
 }
 
 export default App;

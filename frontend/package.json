@@ -47,6 +47,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint .",
     "prettier:write": "prettier --config .prettierrc.cjs --write .",
     "prettier:check": "prettier --config .prettierrc.cjs --check .",
     "storybook": "storybook dev -p 6006",

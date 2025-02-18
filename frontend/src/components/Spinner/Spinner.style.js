@@ -12,9 +12,9 @@ export const SpinnerWrapper = styled.section`
 `;
 
 export const StyledSpin = styled(Spin)`
-	color: #f76a1a;
+  color: #f76a1a;
 `;
 
 export const SpinIcon = styled(LoadingOutlined)`
-	font-size: ${(props) => `${props.fontSize} !important` || '100px !important'};
+  font-size: ${(props) => `${props.fontSize} !important` || '100px !important'};
 `;

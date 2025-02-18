@@ -8,24 +8,24 @@ import { useNavigate } from 'react-router';
 import { UserAuth } from '../../context/AuthContext';
 
 export default function SignIn() {
-	const { user } = UserAuth();
+  const { user } = UserAuth();
 
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	useEffect(() => {
-		if (user) {
-			navigate('/');
-		}
-	}, [user]);
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user]);
 
-	return (
-		<>
-			{!user && (
-				<section className='loginpage-wrapper'>
-					<LeftSideLogin src={logoBlack} />
-					<RightSideLogin />
-				</section>
-			)}
-		</>
-	);
+  return (
+    <>
+      {!user && (
+        <section className="loginpage-wrapper">
+          <LeftSideLogin src={logoBlack} />
+          <RightSideLogin />
+        </section>
+      )}
+    </>
+  );
 }

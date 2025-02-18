@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button } from '../Button';
 import './header.css';
 
-export const Header = ({ user="Nghia", onLogin, onLogout, onCreateAccount }) => (
+export const Header = ({ user = 'Nghia', onLogin, onLogout, onCreateAccount }) => (
   <header>
     <section className="header-wrapper">
       <section>
@@ -35,9 +35,9 @@ Header.propTypes = {
   user: PropTypes.shape({}),
   onLogin: PropTypes.func,
   onLogout: PropTypes.func,
-  onCreateAccount: PropTypes.func,
+  onCreateAccount: PropTypes.func
 };
 
 Header.defaultProps = {
-  user: null,
+  user: null
 };

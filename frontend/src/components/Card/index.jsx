@@ -4,11 +4,11 @@ import React from 'react';
 export const Card = () => (
   <>
     <AntdCard
-        id='card'
+      id="card"
       title="Default size card"
       extra={<a href="#">More</a>}
       style={{
-        width: 300,
+        width: 300
       }}
     >
       <p>Card content</p>
@@ -20,7 +20,7 @@ export const Card = () => (
       title="Small size card"
       extra={<a href="#">More</a>}
       style={{
-        width: 300,
+        width: 300
       }}
     >
       <p>Card content</p>
@@ -29,4 +29,3 @@ export const Card = () => (
     </AntdCard>
   </>
 );
-

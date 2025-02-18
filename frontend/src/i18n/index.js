@@ -5,7 +5,7 @@ import i18nConfig from './config.mjs';
 import { LOCALE_KEY } from 'constants/i18n.mjs';
 
 i18n.on('languageChanged', (lng) => {
-	localStorage.setItem(LOCALE_KEY, lng);
+  localStorage.setItem(LOCALE_KEY, lng);
 });
 
 i18n.use(detector).use(initReactI18next).init(i18nConfig);
