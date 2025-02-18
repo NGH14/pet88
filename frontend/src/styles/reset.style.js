@@ -1,10 +1,6 @@
 import { css } from 'styled-components';
 
-export const reset = css`
-  /* http://meyerweb.com/eric/tools/css/reset/
-    v4.0 | 20180602
-    License: none (public domain)
-  */
+const BaseReset = css`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -25,15 +21,19 @@ export const reset = css`
     font: inherit;
     vertical-align: baseline;
   }
-  /* HTML5 display-role reset for older browsers */
+`;
+
+const HTML5Reset = css`
   article, aside, details, figcaption, figure,
   footer, header, hgroup, main, menu, nav, section {
     display: block;
   }
-  /* HTML5 hidden-attribute fix for newer browsers */
   *[hidden] {
     display: none;
   }
+`;
+
+const TypographyReset = css`
   body {
     line-height: 1;
   }
@@ -48,18 +48,25 @@ export const reset = css`
     content: '';
     content: none;
   }
+`;
+
+const TableReset = css`
   table {
     border-collapse: collapse;
     border-spacing: 0;
   }
-  /* http://www.paulirish.com/2012/box-sizing-border-box-ftw/ (2015/04/28)*/
+`;
+
+const BoxSizingReset = css`
   html {
     box-sizing: border-box;
   }
   *, *:before, *:after {
     box-sizing: inherit;
   }
-  /* Additional resets */
+`;
+
+const AdditionalResets = css`
   a {
     text-decoration: none;
     color: inherit;
@@ -78,18 +85,27 @@ export const reset = css`
     line-height: inherit;
     -webkit-appearance: none;
   }
-  /* Fix antialiasing */
+`;
+
+const AccessibilityReset = css`
   *, *:before, *:after {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  /* Disable user select on everything but texts */
-  *, *:before, *:after {
     user-select: none;
   }
   p, h1, h2, h3, h4, h5, h6, blockquote, pre, ul, ol, li, table, tr, th, td, input, textarea {
     user-select: text;
   }
+`;
+
+export const reset = css`
+  ${BaseReset}
+  ${HTML5Reset}
+  ${TypographyReset}
+  ${TableReset}
+  ${BoxSizingReset}
+  ${AdditionalResets}
+  ${AccessibilityReset}
 `;
 
 export default reset;

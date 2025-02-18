@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 import { reset } from './reset.style.js';
 import { variable } from './variable.style.js';
@@ -6,6 +6,7 @@ import { variable } from './variable.style.js';
 export const GlobalStyle = createGlobalStyle`
    ${reset}
    ${variable}
+
    body {
       font-family: 'Quicksand', serif;
       overflow: auto;
