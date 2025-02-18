@@ -1,15 +1,15 @@
 import { styled } from 'styled-components';
 
 export const NavBar = styled.nav`
-  width: 100%;
+  max-width: 100%;
 	font-family: "Quicksand", serif;
   display: flex;
 	justify-content: space-around;
 	align-items: center;
-	gap: 20px;
+	gap: 0.5em;
   
   font-weight: 700;
-  color: black;
+  color: var(--pure-black);
   text-transform: capitalize;
 `;
 

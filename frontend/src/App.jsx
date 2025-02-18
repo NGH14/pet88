@@ -10,7 +10,7 @@ import { routes } from './routes/';
 import ListRoutes from 'routes/ListRoutes';
 import i18n from 'i18next';
 
-import 'styles/style.css';
+import 'styles/import.css';
 import { GlobalStyle } from 'styles/global.style.js';
 
 function App() {

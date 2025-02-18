@@ -8,7 +8,7 @@ import { CloseOutlined, MenuOutlined, LogoutOutlined } from '@ant-design/icons';
 
 import AuthButton from './../GoogleAuthButton/';
 import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
-import useScrollPosition from './../../hooks/useScrollPosition';
+import useScrollPosition from 'hooks/useScrollPosition';
 
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
