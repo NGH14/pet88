@@ -17,7 +17,7 @@ import {
 	Space,
 	Steps,
 } from 'antd';
-import SubNavBar from 'components/SubHeader';
+import SubNavBar from 'components/views/SubHeader';
 import AppHeader from '../../components/Navbar';
 import FooterWave from '../../components/Footer';
 import './style.css';

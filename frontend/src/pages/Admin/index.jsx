@@ -21,7 +21,7 @@ import {
 import { Breadcrumb, Layout, Menu } from 'antd';
 
 import './style.css';
-import SubNavBar from 'components/SubHeader';
+import SubNavBar from 'components/views/SubHeader';
 
 import TableUser from 'components/TableUser/index';
 import TableHotel from 'components/TableHotel';

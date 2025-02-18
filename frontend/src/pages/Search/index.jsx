@@ -19,7 +19,7 @@ import {
 import moment from 'moment';
 import { RightOutlined } from '@ant-design/icons';
 
-import SubNavBar from 'components/SubHeader';
+import SubNavBar from 'components/views/SubHeader';
 import AppHeader from '../../components/Navbar';
 import viVN from 'antd/es/locale/vi_VN';
 

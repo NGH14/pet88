@@ -17,7 +17,7 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 
 import { useNavigate } from 'react-router';
-import SubNavBar from 'components/SubHeader';
+import SubNavBar from 'components/views/SubHeader';
 import AppHeader from './../../components/Navbar/index';
 import { Layout, ConfigProvider } from 'antd';
 import './style.css';

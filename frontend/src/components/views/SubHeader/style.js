@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const Header = styled.section`
-
 	width: 100%;
 `;
 

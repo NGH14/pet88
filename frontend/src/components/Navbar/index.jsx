@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import { Drawer, Button } from 'antd';
-import Logo from '../../assets/images/Group 1.png';
-import LogoWhite from '../../assets/images/Group 3.png';
+import Logo from 'assets/images/BlackLogo.png';
+import LogoWhite from 'assets/images/WhiteLogo.png';
 import { CloseOutlined, MenuOutlined, LogoutOutlined } from '@ant-design/icons';
 
 import AuthButton from './../GoogleAuthButton/';

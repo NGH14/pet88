@@ -19,12 +19,12 @@ import {
 } from 'antd';
 import { BsCheck2Circle } from 'react-icons/bs';
 
-import SubNavBar from 'components/SubHeader';
+import SubNavBar from 'components/views/SubHeader';
 import AppHeader from '../../components/Navbar';
 import FooterWave from '../../components/Footer';
 import './style.css';
 
-import logo from '../../assets/images/Group 1.png';
+import logo from 'assets/images/BlackLogo.png';
 
 import viVN from 'antd/es/locale/vi_VN';
 

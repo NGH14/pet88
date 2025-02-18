@@ -5,11 +5,10 @@ import { Menu, Select } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 import { useEffect } from 'react';
-import ChangeLanguage from '../ChangeLanguage/index';
+import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import { useLocation, NavLink, useNavigate } from 'react-router';
-import { UserAuth } from '../../context/AuthContext';
+import { UserAuth } from 'context/AuthContext';
 import { useTranslation } from 'react-i18next';
-import useScrollPosition from './../../hooks/useScrollPosition';
 
 import { SubHeader } from './style.js';
 
@@ -19,11 +18,7 @@ function SubNavBar() {
 	// const { user, SignOut } = UserAuth();
 	const { t, i18n } = useTranslation();
 	const [navBg, setNavBg] = useState(false);
-	const scrollPosition = useScrollPosition();
 
-	useEffect(() => {
-		!scrollPosition > 0 ? setNavBg(false) : setNavBg(true);
-	}, [scrollPosition]);
 
 	const handleSignOut = async (e) => {
 		e.preventDefault();

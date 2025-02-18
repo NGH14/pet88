@@ -17,7 +17,7 @@ import viVN from 'antd/es/locale/vi_VN';
 import { useTranslation } from 'react-i18next';
 import FooterWave from '../../components/Footer';
 import AppHeader from '../../components/Navbar';
-import SubNavBar from 'components/SubHeader';
+import SubNavBar from 'components/views/SubHeader';
 
 
 import axios from 'axios';
