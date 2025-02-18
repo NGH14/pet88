@@ -4,6 +4,7 @@
   "A Verification email has been sent to this email address": "Email xác minh đã được gửi đến địa chỉ email này",
   "A Verification email has been sent to your email address": "Một email xác minh đã được gửi đến địa chỉ email của bạn",
   "about": "về chúng tôi",
+  "account": "account",
   "Account": "Tài khoản",
   "Account email": "Account email",
   "account info": "tài khoản của tôi",
@@ -12,6 +13,7 @@
   "Addition Information": "Thông tin bổ sung",
   "Address": "Địa chỉ",
   "Admin": "Quản trị viên",
+  "Admin Centre": "Admin Centre",
   "After you have deleted an account, it will be permanently deleted": {
     " Accounts cannot be recovered": "After you have deleted an account, it will be permanently deleted. Accounts cannot be recovered"
   },

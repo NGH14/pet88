@@ -4,6 +4,7 @@
   "A Verification email has been sent to this email address": "A Verification email has been sent to this email address",
   "A Verification email has been sent to your email address": "A Verification email has been sent to your email address",
   "about": "about",
+  "account": "account",
   "Account": "Account",
   "Account email": "Account email",
   "account info": "account info",
@@ -12,6 +13,7 @@
   "Addition Information": "Addition Information",
   "Address": "Address",
   "Admin": "Admin",
+  "Admin Centre": "Admin Centre",
   "After you have deleted an account, it will be permanently deleted": {
     " Accounts cannot be recovered": "After you have deleted an account, it will be permanently deleted. Accounts cannot be recovered"
   },
