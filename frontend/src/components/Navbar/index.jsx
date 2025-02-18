@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 
 import { Drawer, Button } from 'antd';
 import Logo from 'assets/images/BlackLogo.png';
@@ -6,16 +7,14 @@ import LogoWhite from 'assets/images/WhiteLogo.png';
 import { CloseOutlined, MenuOutlined, LogoutOutlined } from '@ant-design/icons';
 
 import AuthButton from './../GoogleAuthButton/';
-import { useEffect } from 'react';
-import ChangeLanguage from './../ChangeLanguage/';
+import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import useScrollPosition from './../../hooks/useScrollPosition';
 
-import './style.css';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { UserAuth } from 'context/AuthContext';
 import { NavBar } from './navbar.style.js';
-import { StyledNavLink } from '../NavLink/NavLink.style.js';
+import { StyledNavLink } from 'components/NavLink/index.jsx';
 
 const pages = [
 	{ title: 'About', url: '/#about' },
@@ -69,12 +68,7 @@ function AppHeader() {
 						ghost
 					></Button>
 					<Drawer
-						footer={
-							<ChangeLanguage
-								fullWidth
-								TextColor={visible || navBg ? 'black' : 'white'}
-							></ChangeLanguage>
-						}
+						footer={<ChangeLanguage />}
 						placement='top'
 						width={300}
 						className='pet88-menu'
@@ -95,7 +89,7 @@ function AppHeader() {
 								transition: 'color 0.3s ease-in-out',
 
 								color: visible || navBg ? 'black' : 'white',
-								
+
 								textTransform: 'uppercase',
 								fontWeight: 700,
 								fontSize: 16,
@@ -116,7 +110,7 @@ function AppHeader() {
 										transition: 'color 0.3s ease-in-out',
 
 										color: visible || navBg ? 'black' : 'white',
-										
+
 										textTransform: 'uppercase',
 										fontWeight: 700,
 										fontSize: 16,
@@ -135,7 +129,7 @@ function AppHeader() {
 									transition: 'color 0.3s ease-in-out',
 
 									color: visible || navBg ? 'black' : 'white',
-									
+
 									fontWeight: 700,
 									fontSize: 16,
 									padding: 15,
@@ -153,7 +147,7 @@ function AppHeader() {
 									transition: 'color 0.3s ease-in-out',
 
 									color: visible || navBg ? 'black' : 'white',
-									
+
 									fontWeight: 700,
 									fontSize: 16,
 									padding: 15,

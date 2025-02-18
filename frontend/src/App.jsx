@@ -11,36 +11,38 @@ import ListRoutes from 'routes/ListRoutes';
 import i18n from 'i18next';
 
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+import 'styles/style.css';
 import { GlobalStyle } from 'styles/global.style.js';
 
 function App() {
 	return (
-		<AuthContextProvider>
-			<I18nextProvider i18n={i18n}>
-				<SearchContextProvider>
-					{/* <ThemeProvider> */}
-					<ConfigProvider theme={{ cssVar: true, hashed: false }}>
-						<BrowserRouter>
-							<ToastContainer
-								position='top-right'
-								autoClose={3500}
-								hideProgressBar={false}
-								newestOnTop={false}
-								closeOnClick
-								pauseOnFocusLoss
-								draggable
-								pauseOnHover
-								theme='light'
-							/>
-							<GlobalStyle />
-							<Routes>{ListRoutes(routes)}</Routes>
-						</BrowserRouter>
-					</ConfigProvider>
-					{/* </ThemeProvider> */}
-				</SearchContextProvider>
-			</I18nextProvider>
-		</AuthContextProvider>
+		<>
+			<GlobalStyle />
+			<AuthContextProvider>
+				<I18nextProvider i18n={i18n}>
+					<SearchContextProvider>
+						{/* <ThemeProvider> */}
+						<ConfigProvider theme={{ cssVar: true, hashed: false }}>
+							<BrowserRouter>
+								<ToastContainer
+									position='top-right'
+									autoClose={3500}
+									hideProgressBar={false}
+									newestOnTop={false}
+									closeOnClick
+									pauseOnFocusLoss
+									draggable
+									pauseOnHover
+									theme='light'
+								/>
+								<Routes>{ListRoutes(routes)}</Routes>
+							</BrowserRouter>
+						</ConfigProvider>
+						{/* </ThemeProvider> */}
+					</SearchContextProvider>
+				</I18nextProvider>
+			</AuthContextProvider>
+		</>
 	);
 }
 

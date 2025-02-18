@@ -10,7 +10,7 @@ export const NavbarContainer = styled.nav`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-
+	font-family: 'Quicksand', serif;
 	color: #171111;
 	font-weight: bold;
 	text-decoration: none;
