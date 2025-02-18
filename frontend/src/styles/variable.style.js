@@ -8,7 +8,7 @@ export const color = styled.css`
   --light-white: #f7f6f1;
 `;
 
-export const variable = css`
+export const variable = styled.css`
   :root {
     ${color}
   }

@@ -8,7 +8,7 @@ export const GlobalStyle = styled.createGlobalStyle`
   ${variable}
 
    body {
-    font-family: 'Quicksand', serif;
+    font-family: 'Nunito Sans', 'Quicksand', sans-serif;
     overflow: auto;
     max-height: 100dvh;
     width: 100dvw;

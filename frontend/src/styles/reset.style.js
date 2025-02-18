@@ -92,7 +92,7 @@ const BaseReset = styled.css`
   }
 `;
 
-const HTML5Reset = css`
+const HTML5Reset = styled.css`
   article,
   aside,
   details,
@@ -112,7 +112,7 @@ const HTML5Reset = css`
   }
 `;
 
-const TypographyReset = css`
+const TypographyReset = styled.css`
   body {
     line-height: 1;
   }
@@ -133,14 +133,14 @@ const TypographyReset = css`
   }
 `;
 
-const TableReset = css`
+const TableReset = styled.css`
   table {
     border-collapse: collapse;
     border-spacing: 0;
   }
 `;
 
-const BoxSizingReset = css`
+const BoxSizingReset = styled.css`
   html {
     box-sizing: border-box;
   }
@@ -151,7 +151,7 @@ const BoxSizingReset = css`
   }
 `;
 
-const AdditionalResets = css`
+const AdditionalResets = styled.css`
   a {
     text-decoration: none;
     color: inherit;
@@ -172,7 +172,7 @@ const AdditionalResets = css`
   }
 `;
 
-const AccessibilityReset = css`
+const AccessibilityReset = styled.css`
   *,
   *:before,
   *:after {
@@ -202,7 +202,7 @@ const AccessibilityReset = css`
   }
 `;
 
-export const reset = css`
+export const reset = styled.css`
   ${BaseReset}
   ${HTML5Reset}
   ${TypographyReset}

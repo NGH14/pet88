@@ -2,15 +2,13 @@ import { styled } from 'styled-components';
 
 export const NavBar = styled.nav`
   width: 100%;
-  font-family: 'Quicksand', serif;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
-  padding-top: 1em;
+  padding: 1em 1.5em;
   gap: 0.5em;
 
-  font-weight: 700;
   color: var(--pure-black);
   text-transform: capitalize;
 
