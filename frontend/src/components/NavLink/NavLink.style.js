@@ -10,7 +10,9 @@ export const NavbarContainer = styled.nav`
 
 export const StyledNavLink = styled(NavLink)`
   color: #171111;
-  font-weight: bold;
+  font-family: 'Nunito Sans', 'Quicksand', sans-serif;
+
+  font-weight: 900;
   text-decoration: none;
   margin: 10px;
   font-size: 1.5em;
