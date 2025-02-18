@@ -9,6 +9,5 @@ export const color = css`
 export const variable = css`
 	:root {
 		${color}
-    
 	}
 `;
