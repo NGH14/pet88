@@ -1,6 +1,6 @@
-import { css } from 'styled-components';
+import * as styled from 'styled-components';
 
-export const color = css`
+export const color = styled.css`
   --primary-color: #f76a1a;
   --pure-black: #171111;
   --dark-gray: #333333;

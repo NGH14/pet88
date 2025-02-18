@@ -1,13 +1,13 @@
-import React from 'react';
 import { Button, Form, Input } from 'antd';
-import styled from 'styled-components';
-import './style.css';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router';
+import styled from 'styled-components';
+
 import dogImg from '../../assets/images/Summer-Header.jpg';
 import bgHeader from '../../assets/images/navy-bg.png';
-
-import { useLocation } from 'react-router';
 import FormBookingHomepage from './../FormBookingHomepage/index';
+import './style.css';
 
 const HeroBlockStyled = styled.section`
   background:

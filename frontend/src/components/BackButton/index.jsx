@@ -1,8 +1,8 @@
-import React from 'react';
-import { useNavigate } from 'react-router';
-import { Button } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 
 export default function BackButton() {
   const navigate = useNavigate();

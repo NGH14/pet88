@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
-import ResetPasswordForm from '../../components/ResetPasswordForm';
-import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
-import './style.css';
-import { motion } from 'framer-motion';
-import { UserAuth } from '../../context/AuthContext';
-import { useNavigate, useLocation } from 'react-router';
-import InValidDisplay from './../../components/InvalidCodeReset/index';
 import { Spinner } from 'components/Spinner';
+import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from 'react-router';
+
+import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
+import ResetPasswordForm from '../../components/ResetPasswordForm';
+import { UserAuth } from '../../context/AuthContext';
+import InValidDisplay from './../../components/InvalidCodeReset/index';
+import './style.css';
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
@@ -51,7 +53,7 @@ export default function ResetPassword() {
       ) : (
         <section
           style={{
-            backgroundImage: ` linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url(${DogImg})`
+            backgroundImage: ` linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url(${DogImg})`,
           }}
           className="resetpasswordpage"
         >

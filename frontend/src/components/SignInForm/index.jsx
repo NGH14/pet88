@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { NavLink, useNavigate } from 'react-router';
+import { Button, Checkbox, Form, Input } from 'antd';
 import { motion } from 'framer-motion';
-
-import './style.css';
-import SignInGoogle from '../SigninGoogle';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { UserAuth } from '../../context/AuthContext';
-import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import { NavLink, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+
+import { UserAuth } from '../../context/AuthContext';
+import SignInGoogle from '../SigninGoogle';
+import './style.css';
 
 const SignInForm = () => {
   const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ const SignInForm = () => {
 
   const navigate = useNavigate();
 
-  const onFinish = async (e) => {
+  const onFinish = async e => {
     setEmailSignInloadings(true);
 
     try {
@@ -40,7 +40,7 @@ const SignInForm = () => {
     document.title = `${t('Sign in')} | Pet88`;
   });
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
@@ -61,7 +61,7 @@ const SignInForm = () => {
           backgroundColor: '#fff',
           color: '#000',
           borderRadius: 5,
-          fontSize: 14
+          fontSize: 14,
         }}
       />
 
@@ -72,7 +72,7 @@ const SignInForm = () => {
       <Form
         name="basic"
         initialValues={{
-          remember: true
+          remember: true,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -84,18 +84,18 @@ const SignInForm = () => {
           rules={[
             {
               type: 'email',
-              message: t('The input is not valid E-mail!')
+              message: t('The input is not valid E-mail!'),
             },
             {
               required: true,
-              message: t('Please input your E-mail!')
-            }
+              message: t('Please input your E-mail!'),
+            },
           ]}
         >
           <Input
             placeholder="Email"
             prefix={<UserOutlined className="site-form-item-icon" />}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
         </Form.Item>
         <Form.Item
@@ -103,14 +103,14 @@ const SignInForm = () => {
           rules={[
             {
               required: true,
-              message: t('Please enter your password!')
-            }
+              message: t('Please enter your password!'),
+            },
           ]}
         >
           <Input.Password
             prefix={<LockOutlined className="site-form-item-icon" />}
             placeholder={t('Password')}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
           />
         </Form.Item>
         <NavLink className="loginform-forgotpassword" to="/forgot-password">
@@ -131,7 +131,7 @@ const SignInForm = () => {
               backgroundColor: '#000',
               borderColor: '#000',
               borderRadius: 5,
-              boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+              boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
             }}
           >
             {t('Sign in')}

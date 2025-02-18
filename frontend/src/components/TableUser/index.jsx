@@ -1,49 +1,48 @@
-import React, { useRef, useState } from 'react';
-import { useEffect } from 'react';
-import { UserAuth } from '../../context/AuthContext';
-import { Spinner } from 'components/Spinner';
-import { collection, getDocs, Timestamp } from 'firebase/firestore';
-import { Table, ExportTableButton, SearchTableInput } from 'ant-table-extensions';
-import { storage } from '../../utils/firebase';
-import { useNavigate } from 'react-router';
-import { toast } from 'react-toastify';
 import {
-  FileExcelOutlined,
-  SearchOutlined,
   DeleteOutlined,
-  EditOutlined,
-  MoreOutlined,
-  UpOutlined,
   DownOutlined,
-  ReloadOutlined
+  EditOutlined,
+  FileExcelOutlined,
+  MoreOutlined,
+  ReloadOutlined,
+  SearchOutlined,
+  UpOutlined,
 } from '@ant-design/icons';
-
+import { ExportTableButton, SearchTableInput, Table } from 'ant-table-extensions';
 import {
   Button,
+  DatePicker,
   Drawer,
-  Space,
-  Tag,
+  Dropdown,
   Form,
   Input,
-  Select,
-  DatePicker,
-  Popconfirm,
-  Modal,
-  Dropdown,
   Menu,
-  Tooltip
+  Modal,
+  Popconfirm,
+  Select,
+  Space,
+  Tag,
+  Tooltip,
 } from 'antd';
-import { useTranslation } from 'react-i18next';
-
-import moment from 'moment';
 import axios from 'axios';
-import './style.css';
+import { Spinner } from 'components/Spinner';
+import { Timestamp, collection, getDocs } from 'firebase/firestore';
+import moment from 'moment';
+import React, { useRef, useState } from 'react';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { AiOutlineClose } from 'react-icons/ai';
+import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { GrFormClose } from 'react-icons/gr';
 import { MdContentCopy } from 'react-icons/md';
-import { BiDotsVerticalRounded } from 'react-icons/bi';
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
-import { AiOutlineClose } from 'react-icons/ai';
+import { UserAuth } from '../../context/AuthContext';
+import { storage } from '../../utils/firebase';
 import useCopyToClipboard from './../../hooks/useCopyToClipboard';
+import './style.css';
+
 const { Option } = Select;
 
 export default function TableUser() {
@@ -53,7 +52,7 @@ export default function TableUser() {
     DeleteUser,
     updateUserByAdmin,
     AddUserToDBByAdmin,
-    getNewUserInCurrentMonth
+    getNewUserInCurrentMonth,
   } = UserAuth();
   const [tableLoading, setTableLoading] = React.useState(true);
   const [userRecord, setUserRecord] = React.useState({});
@@ -117,12 +116,12 @@ export default function TableUser() {
     setOpenModalMultiDelete(false);
   };
 
-  const handleDeleteModal = (user) => {
+  const handleDeleteModal = user => {
     setSelectedUser(user);
     setOpenModalDelete(true);
   };
 
-  const handleSendResetPassword = (user) => {
+  const handleSendResetPassword = user => {
     setSelectedUser(user);
     setOpenModalResetPassword(true);
   };
@@ -131,7 +130,7 @@ export default function TableUser() {
     setOpenModalMultiDelete(false);
   };
 
-  const handleOpenUpdateUser = (record) => {
+  const handleOpenUpdateUser = record => {
     setUserRecord(record);
     setOpenUpdate(true);
   };
@@ -139,16 +138,16 @@ export default function TableUser() {
   const handleOpenCreateUser = () => {
     setOpenCreate(true);
   };
-  const onSelectChange = (newSelectedRowKeys) => {
+  const onSelectChange = newSelectedRowKeys => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
   const rowSelection = {
     selectedRowKeys,
-    onChange: onSelectChange
+    onChange: onSelectChange,
   };
 
-  const onFinishUpdate = async (value) => {
+  const onFinishUpdate = async value => {
     setLoading(true);
     try {
       await updateUserByAdmin(userRecord?.id, value);
@@ -199,8 +198,8 @@ export default function TableUser() {
     try {
       await DeleteUser(selectedUser?.id);
       fetchDeleteData(token, selectedUser?.id);
-      setListUsers(listUsers.filter((item) => item.id !== selectedUser?.id));
-      setSearchDataSource(searchDataSource.filter((item) => item.id !== selectedUser?.id));
+      setListUsers(listUsers.filter(item => item.id !== selectedUser?.id));
+      setSearchDataSource(searchDataSource.filter(item => item.id !== selectedUser?.id));
       setConfirmLoadingModalDelete(false);
       setOpenModalDelete(false);
       toast.success(t('Delete Success'));
@@ -209,7 +208,7 @@ export default function TableUser() {
     }
   };
 
-  const onFinishCreateUser = async (value) => {
+  const onFinishCreateUser = async value => {
     setLoadingCreate(true);
     try {
       const uid = await fetchCreateData(token, value);
@@ -226,13 +225,13 @@ export default function TableUser() {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
   const handleDeleteMultipleUser = () => {
-    setListUsers(listUsers.filter((item) => !selectedRowKeys.includes(item.id)));
-    setSearchDataSource(searchDataSource.filter((item) => !selectedRowKeys.includes(item.id)));
+    setListUsers(listUsers.filter(item => !selectedRowKeys.includes(item.id)));
+    setSearchDataSource(searchDataSource.filter(item => !selectedRowKeys.includes(item.id)));
     toast.success(t('Delete Success'));
   };
 
@@ -241,14 +240,14 @@ export default function TableUser() {
       title: t('Name'),
       dataIndex: 'name',
       sorter: (a, b) => a.name.length - b.name.length,
-      defaultSortOrder: 'descend'
+      defaultSortOrder: 'descend',
     },
 
     {
       title: t('Phone Number'),
       dataIndex: 'phone',
       key: 'phone',
-      width: 210
+      width: 210,
     },
     {
       title: 'Email',
@@ -256,36 +255,36 @@ export default function TableUser() {
       key: 'email',
       width: 210,
       ellipsis: true,
-      render: (email) => (
+      render: email => (
         <Tooltip placement="top" title={email} showArrow={false}>
           {email}
         </Tooltip>
-      )
+      ),
     },
     {
       title: t('Tags'),
       dataIndex: 'tag',
       key: 'tag',
-      render: (tag) => tag.map((_) => <Tag color={_?.length > 5 ? 'cyan' : 'gold'}>{_}</Tag>)
+      render: tag => tag.map(_ => <Tag color={_?.length > 5 ? 'cyan' : 'gold'}>{_}</Tag>),
     },
     {
       title: t('Gender'),
       dataIndex: 'gender',
       key: 'gender',
-      render: (text) => <p>{t(text)}</p>
+      render: text => <p>{t(text)}</p>,
     },
     {
       title: t('Role'),
       dataIndex: 'role',
       key: 'role',
-      render: (text) => <p>{t(text)}</p>
+      render: text => <p>{t(text)}</p>,
     },
 
     {
       title: t('ID'),
       dataIndex: 'id',
       key: 'id',
-      ellipsis: true
+      ellipsis: true,
     },
     {
       width: 110,
@@ -302,7 +301,7 @@ export default function TableUser() {
                   <Button type="text" key="update" onClick={() => handleOpenUpdateUser(record)}>
                     {t('Update account')}
                   </Button>
-                )
+                ),
               },
               {
                 key: '2',
@@ -310,7 +309,7 @@ export default function TableUser() {
                   <Button type="text" key="update" onClick={() => handleSendResetPassword(record)}>
                     {t('Reset Password')}
                   </Button>
-                )
+                ),
               },
               {
                 key: '3',
@@ -318,8 +317,8 @@ export default function TableUser() {
                   <Button type="text" ghost onClick={() => handleDeleteModal(record)}>
                     {t('Delete account')}
                   </Button>
-                )
-              }
+                ),
+              },
             ]}
           />
         );
@@ -347,8 +346,8 @@ export default function TableUser() {
             </Space>
           </>
         );
-      }
-    }
+      },
+    },
   ];
   const getAllUserData = async () => {
     setTableLoading(true);
@@ -356,7 +355,7 @@ export default function TableUser() {
     const list = [];
     try {
       const users = await GetAllUser();
-      users.forEach((doc) => {
+      users.forEach(doc => {
         list.push({ id: doc.id, ...doc.data(), key: doc.id });
       });
       setListUsers(list);
@@ -387,7 +386,7 @@ export default function TableUser() {
             setDataSource={setSearchDataSource}
             inputProps={{
               placeholder: t('Name, ID, Email, Tag, '),
-              prefix: <SearchOutlined />
+              prefix: <SearchOutlined />,
             }}
           />
           <Button
@@ -411,7 +410,7 @@ export default function TableUser() {
         onClose={onCloseUpdateUser}
         open={openUpdate}
         bodyStyle={{
-          paddingBottom: 80
+          paddingBottom: 80,
         }}
       >
         {openUpdate ? (
@@ -428,7 +427,7 @@ export default function TableUser() {
               dob: moment(userRecord?.dob?.toDate()),
               email: userRecord?.email,
               role: userRecord?.role,
-              tag: userRecord?.tag
+              tag: userRecord?.tag,
             }}
             onFinish={onFinishUpdate}
             onFinishFailed={onFinishFailed}
@@ -441,15 +440,15 @@ export default function TableUser() {
               rules={[
                 {
                   required: true,
-                  message: t('Please input your username!')
-                }
+                  message: t('Please input your username!'),
+                },
               ]}
             >
               <Input />
             </Form.Item>
             <Form.Item name="dob" label={t('Date of Birth')}>
               <DatePicker
-                disabledDate={(current) => current > moment()}
+                disabledDate={current => current > moment()}
                 format={i18n.language === 'vi_VN' ? 'DD-MM-YYYY' : null}
               />
             </Form.Item>
@@ -478,7 +477,7 @@ export default function TableUser() {
             <Form.Item type="number" name="phone" label={t('Phone Number')}>
               <Input
                 style={{
-                  width: '100%'
+                  width: '100%',
                 }}
               />
             </Form.Item>
@@ -488,7 +487,7 @@ export default function TableUser() {
             <Form.Item
               wrapperCol={{
                 offset: 4,
-                span: 16
+                span: 16,
               }}
             >
               <Button
@@ -498,7 +497,7 @@ export default function TableUser() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 onClick={onCloseUpdateUser}
               >
@@ -511,7 +510,7 @@ export default function TableUser() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 type="primary"
                 htmlType="submit"
@@ -528,7 +527,7 @@ export default function TableUser() {
         onClose={onCloseCreateUser}
         open={openCreate}
         bodyStyle={{
-          paddingBottom: 80
+          paddingBottom: 80,
         }}
       >
         {openCreate ? (
@@ -550,8 +549,8 @@ export default function TableUser() {
               rules={[
                 {
                   required: true,
-                  message: t('Please input your name!')
-                }
+                  message: t('Please input your name!'),
+                },
               ]}
             >
               <Input />
@@ -562,12 +561,12 @@ export default function TableUser() {
               rules={[
                 {
                   required: true,
-                  message: t('Please enter your email!')
+                  message: t('Please enter your email!'),
                 },
                 {
                   type: 'email',
-                  message: t('Invalid enter your email!')
-                }
+                  message: t('Invalid enter your email!'),
+                },
               ]}
             >
               <Input />
@@ -578,12 +577,12 @@ export default function TableUser() {
               rules={[
                 {
                   required: true,
-                  message: t('Please enter your password!')
+                  message: t('Please enter your password!'),
                 },
                 {
                   min: 6,
-                  message: t('Password must be minimum 6 characters.')
-                }
+                  message: t('Password must be minimum 6 characters.'),
+                },
               ]}
             >
               <Input.Password />
@@ -596,7 +595,7 @@ export default function TableUser() {
               rules={[
                 {
                   required: true,
-                  message: t('Please confirm your password!')
+                  message: t('Please confirm your password!'),
                 },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
@@ -606,8 +605,8 @@ export default function TableUser() {
                     return Promise.reject(
                       new Error('The two passwords that you entered do not match!')
                     );
-                  }
-                })
+                  },
+                }),
               ]}
             >
               <Input.Password />
@@ -629,7 +628,7 @@ export default function TableUser() {
               <>
                 <Form.Item name="dob" label={t('Date of Birth')}>
                   <DatePicker
-                    disabledDate={(current) => current > moment()}
+                    disabledDate={current => current > moment()}
                     format={i18n.language === 'vi_VN' ? 'DD-MM-YYYY' : null}
                   />
                 </Form.Item>
@@ -658,7 +657,7 @@ export default function TableUser() {
                 <Form.Item type="number" name="phone" label={t('Phone Number')}>
                   <Input
                     style={{
-                      width: '100%'
+                      width: '100%',
                     }}
                   />
                 </Form.Item>
@@ -673,7 +672,7 @@ export default function TableUser() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 onClick={onCloseCreateUser}
               >
@@ -686,7 +685,7 @@ export default function TableUser() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 type="primary"
                 htmlType="submit"
@@ -703,7 +702,7 @@ export default function TableUser() {
             bordered={false}
             defaultValue="large"
             style={{
-              width: 100
+              width: 100,
             }}
             onChange={setSize}
           >
@@ -717,7 +716,7 @@ export default function TableUser() {
             columns={columns}
             btnProps={{
               type: 'primary',
-              icon: <FileExcelOutlined />
+              icon: <FileExcelOutlined />,
             }}
             showColumnPicker
           >
@@ -746,7 +745,7 @@ export default function TableUser() {
 
               display: 'flex',
               gap: 5,
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
             }}
           >
             <Button onClick={handleCancelModalMultiDelete} style={{ borderRadius: 8 }}>
@@ -787,7 +786,7 @@ export default function TableUser() {
               marginTop: 20,
               display: 'flex',
               gap: 5,
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
             }}
           >
             <Button onClick={() => setOpenModalDelete(false)} style={{ borderRadius: 8 }}>
@@ -820,7 +819,7 @@ export default function TableUser() {
             style={{
               fontWeight: 700,
               fontSize: 18,
-              paddingBottom: 10
+              paddingBottom: 10,
             }}
           >
             {t('Reset Password')}
@@ -834,7 +833,7 @@ export default function TableUser() {
               marginTop: 20,
               display: 'flex',
               gap: 5,
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
             }}
           >
             <Button onClick={() => setOpenModalResetPassword(false)} style={{ borderRadius: 8 }}>
@@ -873,7 +872,7 @@ export default function TableUser() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}
             icon={<AiOutlineClose color="red" style={{ marginRight: 5 }} />}
             onClick={() => showModalMultiDelete()}
@@ -884,7 +883,7 @@ export default function TableUser() {
         </section>
       ) : null}
       <Table
-        rowKey={(record) => record.key}
+        rowKey={record => record.key}
         rowSelection={rowSelection}
         size={size}
         style={{
@@ -892,17 +891,17 @@ export default function TableUser() {
           padding: 20,
           marginBlock: 10,
           borderRadius: 15,
-          boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px'
+          boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px',
         }}
         scroll={{
-          x: 1200
+          x: 1200,
         }}
         pagination={{
           defaultPageSize: 5,
           showSizeChanger: true,
           pageSizeOptions: ['5', '10', '20', '30'],
           hideOnSinglePage: true,
-          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
         }}
         columns={columns}
         dataSource={searchDataSource || listUsers}

@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
-import { NavLink, useNavigate, useLocation, useResolvedPath, redirect } from 'react-router';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import './style.css';
-import SignInGoogle from '../SigninGoogle';
+import { Button, Checkbox, Form, Input } from 'antd';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { UserAuth } from '../../context/AuthContext';
+import { NavLink, redirect, useLocation, useNavigate, useResolvedPath } from 'react-router';
 import { toast } from 'react-toastify';
 
-const InValidDisplay = (state) => {
+import { UserAuth } from '../../context/AuthContext';
+import SignInGoogle from '../SigninGoogle';
+import './style.css';
+
+const InValidDisplay = state => {
   const navigate = useNavigate();
   return (
     state && (
@@ -32,7 +32,7 @@ const InValidDisplay = (state) => {
             borderColor: 'RGB(109, 156, 145)',
             borderRadius: 50,
             boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
-            marginBottom: 10
+            marginBottom: 10,
           }}
         >
           BACK TO FORGOT PASSWORD

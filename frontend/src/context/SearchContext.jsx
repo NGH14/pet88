@@ -12,11 +12,11 @@ export const SearchContextProvider = ({ children }) => {
       foundNumber: null,
       datesHotels: null,
       datesGrooming: null,
-      days: 0
+      days: 0,
     }
   );
 
-  const setSearchList = (data) => {
+  const setSearchList = data => {
     function dayDifference() {
       if (!data.datesHotels || data.datesHotels?.length === 0) return null;
 
@@ -29,7 +29,7 @@ export const SearchContextProvider = ({ children }) => {
     const daysDiff = dayDifference(data);
     const newData = {
       ...data,
-      days: daysDiff
+      days: daysDiff,
     };
 
     localStorage.setItem('search', JSON.stringify(newData));

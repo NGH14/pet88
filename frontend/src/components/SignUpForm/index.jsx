@@ -1,14 +1,14 @@
-import React from 'react';
-import { Button, Form, Input } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { NavLink, useNavigate } from 'react-router';
-import { motion } from 'framer-motion';
 import { MailOutlined } from '@ant-design/icons';
+import { Button, Form, Input } from 'antd';
+import { motion } from 'framer-motion';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { NavLink, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 import { UserAuth } from '../../context/AuthContext';
 import './style.css';
-import { toast } from 'react-toastify';
-import { useTranslation } from 'react-i18next';
 
 const SignUpForm = () => {
   const [displayName, setDisplayName] = React.useState('');
@@ -22,11 +22,11 @@ const SignUpForm = () => {
   const navigate = useNavigate();
   const [t] = useTranslation();
 
-  const handleEmail = (e) => {
+  const handleEmail = e => {
     setEmail(e);
     setEmailStatus();
   };
-  const onFinish = async (e) => {
+  const onFinish = async e => {
     setLoading(true);
     try {
       const { user } = await createUser(email, password);
@@ -42,7 +42,7 @@ const SignUpForm = () => {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
@@ -63,7 +63,7 @@ const SignUpForm = () => {
       <Form
         name="sign-up"
         initialValues={{
-          remember: true
+          remember: true,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -75,12 +75,12 @@ const SignUpForm = () => {
           rules={[
             {
               required: true,
-              message: t('Please enter your name!')
-            }
+              message: t('Please enter your name!'),
+            },
           ]}
         >
           <Input
-            onChange={(e) => setDisplayName(e.target.value)}
+            onChange={e => setDisplayName(e.target.value)}
             placeholder={t('Fullname')}
             prefix={<UserOutlined className="site-form-item-icon" />}
           />
@@ -91,33 +91,33 @@ const SignUpForm = () => {
           rules={[
             {
               required: true,
-              message: t('Please enter your email!')
+              message: t('Please enter your email!'),
             },
             {
               type: 'email',
-              message: t('Invalid enter your email!')
-            }
+              message: t('Invalid enter your email!'),
+            },
           ]}
           help={emailStatus && t('Email is already used')}
         >
           <Input
-            onChange={(e) => handleEmail(e.target.value)}
+            onChange={e => handleEmail(e.target.value)}
             placeholder={t('Email')}
             prefix={<MailOutlined className="site-form-item-icon" />}
           />
         </Form.Item>
         <Form.Item
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           name="password"
           rules={[
             {
               required: true,
-              message: t('Please enter your password!')
+              message: t('Please enter your password!'),
             },
             {
               min: 6,
-              message: t('Password must be minimum 6 characters.')
-            }
+              message: t('Password must be minimum 6 characters.'),
+            },
           ]}
         >
           <Input.Password
@@ -132,7 +132,7 @@ const SignUpForm = () => {
           rules={[
             {
               required: true,
-              message: t('Please confirm your password!')
+              message: t('Please confirm your password!'),
             },
             ({ getFieldValue }) => ({
               validator(_, value) {
@@ -142,8 +142,8 @@ const SignUpForm = () => {
                 return Promise.reject(
                   new Error('The two passwords that you entered do not match!')
                 );
-              }
-            })
+              },
+            }),
           ]}
         >
           <Input.Password

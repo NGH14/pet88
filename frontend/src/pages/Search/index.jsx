@@ -1,34 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router';
+import { RightOutlined } from '@ant-design/icons';
 import {
+  Avatar,
+  Breadcrumb,
+  Button,
   Card,
   ConfigProvider,
-  sectionider,
-  Form,
-  Layout,
-  Skeleton,
-  Button,
-  Input,
   DatePicker,
+  Empty,
+  Form,
+  Input,
+  Layout,
   Select,
-  Breadcrumb,
-  Avatar,
+  Skeleton,
   Typography,
-  Empty
+  sectionider,
 } from 'antd';
-import moment from 'moment';
-import { RightOutlined } from '@ant-design/icons';
-
-import SubNavBar from 'components/views/SubHeader';
-import AppHeader from '../../components/Navbar';
 import viVN from 'antd/es/locale/vi_VN';
-
-import FooterWave from '../../components/Footer';
-import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import SubNavBar from 'components/views/SubHeader';
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { NavLink, useLocation } from 'react-router';
+
 import departImg from '../../assets/images/e10adb13acb1f3da8724a9149a58bd00.jpg';
-import './style.css';
+import FooterWave from '../../components/Footer';
+import AppHeader from '../../components/Navbar';
 import { SearchData } from '../../context/SearchContext';
+import './style.css';
 
 const { Option } = Select;
 const { Header, Content, Footer } = Layout;
@@ -66,7 +65,7 @@ export default function Search() {
   };
 
   const { t, i18n } = useTranslation();
-  const fetchHotelData = async (value) => {
+  const fetchHotelData = async value => {
     const city = value?.city;
     const alldates =
       value.datesHotels || value.datesHotels?.length > 0
@@ -77,7 +76,7 @@ export default function Search() {
         const res = await axios.post(`http://localhost:3001/api/hotel/find-hotel-able`, {
           city,
           dates: alldates,
-          services: type
+          services: type,
         });
 
         return res.data;
@@ -88,7 +87,7 @@ export default function Search() {
       try {
         const res = await axios.post(`http://localhost:3001/api/hotel/find-grooming-able`, {
           city,
-          services: type
+          services: type,
         });
 
         return res.data;
@@ -98,7 +97,7 @@ export default function Search() {
     }
   };
 
-  const onFinish = async (values) => {
+  const onFinish = async values => {
     setLoading(true);
     const foundData = await fetchHotelData(values);
     setSearchList({
@@ -107,7 +106,7 @@ export default function Search() {
       city: values.city,
       foundNumber: foundData?.length,
       datesHotels: values.datesHotels || null,
-      datesGrooming: values.datesGrooming || null
+      datesGrooming: values.datesGrooming || null,
     });
     setLoading(false);
   };
@@ -129,7 +128,7 @@ export default function Search() {
                       style={{
                         textTransform: 'uppercase',
                         fontWeight: 700,
-                        marginBottom: 15
+                        marginBottom: 15,
                       }}
                     >
                       {t('search')}
@@ -143,15 +142,15 @@ export default function Search() {
                         city: search?.city,
                         datesHotels: search.datesHotels && [
                           moment(search?.datesHotels[0]),
-                          moment(search?.datesHotels[1])
+                          moment(search?.datesHotels[1]),
                         ],
                         services: search?.services,
-                        datesGrooming: search.datesGrooming && moment(search?.datesGrooming)
+                        datesGrooming: search.datesGrooming && moment(search?.datesGrooming),
                       }}
                       onFinish={onFinish}
                     >
                       <Form.Item name="services" label={t('Services')}>
-                        <Select onChange={(value) => setType(value)} placeholder={t('Services')}>
+                        <Select onChange={value => setType(value)} placeholder={t('Services')}>
                           <Option value="hotel">{t('Hotel')}</Option>
                           <Option value="grooming">{t('Grooming')}</Option>
                         </Select>
@@ -175,7 +174,7 @@ export default function Search() {
                             ranges={{
                               [t('Today')]: [moment(), moment()],
                               [t('One Week')]: [currentDate, futureWeek],
-                              [t('One Month')]: [currentDate, futureMonth]
+                              [t('One Month')]: [currentDate, futureMonth],
                             }}
                             placeholder={[t('Drop off'), t('Pick up')]}
                             placement="bottomLeft"
@@ -190,7 +189,7 @@ export default function Search() {
                           <DatePicker
                             className="form-item_bookingdepartpage"
                             showTime={{
-                              format: 'HH:mm'
+                              format: 'HH:mm',
                             }}
                             placement="bottomLeft"
                             format={
@@ -241,7 +240,7 @@ export default function Search() {
                       shape="round"
                       loading={loading}
                       paragraph={{
-                        rows: 1
+                        rows: 1,
                       }}
                     />
                   )}
@@ -257,7 +256,7 @@ export default function Search() {
                                 : `/grooming/${depart._id}`
                             }
                             state={{
-                              ...depart
+                              ...depart,
                             }}
                           >
                             <Card
@@ -267,7 +266,7 @@ export default function Search() {
                                 width: '100%',
                                 marginTop: 16,
                                 boxShadow:
-                                  'rgb(0 0 0 / 5%) 0px 1px 1px, rgb(0 0 0 / 5%) 0px 2px 2px, rgb(0 0 0 / 5%) 0px 1px 1px, rgb(0 0 0 / 5%) 0px 1px 1px, rgb(0 0 0 / 5%) 0px 2px 10px'
+                                  'rgb(0 0 0 / 5%) 0px 1px 1px, rgb(0 0 0 / 5%) 0px 2px 2px, rgb(0 0 0 / 5%) 0px 1px 1px, rgb(0 0 0 / 5%) 0px 1px 1px, rgb(0 0 0 / 5%) 0px 2px 10px',
                               }}
                             >
                               <Skeleton
@@ -277,12 +276,12 @@ export default function Search() {
                                 loading={loading}
                                 avatar
                                 paragraph={{
-                                  rows: 4
+                                  rows: 4,
                                 }}
                               >
                                 <Meta
                                   style={{
-                                    minHeight: 150
+                                    minHeight: 150,
                                   }}
                                   avatar={
                                     <Avatar
@@ -291,7 +290,7 @@ export default function Search() {
                                         width: 300,
                                         height: '100%',
                                         objectFit: 'cover',
-                                        borderRadius: 15
+                                        borderRadius: 15,
                                       }}
                                       shape="square"
                                       src={depart.photos.length > 0 ? depart.photos[0] : departImg}
@@ -310,14 +309,14 @@ export default function Search() {
                                       <section className="card-depart_desc">
                                         <Paragraph
                                           ellipsis={{
-                                            rows: 4
+                                            rows: 4,
                                           }}
                                         >
                                           {t(depart.desc)}
                                         </Paragraph>
                                         <p
                                           style={{
-                                            textAlign: 'right'
+                                            textAlign: 'right',
                                           }}
                                         >
                                           ~{search?.days}
@@ -339,7 +338,7 @@ export default function Search() {
                               style={{
                                 borderRadius: 15,
                                 width: '100%',
-                                marginTop: 16
+                                marginTop: 16,
                               }}
                             >
                               <Skeleton
@@ -349,7 +348,7 @@ export default function Search() {
                                 loading={loading}
                                 avatar
                                 paragraph={{
-                                  rows: 4
+                                  rows: 4,
                                 }}
                               ></Skeleton>
                             </Card>

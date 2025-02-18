@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
 import axios from 'axios';
+import React, { useEffect } from 'react';
+
 import { UserAuth } from '../../context/AuthContext';
+
 export default function ListOfUser() {
   const { token } = UserAuth();
   // useEffect(() => {
@@ -9,12 +11,12 @@ export default function ListOfUser() {
   // 	}
   // }, [token]);
 
-  const fetchData = async (token) => {
+  const fetchData = async token => {
     try {
       const res = await axios.get('http://localhost:3001/api/user', {
         headers: {
-          Authorization: 'Bearer ' + token
-        }
+          Authorization: 'Bearer ' + token,
+        },
       });
       console.log(res.data);
     } catch (error) {

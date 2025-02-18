@@ -1,32 +1,33 @@
-import React, { useContext, createContext } from 'react';
+import axios from 'axios';
 import {
-  reauthenticateWithCredential,
-  verifyPasswordResetCode,
-  sendPasswordResetEmail,
+  EmailAuthProvider,
   GoogleAuthProvider,
+  confirmPasswordReset,
+  createUserWithEmailAndPassword,
+  getIdToken,
+  onAuthStateChanged,
+  reauthenticateWithCredential,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   updatePassword,
-  confirmPasswordReset,
   updateProfile,
-  getIdToken,
-  EmailAuthProvider
+  verifyPasswordResetCode,
 } from 'firebase/auth';
-import { auth, storage } from '../utils/firebase';
 import {
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-  getDocs,
+  Timestamp,
   collection,
   deleteDoc,
-  Timestamp
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
 } from 'firebase/firestore';
-import axios from 'axios';
+import React, { createContext, useContext } from 'react';
+
+import { auth, storage } from '../utils/firebase';
 
 const AuthContext = createContext();
 
@@ -51,7 +52,7 @@ export const AuthContextProvider = ({ children }) => {
       name,
       dob,
       gender,
-      phone
+      phone,
     });
   };
 
@@ -63,7 +64,7 @@ export const AuthContextProvider = ({ children }) => {
     console.log(cusdob);
     return await updateDoc(userRef, {
       dob: cusdob,
-      ...rest
+      ...rest,
     });
   };
 
@@ -86,7 +87,7 @@ export const AuthContextProvider = ({ children }) => {
 
     return updatePassword(firebaseAuthUser, password);
   };
-  const VerifyPasswordResetCode = (code) => {
+  const VerifyPasswordResetCode = code => {
     return verifyPasswordResetCode(auth, code);
   };
 
@@ -96,9 +97,9 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.removeItem('name');
   };
 
-  const forgotPassword = (email) => {
+  const forgotPassword = email => {
     return sendPasswordResetEmail(auth, email, {
-      url: `http://localhost:3000/sign-in`
+      url: `http://localhost:3000/sign-in`,
     });
   };
 
@@ -122,7 +123,7 @@ export const AuthContextProvider = ({ children }) => {
         name: user.displayName,
         tag: user.tag || [],
         role: additionalData.role || 'user',
-        ...additionalData
+        ...additionalData,
       });
     }
   };
@@ -136,7 +137,7 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const DeleteHotel = async (id) => {
+  const DeleteHotel = async id => {
     try {
       const res = await axios.delete(`${API_URL}/hotel/${id}`, {});
       return res.data;
@@ -145,7 +146,7 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const CreateHotel = async (value) => {
+  const CreateHotel = async value => {
     try {
       const res = await axios.post(`${API_URL}/hotel`, value, {});
       return res.data;
@@ -183,12 +184,12 @@ export const AuthContextProvider = ({ children }) => {
         gender: userGender,
         phone: userPhone,
         tag: userTag,
-        ...rest
+        ...rest,
       });
     }
   };
 
-  const MultipleDeleteDepart = async (listDelete) => {
+  const MultipleDeleteDepart = async listDelete => {
     try {
       const res = await axios.patch(`${API_URL}/hotel/multiple-delete`, listDelete);
       return res.data;
@@ -210,11 +211,11 @@ export const AuthContextProvider = ({ children }) => {
     return await getDocs(collection(storage, 'users'));
   };
 
-  const DeleteUser = async (id) => {
+  const DeleteUser = async id => {
     return await deleteDoc(doc(storage, 'users', id));
   };
 
-  const CheckRole = async (userID) => {
+  const CheckRole = async userID => {
     const docRef = doc(storage, 'users', userID);
     const docSnap = await getDoc(docRef);
 
@@ -223,7 +224,7 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const UserInfo = async (userID) => {
+  const UserInfo = async userID => {
     const docRef = doc(storage, 'users', userID);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
@@ -233,7 +234,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   React.useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
       setFireBaseAuthUser(currentUser);
       if (currentUser) {
         UserInfo(currentUser?.uid);
@@ -277,7 +278,7 @@ export const AuthContextProvider = ({ children }) => {
         UpdateHotel,
         getOrderByUser,
         MultipleDeleteDepart,
-        getNewUserInCurrentMonth
+        getNewUserInCurrentMonth,
       }}
     >
       {children}

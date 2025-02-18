@@ -10,25 +10,23 @@ import {
   Layout,
   Modal,
   Select,
-  Table
+  Table,
 } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router';
-
 import viVN from 'antd/es/locale/vi_VN';
+import axios from 'axios';
+import SubNavBar from 'components/views/SubHeader';
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { RiFileUserLine, RiMailSendLine, RiPhoneLine } from 'react-icons/ri';
+import { NavLink, useLocation, useNavigate } from 'react-router';
+import { styled } from 'styled-components';
+
 import FooterWave from '../../components/Footer';
 import AppHeader from '../../components/Navbar';
-import SubNavBar from 'components/views/SubHeader';
-
-import axios from 'axios';
-import './style.css';
-
-import moment from 'moment';
 import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
-import { styled } from 'styled-components';
-import { RiFileUserLine, RiMailSendLine, RiPhoneLine } from 'react-icons/ri';
+import './style.css';
 
 const { Option } = Select;
 const { Header, Content, Footer } = Layout;
@@ -63,27 +61,27 @@ export default function Department() {
     handleLoadData();
   }, [search]);
 
-  const onFinish = async (values) => {
+  const onFinish = async values => {
     setLoadingTable(true);
     await handleLoadData();
     setSearchList({
       ...search,
-      datesGrooming: values.datesGrooming || null
+      datesGrooming: values.datesGrooming || null,
     });
   };
 
-  const onFinishConfirm = async (value) => {
+  const onFinishConfirm = async value => {
     const startDate = new Date(search?.datesGrooming);
     const endDate = new Date(moment(search?.datesGrooming).add(1, 'hours'));
 
     const prices = dataList
-      .map((gr) => {
-        const isSelected = gr.roomNumbers.some((rn) => {
-          return selectedRooms.some((sr) => sr.roomId === rn._id);
+      .map(gr => {
+        const isSelected = gr.roomNumbers.some(rn => {
+          return selectedRooms.some(sr => sr.roomId === rn._id);
         });
         return isSelected ? Number(gr.price) : undefined;
       })
-      .filter((gr) => !!gr)
+      .filter(gr => !!gr)
       .reduce((v, t) => t + v, 0);
     axios
       .post(`http://localhost:3001/api/order/grooming/booking`, {
@@ -98,30 +96,30 @@ export default function Department() {
         start: startDate,
         end: endDate,
         paymentMethod: 'cash',
-        service: search.services
+        service: search.services,
       })
-      .then((response) => {
+      .then(response => {
         setLoading(false);
         navigate('/booking/success');
       })
-      .catch((err) => console.log(err.message));
+      .catch(err => console.log(err.message));
   };
 
-  const handleSelect = (e) => {
+  const handleSelect = e => {
     const checked = e.target.checked;
     const value = e.target.value;
     const room = value.split('_');
 
     setSelectedRooms(
       !checked
-        ? selectedRooms.filter((item) => item.roomId !== room[0])
+        ? selectedRooms.filter(item => item.roomId !== room[0])
         : [
             ...selectedRooms,
             {
               roomId: room[0],
               price: room[1],
-              roomNumber: room[2]
-            }
+              roomNumber: room[2],
+            },
           ]
     );
   };
@@ -134,46 +132,46 @@ export default function Department() {
     await axios
       .post(`http://localhost:3001/api/hotel/availability/grooming/${id}`, {
         startDate,
-        endDate
+        endDate,
       })
-      .then((response) => {
+      .then(response => {
         setSumPrice(0);
         setSelectedRooms([]);
         setDataList(response.data);
         setLoading(false);
         setLoadingTable(false);
       })
-      .catch((err) => console.log(err.message));
+      .catch(err => console.log(err.message));
   };
 
   const columnsWithDate = [
     {
       title: t('Name'),
       dataIndex: 'title',
-      sorter: (a, b) => a.title.length - b.title.length
+      sorter: (a, b) => a.title.length - b.title.length,
     },
     {
       title: t('Type'),
-      dataIndex: 'type'
+      dataIndex: 'type',
     },
     {
       title: `${t('Service Price')}`,
       dataIndex: 'price',
-      render: (price) => (
+      render: price => (
         <span>
           {` ${new Intl.NumberFormat('vi_VN', {
             style: 'currency',
-            currency: 'VND'
+            currency: 'VND',
           }).format(price)} ${t('/ hour')}`}
         </span>
       ),
-      sorter: (a, b) => a.price - b.price
+      sorter: (a, b) => a.price - b.price,
     },
     {
       title: t('Room'),
       dataIndex: 'roomNumbers',
       render: (roomNumbers, record) =>
-        roomNumbers.map((roomNumber) => (
+        roomNumbers.map(roomNumber => (
           <section className="room">
             <Checkbox
               value={`${roomNumber._id}_${record.price * search?.days}_${roomNumber.number}`}
@@ -183,8 +181,8 @@ export default function Department() {
               {roomNumber.number}
             </Checkbox>
           </section>
-        ))
-    }
+        )),
+    },
   ];
 
   return (
@@ -214,14 +212,14 @@ export default function Department() {
                     style={{
                       display: 'flex',
                       justifyContent: 'space-between',
-                      alignItems: 'center'
+                      alignItems: 'center',
                     }}
                   >
                     <h2
                       style={{
                         fontWeight: 700,
                         textTransform: 'capitalize',
-                        fontSize: 30
+                        fontSize: 30,
                       }}
                     >
                       {t('availability')}
@@ -232,7 +230,7 @@ export default function Department() {
                         justifyContent: 'center',
                         gap: 15,
                         alignItems: 'center',
-                        fontWeight: 700
+                        fontWeight: 700,
                       }}
                     >
                       <Button
@@ -260,7 +258,7 @@ export default function Department() {
                       initialValues={{
                         name: user?.name,
                         email: user?.email,
-                        phone: user?.phone
+                        phone: user?.phone,
                       }}
                       onFinish={onFinishConfirm}
                       requiredMark={false}
@@ -269,8 +267,8 @@ export default function Department() {
                         rules={[
                           {
                             required: true,
-                            message: t('Please input name!')
-                          }
+                            message: t('Please input name!'),
+                          },
                         ]}
                         name="name"
                         label={<RiFileUserLine />}
@@ -281,8 +279,8 @@ export default function Department() {
                         rules={[
                           {
                             required: true,
-                            message: t('Please input email!')
-                          }
+                            message: t('Please input email!'),
+                          },
                         ]}
                         name="email"
                         label={<RiMailSendLine />}
@@ -294,8 +292,8 @@ export default function Department() {
                         rules={[
                           {
                             required: true,
-                            message: t('Please input phone number!')
-                          }
+                            message: t('Please input phone number!'),
+                          },
                         ]}
                         name="phone"
                         label={<RiPhoneLine />}
@@ -308,7 +306,7 @@ export default function Department() {
                           display: 'flex',
                           justifyContent: 'flex-end',
 
-                          marginBlock: '5px -5px'
+                          marginBlock: '5px -5px',
                         }}
                       >
                         <Button
@@ -317,7 +315,7 @@ export default function Department() {
                             height: 'fit-content',
                             fontSize: 16,
                             lineHeight: 1.8,
-                            borderRadius: 5
+                            borderRadius: 5,
                           }}
                           type="text"
                           onClick={() => setOpenDetailModal(false)}
@@ -330,7 +328,7 @@ export default function Department() {
                             fontSize: 16,
                             lineHeight: 1.8,
                             borderRadius: 5,
-                            boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                            boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                           }}
                           type="primary"
                           htmlType="submit"
@@ -347,7 +345,7 @@ export default function Department() {
                       name="form_bookingdepartpage"
                       layout="horizontal"
                       initialValues={{
-                        datesGrooming: search?.datesGrooming && moment(search?.datesGrooming)
+                        datesGrooming: search?.datesGrooming && moment(search?.datesGrooming),
                       }}
                       onValuesChange={onFinish}
                     >
@@ -355,7 +353,7 @@ export default function Department() {
                         <DatePicker
                           defaultValue={search?.datesGrooming && moment(search?.datesGrooming)}
                           showTime={{
-                            format: 'HH:mm'
+                            format: 'HH:mm',
                           }}
                           placement="bottomLeft"
                           format={
@@ -370,10 +368,10 @@ export default function Department() {
                         padding: 20,
                         marginBlock: 10,
                         borderRadius: 15,
-                        boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px'
+                        boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px',
                       }}
                       scroll={{
-                        x: 800
+                        x: 800,
                       }}
                       pagination={false}
                       columns={columnsWithDate}

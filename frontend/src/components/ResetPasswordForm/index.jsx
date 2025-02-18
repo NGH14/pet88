@@ -1,16 +1,15 @@
-import React, { useEffect } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
-import { NavLink, useNavigate, useLocation, useResolvedPath, redirect } from 'react-router';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import './style.css';
-import SignInGoogle from '../SigninGoogle';
+import { Button, Checkbox, Form, Input } from 'antd';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { UserAuth } from '../../context/AuthContext';
+import { NavLink, redirect, useLocation, useNavigate, useResolvedPath } from 'react-router';
 import { toast } from 'react-toastify';
 
 import completedImg from '../../assets/svg/undraw_complete_design_re_h75h.svg';
+import { UserAuth } from '../../context/AuthContext';
+import SignInGoogle from '../SigninGoogle';
+import './style.css';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -49,7 +48,7 @@ const ResetPasswordForm = () => {
     }
   });
 
-  const onFinish = async (e) => {
+  const onFinish = async e => {
     setLoading(true);
     try {
       await ConfirmResetPassword(oobCode, password);
@@ -63,7 +62,7 @@ const ResetPasswordForm = () => {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
@@ -94,7 +93,7 @@ const ResetPasswordForm = () => {
           borderColor: 'RGB(109, 156, 145)',
           borderRadius: 50,
           boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
-          marginBottom: 10
+          marginBottom: 10,
         }}
       >
         BACK TO SIGN IN
@@ -116,7 +115,7 @@ const ResetPasswordForm = () => {
       <Form
         name="basic"
         initialValues={{
-          remember: true
+          remember: true,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -124,17 +123,17 @@ const ResetPasswordForm = () => {
         autoComplete="on"
       >
         <Form.Item
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
           name="password"
           rules={[
             {
               required: true,
-              message: 'Please enter your password!'
+              message: 'Please enter your password!',
             },
             {
               min: 6,
-              message: 'Password must be minimum 6 characters.'
-            }
+              message: 'Password must be minimum 6 characters.',
+            },
           ]}
         >
           <Input.Password
@@ -149,7 +148,7 @@ const ResetPasswordForm = () => {
           rules={[
             {
               required: true,
-              message: 'Please confirm your password!'
+              message: 'Please confirm your password!',
             },
             ({ getFieldValue }) => ({
               validator(_, value) {
@@ -159,8 +158,8 @@ const ResetPasswordForm = () => {
                 return Promise.reject(
                   new Error('The two passwords that you entered do not match!')
                 );
-              }
-            })
+              },
+            }),
           ]}
         >
           <Input.Password

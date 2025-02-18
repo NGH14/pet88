@@ -1,8 +1,9 @@
-import React from 'react';
-import './style.css';
-import bgImg from 'assets/images/navy-bg.png';
 import logo from 'assets/images/logo-text.png';
+import bgImg from 'assets/images/navy-bg.png';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+
+import './style.css';
 
 export default function FooterWave() {
   const [t] = useTranslation();
@@ -11,7 +12,7 @@ export default function FooterWave() {
       <footer
         className="footer"
         style={{
-          backgroundImage: `url(${bgImg})`
+          backgroundImage: `url(${bgImg})`,
         }}
       >
         <svg

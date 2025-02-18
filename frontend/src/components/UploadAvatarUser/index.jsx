@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import axios from 'axios';
 import { Avatar } from 'antd';
+import axios from 'axios';
+import { useState } from 'react';
 
 const UploadAvatarUser = ({ inputs, title }) => {
   const [file, setFile] = useState('');
   const [info, setInfo] = useState({});
 
-  const handleChange = (e) => {
-    setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  const handleChange = e => {
+    setInfo(prev => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleClick = async (e) => {
+  const handleClick = async e => {
     e.preventDefault();
     const data = new FormData();
     data.append('file', file);
@@ -25,7 +25,7 @@ const UploadAvatarUser = ({ inputs, title }) => {
 
       const newUser = {
         ...info,
-        img: url
+        img: url,
       };
 
       await axios.post('/auth/register', newUser);
@@ -56,7 +56,7 @@ const UploadAvatarUser = ({ inputs, title }) => {
                 <input
                   type="file"
                   id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
+                  onChange={e => setFile(e.target.files[0])}
                   // style={{ display: 'none' }}
                 />
               </section>

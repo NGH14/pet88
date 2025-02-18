@@ -1,12 +1,13 @@
-import { Button, Dropdown, Menu, message, Space, Tooltip } from 'antd';
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router';
-import { UserAuth } from '../../context/AuthContext';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
-import './style.css';
-import styled from 'styled-components';
+import { Button, Dropdown, Menu, Space, Tooltip, message } from 'antd';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link, NavLink } from 'react-router';
+import styled from 'styled-components';
+
+import { UserAuth } from '../../context/AuthContext';
+import './style.css';
 
 const SignUpButton = styled.p`
   border-radius: 40px;
@@ -47,7 +48,7 @@ function AuthButton({ TextColor, FullWitdh }) {
             <SignInButton
               style={{
                 transition: 'color 0.5s ease-in-out',
-                color: TextColor
+                color: TextColor,
               }}
             >
               {t('Sign in')}

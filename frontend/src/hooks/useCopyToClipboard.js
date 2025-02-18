@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { message } from 'antd';
 import copy from 'copy-to-clipboard';
+import { useState } from 'react';
 
 export default function useCopyToClipboard() {
   const [value, setValue] = useState();

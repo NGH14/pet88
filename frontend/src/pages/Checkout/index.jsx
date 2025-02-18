@@ -3,28 +3,28 @@ import {
   Button,
   Card,
   ConfigProvider,
-  sectionider,
   Form,
   Input,
   Layout,
   Radio,
   Skeleton,
-  Steps
+  Steps,
+  sectionider,
 } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import Meta from 'antd/lib/card/Meta';
 import axios from 'axios';
+import FooterWave from 'components/Footer';
+import AppHeader from 'components/Navbar';
+import SubNavBar from 'components/views/SubHeader';
 import moment from 'moment';
 import 'moment/locale/en-gb';
 import 'moment/locale/vi';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
-import FooterWave from 'components/Footer';
-import AppHeader from 'components/Navbar';
-import SubNavBar from 'components/views/SubHeader';
-import { UserAuth } from '../../context/AuthContext';
 
+import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
 import './style.css';
 
@@ -49,12 +49,12 @@ export default function Checkout() {
   const { search } = SearchData();
   const navigate = useNavigate();
 
-  const onFinishUpdate = async (value) => {
+  const onFinishUpdate = async value => {
     // console.log(value);
     handleCheckout(value);
   };
 
-  const handleCheckout = async (value) => {
+  const handleCheckout = async value => {
     setLoading(true);
     if (value?.paymentMethod === 'e-payment') {
       await axios
@@ -69,13 +69,13 @@ export default function Checkout() {
           end: search.datesHotels[1],
           paymentMethod: value?.paymentMethod?.paymentMethod,
           service: search.services,
-          ...value
+          ...value,
         })
-        .then((response) => {
+        .then(response => {
           setLoading(false);
           window.location.href = response.data.url;
         })
-        .catch((err) => console.log(err.message));
+        .catch(err => console.log(err.message));
     }
 
     if (value?.paymentMethod === 'cash') {
@@ -92,13 +92,13 @@ export default function Checkout() {
           paymentMethod: value?.paymentMethod,
           service: search.services,
 
-          ...value
+          ...value,
         })
-        .then((response) => {
+        .then(response => {
           setLoading(false);
           navigate('/booking/success');
         })
-        .catch((err) => console.log(err.message));
+        .catch(err => console.log(err.message));
     }
   };
 
@@ -164,7 +164,7 @@ export default function Checkout() {
                         <p className="checkout-dates_text">
                           {new Intl.NumberFormat('vi_VN', {
                             style: 'currency',
-                            currency: 'VND'
+                            currency: 'VND',
                           }).format(priceWithoutVAT)}
                         </p>
                       </section>
@@ -173,7 +173,7 @@ export default function Checkout() {
                         <p className="checkout-dates_text">
                           {new Intl.NumberFormat('vi_VN', {
                             style: 'currency',
-                            currency: 'VND'
+                            currency: 'VND',
                           }).format(VAT)}
                         </p>
                       </section>
@@ -185,14 +185,12 @@ export default function Checkout() {
                           {t('Price')}
                           {':'}
                         </h3>
-                        <span className="checkout_subtitle">
-                          {`(${t('For')} ${search.days} ${t('nights')})`}
-                        </span>
+                        <span className="checkout_subtitle">{`(${t('For')} ${search.days} ${t('nights')})`}</span>
                       </section>
                       <p className="checkout-dates_text">
                         {new Intl.NumberFormat('vi_VN', {
                           style: 'currency',
-                          currency: 'VND'
+                          currency: 'VND',
                         }).format(totalPrice)}
                       </p>
                     </section>
@@ -204,7 +202,7 @@ export default function Checkout() {
                     <Card
                       style={{
                         width: '100%',
-                        border: 'none'
+                        border: 'none',
                       }}
                     >
                       <Skeleton
@@ -214,12 +212,12 @@ export default function Checkout() {
                         shape="round"
                         avatar
                         paragraph={{
-                          rows: 4
+                          rows: 4,
                         }}
                       >
                         <Meta
                           style={{
-                            minHeight: 150
+                            minHeight: 150,
                           }}
                           avatar={
                             <Avatar
@@ -228,7 +226,7 @@ export default function Checkout() {
                                 width: 300,
                                 height: '100%',
                                 objectFit: 'cover',
-                                borderRadius: 15
+                                borderRadius: 15,
                               }}
                               shape="square"
                               src={depart.photos.length > 0 ? depart.photos[0] : ''}
@@ -258,7 +256,7 @@ export default function Checkout() {
                         name: user?.name,
                         phone: user?.phone,
                         paymentMethod: 'e-payment',
-                        email: user?.email
+                        email: user?.email,
                       }}
                       onFinish={onFinishUpdate}
                       autoComplete="off"
@@ -270,8 +268,8 @@ export default function Checkout() {
                         rules={[
                           {
                             required: true,
-                            message: t('Please input your username!')
-                          }
+                            message: t('Please input your username!'),
+                          },
                         ]}
                       >
                         <Input />
@@ -280,7 +278,7 @@ export default function Checkout() {
                       <Form.Item type="number" name="phone" label={t('Phone Number')}>
                         <Input
                           style={{
-                            width: '100%'
+                            width: '100%',
                           }}
                         />
                       </Form.Item>
@@ -296,7 +294,7 @@ export default function Checkout() {
                       <Form.Item
                         style={{
                           display: 'flex',
-                          justifyContent: 'flex-end'
+                          justifyContent: 'flex-end',
                         }}
                       >
                         <Button
@@ -307,7 +305,7 @@ export default function Checkout() {
                             fontSize: 16,
                             lineHeight: 1.8,
                             borderRadius: 5,
-                            boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                            boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                           }}
                           type="primary"
                           htmlType="submit"

@@ -1,3 +1,3 @@
-import { StyledNavLink, NavbarContainer } from './NavLink.style.js';
+import { NavbarContainer, StyledNavLink } from './NavLink.style.js';
 
 export { StyledNavLink, NavbarContainer };

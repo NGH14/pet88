@@ -1,35 +1,32 @@
-import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router';
-import React, { useEffect, useState } from 'react';
 import {
+  Breadcrumb,
+  Button,
   Card,
   ConfigProvider,
-  sectionider,
-  Form,
-  Layout,
-  Skeleton,
-  Button,
-  Input,
-  Table,
   DatePicker,
+  Form,
+  Input,
+  Layout,
   Select,
-  Breadcrumb,
+  Skeleton,
   Space,
-  Steps
+  Steps,
+  Table,
+  sectionider,
 } from 'antd';
-import { BsCheck2Circle } from 'react-icons/bs';
-
-import SubNavBar from 'components/views/SubHeader';
-import AppHeader from '../../components/Navbar';
-import FooterWave from '../../components/Footer';
-import './style.css';
-
-import logo from 'assets/images/BlackLogo.png';
-
 import viVN from 'antd/es/locale/vi_VN';
-
+import logo from 'assets/images/BlackLogo.png';
+import axios from 'axios';
+import SubNavBar from 'components/views/SubHeader';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BsCheck2Circle } from 'react-icons/bs';
+import { useLocation, useNavigate } from 'react-router';
+
+import FooterWave from '../../components/Footer';
+import AppHeader from '../../components/Navbar';
 import { SearchData } from '../../context/SearchContext';
+import './style.css';
 
 const { Step } = Steps;
 const { Header, Content, Footer } = Layout;
@@ -63,7 +60,7 @@ export default function PaymentSuccess() {
                 color="#4BB543"
                 style={{
                   fontSize: 100,
-                  marginBottom: 30
+                  marginBottom: 30,
                 }}
               ></BsCheck2Circle>
               <h1 style={{ fontWeight: 700 }}> {t('Booking Successful')}</h1>
@@ -89,7 +86,7 @@ export default function PaymentSuccess() {
                   backgroundColor: '#4BB543',
                   borderColor: '#4BB543',
                   borderRadius: 45,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 onClick={() => handleClick()}
               >

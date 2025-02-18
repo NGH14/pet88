@@ -1,19 +1,20 @@
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { GoogleButton } from 'react-google-button';
-import { useNavigate } from 'react-router';
-import { UserAuth } from '../../context/AuthContext';
-import { Spin } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
-import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+
+import { UserAuth } from '../../context/AuthContext';
 
 const antIcon = (
   <LoadingOutlined
     style={{
       fontSize: 20,
-      color: '#F76A1A'
+      color: '#F76A1A',
     }}
     spin
   />

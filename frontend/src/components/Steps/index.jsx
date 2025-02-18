@@ -1,21 +1,23 @@
-import { Button, message, Steps } from 'antd';
+import { Button, Steps, message } from 'antd';
 import React, { useState } from 'react';
+
 import './steps.css';
+
 const { Step } = Steps;
 
 const steps = [
   {
     title: 'First',
-    content: 'First-content'
+    content: 'First-content',
   },
   {
     title: 'Second',
-    content: 'Second-content'
+    content: 'Second-content',
   },
   {
     title: 'Last',
-    content: 'Last-content'
-  }
+    content: 'Last-content',
+  },
 ];
 
 export const CustomSteps = () => {
@@ -32,7 +34,7 @@ export const CustomSteps = () => {
   return (
     <>
       <Steps current={current}>
-        {steps.map((item) => (
+        {steps.map(item => (
           <Step key={item.title} title={item.title} />
         ))}
       </Steps>
@@ -51,7 +53,7 @@ export const CustomSteps = () => {
         {current > 0 && (
           <Button
             style={{
-              margin: '0 8px'
+              margin: '0 8px',
             }}
             onClick={() => prev()}
           >

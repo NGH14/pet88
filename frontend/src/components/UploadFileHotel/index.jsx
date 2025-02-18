@@ -1,18 +1,18 @@
-import React from 'react';
-import { Button, Form, message, Modal, Upload } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
-import axios from 'axios';
-import { UserAuth } from '../../context/AuthContext';
-
+import { Button, Form, Modal, Upload, message } from 'antd';
 import 'antd/dist/antd.css';
+import axios from 'axios';
+import React from 'react';
+
+import { UserAuth } from '../../context/AuthContext';
 import './style.css';
 
-const getBase64 = (file) =>
+const getBase64 = file =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
+    reader.onerror = error => reject(error);
   });
 const { Dragger } = Upload;
 
@@ -31,10 +31,10 @@ const UploadFileHotel = () => {
 
   React.useEffect(() => form.resetFields(), [resetUpload]);
 
-  const handleUpload = async (e) => {
+  const handleUpload = async e => {
     try {
       const list = await Promise.all(
-        Object.values(fileList).map(async (file) => {
+        Object.values(fileList).map(async file => {
           const data = new FormData();
           data.append('file', file);
           data.append('upload_preset', 'pet88_upload');
@@ -60,7 +60,7 @@ const UploadFileHotel = () => {
         desc: 'hotel description',
         room: [],
         cheapestPrice: 100,
-        photos: list
+        photos: list,
       };
       // await CreateHotel(newhotel);
     } catch (err) {
@@ -69,13 +69,13 @@ const UploadFileHotel = () => {
   };
 
   const props = {
-    onRemove: (file) => {
+    onRemove: file => {
       const index = fileList.indexOf(file);
       const newFileList = fileList.slice();
       newFileList.splice(index, 1);
       setFileList(newFileList);
     },
-    beforeUpload: (file) => {
+    beforeUpload: file => {
       setFileList([...fileList, file]);
       const isPNG = file.type === 'image/png';
       const isJPG = file.type === 'image/jpg';
@@ -84,11 +84,11 @@ const UploadFileHotel = () => {
         message.error(`${file.name} is not a png/jpg file`);
       }
       return false;
-    }
+    },
   };
 
   const handleCancel = () => setPreviewOpen(false);
-  const handlePreview = async (file) => {
+  const handlePreview = async file => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
@@ -106,8 +106,8 @@ const UploadFileHotel = () => {
           rules={[
             {
               required: true,
-              message: 'Please input your File!'
-            }
+              message: 'Please input your File!',
+            },
           ]}
         >
           <Dragger
@@ -136,7 +136,7 @@ const UploadFileHotel = () => {
             disabled={fileList.length === 0}
             loading={uploading}
             style={{
-              marginTop: 16
+              marginTop: 16,
             }}
           >
             {uploading ? 'Uploading' : 'Start Upload'}
@@ -148,7 +148,7 @@ const UploadFileHotel = () => {
         <img
           alt="example"
           style={{
-            width: '100%'
+            width: '100%',
           }}
           src={previewImage}
         />

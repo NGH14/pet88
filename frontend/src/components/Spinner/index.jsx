@@ -1,6 +1,7 @@
-import { SpinIcon, SpinnerWrapper, StyledSpin } from './Spinner.style.js';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
+import { SpinIcon, SpinnerWrapper, StyledSpin } from './Spinner.style.js';
 
 export const Spinner = ({ wrapHeight, iconSize }) => {
   return (
@@ -12,10 +13,10 @@ export const Spinner = ({ wrapHeight, iconSize }) => {
 
 Spinner.propTypes = {
   wrapHeight: PropTypes.string,
-  iconSize: PropTypes.string
+  iconSize: PropTypes.string,
 };
 
 Spinner.defaultProps = {
   wrapHeight: '100px',
-  iconSize: '100px'
+  iconSize: '100px',
 };

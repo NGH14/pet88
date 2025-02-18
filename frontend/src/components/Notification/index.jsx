@@ -1,9 +1,9 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Button } from '../Button';
-import { ToastContainer, toast } from 'react-toastify';
 
 export const Notification = ({
   message,
@@ -43,7 +43,7 @@ export const Notification = ({
         Notify!
       </Button>
       <ToastContainer
-        onClick={(props) => props}
+        onClick={props => props}
         autoClose={autoCloseAfter}
         transition={transition}
         theme={theme}
@@ -61,5 +61,5 @@ Notification.propTypes = {
   newestOnTop: PropTypes.bool,
   progressHide: PropTypes.bool,
   types: PropTypes.oneOf(['error', 'info', 'warning', 'success', 'default']),
-  theme: PropTypes.oneOf(['light', 'dark', 'colored'])
+  theme: PropTypes.oneOf(['light', 'dark', 'colored']),
 };

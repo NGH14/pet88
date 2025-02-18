@@ -1,9 +1,10 @@
+import { Spinner } from 'components/Spinner';
 import { Suspense } from 'react';
 import { Route } from 'react-router';
-import { Spinner } from 'components/Spinner';
+
 import { PrivateRoute } from './PrivateRoute';
 
-const ListRoutes = (list) => {
+const ListRoutes = list => {
   return list.map((route, index) => {
     return (
       <Route

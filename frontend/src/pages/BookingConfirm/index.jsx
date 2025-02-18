@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
-import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
-import './style.css';
-import { useLocation } from 'react-router';
+import axios from 'axios';
 import { Spinner } from 'components/Spinner';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsCheck2Circle } from 'react-icons/bs';
-import axios from 'axios';
+import { useLocation } from 'react-router';
+
+import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
 import useUUID from '../../hooks/useUUID';
+import './style.css';
 
 export default function BookingConfirm() {
   const [loading, setLoading] = React.useState(true);
@@ -48,17 +49,17 @@ export default function BookingConfirm() {
     return dates;
   };
 
-  const handleUpdateDate = async (data) => {
+  const handleUpdateDate = async data => {
     try {
       if (data.service === 'hotel') {
         const alldates = getDatesInRange(data.start, data.end);
 
         await Promise.all(
-          data.products.map((room) => {
+          data.products.map(room => {
             const res = axios.put(
               `http://localhost:3001/api/hotel-room/availability/${room.roomId}`,
               {
-                dates: alldates
+                dates: alldates,
               }
             );
             return res.data;
@@ -69,7 +70,7 @@ export default function BookingConfirm() {
       if (data.service === 'grooming') {
         const eventID = UUID;
         await Promise.all(
-          data.products.map((room) => {
+          data.products.map(room => {
             console.log(room);
             const res = axios.put(
               `http://localhost:3001/api/grooming/availability/${room.roomId}`,
@@ -80,8 +81,8 @@ export default function BookingConfirm() {
                   endDate: data?.end,
                   id: eventID,
                   title: data?.name,
-                  order: data
-                }
+                  order: data,
+                },
               }
             );
             return res.data;
@@ -98,7 +99,7 @@ export default function BookingConfirm() {
       ) : (
         <section
           style={{
-            backgroundImage: ` linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.4)),url(${DogImg})`
+            backgroundImage: ` linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.4)),url(${DogImg})`,
           }}
           className="confirmBooking"
         >
@@ -109,21 +110,21 @@ export default function BookingConfirm() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                flexDirection: 'column'
+                flexDirection: 'column',
               }}
             >
               <BsCheck2Circle
                 color="#4BB543"
                 style={{
                   fontSize: 50,
-                  marginBottom: 30
+                  marginBottom: 30,
                 }}
               ></BsCheck2Circle>
               <h1 style={{ fontWeight: 700 }}>{t('Confirmation Booking Successfully')}</h1>
               <p
                 style={{
                   fontWeight: 600,
-                  color: '#444'
+                  color: '#444',
                 }}
               >
                 {' '}
@@ -136,7 +137,7 @@ export default function BookingConfirm() {
                 style={{
                   fontWeight: 400,
                   color: '#999',
-                  fontStyle: 'italic'
+                  fontStyle: 'italic',
                 }}
               >
                 {' '}

@@ -1,10 +1,10 @@
-import './style.css';
+import CatPoster from 'assets/images/cat_animation.webp';
+import CatVideo from 'assets/video/cat_waving.mp4';
+import { Button } from 'components/Button/index';
 import React from 'react';
 import { useNavigate } from 'react-router';
 
-import { Button } from 'components/Button/index';
-import CatVideo from 'assets/video/cat_waving.mp4';
-import CatPoster from 'assets/images/cat_animation.webp';
+import './style.css';
 
 export default function NotMatchPage() {
   const navigate = useNavigate();

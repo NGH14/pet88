@@ -1,29 +1,28 @@
-import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router';
-import React from 'react';
 import {
+  Breadcrumb,
+  Button,
   Card,
   ConfigProvider,
-  sectionider,
-  Form,
-  Layout,
-  Skeleton,
-  Button,
-  Input,
-  Table,
   DatePicker,
+  Form,
+  Input,
+  Layout,
   Select,
-  Breadcrumb,
+  Skeleton,
   Space,
-  Steps
+  Steps,
+  Table,
+  sectionider,
 } from 'antd';
-
-import SubNavBar from 'components/views/SubHeader';
-import AppHeader from 'components/Navbar';
-import './style.css';
-
 import viVN from 'antd/es/locale/vi_VN';
+import axios from 'axios';
+import AppHeader from 'components/Navbar';
+import SubNavBar from 'components/views/SubHeader';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from 'react-router';
+
+import './style.css';
 
 const { Header, Content } = Layout;
 
@@ -49,7 +48,7 @@ export default function PaymentSuccess() {
                     style={{
                       fontSize: '0.45em',
                       color: '#999',
-                      opacity: '0.7'
+                      opacity: '0.7',
                     }}
                   >
                     16-12-2022
@@ -102,7 +101,7 @@ export default function PaymentSuccess() {
                     style={{
                       fontSize: '0.45em',
                       color: '#999',
-                      opacity: '0.7'
+                      opacity: '0.7',
                     }}
                   >
                     {t('Effective as of')} 16-12-2022

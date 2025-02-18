@@ -1,5 +1,5 @@
-import { redirect } from 'react-router';
 import { UserAuth } from 'context/AuthContext';
+import { redirect } from 'react-router';
 
 export const PrivateRoute = ({ children }) => {
   const { user } = UserAuth();

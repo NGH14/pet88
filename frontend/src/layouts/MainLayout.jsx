@@ -1,7 +1,7 @@
 import { Layout } from 'antd';
+import FooterWave from 'components/Footer';
 import AppHeader from 'components/Navbar/';
 import SubNavBar from 'components/views/SubHeader';
-import FooterWave from 'components/Footer';
 
 const { Header, Content, Footer } = Layout;
 export default function MainLayout({ children }) {

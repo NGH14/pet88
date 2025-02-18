@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { UserAuth } from '../../context/AuthContext';
-import { Table, ExportTableButton, SearchTableInput } from 'ant-table-extensions';
-
-import { toast } from 'react-toastify';
 import {
-  FileExcelOutlined,
-  SearchOutlined,
   DeleteOutlined,
   EditOutlined,
+  FileExcelOutlined,
+  InboxOutlined,
   MoreOutlined,
   ReloadOutlined,
-  InboxOutlined
+  SearchOutlined,
 } from '@ant-design/icons';
-import { AiOutlineClose } from 'react-icons/ai';
-
-import { Button, Drawer, Space, Tag, Form, Input, Select, Popconfirm, Upload, Modal } from 'antd';
-import { useTranslation } from 'react-i18next';
+import { ExportTableButton, SearchTableInput, Table } from 'ant-table-extensions';
+import { Button, Drawer, Form, Input, Modal, Popconfirm, Select, Space, Tag, Upload } from 'antd';
 import axios from 'axios';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { AiOutlineClose } from 'react-icons/ai';
+import { toast } from 'react-toastify';
+
+import { UserAuth } from '../../context/AuthContext';
 import './style.css';
+
 const { Option } = Select;
 
-const getBase64 = (file) =>
+const getBase64 = file =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
+    reader.onerror = error => reject(error);
   });
 
 const { Dragger } = Upload;
@@ -52,7 +52,7 @@ export default function TableHotel() {
 
     GetAllHotel,
     UpdateHotel,
-    MultipleDeleteDepart
+    MultipleDeleteDepart,
   } = UserAuth();
 
   const [previewOpen, setPreviewOpen] = React.useState(false);
@@ -83,10 +83,10 @@ export default function TableHotel() {
     setOpenModal(false);
   };
 
-  const handleUpload = async (e) => {
+  const handleUpload = async e => {
     try {
       const list = await Promise.all(
-        Object.values(fileList).map(async (file) => {
+        Object.values(fileList).map(async file => {
           const data = new FormData();
           data.append('file', file);
           data.append('upload_preset', 'pet88_upload');
@@ -110,21 +110,21 @@ export default function TableHotel() {
   };
 
   const props = {
-    onRemove: (file) => {
+    onRemove: file => {
       const index = fileList.indexOf(file);
       const newFileList = fileList.slice();
       newFileList.splice(index, 1);
       setFileList(newFileList);
     },
-    beforeUpload: (file) => {
+    beforeUpload: file => {
       setFileList([...fileList, file]);
 
       return false;
-    }
+    },
   };
 
   const handleCancel = () => setPreviewOpen(false);
-  const handlePreview = async (file) => {
+  const handlePreview = async file => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
@@ -137,7 +137,7 @@ export default function TableHotel() {
     getAllHotelData();
   }, []);
 
-  const handleOpenUpdateHotel = (record) => {
+  const handleOpenUpdateHotel = record => {
     SetDeparmentRecord(record);
     setOpenUpdate(true);
   };
@@ -146,7 +146,7 @@ export default function TableHotel() {
     setOpenCreate(true);
   };
 
-  const onFinishUpdate = async (value) => {
+  const onFinishUpdate = async value => {
     setLoading(true);
     try {
       await UpdateHotel(deparmentRecord._id, value);
@@ -171,24 +171,24 @@ export default function TableHotel() {
     setOpenCreate(false);
   };
 
-  const handleDeleteHotel = async (id) => {
+  const handleDeleteHotel = async id => {
     try {
       await DeleteHotel(id);
-      setListHotels(listHotels.filter((item) => item._id !== id));
-      setSearchDataSource(searchDataSource.filter((item) => item._id !== id));
+      setListHotels(listHotels.filter(item => item._id !== id));
+      setSearchDataSource(searchDataSource.filter(item => item._id !== id));
     } catch (err) {
       console.log(err);
     }
   };
 
-  const onFinishCreateHotel = async (value) => {
+  const onFinishCreateHotel = async value => {
     setLoadingCreate(true);
     try {
       const listImg = await handleUpload();
 
       const data = {
         ...value,
-        photos: listImg
+        photos: listImg,
       };
       await CreateHotel(data);
 
@@ -202,53 +202,53 @@ export default function TableHotel() {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
-  const onSelectChange = (newSelectedRowKeys) => {
+  const onSelectChange = newSelectedRowKeys => {
     console.log('selectedRowKeys changed: ', newSelectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
   const rowSelection = {
     selectedRowKeys,
-    onChange: onSelectChange
+    onChange: onSelectChange,
   };
   const columns = [
     {
       title: t('Name'),
       dataIndex: 'name',
-      key: 'name'
+      key: 'name',
     },
 
     {
       title: t('Type'),
       dataIndex: 'type',
       key: 'type',
-      render: (text) => <span>{t(text)}</span>
+      render: text => <span>{t(text)}</span>,
     },
     {
       title: t('City'),
       dataIndex: 'city',
       key: 'City',
-      render: (text) => <span>{t(text)}</span>,
+      render: text => <span>{t(text)}</span>,
 
-      sorter: (a, b) => a.city.length - b.city.length
+      sorter: (a, b) => a.city.length - b.city.length,
     },
     {
       title: t('Address'),
       dataIndex: 'address',
-      key: 'address'
+      key: 'address',
     },
 
     {
       title: t('Services'),
       dataIndex: 'services',
       key: 'services',
-      render: (services) =>
-        services.map((service) => (
+      render: services =>
+        services.map(service => (
           <Tag color={service?.length > 5 ? 'cyan' : 'gold'}>{t(service)}</Tag>
-        ))
+        )),
     },
     {
       width: 110,
@@ -271,15 +271,15 @@ export default function TableHotel() {
             onClick={() => handleOpenUpdateHotel(record)}
           ></Button>
         </Space>
-      )
-    }
+      ),
+    },
   ];
 
   const handleDeleteMultipleHotel = async () => {
     try {
       await MultipleDeleteDepart(selectedRowKeys);
-      setListHotels(listHotels.filter((item) => !selectedRowKeys.includes(item._id)));
-      setSearchDataSource(searchDataSource.filter((item) => !selectedRowKeys.includes(item._id)));
+      setListHotels(listHotels.filter(item => !selectedRowKeys.includes(item._id)));
+      setSearchDataSource(searchDataSource.filter(item => !selectedRowKeys.includes(item._id)));
 
       toast.success(t('Delete Success'));
     } catch (error) {
@@ -291,7 +291,7 @@ export default function TableHotel() {
     try {
       const res = await GetAllHotel();
       const list = [];
-      res.forEach((doc) => {
+      res.forEach(doc => {
         list.push({ ...doc, key: doc._id });
       });
       setListHotels(list);
@@ -322,7 +322,7 @@ export default function TableHotel() {
             setDataSource={setSearchDataSource}
             inputProps={{
               placeholder: t('Search'),
-              prefix: <SearchOutlined />
+              prefix: <SearchOutlined />,
             }}
           />
           <Button
@@ -347,7 +347,7 @@ export default function TableHotel() {
         onClose={onCloseUpdateDepartment}
         open={openUpdate}
         bodyStyle={{
-          paddingBottom: 80
+          paddingBottom: 80,
         }}
       >
         {openUpdate ? (
@@ -365,7 +365,7 @@ export default function TableHotel() {
               address: deparmentRecord?.address,
               title: deparmentRecord?.title,
               desc: deparmentRecord?.desc,
-              services: deparmentRecord?.services
+              services: deparmentRecord?.services,
             }}
             onFinish={onFinishUpdate}
             onFinishFailed={onFinishFailed}
@@ -406,7 +406,7 @@ export default function TableHotel() {
             <Form.Item
               wrapperCol={{
                 offset: 4,
-                span: 16
+                span: 16,
               }}
             >
               <Button
@@ -416,7 +416,7 @@ export default function TableHotel() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 onClick={onCloseUpdateDepartment}
               >
@@ -429,7 +429,7 @@ export default function TableHotel() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 type="primary"
                 htmlType="submit"
@@ -447,7 +447,7 @@ export default function TableHotel() {
         onClose={onCloseCreateUser}
         open={openCreate}
         bodyStyle={{
-          paddingBottom: 80
+          paddingBottom: 80,
         }}
       >
         {openCreate ? (
@@ -519,7 +519,7 @@ export default function TableHotel() {
               style={{
                 display: 'flex',
                 justifyContent: 'flex-end',
-                marginInline: '0px auto'
+                marginInline: '0px auto',
               }}
             >
               <Button
@@ -529,7 +529,7 @@ export default function TableHotel() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 onClick={onCloseCreateUser}
               >
@@ -542,7 +542,7 @@ export default function TableHotel() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 type="primary"
                 htmlType="submit"
@@ -557,7 +557,7 @@ export default function TableHotel() {
         <img
           alt="example"
           style={{
-            width: '100%'
+            width: '100%',
           }}
           src={previewImage}
         />
@@ -568,7 +568,7 @@ export default function TableHotel() {
             bordered={false}
             defaultValue="large"
             style={{
-              width: 100
+              width: 100,
             }}
             onChange={setSize}
           >
@@ -582,7 +582,7 @@ export default function TableHotel() {
             columns={columns}
             btnProps={{
               type: 'primary',
-              icon: <FileExcelOutlined />
+              icon: <FileExcelOutlined />,
             }}
             showColumnPicker
           >
@@ -610,7 +610,7 @@ export default function TableHotel() {
               marginTop: 20,
               display: 'flex',
               gap: 5,
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
             }}
           >
             <Button onClick={handleCancelModal} style={{ borderRadius: 8 }}>
@@ -639,7 +639,7 @@ export default function TableHotel() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}
             icon={<AiOutlineClose color="red" style={{ marginRight: 5 }} />}
             onClick={() => showModal()}
@@ -650,7 +650,7 @@ export default function TableHotel() {
         </section>
       ) : null}
       <Table
-        rowKey={(record) => record.key}
+        rowKey={record => record.key}
         rowSelection={rowSelection}
         size={size}
         style={{
@@ -658,17 +658,17 @@ export default function TableHotel() {
           padding: 20,
           marginBlock: 10,
           borderRadius: 15,
-          boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px'
+          boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px',
         }}
         scroll={{
-          x: 800
+          x: 800,
         }}
         expandable={{
-          expandedRowRender: (record) => (
+          expandedRowRender: record => (
             <>
               <p
                 style={{
-                  margin: 0
+                  margin: 0,
                 }}
               >
                 {t('Created Date')}
@@ -677,7 +677,7 @@ export default function TableHotel() {
               </p>
               <p
                 style={{
-                  margin: 0
+                  margin: 0,
                 }}
               >
                 {t('Last Update Date')}
@@ -685,14 +685,14 @@ export default function TableHotel() {
                 {new Date(record.updatedAt).toLocaleString()}
               </p>
             </>
-          )
+          ),
         }}
         pagination={{
           defaultPageSize: 5,
           showSizeChanger: true,
           pageSizeOptions: ['5', '10', '20', '30'],
           hideOnSinglePage: true,
-          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
         }}
         columns={columns}
         dataSource={searchDataSource || listHotels}

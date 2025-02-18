@@ -1,31 +1,30 @@
-import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router';
-import React, { useEffect, useState } from 'react';
 import {
+  Breadcrumb,
+  Button,
   Card,
   ConfigProvider,
-  sectionider,
-  Form,
-  Layout,
-  Skeleton,
-  Button,
-  Input,
-  Table,
   DatePicker,
+  Form,
+  Input,
+  Layout,
   Select,
-  Breadcrumb,
+  Skeleton,
   Space,
-  Steps
+  Steps,
+  Table,
+  sectionider,
 } from 'antd';
-import SubNavBar from 'components/views/SubHeader';
-import AppHeader from '../../components/Navbar';
-import FooterWave from '../../components/Footer';
-import './style.css';
-import { VscError } from 'react-icons/vsc';
-
 import viVN from 'antd/es/locale/vi_VN';
-
+import axios from 'axios';
+import SubNavBar from 'components/views/SubHeader';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { VscError } from 'react-icons/vsc';
+import { useLocation, useNavigate } from 'react-router';
+
+import FooterWave from '../../components/Footer';
+import AppHeader from '../../components/Navbar';
+import './style.css';
 
 const { Step } = Steps;
 const { Header, Content, Footer } = Layout;
@@ -72,7 +71,7 @@ export default function PaymentCancel() {
                 color="#FF4D4F"
                 style={{
                   fontSize: 100,
-                  marginBottom: 30
+                  marginBottom: 30,
                 }}
               ></VscError>
               <h1 style={{ fontWeight: 700 }}> {t('Oh no, your payment failed')}</h1>
@@ -91,7 +90,7 @@ export default function PaymentCancel() {
                   backgroundColor: '#FF4D4F',
                   borderColor: '#FF4D4F',
                   borderRadius: 45,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 onClick={() => handleClick()}
               >

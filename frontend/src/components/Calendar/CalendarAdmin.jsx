@@ -1,7 +1,3 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
-import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
-import Draggable from 'react-draggable';
-import UUID from '../../hooks/useUUID';
 import {
   Button,
   Calendar,
@@ -14,22 +10,23 @@ import {
   Menu,
   Modal,
   Select,
-  Typography
+  Typography,
 } from 'antd';
-
-import { Calendar as RB, momentLocalizer } from 'react-big-calendar';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-
-import 'react-datepicker/dist/react-datepicker.css';
-import moment from 'moment';
-import 'moment/locale/vi';
 // import 'moment/locale/en';
 
 import viVN from 'antd/locale/vi_VN';
-import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import moment from 'moment';
+import 'moment/locale/vi';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import { Calendar as RB, momentLocalizer } from 'react-big-calendar';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-datepicker/dist/react-datepicker.css';
+import Draggable from 'react-draggable';
+import { useTranslation } from 'react-i18next';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import {
   RiCalendarEventFill,
   RiCloseFill,
@@ -41,14 +38,14 @@ import {
   RiPhoneLine,
   RiShoppingCartLine,
   RiUser3Line,
-  RiUserSettingsLine
+  RiUserSettingsLine,
 } from 'react-icons/ri';
+import { toast } from 'react-toastify';
 
 import { UserAuth } from '../../context/AuthContext';
-import { toast } from 'react-toastify';
-import './style.css';
-
+import UUID from '../../hooks/useUUID';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+import './style.css';
 
 const DnDCalendar = withDragAndDrop(RB);
 const { Paragraph } = Typography;
@@ -59,8 +56,8 @@ const events = [
     title: 'Big Meeting',
     allDay: true,
     start: new Date(2022, 11, 1),
-    end: new Date(2022, 11, 15)
-  }
+    end: new Date(2022, 11, 15),
+  },
 ];
 
 console.log(events);
@@ -70,7 +67,7 @@ const API = process.env.REACT_APP_API;
 const langMessage = {
   en: {
     previous: '<',
-    next: '>'
+    next: '>',
   },
   vi_VN: {
     week: 'Tuần',
@@ -87,8 +84,8 @@ const langMessage = {
     allDay: 'cả ngày',
     noEventsInRange: 'Không có sự kiện nào',
 
-    showMore: (total) => `+${total} Xem Thêm`
-  }
+    showMore: total => `+${total} Xem Thêm`,
+  },
 };
 
 export const CalendarAdmin = () => {
@@ -104,7 +101,7 @@ export const CalendarAdmin = () => {
   const [selectedDate, setSelectedDate] = useState({
     start: 0,
     end: 0,
-    price: 0
+    price: 0,
   });
   const [selecteDetaildDate, setSelectedDetailDate] = useState({});
   const [selecteDetailType, setSelecteDetailType] = useState(false);
@@ -125,7 +122,7 @@ export const CalendarAdmin = () => {
     left: 0,
     top: 0,
     bottom: 0,
-    right: 0
+    right: 0,
   });
   const draggleRef = useRef(null);
   moment.locale(i18n.language);
@@ -138,7 +135,7 @@ export const CalendarAdmin = () => {
     fetchEvent(selectedOptions[1].value);
   };
   const filter = (inputValue, path) =>
-    path.some((option) => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
+    path.some(option => option.label.toLowerCase().indexOf(inputValue.toLowerCase()) > -1);
 
   const onStart = (_event, uiData) => {
     const { clientWidth, clientHeight } = window.document.documentElement;
@@ -150,7 +147,7 @@ export const CalendarAdmin = () => {
       left: -targetRect.left + uiData.x,
       right: clientWidth - (targetRect.right - uiData.x),
       top: -targetRect.top + uiData.y,
-      bottom: clientHeight - (targetRect.bottom - uiData.y)
+      bottom: clientHeight - (targetRect.bottom - uiData.y),
     });
   };
 
@@ -166,7 +163,7 @@ export const CalendarAdmin = () => {
         left: 0,
         top: 0,
         bottom: 0,
-        right: 0
+        right: 0,
       });
     } else {
       setDisabled(false);
@@ -178,11 +175,11 @@ export const CalendarAdmin = () => {
       const res = await axios.get(`${API}/grooming`);
 
       const list = [];
-      res.data.map((data) => {
-        const children = data.roomNumbers?.map((r) => {
+      res.data.map(data => {
+        const children = data.roomNumbers?.map(r => {
           return {
             value: r?._id,
-            label: `Room ${r?.number}`
+            label: `Room ${r?.number}`,
           };
         });
         return list.push({
@@ -190,7 +187,7 @@ export const CalendarAdmin = () => {
           value: data._id,
 
           label: data.title,
-          children
+          children,
         });
       });
       setGroomingListOption(list);
@@ -203,19 +200,19 @@ export const CalendarAdmin = () => {
     }
   };
 
-  const fetchEvent = async (id) => {
+  const fetchEvent = async id => {
     const roomId = id || selectedGroomingRoomId;
     try {
       const res = await axios.get(`${API}/grooming/room/${roomId}`);
 
       const list = [];
-      res.data.unavailableDates.map((data) => {
+      res.data.unavailableDates.map(data => {
         return list.push({
           start: new Date(data.startDate),
           end: new Date(data.endDate),
           id: data.id,
           title: data.title,
-          order: data.order
+          order: data.order,
         });
       });
 
@@ -225,7 +222,7 @@ export const CalendarAdmin = () => {
     }
   };
 
-  const FetchAddEvent = async (value) => {
+  const FetchAddEvent = async value => {
     try {
       await axios.put(`${API}/grooming/availability/${selectedGroomingRoomId}`, {
         dates: {
@@ -234,8 +231,8 @@ export const CalendarAdmin = () => {
           endDate: value.end,
           id: value.id,
           title: value.title,
-          order: value.order
-        }
+          order: value.order,
+        },
       });
       form.resetFields();
     } catch (error) {
@@ -243,7 +240,7 @@ export const CalendarAdmin = () => {
     }
   };
 
-  const FetchUpdateEvent = async (value) => {
+  const FetchUpdateEvent = async value => {
     const startDate = value?.start || selecteDetaildDate?.start;
     const endDate = value?.end || selecteDetaildDate?.end;
     const title = value?.title || selecteDetaildDate?.title;
@@ -253,7 +250,7 @@ export const CalendarAdmin = () => {
         ...selecteDetaildDate?.order,
         name: value.name,
         email: value.email,
-        phone: value.phone
+        phone: value.phone,
       } || selecteDetaildDate?.order;
 
     try {
@@ -261,7 +258,7 @@ export const CalendarAdmin = () => {
         startDate,
         endDate,
         title,
-        order
+        order,
       });
       form.resetFields();
     } catch (error) {
@@ -269,7 +266,7 @@ export const CalendarAdmin = () => {
     }
   };
 
-  const FetchUpdateReSizeEvent = async (value) => {
+  const FetchUpdateReSizeEvent = async value => {
     const startDate = value?.start || selecteDetaildDate?.start;
     const endDate = value?.end || selecteDetaildDate?.end;
     const title = value?.title || selecteDetaildDate?.title;
@@ -288,45 +285,45 @@ export const CalendarAdmin = () => {
           startDate,
           endDate,
           title,
-          order
+          order,
         }),
 
         axios.put(`${API}/order/${order._id}`, {
           ...order,
           start: startDate,
           endDate: endDate,
-          price: orderPrice
-        })
+          price: orderPrice,
+        }),
       ]);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const FetchDeleteEvent = async (value) => {
+  const FetchDeleteEvent = async value => {
     const id = value.id || selecteDetaildDate.id;
     try {
       await Promise.all([
         axios.put(`${API}/grooming/room/event/delete/${id}`),
         axios.put(`${API}/order/update-status/${selecteDetaildDate.order._id}`, {
           paid: 'cancel',
-          confirm: 'cancel'
-        })
+          confirm: 'cancel',
+        }),
       ]);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const onPanelChange = (value) => {
+  const onPanelChange = value => {
     setCalendarAdminPanel(value);
   };
 
-  const onSubCalendarSelected = (newValue) => {
+  const onSubCalendarSelected = newValue => {
     setDefaultDate(newValue.toDate());
   };
 
-  const handleSelectEvent = (event) => {
+  const handleSelectEvent = event => {
     setOpenDetailModal(true);
     setSelecteDetailType(false);
     setSelectedDetailDate(event);
@@ -334,7 +331,7 @@ export const CalendarAdmin = () => {
 
   const { messages } = useMemo(
     () => ({
-      messages: langMessage[i18n.language]
+      messages: langMessage[i18n.language],
     }),
     [i18n.language]
   );
@@ -353,7 +350,7 @@ export const CalendarAdmin = () => {
       setSelectedDate({
         start,
         end,
-        price: selectedGroomingRoomData?.price
+        price: selectedGroomingRoomData?.price,
       });
     }
   };
@@ -362,12 +359,12 @@ export const CalendarAdmin = () => {
     FetchUpdateReSizeEvent({
       ...event,
       start,
-      end
+      end,
     });
 
-    setAllEvents((prev) => {
-      const existing = prev.find((ev) => ev.id === event.id) ?? {};
-      const filtered = prev.filter((ev) => ev.id !== event.id);
+    setAllEvents(prev => {
+      const existing = prev.find(ev => ev.id === event.id) ?? {};
+      const filtered = prev.filter(ev => ev.id !== event.id);
       return [...filtered, { ...existing, start, end }];
     });
   };
@@ -375,17 +372,17 @@ export const CalendarAdmin = () => {
     FetchUpdateReSizeEvent({
       ...event,
       start,
-      end
+      end,
     });
 
-    setAllEvents((prev) => {
-      const existing = prev.find((ev) => ev.id === event.id) ?? {};
-      const filtered = prev.filter((ev) => ev.id !== event.id);
+    setAllEvents(prev => {
+      const existing = prev.find(ev => ev.id === event.id) ?? {};
+      const filtered = prev.filter(ev => ev.id !== event.id);
       return [...filtered, { ...existing, start, end }];
     });
   };
 
-  const onNavigate = (newDate) => setDefaultDate(newDate);
+  const onNavigate = newDate => setDefaultDate(newDate);
 
   const getAllUserData = async () => {
     try {
@@ -393,10 +390,10 @@ export const CalendarAdmin = () => {
       const option = [];
 
       const users = await GetAllUser();
-      users.forEach((doc) => {
+      users.forEach(doc => {
         list.push({ id: doc.id, ...doc.data(), key: doc.id });
       });
-      list.forEach((doc) => {
+      list.forEach(doc => {
         option.push({ value: doc.email, label: doc.email });
       });
       setUserDataOption(option);
@@ -408,25 +405,25 @@ export const CalendarAdmin = () => {
   };
 
   const slotPropGetter = useCallback(
-    (date) => ({
+    date => ({
       className: 'slotDefault',
       ...(moment(date).hour() < 8 && {
         style: {
           backgroundColor: '#e6e6e6',
-          color: 'black'
-        }
+          color: 'black',
+        },
       }),
       ...(moment(date).hour() > 22.25 && {
         style: {
           backgroundColor: '#e6e6e6',
-          color: 'black'
-        }
-      })
+          color: 'black',
+        },
+      }),
     }),
     []
   );
 
-  const onFinishCreateEvent = async (values) => {
+  const onFinishCreateEvent = async values => {
     const start = selectedDate?.start;
     const end = selectedDate?.end;
     const title = values?.title;
@@ -436,12 +433,12 @@ export const CalendarAdmin = () => {
       selectedGroomingRoomData.price;
 
     const bookingUser = values.account
-      ? userData.find((u) => u.email === values.email)
+      ? userData.find(u => u.email === values.email)
       : {
           id: 'guest',
           email: values.email || 'guest',
           phone: values.phone,
-          name: values.name
+          name: values.name,
         };
 
     if (values?.title) {
@@ -463,19 +460,19 @@ export const CalendarAdmin = () => {
           name: bookingUser.name || 'guest',
           end,
           paymentMethod: 'cash',
-          service: 'grooming'
+          service: 'grooming',
         });
         const event = {
           id: eventID,
           start: start,
           end: end,
           title,
-          order: order.data
+          order: order.data,
         };
         FetchAddEvent(event);
         setEvent(event);
 
-        setAllEvents((prev) => [...prev, event]);
+        setAllEvents(prev => [...prev, event]);
         setOpenCreateModal(false);
       } catch (error) {
         console.error(error);
@@ -484,12 +481,12 @@ export const CalendarAdmin = () => {
     }
   };
 
-  const onFinishUpdateEvent = (values) => {
+  const onFinishUpdateEvent = values => {
     const title = values?.title;
     if (values?.title) {
       FetchUpdateEvent(values);
       setAllEvents(
-        allEvents.map((obj) => {
+        allEvents.map(obj => {
           if (obj.id === selecteDetaildDate.id) {
             return {
               ...obj,
@@ -498,8 +495,8 @@ export const CalendarAdmin = () => {
                 ...obj.order,
                 name: values.name,
                 email: values.email,
-                phone: values.phone
-              }
+                phone: values.phone,
+              },
             };
           }
           return obj;
@@ -512,7 +509,7 @@ export const CalendarAdmin = () => {
 
   const handleDeleteEvent = () => {
     FetchDeleteEvent(selecteDetaildDate.id);
-    setAllEvents(allEvents.filter((item) => item.id !== selecteDetaildDate.id));
+    setAllEvents(allEvents.filter(item => item.id !== selecteDetaildDate.id));
     setOpenDetailModal(false);
     selecteDetaildDate();
   };
@@ -525,7 +522,7 @@ export const CalendarAdmin = () => {
               className="createEvent_btn"
               style={{
                 width: '100%',
-                cursor: 'move'
+                cursor: 'move',
               }}
               onMouseOver={() => {
                 if (disabled) {
@@ -542,7 +539,7 @@ export const CalendarAdmin = () => {
               {t('Add new event')}
             </section>
           }
-          modalRender={(modal) => (
+          modalRender={modal => (
             <Draggable
               cancel=".drag-button_modal .createEvent_form .createEvent_btn"
               disabled={disabled}
@@ -572,7 +569,7 @@ export const CalendarAdmin = () => {
                 <RiFileTextLine
                   style={{
                     fontSize: 14,
-                    textTransform: 'capitalize'
+                    textTransform: 'capitalize',
                   }}
                 ></RiFileTextLine>
               }
@@ -580,8 +577,8 @@ export const CalendarAdmin = () => {
               rules={[
                 {
                   required: true,
-                  message: t('Please enter the title')
-                }
+                  message: t('Please enter the title'),
+                },
               ]}
             >
               <Input placeholder={t('Enter event title')} />
@@ -623,14 +620,14 @@ export const CalendarAdmin = () => {
               <Checkbox
                 checked={accountType}
                 defaultChecked={accountType}
-                onChange={(e) => setAccountType(e.target.checked)}
+                onChange={e => setAccountType(e.target.checked)}
               >
                 Has Account
               </Checkbox>
             </Form>
             <Form.Item
               style={{
-                marginBottom: 0
+                marginBottom: 0,
               }}
             >
               <Form.Item
@@ -638,14 +635,14 @@ export const CalendarAdmin = () => {
                   <RiCalendarEventFill
                     style={{
                       fontSize: 14,
-                      textTransform: 'capitalize'
+                      textTransform: 'capitalize',
                     }}
                   ></RiCalendarEventFill>
                 }
                 name="start"
                 style={{
                   display: 'flex',
-                  alignContent: 'center'
+                  alignContent: 'center',
                 }}
               >
                 <span>
@@ -661,20 +658,20 @@ export const CalendarAdmin = () => {
                 <RiCoinLine
                   style={{
                     fontSize: 14,
-                    textTransform: 'capitalize'
+                    textTransform: 'capitalize',
                   }}
                 ></RiCoinLine>
               }
               name="start"
               style={{
                 display: 'flex',
-                alignContent: 'center'
+                alignContent: 'center',
               }}
             >
               <span>
                 {new Intl.NumberFormat('vi-VN', {
                   style: 'currency',
-                  currency: 'VND'
+                  currency: 'VND',
                 }).format(selectedDate?.price)}
               </span>
             </Form.Item>
@@ -683,7 +680,7 @@ export const CalendarAdmin = () => {
               style={{
                 display: 'flex',
                 justifyContent: 'flex-end',
-                marginBlock: '5px -5px'
+                marginBlock: '5px -5px',
               }}
             >
               <Button
@@ -693,7 +690,7 @@ export const CalendarAdmin = () => {
                   height: 'fit-content',
                   fontSize: 16,
                   lineHeight: 1.8,
-                  borderRadius: 5
+                  borderRadius: 5,
                 }}
                 type="text"
                 onClick={() => setOpenCreateModal(false)}
@@ -707,7 +704,7 @@ export const CalendarAdmin = () => {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 type="primary"
                 htmlType="submit"
@@ -726,7 +723,7 @@ export const CalendarAdmin = () => {
                 width: '100%',
                 cursor: 'move',
                 display: 'flex',
-                justifyContent: 'flex-end'
+                justifyContent: 'flex-end',
               }}
               onMouseOver={() => {
                 if (disabled) {
@@ -756,13 +753,13 @@ export const CalendarAdmin = () => {
               >
                 <RiCloseFill
                   style={{
-                    fontSize: 18
+                    fontSize: 18,
                   }}
                 ></RiCloseFill>{' '}
               </Button>
             </section>
           }
-          modalRender={(modal) => (
+          modalRender={modal => (
             <Draggable
               cancel=".drag-button_modal .updateEvent_form"
               disabled={disabled}
@@ -790,7 +787,7 @@ export const CalendarAdmin = () => {
               title: selecteDetaildDate?.title,
               name: selecteDetaildDate?.order?.name,
               email: selecteDetaildDate?.order?.email,
-              phone: selecteDetaildDate?.order?.phone
+              phone: selecteDetaildDate?.order?.phone,
             }}
             onFinish={onFinishUpdateEvent}
             requiredMark={false}
@@ -801,7 +798,7 @@ export const CalendarAdmin = () => {
                   style={{
                     fontSize: 14,
 
-                    textTransform: 'capitalize'
+                    textTransform: 'capitalize',
                   }}
                 ></RiFileTextLine>
               }
@@ -809,8 +806,8 @@ export const CalendarAdmin = () => {
               rules={[
                 {
                   required: true,
-                  message: t('Please enter the title')
-                }
+                  message: t('Please enter the title'),
+                },
               ]}
             >
               {selecteDetailType ? (
@@ -842,7 +839,7 @@ export const CalendarAdmin = () => {
             </Form.Item>
             <Form.Item
               style={{
-                marginBottom: 0
+                marginBottom: 0,
               }}
             >
               <Form.Item
@@ -850,13 +847,13 @@ export const CalendarAdmin = () => {
                   <RiCalendarEventFill
                     style={{
                       fontSize: 14,
-                      textTransform: 'capitalize'
+                      textTransform: 'capitalize',
                     }}
                   ></RiCalendarEventFill>
                 }
                 style={{
                   display: 'flex',
-                  alignContent: 'center'
+                  alignContent: 'center',
                 }}
               >
                 <span>
@@ -870,20 +867,20 @@ export const CalendarAdmin = () => {
                 <RiCoinLine
                   style={{
                     fontSize: 14,
-                    textTransform: 'capitalize'
+                    textTransform: 'capitalize',
                   }}
                 ></RiCoinLine>
               }
               name="start"
               style={{
                 display: 'flex',
-                alignContent: 'center'
+                alignContent: 'center',
               }}
             >
               <span>
                 {new Intl.NumberFormat('vi-VN', {
                   style: 'currency',
-                  currency: 'VND'
+                  currency: 'VND',
                 }).format(
                   (new Date(selecteDetaildDate?.end).getHours() -
                     new Date(selecteDetaildDate?.start).getHours()) *
@@ -895,7 +892,7 @@ export const CalendarAdmin = () => {
             <Form.Item label={<RiShoppingCartLine />}>
               <Paragraph
                 copyable={{
-                  tooltips: false
+                  tooltips: false,
                 }}
               >
                 {selecteDetaildDate?.order?._id}
@@ -906,7 +903,7 @@ export const CalendarAdmin = () => {
                 display: 'flex',
                 justifyContent: 'flex-end',
 
-                marginBlock: '5px -5px'
+                marginBlock: '5px -5px',
               }}
             >
               <Button
@@ -916,7 +913,7 @@ export const CalendarAdmin = () => {
                   height: 'fit-content',
                   fontSize: 16,
                   lineHeight: 1.8,
-                  borderRadius: 5
+                  borderRadius: 5,
                 }}
                 type="text"
                 onClick={() => setOpenDetailModal(false)}
@@ -931,7 +928,7 @@ export const CalendarAdmin = () => {
                     fontSize: 16,
                     lineHeight: 1.8,
                     borderRadius: 5,
-                    boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                    boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                   }}
                   type="primary"
                   htmlType="submit"
@@ -1007,14 +1004,14 @@ export const CalendarAdmin = () => {
                     style={{
                       display: 'flex',
                       justifyContent: 'space-between',
-                      alignItems: 'center'
+                      alignItems: 'center',
                     }}
                   >
                     <span
                       style={{
                         textTransform: 'capitalize',
                         fontSize: 14,
-                        fontWeight: 600
+                        fontWeight: 600,
                       }}
                     >
                       {date}
@@ -1047,7 +1044,7 @@ export const CalendarAdmin = () => {
                       block
                       style={{
                         marginBlock: 20,
-                        boxShadow: 'rgb(112 144 176 / 20%) 0px 2px 8px'
+                        boxShadow: 'rgb(112 144 176 / 20%) 0px 2px 8px',
                       }}
                     >
                       {t('Quick Jump')}
@@ -1071,9 +1068,9 @@ export const CalendarAdmin = () => {
               onChange={onChange}
               placeholder="Please select"
               showSearch={{
-                filter
+                filter,
               }}
-              onSearch={(value) => console.log(value)}
+              onSearch={value => console.log(value)}
             />
           ) : null}
         </section>
@@ -1102,17 +1099,17 @@ export const CalendarAdmin = () => {
           resizable={calendarAdminPanel !== 'month' ? true : false}
           startAccessor="start"
           endAccessor="end"
-          eventPropGetter={(_) => {
+          eventPropGetter={_ => {
             return {
               style: {
                 backgroundColor: calendarAdminPanel !== 'agenda' && '#94795C',
-                border: calendarAdminPanel !== 'agenda' && '#94795C'
-              }
+                border: calendarAdminPanel !== 'agenda' && '#94795C',
+              },
             };
           }}
           selectable={calendarAdminPanel !== 'month' ? true : false}
           longPressThreshold={10}
-          onSelectEvent={(e) => handleSelectEvent(e)}
+          onSelectEvent={e => handleSelectEvent(e)}
           onSelectSlot={handleSelectSlot}
           messages={messages}
           localizer={localizer}

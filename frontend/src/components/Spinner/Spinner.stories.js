@@ -4,16 +4,16 @@ export default {
   title: 'COMPONENTS/Spinner',
   component: Spinner,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
   },
   tags: ['autodocs'],
-  args: {}
+  args: {},
 };
-const Template = (args) => <Spinner {...args} />;
+const Template = args => <Spinner {...args} />;
 
 export const defaultSpinner = Template.bind({});
 
 defaultSpinner.args = {
   wrapHeight: '100%',
-  iconSize: '100px'
+  iconSize: '100px',
 };

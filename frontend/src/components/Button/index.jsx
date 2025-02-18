@@ -1,5 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import './button.css';
 
 export const Button = ({
@@ -51,7 +52,7 @@ Button.propTypes = {
   /**
    * Optional click handler
    */
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
@@ -59,5 +60,5 @@ Button.defaultProps = {
   primary: false,
   size: 'medium',
   onClick: undefined,
-  borderRadius: '3em'
+  borderRadius: '3em',
 };

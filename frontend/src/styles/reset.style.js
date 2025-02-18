@@ -1,6 +1,6 @@
-import { css } from 'styled-components';
+import * as styled from 'styled-components';
 
-const BaseReset = css`
+const BaseReset = styled.css`
   html,
   body,
   div,

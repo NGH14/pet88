@@ -1,15 +1,14 @@
-import './style.css';
-
+import { AnimatePresence, motion } from 'framer-motion';
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import LoginForm from '../SignInForm';
-import { NavLink, useLocation, useNavigate } from 'react-router';
-import SignUpForm from '../SignUpForm';
-import ForgotPasswordForm from '../ForgotPasswordForm';
-import { UserAuth } from '../../context/AuthContext';
-import ChangeLanguage from './../ChangeLanguage';
 import { useTranslation } from 'react-i18next';
+import { NavLink, useLocation, useNavigate } from 'react-router';
+
+import { UserAuth } from '../../context/AuthContext';
+import ForgotPasswordForm from '../ForgotPasswordForm';
+import LoginForm from '../SignInForm';
+import SignUpForm from '../SignUpForm';
+import ChangeLanguage from './../ChangeLanguage';
+import './style.css';
 
 const LeftSideSignin = ({ src }) => {
   const locate = useLocation();
@@ -24,7 +23,7 @@ const LeftSideSignin = ({ src }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            marginInline: 10
+            marginInline: 10,
           }}
         >
           <NavLink to="/">

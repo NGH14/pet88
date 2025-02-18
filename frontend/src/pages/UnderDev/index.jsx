@@ -1,8 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router';
+
 import img from '../../assets/images/undraw_bug_fixing_oc7a (1).png';
 import './style.css';
-import { NavLink } from 'react-router';
 
 export default function UnderDev() {
   const { t, i18n } = useTranslation();
@@ -15,7 +16,7 @@ export default function UnderDev() {
             style={{
               fontWeight: 700,
               margin: 15,
-              textTransform: 'capitalize'
+              textTransform: 'capitalize',
             }}
           >
             {t('Site under construction and maintenance')}

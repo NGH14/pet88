@@ -1,14 +1,14 @@
-const ToVND = (num) => {
+const ToVND = num => {
   return new Intl.NumberFormat('vi-VN', {
     style: 'currency',
-    currency: 'VND'
+    currency: 'VND',
   }).format(num);
 };
 
-const ToUSD = (num) => {
+const ToUSD = num => {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD'
+    currency: 'USD',
   }).format(num);
 };
 

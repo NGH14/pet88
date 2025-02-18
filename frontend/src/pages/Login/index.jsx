@@ -1,11 +1,11 @@
-import './style.css';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router';
 
 import logoBlack from '../../assets/images/logo-text.png';
 import LeftSideLogin from '../../components/LoginLeft';
 import RightSideLogin from '../../components/LoginRight';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router';
 import { UserAuth } from '../../context/AuthContext';
+import './style.css';
 
 export default function SignIn() {
   const { user } = UserAuth();

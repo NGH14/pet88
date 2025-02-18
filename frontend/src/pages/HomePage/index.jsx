@@ -1,60 +1,54 @@
-import * as React from 'react';
-
-import moment from 'moment';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-import { motion } from 'framer-motion';
-import i18n from 'i18next';
-import { useTranslation } from 'react-i18next';
-import CountUp from 'react-countup';
-import { ConfigProvider } from 'antd';
 import { HeartTwoTone } from '@ant-design/icons';
-
+import { ConfigProvider } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import './style.css';
-
-import HeroImage from 'components/HeroImageHomepage/index';
-
-import ScrollTrigger from 'react-scroll-trigger';
-import SwiperCore, { Autoplay } from 'swiper';
-import 'swiper/css/autoplay';
-
-import ReactBeforeSliderComponent from 'react-before-after-slider-component';
-import img1 from 'assets/images/customer-logo-1.webp';
-import img2 from 'assets/images/customer-logo-2.webp';
-import img3 from 'assets/images/customer-logo-4.webp';
-import img4 from 'assets/images/customer-logo-2.webp';
-import FIRST from 'assets/images/dog-grooming-photography-2.jpg';
-import SECOND from 'assets/images/dog-grooming-photography-1.jpg';
 import serviceImg1 from 'assets/images/Illustration-Bond.png';
 import serviceImg2 from 'assets/images/Illustration-Schedule.png';
-
+import img1 from 'assets/images/customer-logo-1.webp';
+import img2 from 'assets/images/customer-logo-2.webp';
+import img4 from 'assets/images/customer-logo-2.webp';
+import img3 from 'assets/images/customer-logo-4.webp';
+import SECOND from 'assets/images/dog-grooming-photography-1.jpg';
+import FIRST from 'assets/images/dog-grooming-photography-2.jpg';
+import HeroImage from 'components/HeroImageHomepage/index';
+import { motion } from 'framer-motion';
+import i18n from 'i18next';
+import moment from 'moment';
+import * as React from 'react';
+import ReactBeforeSliderComponent from 'react-before-after-slider-component';
 import 'react-before-after-slider-component/dist/build.css';
+import CountUp from 'react-countup';
+import { useTranslation } from 'react-i18next';
+import ScrollTrigger from 'react-scroll-trigger';
+import SwiperCore, { Autoplay } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 import MainLayout from '../../layouts/MainLayout';
+import './style.css';
 
 SwiperCore.use([Autoplay]);
 
 const FIRST_IMAGE = {
-  imageUrl: FIRST
+  imageUrl: FIRST,
 };
 const SECOND_IMAGE = {
-  imageUrl: SECOND
+  imageUrl: SECOND,
 };
 
 const cardVariants = {
   offscreen: {
-    y: 150
+    y: 150,
   },
   onscreen: {
     y: 0,
     transition: {
       type: 'spring',
       bounce: 0.4,
-      duration: 0.5
-    }
-  }
+      duration: 0.5,
+    },
+  },
 };
 
 function HomePage() {
@@ -76,7 +70,7 @@ function HomePage() {
             slidesPerView={4}
             spaceBetween={10}
             pagination={{
-              clickable: true
+              clickable: true,
             }}
             speed={3000}
             modules={[Autoplay]}
@@ -205,7 +199,7 @@ function HomePage() {
           <section
             style={{
               display: 'flex',
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}
           >
             <img src={serviceImg2} alt="" className="homepage-content_subflexImg" />

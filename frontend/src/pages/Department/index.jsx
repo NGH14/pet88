@@ -8,23 +8,21 @@ import {
   Form,
   Layout,
   Select,
-  Table
+  Table,
 } from 'antd';
+import viVN from 'antd/es/locale/vi_VN';
+import axios from 'axios';
+import SubNavBar from 'components/views/SubHeader';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 
-import viVN from 'antd/es/locale/vi_VN';
-import { useTranslation } from 'react-i18next';
 import FooterWave from '../../components/Footer';
 import AppHeader from '../../components/Navbar';
-import SubNavBar from 'components/views/SubHeader';
-
-import axios from 'axios';
-import './style.css';
-
-import moment from 'moment';
 import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
+import './style.css';
 
 const { Option } = Select;
 const { Header, Content, Footer } = Layout;
@@ -69,12 +67,12 @@ export default function Department() {
     });
   }, [selectedRooms, loadingTable]);
 
-  const onFinish = async (values) => {
+  const onFinish = async values => {
     setLoadingTable(true);
     await handleLoadData();
     setSearchList({
       ...search,
-      datesHotels: values.datesHotels || null
+      datesHotels: values.datesHotels || null,
     });
   };
 
@@ -98,29 +96,29 @@ export default function Department() {
       ? getDatesInRange(search.datesHotels[0], search.datesHotels[1])
       : [];
 
-  const isAvailable = (roomNumber) => {
-    const isFound = roomNumber.unavailableDates.some((date) =>
+  const isAvailable = roomNumber => {
+    const isFound = roomNumber.unavailableDates.some(date =>
       alldates.includes(new Date(date).getTime())
     );
 
     return !isFound;
   };
 
-  const handleSelect = (e) => {
+  const handleSelect = e => {
     const checked = e.target.checked;
     const value = e.target.value;
     const room = value.split('_');
 
     setSelectedRooms(
       !checked
-        ? selectedRooms.filter((item) => item.roomId !== room[0])
+        ? selectedRooms.filter(item => item.roomId !== room[0])
         : [
             ...selectedRooms,
             {
               roomId: room[0],
               price: room[1],
-              roomNumber: room[2]
-            }
+              roomNumber: room[2],
+            },
           ]
     );
   };
@@ -129,50 +127,50 @@ export default function Department() {
     setDataList([]);
     await axios
       .post(`http://localhost:3001/api/hotel/availability/${id}`, {
-        dates: alldates
+        dates: alldates,
       })
-      .then((response) => {
+      .then(response => {
         setSumPrice(0);
         setSelectedRooms([]);
         setDataList(response.data);
         setLoading(false);
         setLoadingTable(false);
       })
-      .catch((err) => console.log(err.message));
+      .catch(err => console.log(err.message));
   };
 
   const columnsWithDate = [
     {
       title: t('Name'),
       dataIndex: 'title',
-      sorter: (a, b) => a.title.length - b.title.length
+      sorter: (a, b) => a.title.length - b.title.length,
     },
     {
       title: t('Type'),
-      dataIndex: 'type'
+      dataIndex: 'type',
     },
     {
       title: `${t('Price for')} ${search.days} nights`,
       dataIndex: 'price',
-      render: (price) => (
+      render: price => (
         <span>
           {new Intl.NumberFormat('vi_VN', {
             style: 'currency',
-            currency: 'VND'
+            currency: 'VND',
           }).format(search.days * price)}
           {` (${new Intl.NumberFormat('vi_VN', {
             style: 'currency',
-            currency: 'VND'
+            currency: 'VND',
           }).format(price)} ${t('per night')})`}
         </span>
       ),
-      sorter: (a, b) => a.price - b.price
+      sorter: (a, b) => a.price - b.price,
     },
     {
       title: t('Room'),
       dataIndex: 'roomNumbers',
       render: (roomNumbers, record) =>
-        roomNumbers.map((roomNumber) => (
+        roomNumbers.map(roomNumber => (
           <section className="room">
             <Checkbox
               value={`${roomNumber._id}_${record.price * search?.days}_${roomNumber.number}`}
@@ -183,16 +181,16 @@ export default function Department() {
               {roomNumber.number}
             </Checkbox>
           </section>
-        ))
-    }
+        )),
+    },
   ];
 
   const columnsWithOutDate = [
     {
       title: t('Name'),
       dataIndex: 'title',
-      sorter: (a, b) => a.title.length - b.title.length
-    }
+      sorter: (a, b) => a.title.length - b.title.length,
+    },
   ];
 
   return (
@@ -222,14 +220,14 @@ export default function Department() {
                     style={{
                       display: 'flex',
                       justifyContent: 'space-between',
-                      alignItems: 'center'
+                      alignItems: 'center',
                     }}
                   >
                     <h2
                       style={{
                         fontWeight: 700,
                         textTransform: 'capitalize',
-                        fontSize: 30
+                        fontSize: 30,
                       }}
                     >
                       {t('availability')}
@@ -240,32 +238,32 @@ export default function Department() {
                         justifyContent: 'center',
                         gap: 15,
                         alignItems: 'center',
-                        fontWeight: 700
+                        fontWeight: 700,
                       }}
                     >
                       {sumPrice !== 0 ? (
                         <span
                           style={{
                             fontWeight: 700,
-                            fontSize: 23
+                            fontSize: 23,
                           }}
                         >
                           {'Total'}:{' '}
                           {new Intl.NumberFormat('vi_VN', {
                             style: 'currency',
-                            currency: 'VND'
+                            currency: 'VND',
                           }).format(sumPrice)}
                         </span>
                       ) : null}
                       <Button type="primary" disabled={sumPrice <= 0 ? true : false}>
                         <NavLink
                           to={{
-                            pathname: '/checkout'
+                            pathname: '/checkout',
                           }}
                           state={{
                             price: sumPrice,
                             priceList: selectedRooms,
-                            depart: location.state
+                            depart: location.state,
                           }}
                         >
                           {t('Reversion')}
@@ -283,25 +281,25 @@ export default function Department() {
                       initialValues={{
                         datesHotels: search.datesHotels && [
                           moment(search?.datesHotels[0]),
-                          moment(search?.datesHotels[1])
-                        ]
+                          moment(search?.datesHotels[1]),
+                        ],
                       }}
                       onValuesChange={onFinish}
                     >
                       <Form.Item
                         name="datesHotels"
                         style={{
-                          width: '100% !important'
+                          width: '100% !important',
                         }}
                       >
                         <RangePicker
                           style={{
-                            width: '100% !important'
+                            width: '100% !important',
                           }}
                           ranges={{
                             [t('Today')]: [moment(), moment()],
                             [t('One Week')]: [currentDate, futureWeek],
-                            [t('One Month')]: [currentDate, futureMonth]
+                            [t('One Month')]: [currentDate, futureMonth],
                           }}
                           placeholder={[t('Drop off'), t('Pick up')]}
                           placement="bottomLeft"
@@ -316,10 +314,10 @@ export default function Department() {
                         padding: 20,
                         marginBlock: 10,
                         borderRadius: 15,
-                        boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px'
+                        boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px',
                       }}
                       scroll={{
-                        x: 800
+                        x: 800,
                       }}
                       pagination={false}
                       columns={search.days > 0 ? columnsWithDate : columnsWithOutDate}

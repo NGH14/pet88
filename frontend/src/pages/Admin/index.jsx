@@ -1,34 +1,31 @@
+import { MenuFoldOutlined, MenuUnfoldOutlined, ReconciliationOutlined } from '@ant-design/icons';
+import { Button, ConfigProvider, Space, Table, Tag } from 'antd';
+import { Breadcrumb, Layout, Menu } from 'antd';
+import viVN from 'antd/es/locale/vi_VN';
+import logoWhite from 'assets/images/logo-text.png';
+import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
+import ChangeLanguage from 'components/ChangeLanguage/index';
+import { Spinner } from 'components/Spinner';
+import TableGrooming from 'components/TableGrooming/index';
+import TableHotel from 'components/TableHotel';
+import TableOrder from 'components/TableOrder';
+import TableRooms from 'components/TableRooms';
+import TableUser from 'components/TableUser/index';
+import SubNavBar from 'components/views/SubHeader';
+import { UserAuth } from 'context/AuthContext';
+import { collection, getDocs } from 'firebase/firestore';
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { UserAuth } from 'context/AuthContext';
-import { Spinner } from 'components/Spinner';
-import { collection, getDocs } from 'firebase/firestore';
-import { storage } from 'utils/firebase';
-import { useNavigate, useLocation, NavLink } from 'react-router';
-import { toast } from 'react-toastify';
-import { Space, Table, Tag, ConfigProvider, Button } from 'antd';
 import { CSVLink } from 'react-csv';
 import { useTranslation } from 'react-i18next';
-import logoWhite from 'assets/images/logo-text.png';
-import viVN from 'antd/es/locale/vi_VN';
-
-import { ReconciliationOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-
-import { Breadcrumb, Layout, Menu } from 'antd';
+import { CgUserList } from 'react-icons/cg';
+import { MdOutlinePayments } from 'react-icons/md';
+import { RiCalendarEventLine, RiCoupon3Line } from 'react-icons/ri';
+import { NavLink, useLocation, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+import { storage } from 'utils/firebase';
 
 import './style.css';
-import SubNavBar from 'components/views/SubHeader';
-
-import TableUser from 'components/TableUser/index';
-import TableHotel from 'components/TableHotel';
-import { RiCalendarEventLine, RiCoupon3Line } from 'react-icons/ri';
-import { MdOutlinePayments } from 'react-icons/md';
-import { CgUserList } from 'react-icons/cg';
-import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
-import TableRooms from 'components/TableRooms';
-import TableGrooming from 'components/TableGrooming/index';
-import TableOrder from 'components/TableOrder';
-import ChangeLanguage from 'components/ChangeLanguage/index';
 
 const { Header, Content, Sider } = Layout;
 
@@ -37,7 +34,7 @@ function getItem(label, key, icon, children) {
     key,
     icon,
     children,
-    label
+    label,
   };
 }
 
@@ -55,15 +52,15 @@ export default function Admin() {
     getItem(t('Business'), 'depart', <ReconciliationOutlined />, [
       getItem(t('Departments'), '/admin/management-hotel'),
       getItem(t('Hotel Service'), '/admin/management-room-category'),
-      getItem(t('Grooming Service'), '/admin/management-grooming')
+      getItem(t('Grooming Service'), '/admin/management-grooming'),
     ]),
     getItem(t('User'), '/admin/management-user', <CgUserList />),
 
-    getItem(t('Order'), '/admin/management-order', <MdOutlinePayments />)
+    getItem(t('Order'), '/admin/management-order', <MdOutlinePayments />),
     // getItem(<ChangeLanguage fullWidth></ChangeLanguage>, '', null),
   ];
 
-  const handleClickMenu = (path) => {
+  const handleClickMenu = path => {
     navigate(path);
     setCollapsed(true);
   };
@@ -82,7 +79,7 @@ export default function Admin() {
       <ConfigProvider locale={i18n.lang === 'vi_VN' && viVN}>
         <Layout
           style={{
-            minHeight: '100vh'
+            minHeight: '100vh',
           }}
         >
           <Sider collapsed={collapsed} className={collapsed && 'admin-sitebar'}>
@@ -94,7 +91,7 @@ export default function Admin() {
                     alt=""
                     style={{
                       height: 30,
-                      objectFit: 'cover'
+                      objectFit: 'cover',
                     }}
                   />
                 ) : (
@@ -103,7 +100,7 @@ export default function Admin() {
                     alt=""
                     style={{
                       height: 40,
-                      objectFit: 'cover'
+                      objectFit: 'cover',
                     }}
                   />
                 )}
@@ -124,7 +121,7 @@ export default function Admin() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 padding: 0,
-                margin: 'auto'
+                margin: 'auto',
               }}
             >
               <Button
@@ -144,14 +141,14 @@ export default function Admin() {
             </Header>
             <Content
               style={{
-                backgroundColor: '#F7F8FA'
+                backgroundColor: '#F7F8FA',
               }}
             >
               <section
                 className="site-layout-background"
                 style={{
                   padding: 24,
-                  minHeight: 360
+                  minHeight: 360,
                 }}
               >
                 {' '}

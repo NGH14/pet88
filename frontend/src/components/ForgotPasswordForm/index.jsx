@@ -1,15 +1,15 @@
-import React from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
-import { NavLink, useNavigate } from 'react-router';
+import { Button, Checkbox, Form, Input } from 'antd';
 import { motion } from 'framer-motion';
-
-import './style.css';
+import React from 'react';
 import { useState } from 'react';
-import { UserAuth } from '../../context/AuthContext';
-import MailBoxImg from '../../assets/svg/undraw_mailbox_re_dvds.svg';
-import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import { NavLink, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+
+import MailBoxImg from '../../assets/svg/undraw_mailbox_re_dvds.svg';
+import { UserAuth } from '../../context/AuthContext';
+import './style.css';
 
 const ForgotPasswordForm = () => {
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ const ForgotPasswordForm = () => {
   const [email, setEmail] = useState('');
   const { forgotPassword } = UserAuth();
 
-  const onFinish = async (e) => {
+  const onFinish = async e => {
     setLoading(true);
     try {
       await forgotPassword(email);
@@ -34,7 +34,7 @@ const ForgotPasswordForm = () => {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
@@ -70,7 +70,7 @@ const ForgotPasswordForm = () => {
           backgroundColor: '#333',
           borderColor: '#333',
           borderRadius: 45,
-          boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+          boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
         }}
       >
         {t('Ok')}
@@ -97,7 +97,7 @@ const ForgotPasswordForm = () => {
       <Form
         name="basic"
         initialValues={{
-          remember: true
+          remember: true,
         }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -109,18 +109,18 @@ const ForgotPasswordForm = () => {
           rules={[
             {
               type: 'email',
-              message: t('The input is not valid E-mail!')
+              message: t('The input is not valid E-mail!'),
             },
             {
               required: true,
-              message: t('Please input your E-mail!')
-            }
+              message: t('Please input your E-mail!'),
+            },
           ]}
         >
           <Input
             placeholder={t('Email')}
             prefix={<MailOutlined className="site-form-item-icon" />}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
         </Form.Item>
 
@@ -136,7 +136,7 @@ const ForgotPasswordForm = () => {
               backgroundColor: '#000',
               borderColor: '#000',
               borderRadius: 45,
-              boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+              boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
             }}
           >
             {t('Send')}

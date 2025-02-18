@@ -1,55 +1,55 @@
-import React, { useRef, useState } from 'react';
-import { useEffect } from 'react';
-import { UserAuth } from '../../context/AuthContext';
-import { Table, ExportTableButton, SearchTableInput } from 'ant-table-extensions';
-import { storage } from '../../utils/firebase';
-import { useNavigate } from 'react-router';
-import { toast } from 'react-toastify';
 import {
-  FileExcelOutlined,
-  SearchOutlined,
   DeleteOutlined,
+  DownOutlined,
   EditOutlined,
+  FileExcelOutlined,
+  InboxOutlined,
   MoreOutlined,
   ReloadOutlined,
-  DownOutlined,
+  SearchOutlined,
   UploadOutlined,
-  InboxOutlined
 } from '@ant-design/icons';
-import { AiOutlineClose } from 'react-icons/ai';
-
+import { ExportTableButton, SearchTableInput, Table } from 'ant-table-extensions';
 import {
   Button,
+  Checkbox,
+  DatePicker,
   Drawer,
-  Space,
-  Tag,
   Form,
   Input,
-  Select,
-  DatePicker,
+  InputNumber,
+  Modal,
   Popconfirm,
+  Radio,
+  Select,
+  Space,
+  Tag,
+  Tooltip,
   Upload,
   message,
-  Modal,
-  InputNumber,
-  Checkbox,
-  Radio,
-  Tooltip
 } from 'antd';
-import { useTranslation } from 'react-i18next';
-
-import moment from 'moment';
 import axios from 'axios';
-import './style.css';
+import moment from 'moment';
+import React, { useRef, useState } from 'react';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { AiOutlineClose } from 'react-icons/ai';
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
+
+import { UserAuth } from '../../context/AuthContext';
+import { storage } from '../../utils/firebase';
 import { ToVND } from './../../utils/FormatCurrency';
+import './style.css';
+
 const { Option } = Select;
 
-const getBase64 = (file) =>
+const getBase64 = file =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
+    reader.onerror = error => reject(error);
   });
 
 const { Dragger } = Upload;
@@ -121,12 +121,12 @@ export default function TableOrder() {
     getAllUserData();
   }, []);
 
-  const handleOpenUpdateCategory = (record) => {
+  const handleOpenUpdateCategory = record => {
     setorderRecord(record);
     setOpenUpdate(true);
   };
 
-  const onFinishUpdate = async (value) => {
+  const onFinishUpdate = async value => {
     setLoading(true);
     try {
       await axios.put(`http://localhost:3001/api/order/update-status/${orderRecord._id}`, value);
@@ -151,25 +151,25 @@ export default function TableOrder() {
     setOpenCreate(false);
   };
 
-  const handleDeleteOrder = async (value) => {
+  const handleDeleteOrder = async value => {
     try {
       await Promise.all([
         axios.put(`http://localhost:3001/api/grooming/room/event/delete/${value.eventID}`),
-        axios.delete(`http://localhost:3001/api/order/${value._id}`)
+        axios.delete(`http://localhost:3001/api/order/${value._id}`),
       ]);
 
-      setListorders(listorders.filter((item) => item._id !== value._id));
-      setSearchDataSource(searchDataSource.filter((item) => item._id !== value._id));
+      setListorders(listorders.filter(item => item._id !== value._id));
+      setSearchDataSource(searchDataSource.filter(item => item._id !== value._id));
       toast.success(t('Delete Success'));
     } catch (error) {
       return console.error(error);
     }
   };
-  const onFinishCreateOrder = async (value) => {
+  const onFinishCreateOrder = async value => {
     setLoadingCreate(true);
     try {
       const bookingUser = value.account
-        ? userData.find((u) => u.email === value.user)
+        ? userData.find(u => u.email === value.user)
         : { id: 'guest', email: value.user, phone: -1 };
 
       console.log({ value, bookingUser });
@@ -184,16 +184,16 @@ export default function TableOrder() {
     }
   };
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
-  const onSelectChange = (newSelectedRowKeys) => {
+  const onSelectChange = newSelectedRowKeys => {
     setSelectedRowKeys(newSelectedRowKeys);
   };
   const rowSelection = {
     selectedRowKeys,
-    onChange: onSelectChange
+    onChange: onSelectChange,
   };
   const getAllUserData = async () => {
     setTableLoading(true);
@@ -203,10 +203,10 @@ export default function TableOrder() {
       const option = [];
 
       const users = await GetAllUser();
-      users.forEach((doc) => {
+      users.forEach(doc => {
         list.push({ id: doc.id, ...doc.data(), key: doc.id });
       });
-      list.forEach((doc) => {
+      list.forEach(doc => {
         option.push({ value: doc.email, label: doc.email });
       });
       setUserDataOpion(option);
@@ -223,72 +223,72 @@ export default function TableOrder() {
       title: 'Order ID',
       dataIndex: '_id',
       key: 'email',
-      render: (text) => (
+      render: text => (
         <Tooltip placement="top" title={text} showArrow={false}>
           {text}
         </Tooltip>
       ),
-      ellipsis: true
+      ellipsis: true,
     },
     {
       title: 'Service',
       dataIndex: 'service',
       key: 'service',
-      render: (text) => <span>{text}</span>
+      render: text => <span>{text}</span>,
     },
 
     {
       title: t('Drop off'),
       dataIndex: 'start',
       key: 'start',
-      render: (text) => <span>{text?.slice(0, 10)}</span>
+      render: text => <span>{text?.slice(0, 10)}</span>,
     },
     {
       title: t('Pick up'),
       dataIndex: 'end',
       key: 'end',
-      render: (text) => <span>{text?.slice(0, 10)}</span>
+      render: text => <span>{text?.slice(0, 10)}</span>,
     },
     {
       title: 'Date (Nights)',
       dataIndex: 'days',
       key: 'days',
-      render: (text) => <span>{text > 0 ? text : null}</span>
+      render: text => <span>{text > 0 ? text : null}</span>,
     },
     {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
-      render: (text) => (
+      render: text => (
         <span>
           {new Intl.NumberFormat('vi_VN', {
             style: 'currency',
-            currency: 'VND'
+            currency: 'VND',
           }).format(text)}
         </span>
-      )
+      ),
     },
 
     {
       title: 'Status',
       dataIndex: 'paid',
       key: 'paid',
-      render: (text) => <Tag color={text === 'success' ? 'green' : 'red'}>{text}</Tag>
+      render: text => <Tag color={text === 'success' ? 'green' : 'red'}>{text}</Tag>,
     },
     {
       title: 'Confirm',
       dataIndex: 'confirm',
       key: 'confirm',
-      render: (text) => <Tag color={text === 'confimred' ? 'green' : 'red'}>{text}</Tag>
+      render: text => <Tag color={text === 'confimred' ? 'green' : 'red'}>{text}</Tag>,
     },
 
     {
       title: 'Created',
       dataIndex: 'createdAt',
       key: 'createdAt',
-      render: (text) => <span>{text?.slice(0, 10)}</span>,
+      render: text => <span>{text?.slice(0, 10)}</span>,
       sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
-      defaultSortOrder: 'descend'
+      defaultSortOrder: 'descend',
     },
 
     {
@@ -312,15 +312,15 @@ export default function TableOrder() {
             onClick={() => handleOpenUpdateCategory(record)}
           ></Button>
         </Space>
-      )
-    }
+      ),
+    },
   ];
 
   const handleDeleteMultipleorder = async () => {
     try {
       await axios.patch(`http://localhost:3001/api/order/multiple-delete`, selectedRowKeys);
-      setListorders(listorders.filter((item) => !selectedRowKeys.includes(item._id)));
-      setSearchDataSource(searchDataSource.filter((item) => !selectedRowKeys.includes(item._id)));
+      setListorders(listorders.filter(item => !selectedRowKeys.includes(item._id)));
+      setSearchDataSource(searchDataSource.filter(item => !selectedRowKeys.includes(item._id)));
 
       toast.success(t('Delete Success'));
     } catch (error) {
@@ -332,7 +332,7 @@ export default function TableOrder() {
     try {
       const res = await GetAllorder();
       const list = [];
-      res.forEach((doc) => {
+      res.forEach(doc => {
         list.push({ ...doc, key: doc._id });
       });
       setListorders(list);
@@ -358,31 +358,31 @@ export default function TableOrder() {
   // 	}
   // };
 
-  const expandedRowRender = (record) => {
+  const expandedRowRender = record => {
     const subColumns = [
       {
         title: 'Room ID',
         dataIndex: 'roomId',
-        key: 'roomId'
+        key: 'roomId',
       },
       {
         title: t('Room Number'),
         dataIndex: 'roomNumber',
-        key: 'roomNumber'
+        key: 'roomNumber',
       },
       {
         title: t('Price'),
         dataIndex: 'price',
         key: 'price',
-        render: (text) => (
+        render: text => (
           <span>
             {new Intl.NumberFormat('vi_VN', {
               style: 'currency',
-              currency: 'VND'
+              currency: 'VND',
             }).format(text)}
           </span>
-        )
-      }
+        ),
+      },
     ];
     return (
       <>
@@ -391,7 +391,7 @@ export default function TableOrder() {
         ) : null}
         <p
           style={{
-            margin: 15
+            margin: 15,
           }}
         >
           {t('Created Date')}
@@ -400,7 +400,7 @@ export default function TableOrder() {
         </p>
         <p
           style={{
-            margin: 15
+            margin: 15,
           }}
         >
           {t('Last Update Date')}
@@ -429,7 +429,7 @@ export default function TableOrder() {
             setDataSource={setSearchDataSource}
             inputProps={{
               placeholder: t('Search'),
-              prefix: <SearchOutlined />
+              prefix: <SearchOutlined />,
             }}
           />
           {/* <Button
@@ -453,7 +453,7 @@ export default function TableOrder() {
         onClose={onCloseUpdateRoom}
         open={openUpdate}
         bodyStyle={{
-          paddingBottom: 80
+          paddingBottom: 80,
         }}
       >
         {openUpdate ? (
@@ -465,7 +465,7 @@ export default function TableOrder() {
             size={'large'}
             initialValues={{
               confirm: orderRecord?.confirm,
-              paid: orderRecord?.paid
+              paid: orderRecord?.paid,
             }}
             onFinish={onFinishUpdate}
             onFinishFailed={onFinishFailed}
@@ -488,7 +488,7 @@ export default function TableOrder() {
             <Form.Item
               wrapperCol={{
                 offset: 4,
-                span: 16
+                span: 16,
               }}
             >
               <Button
@@ -498,7 +498,7 @@ export default function TableOrder() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 onClick={onCloseUpdateRoom}
               >
@@ -511,7 +511,7 @@ export default function TableOrder() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 type="primary"
                 htmlType="submit"
@@ -529,7 +529,7 @@ export default function TableOrder() {
         onClose={onCloseCreateUser}
         open={openCreate}
         bodyStyle={{
-          paddingBottom: 80
+          paddingBottom: 80,
         }}
       >
         {openCreate ? (
@@ -546,7 +546,7 @@ export default function TableOrder() {
             requiredMark={false}
           >
             <Form.Item label={t('Account')} name="account" initialValue={true}>
-              <Radio.Group value={accountType} onChange={(e) => setAccountType(e.target.value)}>
+              <Radio.Group value={accountType} onChange={e => setAccountType(e.target.value)}>
                 <Radio value={false}>{t('Guest')}</Radio>
                 <Radio value={true}>{t('Has Account')}</Radio>
               </Radio.Group>
@@ -572,7 +572,7 @@ export default function TableOrder() {
             </Form.Item>
             <Form.Item label={t('Price')} name="price">
               <InputNumber
-                formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 prefix={'₫'}
                 style={{ width: '100%' }}
               />
@@ -589,7 +589,7 @@ export default function TableOrder() {
             <Form.Item
               wrapperCol={{
                 offset: 4,
-                span: 16
+                span: 16,
               }}
             >
               <Button
@@ -599,7 +599,7 @@ export default function TableOrder() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 onClick={onCloseCreateUser}
               >
@@ -612,7 +612,7 @@ export default function TableOrder() {
                   fontSize: 16,
                   lineHeight: 1.8,
                   borderRadius: 5,
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                  boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                 }}
                 type="primary"
                 htmlType="submit"
@@ -630,7 +630,7 @@ export default function TableOrder() {
             bordered={false}
             defaultValue="large"
             style={{
-              width: 100
+              width: 100,
             }}
             onChange={setSize}
           >
@@ -644,7 +644,7 @@ export default function TableOrder() {
             columns={columns}
             btnProps={{
               type: 'primary',
-              icon: <FileExcelOutlined />
+              icon: <FileExcelOutlined />,
             }}
             showColumnPicker
           >
@@ -673,7 +673,7 @@ export default function TableOrder() {
 
               display: 'flex',
               gap: 5,
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
             }}
           >
             <Button onClick={handleCancelModal} style={{ borderRadius: 8 }}>
@@ -702,7 +702,7 @@ export default function TableOrder() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
             }}
             icon={<AiOutlineClose color="red" style={{ marginRight: 5 }} />}
             onClick={() => showModal()}
@@ -713,7 +713,7 @@ export default function TableOrder() {
         </section>
       ) : null}
       <Table
-        rowKey={(record) => record.key}
+        rowKey={record => record.key}
         rowSelection={rowSelection}
         size={size}
         style={{
@@ -721,20 +721,20 @@ export default function TableOrder() {
           padding: 20,
           marginBlock: 10,
           borderRadius: 15,
-          boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px'
+          boxShadow: 'rgb(153 196 227 / 25%) 0px 2px 8px',
         }}
         scroll={{
-          x: 800
+          x: 800,
         }}
         expandable={{
-          expandedRowRender: (record) => expandedRowRender(record)
+          expandedRowRender: record => expandedRowRender(record),
         }}
         pagination={{
           defaultPageSize: 5,
           showSizeChanger: true,
           pageSizeOptions: ['5', '10', '20', '30'],
           hideOnSinglePage: true,
-          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`
+          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
         }}
         columns={columns}
         dataSource={searchDataSource || listorders}

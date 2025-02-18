@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-
-import { Drawer, Button } from 'antd';
+import { CloseOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
+import { Button, Drawer } from 'antd';
 import Logo from 'assets/images/BlackLogo.png';
 import LogoWhite from 'assets/images/WhiteLogo.png';
-import { CloseOutlined, MenuOutlined, LogoutOutlined } from '@ant-design/icons';
+import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
+import { StyledNavLink } from 'components/NavLink/index.jsx';
+import { UserAuth } from 'context/AuthContext';
+import useScrollPosition from 'hooks/useScrollPosition';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 
 import AuthButton from './../GoogleAuthButton/';
-import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
-import useScrollPosition from 'hooks/useScrollPosition';
-
-import { NavLink, useLocation, useNavigate } from 'react-router';
-import { useTranslation } from 'react-i18next';
-import { UserAuth } from 'context/AuthContext';
 import { NavBar } from './Navbar.style.js';
-import { StyledNavLink } from 'components/NavLink/index.jsx';
 
 const pages = [
   { title: 'About', url: '/#about' },
-  { title: 'Service', url: '/#service' }
+  { title: 'Service', url: '/#service' },
 ];
 
 function AppHeader() {
@@ -30,7 +28,7 @@ function AppHeader() {
   const [visible, setVisible] = useState(false);
   const { t, i18n } = useTranslation();
 
-  const handleSignOut = async (e) => {
+  const handleSignOut = async e => {
     e.preventDefault();
     try {
       await SignOut();
@@ -61,7 +59,7 @@ function AppHeader() {
               <MenuOutlined
                 style={{
                   transition: 'color 0.5s ease-in-out',
-                  color: navBg ? 'black' : 'white'
+                  color: navBg ? 'black' : 'white',
                 }}
               />
             }
@@ -77,11 +75,11 @@ function AppHeader() {
             open={visible}
             bodyStyle={{
               padding: '0',
-              background: 'transparent'
+              background: 'transparent',
             }}
             headerStyle={{
               border: 'none',
-              paddingLeft: 10
+              paddingLeft: 10,
             }}
           >
             <p
@@ -94,7 +92,7 @@ function AppHeader() {
                 fontWeight: 700,
                 fontSize: 16,
                 borderTop: '1px solid black',
-                margin: 0
+                margin: 0,
               }}
             >
               {' '}
@@ -115,7 +113,7 @@ function AppHeader() {
                     fontWeight: 700,
                     fontSize: 16,
                     padding: 15,
-                    borderBottom: '1px solid black'
+                    borderBottom: '1px solid black',
                   }}
                 >
                   {t(page.title)}
@@ -133,7 +131,7 @@ function AppHeader() {
                   fontWeight: 700,
                   fontSize: 16,
                   padding: 15,
-                  borderBottom: '1px solid black'
+                  borderBottom: '1px solid black',
                 }}
               >
                 {t('account')}
@@ -151,7 +149,7 @@ function AppHeader() {
                   fontWeight: 700,
                   fontSize: 16,
                   padding: 15,
-                  borderBottom: '1px solid black'
+                  borderBottom: '1px solid black',
                 }}
               >
                 {t('Admin Centre')}
@@ -174,14 +172,14 @@ function AppHeader() {
                 alt=""
                 style={{
                   maxHeight: 30,
-                  transition: 'all 0.3s ease-in-out'
+                  transition: 'all 0.3s ease-in-out',
                 }}
               />
             </NavLink>
           </section>
         </section>
         <section className="mobileHidden">
-          {pages.map((page) => {
+          {pages.map(page => {
             return (
               <StyledNavLink key={page.title} to={page.url}>
                 {t(page.title)}

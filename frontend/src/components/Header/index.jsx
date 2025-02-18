@@ -1,5 +1,5 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 import { Button } from '../Button';
 import './header.css';
@@ -35,9 +35,9 @@ Header.propTypes = {
   user: PropTypes.shape({}),
   onLogin: PropTypes.func,
   onLogout: PropTypes.func,
-  onCreateAccount: PropTypes.func
+  onCreateAccount: PropTypes.func,
 };
 
 Header.defaultProps = {
-  user: null
+  user: null,
 };

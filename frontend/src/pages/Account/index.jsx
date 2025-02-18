@@ -1,35 +1,33 @@
-import React, { useEffect } from 'react';
-import { UserAuth } from '../../context/AuthContext';
+import { Timestamp } from '@firebase/firestore';
 import {
   Button,
+  DatePicker,
   Form,
   Input,
-  sectionider,
+  Modal,
   Select,
-  DatePicker,
   Table,
   Tabs,
   Tag,
-  Modal,
-  Tooltip
+  Tooltip,
+  sectionider,
 } from 'antd';
-
+import { ConfigProvider, Layout } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
-
-import { useNavigate } from 'react-router';
-import SubNavBar from 'components/views/SubHeader';
-import AppHeader from './../../components/Navbar/index';
-import { Layout, ConfigProvider } from 'antd';
-import './style.css';
-import HeroImage from '../../components/HeroImageHomepage/index';
-import FooterWave from './../../components/Footer/index';
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
 import TabPane from 'antd/lib/tabs/TabPane';
+import SubNavBar from 'components/views/SubHeader';
+import moment from 'moment';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 
-import moment from 'moment';
-import { Timestamp } from '@firebase/firestore';
+import HeroImage from '../../components/HeroImageHomepage/index';
+import { UserAuth } from '../../context/AuthContext';
+import FooterWave from './../../components/Footer/index';
+import AppHeader from './../../components/Navbar/index';
+import './style.css';
 
 const { Header, Content, Footer } = Layout;
 const { Option } = Select;
@@ -59,77 +57,77 @@ const Account = () => {
       title: 'Order ID',
       dataIndex: '_id',
       key: '_id',
-      render: (text) => (
+      render: text => (
         <Tooltip placement="top" title={text} showArrow={false}>
           {text}
         </Tooltip>
       ),
-      ellipsis: true
+      ellipsis: true,
     },
     {
       title: t('Type'),
       dataIndex: 'service',
       key: 'service',
-      render: (text) => <span>{text}</span>
+      render: text => <span>{text}</span>,
     },
     {
       title: 'Room Booking',
       dataIndex: 'products',
       key: 'products',
-      render: (products) =>
+      render: products =>
         products?.length > 0 && Array.isArray(products)
-          ? products?.map((_) => <p>{_.roomNumber}</p>)
-          : null
+          ? products?.map(_ => <p>{_.roomNumber}</p>)
+          : null,
     },
     {
       title: t('Drop off'),
       dataIndex: 'start',
       key: 'start',
-      render: (text) => <span>{text?.slice(0, 10)}</span>
+      render: text => <span>{text?.slice(0, 10)}</span>,
     },
     {
       title: t('Pick up'),
       dataIndex: 'end',
       key: 'end',
-      render: (text) => <span>{text?.slice(0, 10)}</span>
+      render: text => <span>{text?.slice(0, 10)}</span>,
     },
     {
       title: 'Date (Nights)',
       dataIndex: 'days',
       key: 'days',
-      render: (text) => <span>{text > 0 ? text : null}</span>
+      render: text => <span>{text > 0 ? text : null}</span>,
     },
     {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
-      render: (text) => (
+      render: text => (
         <span>
           {new Intl.NumberFormat('vi_VN', {
             style: 'currency',
-            currency: 'VND'
+            currency: 'VND',
           }).format(text)}
         </span>
-      )
+      ),
     },
     {
       title: 'Created at',
       dataIndex: 'createdAt',
       key: 'createdAt',
-      render: (text) => <span>{text?.slice(0, 10)}</span>
+      render: text => <span>{text?.slice(0, 10)}</span>,
     },
     {
       title: 'Status',
       dataIndex: 'paid',
       key: 'paid',
-      render: (text) => <Tag color={text === 'success' ? 'green' : 'red'}>{text}</Tag>
+      render: text => <Tag color={text === 'success' ? 'green' : 'red'}>{text}</Tag>,
     },
     {
       title: 'Confirm',
       dataIndex: 'confirm',
       key: 'confirm',
-      render: (text) => <Tag color={text === 'confimred' ? 'green' : 'red'}>{text}</Tag>
-    }
+      render: text => <Tag color={text === 'confimred' ? 'green' : 'red'}>{text}</Tag>,
+    },
   ];
 
   useEffect(() => {
@@ -170,7 +168,7 @@ const Account = () => {
     }
   };
 
-  const handleGenderChange = (value) => {
+  const handleGenderChange = value => {
     setGender(value);
   };
 
@@ -179,7 +177,7 @@ const Account = () => {
     setdob(userDoB);
   };
 
-  const onFinish = async (e) => {
+  const onFinish = async e => {
     setLoading(true);
     try {
       await updateUser(user?.id, name, dob, gender, phone);
@@ -193,7 +191,7 @@ const Account = () => {
     }
   };
 
-  const onFinishPassword = async (e) => {
+  const onFinishPassword = async e => {
     setPasswordLoading(true);
     try {
       await UpdatePassword(oldPassword, password);
@@ -210,7 +208,7 @@ const Account = () => {
       <Select
         style={{
           width: 70,
-          fontSize: 14
+          fontSize: 14,
         }}
       >
         <Option value="84">+84</Option>
@@ -218,7 +216,7 @@ const Account = () => {
     </Form.Item>
   );
 
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);
   };
 
@@ -246,7 +244,7 @@ const Account = () => {
                   style={{
                     fontWeight: 700,
                     fontSize: 18,
-                    paddingBottom: 10
+                    paddingBottom: 10,
                   }}
                 >
                   {t('Reset Password')}
@@ -262,7 +260,7 @@ const Account = () => {
                     marginTop: 20,
                     display: 'flex',
                     gap: 5,
-                    justifyContent: 'flex-end'
+                    justifyContent: 'flex-end',
                   }}
                 >
                   <Button
@@ -309,7 +307,7 @@ const Account = () => {
                         phone: user?.phone,
                         gender: user?.gender,
                         dob: moment(user?.dob?.toDate()),
-                        email: user?.email
+                        email: user?.email,
                       }}
                       onFinish={onFinish}
                       onFinishFailed={onFinishFailed}
@@ -317,14 +315,14 @@ const Account = () => {
                       requiredMark={false}
                     >
                       <Form.Item
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={e => setName(e.target.value)}
                         label={t('Name')}
                         name="name"
                         rules={[
                           {
                             required: true,
-                            message: t('Please input your username!')
-                          }
+                            message: t('Please input your username!'),
+                          },
                         ]}
                       >
                         <Input />
@@ -332,7 +330,7 @@ const Account = () => {
                       <Form.Item name="dob" label={t('Date of Birth')}>
                         <DatePicker
                           onChange={onChangeDate}
-                          disabledDate={(current) => current > moment()}
+                          disabledDate={current => current > moment()}
                           format={i18n.language === 'vi_VN' ? 'DD-MM-YYYY' : null}
                         />
                       </Form.Item>
@@ -344,7 +342,7 @@ const Account = () => {
                         </Select>
                       </Form.Item>
                       <Form.Item
-                        onChange={(e) => setPhone(e.target.value)}
+                        onChange={e => setPhone(e.target.value)}
                         type="number"
                         name="phone"
                         label={t('Phone Number')}
@@ -352,7 +350,7 @@ const Account = () => {
                         <Input
                           addonBefore={prefixSelector}
                           style={{
-                            width: '100%'
+                            width: '100%',
                           }}
                         />
                       </Form.Item>
@@ -362,7 +360,7 @@ const Account = () => {
                       <Form.Item
                         style={{
                           display: 'flex',
-                          justifyContent: 'flex-end'
+                          justifyContent: 'flex-end',
                         }}
                       >
                         <Button
@@ -373,7 +371,7 @@ const Account = () => {
                             fontSize: 16,
                             lineHeight: 1.8,
                             borderRadius: 5,
-                            boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                            boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                           }}
                           type="primary"
                           htmlType="submit"
@@ -410,31 +408,31 @@ const Account = () => {
                       autoComplete="off"
                     >
                       <Form.Item
-                        onChange={(e) => setOldPassword(e.target.value)}
+                        onChange={e => setOldPassword(e.target.value)}
                         label={t('current password')}
                         name="old-password"
                         rules={[
                           {
                             required: true,
-                            message: t('Please enter your password!')
-                          }
+                            message: t('Please enter your password!'),
+                          },
                         ]}
                       >
                         <Input.Password />
                       </Form.Item>
                       <Form.Item
                         label={t('new password')}
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={e => setPassword(e.target.value)}
                         name="password"
                         rules={[
                           {
                             required: true,
-                            message: t(t('Please enter your password!'))
+                            message: t(t('Please enter your password!')),
                           },
                           {
                             min: 6,
-                            message: t('Password must be minimum 6 characters.')
-                          }
+                            message: t('Password must be minimum 6 characters.'),
+                          },
                         ]}
                       >
                         <Input.Password />
@@ -447,7 +445,7 @@ const Account = () => {
                         rules={[
                           {
                             required: true,
-                            message: t('Please confirm your password!')
+                            message: t('Please confirm your password!'),
                           },
                           ({ getFieldValue }) => ({
                             validator(_, value) {
@@ -457,8 +455,8 @@ const Account = () => {
                               return Promise.reject(
                                 new Error(t('The two passwords that you entered do not match!'))
                               );
-                            }
-                          })
+                            },
+                          }),
                         ]}
                       >
                         <Input.Password />
@@ -466,7 +464,7 @@ const Account = () => {
                       <Form.Item
                         style={{
                           display: 'flex',
-                          justifyContent: 'flex-end'
+                          justifyContent: 'flex-end',
                         }}
                       >
                         <Button
@@ -476,7 +474,7 @@ const Account = () => {
                             lineHeight: 1.8,
 
                             borderRadius: 5,
-                            boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px'
+                            boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
                           }}
                           loading={passwordLoading}
                           type="primary"
@@ -495,7 +493,7 @@ const Account = () => {
                 <TabPane tab={t('History')} key="3">
                   <Table
                     scroll={{
-                      x: 800
+                      x: 800,
                     }}
                     loading={loadingOrder}
                     columns={columns}

@@ -1,13 +1,14 @@
 import { LockOutlined, SearchOutlined } from '@ant-design/icons';
-import moment from 'moment';
-import { Button, Form, Input, DatePicker, Select, Paragraph, Radio, sectionider } from 'antd';
+import { Button, DatePicker, Form, Input, Paragraph, Radio, Select, sectionider } from 'antd';
 import axios from 'axios';
+import { SearchData } from 'context/SearchContext';
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
-import { useTranslation } from 'react-i18next';
 import './style.css';
-import { SearchData } from 'context/SearchContext';
+
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 
@@ -33,7 +34,7 @@ const FormBookingHomepage = () => {
     return dates;
   };
 
-  const fetchHotelData = async (value) => {
+  const fetchHotelData = async value => {
     const city = value?.city || search?.city;
 
     const alldates =
@@ -44,7 +45,7 @@ const FormBookingHomepage = () => {
       const res = await axios.post(`http://localhost:3001/api/hotel/find-hotel-able`, {
         city: city,
         dates: alldates,
-        services: type
+        services: type,
       });
       return res.data;
     } catch (error) {
@@ -52,7 +53,7 @@ const FormBookingHomepage = () => {
     }
   };
 
-  const onFinish = async (values) => {
+  const onFinish = async values => {
     const foundData = await fetchHotelData(values);
     setSearchList({
       services: type,
@@ -60,12 +61,12 @@ const FormBookingHomepage = () => {
       foundData,
       foundNumber: foundData?.length,
       datesHotels: values.datesHotels || null,
-      datesGrooming: values.datesGrooming || null
+      datesGrooming: values.datesGrooming || null,
     });
 
     navigate('/search');
   };
-  const disabledDate = (current) => {
+  const disabledDate = current => {
     // Can not select days before today and today
     return current && current < moment().endOf('day');
   };
@@ -84,7 +85,7 @@ const FormBookingHomepage = () => {
           padding: 20,
           borderRadius: 15,
           marginBlock: '10px 20px',
-          flexWrap: 'wrap'
+          flexWrap: 'wrap',
         }}
       >
         <span>{t("I'm looking for service")}:</span>
@@ -92,11 +93,11 @@ const FormBookingHomepage = () => {
           style={{
             display: 'flex',
             gap: 15,
-            textTransform: 'capitalize'
+            textTransform: 'capitalize',
           }}
           defaultValue="hotel"
           size="large"
-          onChange={(e) => setType(e.target.value)}
+          onChange={e => setType(e.target.value)}
         >
           <Radio className="radio_formType" value="hotel">
             {t('hotel')}
@@ -121,8 +122,8 @@ const FormBookingHomepage = () => {
           rules={[
             {
               required: true,
-              message: t('Please enter the location')
-            }
+              message: t('Please enter the location'),
+            },
           ]}
         >
           <Select
@@ -148,7 +149,7 @@ const FormBookingHomepage = () => {
               ranges={{
                 [t('Today')]: [moment(), moment()],
                 [t('One Week')]: [currentDate, futureWeek],
-                [t('One Month')]: [currentDate, futureMonth]
+                [t('One Month')]: [currentDate, futureMonth],
               }}
               placeholder={[t('Drop off'), t('Pick up')]}
               placement="bottomRight"
@@ -168,7 +169,7 @@ const FormBookingHomepage = () => {
               disabledDate={disabledDate}
               style={{ width: '100%' }}
               showTime={{
-                format: 'HH:mm A'
+                format: 'HH:mm A',
               }}
               minuteStep={15}
               use12Hours
