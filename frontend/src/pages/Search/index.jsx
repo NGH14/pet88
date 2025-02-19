@@ -17,7 +17,7 @@ import {
 } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
-import SubNavBar from 'components/views/SubHeader';
+import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';

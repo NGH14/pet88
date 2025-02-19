@@ -17,7 +17,7 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
 import AppHeader from 'components/Navbar';
-import SubNavBar from 'components/views/SubHeader';
+import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';

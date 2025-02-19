@@ -11,7 +11,7 @@ import TableHotel from 'components/TableHotel';
 import TableOrder from 'components/TableOrder';
 import TableRooms from 'components/TableRooms';
 import TableUser from 'components/TableUser/index';
-import SubNavBar from 'components/views/SubHeader';
+import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 import { UserAuth } from 'context/AuthContext';
 import { collection, getDocs } from 'firebase/firestore';
 import React from 'react';

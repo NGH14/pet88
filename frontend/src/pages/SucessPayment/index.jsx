@@ -17,7 +17,7 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 import logo from 'assets/images/BlackLogo.png';
 import axios from 'axios';
-import SubNavBar from 'components/views/SubHeader';
+import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsCheck2Circle } from 'react-icons/bs';

@@ -11,6 +11,10 @@ export const StyledSubHeader = styled(Header)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+ @media only screen and (max-width: 768px) {
+  display: none;
+ }
 `;
 
 // CusNavBar.defaultProps = {

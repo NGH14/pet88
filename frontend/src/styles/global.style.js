@@ -33,7 +33,4 @@ export const GlobalStyle = styled.createGlobalStyle`
     display: none;
   }
 
-  .mobileHidden {
-    display: inline-block;
-  }
 `;
