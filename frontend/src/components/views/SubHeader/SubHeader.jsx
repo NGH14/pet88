@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Image, Menu, Select } from "antd";
+import { Avatar, Image, Menu, Select } from 'antd';
 import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import { UserAuth } from 'context/AuthContext';
 import React, { useState } from 'react';
