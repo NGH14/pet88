@@ -110,6 +110,7 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-storybook": "^0.11.3",
     "prettier": "3.5.1",
+    "prettier-plugin-hermes-parser": "^0.26.0",
     "prop-types": "^15.8.1",
     "sonarqube-scanner": "^2.8.1",
     "storybook": "^8.5.6",

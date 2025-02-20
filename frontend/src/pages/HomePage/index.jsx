@@ -12,6 +12,7 @@ import FIRST from 'assets/images/dog-grooming-photography-2.jpg';
 import HeroImage from 'components/HeroImageHomepage/index';
 import { motion } from 'framer-motion';
 import i18n from 'i18next';
+import MainLayout from 'layouts/MainLayout';
 import moment from 'moment';
 import * as React from 'react';
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
@@ -21,11 +22,10 @@ import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
 import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/css';
-import 'swiper/css/autoplay';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.min.css';
 
-import MainLayout from '../../layouts/MainLayout';
 import './style.css';
 
 SwiperCore.use([Autoplay]);

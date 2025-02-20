@@ -1,6 +1,8 @@
 {
   " ": " ",
-  "/ hour": "/ hour",
+  "/ hour": "/",
+  "418 Truong Sa, Phu Nhuan, Ho Chi Minh City": "418 Trường Sa, Phú Nhuận, Thành phố Hồ Chí Minh",
+  "969 Xuan Thuy, Thao Dien, Ho Chi Minh City": "969 Xuân Thủy, Thảo Điền, Thành phố Hồ Chí Minh",
   "A Verification email has been sent to this email address": "Email xác minh đã được gửi đến địa chỉ email này",
   "A Verification email has been sent to your email address": "Một email xác minh đã được gửi đến địa chỉ email của bạn",
   "about": "về chúng tôi",
@@ -17,7 +19,6 @@
   "After you have deleted an account, it will be permanently deleted": {
     " Accounts cannot be recovered": "After you have deleted an account, it will be permanently deleted. Accounts cannot be recovered"
   },
-  "All rights reserved": "Tất cả các quyền được bảo lưu",
   "Already a Pet88 member": "Đã là thành viên Pet88",
   "Appointment": "Lich",
   "Are you sure to delete?": "Bạn có chắc muốn xóa không?",
@@ -46,6 +47,9 @@
   "confirm password": "xác nhận mật khẩu",
   "Confirm Password": "Xác nhận mật khẩu",
   "Confirmation Booking Successfully": "Confirmation Booking Successfully",
+  "CONTACT_DETAIL": {
+    "workingTime": "CONTACT_DETAIL.workingTime"
+  },
   "Copy UID": "Copy UID",
   "Create Deparment": "Tạo mới",
   "Create Department": "Create Department",
@@ -96,6 +100,7 @@
   "Forgot Your Password": "Quên mật khẩu",
   "found": "tìm thấy",
   "Franchise": "Franchise",
+  "from": "from",
   "Fullname": "Họ và tên của bạn",
   "Fully update your information to work better on Pet88": "Cập nhật đầy đủ thông tin của bạn để hoạt động tốt hơn trên Pet88",
   "Gender": "Giới tính",
@@ -111,8 +116,6 @@
   "Healthy work relationships necessitate clear, consistent, honest, and open communication, which is the foundation of trust, without which no relationship can thrive": "Mối quan hệ công việc lành mạnh đòi hỏi sự giao tiếp rõ ràng, nhất quán, trung thực và cởi mở, đó là nền tảng của sự tin tưởng, nếu không có mối quan hệ này thì không có mối quan hệ nào có thể phát triển",
   "History": "Lịch sử",
   "Ho Chi Minh": "Hồ Chí Minh",
-  "Ho Chi Minh City": "Thành phố HCM",
-  "Holidays": "Các Dịp Lễ",
   "home": "trang chủ",
   "hotel": "khách sạn thú cưng",
   "Hotel": "khách sạn thú cưng",
@@ -146,7 +149,6 @@
   "Manager": "Quản lí",
   "Max Pet": "Max Pet",
   "Medium": "Trung bình",
-  "Monday": "Thứ hai",
   "my profile": "Hồ sơ của tôi",
   "Name": "Tên",
   "Name, ID, Email, Tag, ": "Name, ID, Email, Tag, ",
@@ -211,7 +213,6 @@
   "room": "room",
   "Room": "Phòng",
   "Room Number": "Room Number",
-  "Saturday": "Thứ bảy",
   "search": "tìm kiếm",
   "Search": "Tìm",
   "selected": "đã chọn",
@@ -233,7 +234,6 @@
   "Status": "Status",
   "Stay motivated and build better relationships": "Luôn có động lực và xây dựng các mối quan hệ tốt hơn",
   "Success": "Success",
-  "Sunday": "Chủ nhật",
   "Tags": "Nhãn",
   "Terms": "Điều khoản",
   "Terms of use": "Điều khoản sử dụng",
@@ -282,7 +282,8 @@
   "Welcome": "Xin Chào",
   "Welcome Back": "Đăng nhập vào Pet88",
   "Who may use the Pet88": "Ai có thể sử dụng Pet88",
-  "Working time": "thời gian làm việc",
+  "with love": "with love",
+  "working time": "working time",
   "You take care of pets": {
     " We take care of you": "You take care of pets. We take care of you"
   },

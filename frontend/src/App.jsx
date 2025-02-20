@@ -1,17 +1,17 @@
-import { ConfigProvider } from "antd";
-import { AuthContextProvider } from "context/AuthContext";
-import { SearchContextProvider } from "context/SearchContext";
-import i18n from "i18next";
-import * as React from "react";
-import { I18nextProvider } from "react-i18next";
-import { BrowserRouter, Routes } from "react-router";
-import { ToastContainer } from "react-toastify";
-import ListRoutes from "routes/ListRoutes";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "styles/global.style.js";
-import "styles/import.css";
+import { ConfigProvider } from 'antd';
+import { AuthContextProvider } from 'context/AuthContext';
+import { SearchContextProvider } from 'context/SearchContext';
+import i18n from 'i18next';
+import * as React from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { BrowserRouter, Routes } from 'react-router';
+import { ToastContainer } from 'react-toastify';
+import ListRoutes from 'routes/ListRoutes';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from 'styles/global.style.js';
+import 'styles/import.css';
 
-import { routes } from "./routes/";
+import { routes } from './routes/';
 
 function App() {
   return (

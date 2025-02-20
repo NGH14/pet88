@@ -32,5 +32,4 @@ export const GlobalStyle = styled.createGlobalStyle`
   .mobileVisible {
     display: none;
   }
-
 `;

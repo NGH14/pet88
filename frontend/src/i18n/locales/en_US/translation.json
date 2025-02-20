@@ -1,6 +1,8 @@
 {
   " ": " ",
   "/ hour": "/ hour",
+  "418 Truong Sa, Phu Nhuan, Ho Chi Minh City": "418 Truong Sa, Phu Nhuan, Ho Chi Minh City",
+  "969 Xuan Thuy, Thao Dien, Ho Chi Minh City": "969 Xuan Thuy, Thao Dien, Ho Chi Minh City",
   "A Verification email has been sent to this email address": "A Verification email has been sent to this email address",
   "A Verification email has been sent to your email address": "A Verification email has been sent to your email address",
   "about": "about",
@@ -17,7 +19,6 @@
   "After you have deleted an account, it will be permanently deleted": {
     " Accounts cannot be recovered": "After you have deleted an account, it will be permanently deleted. Accounts cannot be recovered"
   },
-  "All rights reserved": "All rights reserved",
   "Already a Pet88 member": "Already a Pet88 member",
   "Appointment": "Appointment",
   "Are you sure to delete?": "Are you sure to delete?",
@@ -46,6 +47,9 @@
   "confirm password": "confirm password",
   "Confirm Password": "Confirm Password",
   "Confirmation Booking Successfully": "Confirmation Booking Successfully",
+  "CONTACT_DETAIL": {
+    "workingTime": "CONTACT_DETAIL.workingTime"
+  },
   "Copy UID": "Copy UID",
   "Create Deparment": "Create Deparment",
   "Create Department": "Create Department",
@@ -96,6 +100,7 @@
   "Forgot Your Password": "Forgot Your Password",
   "found": "found",
   "Franchise": "Franchise",
+  "from": "from",
   "Fullname": "Fullname",
   "Fully update your information to work better on Pet88": "Fully update your information to work better on Pet88",
   "Gender": "Gender",
@@ -111,8 +116,6 @@
   "Healthy work relationships necessitate clear, consistent, honest, and open communication, which is the foundation of trust, without which no relationship can thrive": "Healthy work relationships necessitate clear, consistent, honest, and open communication, which is the foundation of trust, without which no relationship can thrive",
   "History": "History",
   "Ho Chi Minh": "Ho Chi Minh",
-  "Ho Chi Minh City": "Ho Chi Minh City",
-  "Holidays": "Holidays",
   "home": "home",
   "hotel": "hotel",
   "Hotel": "Hotel",
@@ -146,7 +149,6 @@
   "Manager": "Manager",
   "Max Pet": "Max Pet",
   "Medium": "Medium",
-  "Monday": "Monday",
   "my profile": "my profile",
   "Name": "Name",
   "Name, ID, Email, Tag, ": "Name, ID, Email, Tag, ",
@@ -211,7 +213,6 @@
   "room": "room",
   "Room": "Room",
   "Room Number": "Room Number",
-  "Saturday": "Saturday",
   "search": "search",
   "Search": "Search",
   "selected": "selected",
@@ -233,7 +234,6 @@
   "Status": "Status",
   "Stay motivated and build better relationships": "Stay motivated and build better relationships",
   "Success": "Success",
-  "Sunday": "Sunday",
   "Tags": "Tags",
   "Terms": "Terms",
   "Terms of use": "Terms of use",
@@ -282,7 +282,8 @@
   "Welcome": "Welcome",
   "Welcome Back": "Welcome Back",
   "Who may use the Pet88": "Who may use the Pet88",
-  "Working time": "Working time",
+  "with love": "with love",
+  "working time": "working time",
   "You take care of pets": {
     " We take care of you": "You take care of pets. We take care of you"
   },
