@@ -4,11 +4,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import './style.css';
+import { FooterContainer } from './Footer.style';
 
 export default function FooterWave() {
   const [t] = useTranslation();
   return (
-    <section className="pg-footer">
+    <FooterContainer>
       <footer
         className="footer"
         style={{
@@ -96,6 +97,6 @@ export default function FooterWave() {
           </section>
         </section>
       </footer>
-    </section>
+ </FooterContainer>
   );
 }
