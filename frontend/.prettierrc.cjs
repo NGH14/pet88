@@ -8,9 +8,9 @@ module.exports = {
   bracketSpacing: true,
   jsxBracketSameLine: false,
   arrowParens: 'avoid',
-  "importOrder": ["^components/(.*)$", "^[./]"],
-  "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true,
+  importOrder: ['^react', '^.(css|scss)$', '<THIRD_PARTY_MODULES>', '^components/(.*)$', '^[./]'],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
 
   plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-hermes-parser'],
 };
