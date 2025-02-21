@@ -98,7 +98,6 @@
     "@testing-library/user-event": "^13.5.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "babel-eslint": "^10.1.0",
-    "babel-plugin-i18next-extract": "^1.0.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "chromatic": "^6.24.1",
     "eslint": "^9.20.1",
