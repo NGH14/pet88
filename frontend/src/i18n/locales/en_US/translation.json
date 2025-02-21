@@ -1,6 +1,6 @@
 {
   " ": " ",
-  "/ hour": "/ hour",
+  "{working.day} - {working.time}": "{working.day} - {working.time}",
   "418 Truong Sa, Phu Nhuan, Ho Chi Minh City": "418 Truong Sa, Phu Nhuan, Ho Chi Minh City",
   "969 Xuan Thuy, Thao Dien, Ho Chi Minh City": "969 Xuan Thuy, Thao Dien, Ho Chi Minh City",
   "A Verification email has been sent to this email address": "A Verification email has been sent to this email address",
@@ -105,6 +105,7 @@
   "Guest": "Guest",
   "Ha Noi": "Ha Noi",
   "Has Account": "Has Account",
+  "have a support question": "have a support question",
   "Have a support question": "Have a support question",
   "History": "History",
   "Ho Chi Minh": "Ho Chi Minh",
@@ -112,6 +113,7 @@
   "hotel": "hotel",
   "Hotel": "Hotel",
   "Hotel Service": "Hotel Service",
+  "hour": "hour",
   "I'm looking for service": "I'm looking for service",
   "ID": "ID",
   "If you have not received the email within a few minutes, please check your spam folder": "If you have not received the email within a few minutes, please check your spam folder",

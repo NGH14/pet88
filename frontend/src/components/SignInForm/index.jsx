@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import { UserAuth } from '../../context/AuthContext';
 import SignInGoogle from '../SigninGoogle';

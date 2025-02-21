@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 
 import logo from 'assets/images/logo-text.png';
 import WaveSVG from 'components/Wave/WavePath.jsx';
@@ -27,23 +27,29 @@ export default function FooterWave() {
 							<p>08:00 - 12:00</p>
 						</li>
 					</ul> */}
-					{CONTACT_DETAIL.workingTime.schedule.map((time, index) => (
+					{CONTACT_DETAIL.workingTime.schedule.map((working, index) => (
 						<p key={index}>
-							{t(time.day)} - {time.time}
+							<Trans>
+									{working.day} - {working.time}
+							</Trans>
+
 						</p>
 					))}
 				</section>
 
 				<section className="footer-call-to-action">
 					<FooterTitle className="footer-menu-name"> {t('email')} </FooterTitle>
-					<p className="footer-call-to-action-description">{t('Have a support question')}?</p>
+										<p className="footer-call-to-action-link-wrapper">
+
 					<a
-						className="footer-call-to-action-button"
+						className="footer-call-to-action-link"
 						href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
 						target="_self"
 					>
 						{CONTACT_DETAIL.email.address}
 					</a>
+					</p>
+
 
 					<FooterTitle className="footer-call-to-action-title">{t('calling us')}</FooterTitle>
 					<p className="footer-call-to-action-link-wrapper">

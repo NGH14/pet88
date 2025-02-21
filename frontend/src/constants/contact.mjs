@@ -15,6 +15,6 @@ export default {
 	email: {
 		title: 'Pet88 Message',
 		description: 'Have a support question?',
-		email: 'servicepet88@gmail.com',
+		address: 'servicepet88@gmail.com',
 	},
 };

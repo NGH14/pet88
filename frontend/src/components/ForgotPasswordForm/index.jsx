@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import { MailOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 import MailBoxImg from '../../assets/svg/undraw_mailbox_re_dvds.svg';
 import { UserAuth } from '../../context/AuthContext';

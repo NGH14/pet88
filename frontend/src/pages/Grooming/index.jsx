@@ -3,31 +3,29 @@ import { useTranslation } from 'react-i18next';
 import { RiFileUserLine, RiMailSendLine, RiPhoneLine } from 'react-icons/ri';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 
-import {
-	Breadcrumb,
-	Button,
-	Card,
-	Checkbox,
-	ConfigProvider,
-	DatePicker,
-	Form,
-	Input,
-	Layout,
-	Modal,
-	Select,
-	Table,
-} from 'antd';
+
+
+import { Breadcrumb, Button, Card, Checkbox, ConfigProvider, DatePicker, Form, Input, Layout, Modal, Select, Table } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
-import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 import moment from 'moment';
 import { styled } from 'styled-components';
+
+
+
+import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
+
+
 
 import FooterWave from '../../components/Footer/Footer.jsx';
 import AppHeader from '../../components/Navbar';
 import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
 import './style.css';
+
+
+
+
 
 const { Option } = Select;
 const { Header, Content, Footer } = Layout;
@@ -146,45 +144,45 @@ export default function Department() {
 	};
 
 	const columnsWithDate = [
-		{
-			title: t('Name'),
-			dataIndex: 'title',
-			sorter: (a, b) => a.title.length - b.title.length,
-		},
-		{
-			title: t('Type'),
-			dataIndex: 'type',
-		},
-		{
-			title: `${t('Service Price')}`,
-			dataIndex: 'price',
-			render: price => (
-				<span>
-					{` ${new Intl.NumberFormat('vi_VN', {
-						style: 'currency',
-						currency: 'VND',
-					}).format(price)} ${t('/ hour')}`}
-				</span>
-			),
-			sorter: (a, b) => a.price - b.price,
-		},
-		{
-			title: t('Room'),
-			dataIndex: 'roomNumbers',
-			render: (roomNumbers, record) =>
-				roomNumbers.map(roomNumber => (
-					<section className="room">
-						<Checkbox
-							value={`${roomNumber._id}_${record.price * search?.days}_${roomNumber.number}`}
-							onChange={handleSelect}
-						>
-							{' '}
-							{roomNumber.number}
-						</Checkbox>
-					</section>
-				)),
-		},
-	];
+    {
+      title: t('Name'),
+      dataIndex: 'title',
+      sorter: (a, b) => a.title.length - b.title.length,
+    },
+    {
+      title: t('Type'),
+      dataIndex: 'type',
+    },
+    {
+      title: `${t('Service Price')}`,
+      dataIndex: 'price',
+      render: price => (
+        <span>
+          {` ${new Intl.NumberFormat('vi_VN', {
+            style: 'currency',
+            currency: 'VND',
+          }).format(price)} / ${t('hour')}`}
+        </span>
+      ),
+      sorter: (a, b) => a.price - b.price,
+    },
+    {
+      title: t('Room'),
+      dataIndex: 'roomNumbers',
+      render: (roomNumbers, record) =>
+        roomNumbers.map(roomNumber => (
+          <section className="room">
+            <Checkbox
+              value={`${roomNumber._id}_${record.price * search?.days}_${roomNumber.number}`}
+              onChange={handleSelect}
+            >
+              {' '}
+              {roomNumber.number}
+            </Checkbox>
+          </section>
+        )),
+    },
+  ];
 
 	return (
 		<section>
