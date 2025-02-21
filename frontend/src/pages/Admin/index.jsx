@@ -3,15 +3,6 @@ import { Button, ConfigProvider, Space, Table, Tag } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import logoWhite from 'assets/images/logo-text.png';
-import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
-import ChangeLanguage from 'components/ChangeLanguage/index';
-import { Spinner } from 'components/Spinner';
-import TableGrooming from 'components/TableGrooming/index';
-import TableHotel from 'components/TableHotel';
-import TableOrder from 'components/TableOrder';
-import TableRooms from 'components/TableRooms';
-import TableUser from 'components/TableUser/index';
-import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 import { UserAuth } from 'context/AuthContext';
 import { collection, getDocs } from 'firebase/firestore';
 import React from 'react';
@@ -24,6 +15,16 @@ import { RiCalendarEventLine, RiCoupon3Line } from 'react-icons/ri';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import { storage } from 'utils/firebase';
+
+import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
+import ChangeLanguage from 'components/ChangeLanguage/index';
+import { Spinner } from 'components/Spinner';
+import TableGrooming from 'components/TableGrooming/index';
+import TableHotel from 'components/TableHotel';
+import TableOrder from 'components/TableOrder';
+import TableRooms from 'components/TableRooms';
+import TableUser from 'components/TableUser/index';
+import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
 import './style.css';
 

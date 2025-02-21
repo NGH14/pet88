@@ -25,7 +25,6 @@ import {
   Tooltip,
 } from 'antd';
 import axios from 'axios';
-import { Spinner } from 'components/Spinner';
 import { Timestamp, collection, getDocs } from 'firebase/firestore';
 import moment from 'moment';
 import React, { useRef, useState } from 'react';
@@ -37,6 +36,8 @@ import { GrFormClose } from 'react-icons/gr';
 import { MdContentCopy } from 'react-icons/md';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+
+import { Spinner } from 'components/Spinner';
 
 import { UserAuth } from '../../context/AuthContext';
 import { storage } from '../../utils/firebase';

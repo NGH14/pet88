@@ -1,11 +1,12 @@
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Image, Menu, Select } from 'antd';
-import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import { UserAuth } from 'context/AuthContext';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
+
+import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 
 import { StyledSubHeader } from './SubHeader.style.js';
 

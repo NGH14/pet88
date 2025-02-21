@@ -14,15 +14,16 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 import Meta from 'antd/lib/card/Meta';
 import axios from 'axios';
-import FooterWave from 'components/Footer';
-import AppHeader from 'components/Navbar';
-import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 import moment from 'moment';
 import 'moment/locale/en-gb';
 import 'moment/locale/vi';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
+
+import FooterWave from 'components/Footer';
+import AppHeader from 'components/Navbar';
+import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
 import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';

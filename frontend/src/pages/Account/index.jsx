@@ -15,13 +15,14 @@ import {
 import { ConfigProvider, Layout } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import TabPane from 'antd/lib/tabs/TabPane';
-import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 import moment from 'moment';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+
+import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
 import HeroImage from '../../components/HeroImageHomepage/index';
 import { UserAuth } from '../../context/AuthContext';
