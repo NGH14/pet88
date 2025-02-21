@@ -1,23 +1,3 @@
-import {
-  Button,
-  Calendar,
-  Cascader,
-  Checkbox,
-  ConfigProvider,
-  Dropdown,
-  Form,
-  Input,
-  Menu,
-  Modal,
-  Select,
-  Typography,
-} from 'antd';
-// import 'moment/locale/en';
-
-import viVN from 'antd/locale/vi_VN';
-import axios from 'axios';
-import moment from 'moment';
-import 'moment/locale/vi';
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Calendar as RB, momentLocalizer } from 'react-big-calendar';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
@@ -41,6 +21,27 @@ import {
   RiUserSettingsLine,
 } from 'react-icons/ri';
 import { toast } from 'react-toastify';
+
+import {
+  Button,
+  Calendar,
+  Cascader,
+  Checkbox,
+  ConfigProvider,
+  Dropdown,
+  Form,
+  Input,
+  Menu,
+  Modal,
+  Select,
+  Typography,
+} from 'antd';
+// import 'moment/locale/en';
+
+import viVN from 'antd/locale/vi_VN';
+import axios from 'axios';
+import moment from 'moment';
+import 'moment/locale/vi';
 
 import { UserAuth } from '../../context/AuthContext';
 import UUID from '../../hooks/useUUID';

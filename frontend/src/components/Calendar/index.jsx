@@ -1,5 +1,3 @@
-import moment from 'moment';
-import PropTypes from 'prop-types';
 import React, { Fragment, useMemo } from 'react';
 import { useState } from 'react';
 import { useCallback } from 'react';
@@ -7,6 +5,9 @@ import { Calendar, DateLocalizer, Views, momentLocalizer } from 'react-big-calen
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+import moment from 'moment';
+import PropTypes from 'prop-types';
 
 import events from '../../mocks/events';
 

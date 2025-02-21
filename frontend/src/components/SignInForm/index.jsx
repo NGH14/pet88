@@ -1,11 +1,12 @@
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { motion } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Input } from 'antd';
+import { motion } from 'framer-motion';
 
 import { UserAuth } from '../../context/AuthContext';
 import SignInGoogle from '../SigninGoogle';

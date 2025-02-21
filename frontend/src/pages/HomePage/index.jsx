@@ -1,3 +1,10 @@
+import * as React from 'react';
+import ReactBeforeSliderComponent from 'react-before-after-slider-component';
+import 'react-before-after-slider-component/dist/build.css';
+import CountUp from 'react-countup';
+import { useTranslation } from 'react-i18next';
+import ScrollTrigger from 'react-scroll-trigger';
+
 import { HeartTwoTone } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
@@ -13,12 +20,6 @@ import { motion } from 'framer-motion';
 import i18n from 'i18next';
 import MainLayout from 'layouts/MainLayout';
 import moment from 'moment';
-import * as React from 'react';
-import ReactBeforeSliderComponent from 'react-before-after-slider-component';
-import 'react-before-after-slider-component/dist/build.css';
-import CountUp from 'react-countup';
-import { useTranslation } from 'react-i18next';
-import ScrollTrigger from 'react-scroll-trigger';
 import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';

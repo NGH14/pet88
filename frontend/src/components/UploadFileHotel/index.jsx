@@ -1,8 +1,9 @@
+import React from 'react';
+
 import { InboxOutlined } from '@ant-design/icons';
 import { Button, Form, Modal, Upload, message } from 'antd';
 import 'antd/dist/antd.css';
 import axios from 'axios';
-import React from 'react';
 
 import { UserAuth } from '../../context/AuthContext';
 import './style.css';

@@ -1,8 +1,9 @@
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BsCheck2Circle } from 'react-icons/bs';
 import { useLocation } from 'react-router';
+
+import axios from 'axios';
 
 import { Spinner } from 'components/Spinner';
 

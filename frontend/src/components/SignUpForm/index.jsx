@@ -1,11 +1,12 @@
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { MailOutlined } from '@ant-design/icons';
-import { Button, Form, Input } from 'antd';
-import { motion } from 'framer-motion';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { MailOutlined } from '@ant-design/icons';
+import { Button, Form, Input } from 'antd';
+import { motion } from 'framer-motion';
 
 import { UserAuth } from '../../context/AuthContext';
 import './style.css';

@@ -1,10 +1,11 @@
-import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Image, Menu, Select } from 'antd';
-import { UserAuth } from 'context/AuthContext';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
+
+import { UserOutlined } from '@ant-design/icons';
+import { Avatar, Image, Menu, Select } from 'antd';
+import { UserAuth } from 'context/AuthContext';
 
 import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 

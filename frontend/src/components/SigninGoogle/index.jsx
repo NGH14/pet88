@@ -1,5 +1,3 @@
-import { LoadingOutlined } from '@ant-design/icons';
-import { Spin } from 'antd';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -7,6 +5,9 @@ import { GoogleButton } from 'react-google-button';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
 
 import { UserAuth } from '../../context/AuthContext';
 

@@ -1,15 +1,17 @@
-import { CloseOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
-import { Button, Drawer } from 'antd';
-import LogoWhite from 'assets/images/WhiteLogo.png';
-import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
-import { Logo } from 'components/Logo/Logo.jsx';
-import { StyledNavLink } from 'components/NavLink/index.jsx';
-import { UserAuth } from 'context/AuthContext';
-import useScrollPosition from 'hooks/useScrollPosition';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
+
+import { CloseOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
+import { Button, Drawer } from 'antd';
+import LogoWhite from 'assets/images/WhiteLogo.png';
+import { UserAuth } from 'context/AuthContext';
+import useScrollPosition from 'hooks/useScrollPosition';
+
+import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
+import { Logo } from 'components/Logo/Logo.jsx';
+import { StyledNavLink } from 'components/NavLink/index.jsx';
 
 import AuthButton from './../GoogleAuthButton/';
 import { NavBar } from './Navbar.style.js';

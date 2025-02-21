@@ -1,10 +1,11 @@
-import { LockOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { AnimatePresence, motion } from 'framer-motion';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { NavLink, redirect, useLocation, useNavigate, useResolvedPath } from 'react-router';
 import { toast } from 'react-toastify';
+
+import { LockOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Input } from 'antd';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import completedImg from '../../assets/svg/undraw_complete_design_re_h75h.svg';
 import { UserAuth } from '../../context/AuthContext';

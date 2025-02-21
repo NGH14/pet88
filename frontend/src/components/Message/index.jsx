@@ -1,5 +1,6 @@
-import { Button as AntdButton, message as antdMessage } from 'antd';
 import React from 'react';
+
+import { Button as AntdButton, message as antdMessage } from 'antd';
 
 import './style.css';
 

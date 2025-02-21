@@ -1,3 +1,8 @@
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { RiFileUserLine, RiMailSendLine, RiPhoneLine } from 'react-icons/ri';
+import { NavLink, useLocation, useNavigate } from 'react-router';
+
 import {
   Breadcrumb,
   Button,
@@ -15,10 +20,6 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
 import moment from 'moment';
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { RiFileUserLine, RiMailSendLine, RiPhoneLine } from 'react-icons/ri';
-import { NavLink, useLocation, useNavigate } from 'react-router';
 import { styled } from 'styled-components';
 
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';

@@ -1,6 +1,7 @@
-import axios from 'axios';
 import React from 'react';
 import { useLocation } from 'react-router';
+
+import axios from 'axios';
 
 export default function ListHotel() {
   const [loadingHotel, setLoadingHotel] = React.useState(true);

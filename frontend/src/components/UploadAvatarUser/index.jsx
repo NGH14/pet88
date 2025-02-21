@@ -1,6 +1,7 @@
+import { useState } from 'react';
+
 import { Avatar } from 'antd';
 import axios from 'axios';
-import { useState } from 'react';
 
 const UploadAvatarUser = ({ inputs, title }) => {
   const [file, setFile] = useState('');

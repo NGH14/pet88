@@ -1,3 +1,5 @@
+import React, { createContext, useContext } from 'react';
+
 import axios from 'axios';
 import {
   EmailAuthProvider,
@@ -25,7 +27,6 @@ import {
   setDoc,
   updateDoc,
 } from 'firebase/firestore';
-import React, { createContext, useContext } from 'react';
 
 import { auth, storage } from '../utils/firebase';
 

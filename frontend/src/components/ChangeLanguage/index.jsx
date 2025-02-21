@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
+
 import { GlobalOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
-import { useTranslation } from 'react-i18next';
 
 const { Option } = Select;
 const ChangeLanguage = () => {

@@ -1,11 +1,12 @@
-import { MailOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { motion } from 'framer-motion';
 import React from 'react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+
+import { MailOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Input } from 'antd';
+import { motion } from 'framer-motion';
 
 import MailBoxImg from '../../assets/svg/undraw_mailbox_re_dvds.svg';
 import { UserAuth } from '../../context/AuthContext';

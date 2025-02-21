@@ -1,7 +1,8 @@
+import { initReactI18next } from 'react-i18next';
+
 import { LOCALE_KEY } from 'constants/i18n.mjs';
 import i18n from 'i18next';
 import detector from 'i18next-browser-languagedetector';
-import { initReactI18next } from 'react-i18next';
 
 import i18nConfig from './config.mjs';
 
