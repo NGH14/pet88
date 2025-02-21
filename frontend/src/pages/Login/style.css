@@ -1,10 +1,10 @@
 .loginpage-wrapper {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: space-between;
-  overflow-y: hidden;
-  position: relative;
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: space-between;
+	overflow-y: hidden;
+	position: relative;
 }
 
 .loginpage-term {

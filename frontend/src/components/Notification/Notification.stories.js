@@ -1,68 +1,68 @@
 import { Notification } from './index.jsx';
 
 export default {
-  title: 'COMPONENTS/Notification',
-  component: Notification,
-  parameters: {
-    layout: 'centered',
-  },
-  tags: ['autodocs'],
+	title: 'COMPONENTS/Notification',
+	component: Notification,
+	parameters: {
+		layout: 'centered',
+	},
+	tags: ['autodocs'],
 
-  argTypes: { onClick: { action: 'closed' } },
+	argTypes: { onClick: { action: 'closed' } },
 };
 
 const Template = args => <Notification {...args} />;
 const configDefault = {
-  message: 'This is message',
-  autoCloseAfter: 5000,
-  newestOnTop: false,
-  progressHide: false,
-  types: 'default',
-  theme: 'colored',
+	message: 'This is message',
+	autoCloseAfter: 5000,
+	newestOnTop: false,
+	progressHide: false,
+	types: 'default',
+	theme: 'colored',
 };
 
 export const defaultToast = Template.bind({});
 defaultToast.args = {
-  message: 'This is message',
-  autoCloseAfter: 5000,
-  newestOnTop: false,
-  progressHide: false,
-  types: 'default',
-  theme: 'colored',
+	message: 'This is message',
+	autoCloseAfter: 5000,
+	newestOnTop: false,
+	progressHide: false,
+	types: 'default',
+	theme: 'colored',
 };
 
 export const warningToast = Template.bind({});
 warningToast.args = {
-  ...configDefault,
-  types: 'warning',
+	...configDefault,
+	types: 'warning',
 };
 export const informationToast = Template.bind({});
 informationToast.args = {
-  ...configDefault,
+	...configDefault,
 
-  types: 'info',
+	types: 'info',
 };
 export const errorToast = Template.bind({});
 errorToast.args = {
-  ...configDefault,
+	...configDefault,
 
-  types: 'error',
+	types: 'error',
 };
 export const successToast = Template.bind({});
 successToast.args = {
-  ...configDefault,
+	...configDefault,
 
-  types: 'success',
+	types: 'success',
 };
 export const darkMode = Template.bind({});
 darkMode.args = {
-  ...configDefault,
+	...configDefault,
 
-  theme: 'dark',
+	theme: 'dark',
 };
 export const coloredMode = Template.bind({});
 coloredMode.args = {
-  ...configDefault,
+	...configDefault,
 
-  theme: 'colored',
+	theme: 'colored',
 };

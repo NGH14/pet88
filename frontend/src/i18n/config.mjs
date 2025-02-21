@@ -3,26 +3,26 @@ import { ENGLISH_LOCALE_CODE, LOCALE_KEY, VIETNAM_LOCALE_CODE } from 'constants/
 import { ENGLISH, VIETNAMESE } from './locales/translations.js';
 
 const RESOURCES = {
-  [ENGLISH_LOCALE_CODE]: {
-    translation: ENGLISH,
-  },
-  [VIETNAM_LOCALE_CODE]: {
-    translation: VIETNAMESE,
-  },
+	[ENGLISH_LOCALE_CODE]: {
+		translation: ENGLISH,
+	},
+	[VIETNAM_LOCALE_CODE]: {
+		translation: VIETNAMESE,
+	},
 };
 
 const i18nConfig = {
-  resources: RESOURCES,
-  fallbackLng: ENGLISH_LOCALE_CODE,
-  interpolation: {
-    escapeValue: false,
-  },
-  keySeparator: true, // this was the line that I've had to remove to make it work
-  keySeparator: '::', // if you want to re-enable it (not "true", but actual separator value)
-  detection: {
-    order: ['localStorage'],
-    lookupLocalStorage: LOCALE_KEY,
-  },
+	resources: RESOURCES,
+	fallbackLng: ENGLISH_LOCALE_CODE,
+	interpolation: {
+		escapeValue: false,
+	},
+	keySeparator: true, // this was the line that I've had to remove to make it work
+	keySeparator: '::', // if you want to re-enable it (not "true", but actual separator value)
+	detection: {
+		order: ['localStorage'],
+		lookupLocalStorage: LOCALE_KEY,
+	},
 };
 
 export default i18nConfig;

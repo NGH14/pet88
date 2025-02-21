@@ -1,49 +1,49 @@
 import { ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE } from '../constants/i18n.mjs';
 
 export default {
-  createOldCatalogs: false,
-  // Save the \_old files
+	createOldCatalogs: false,
+	// Save the \_old files
 
-  indentation: 2,
-  // Indentation of the catalog files
+	indentation: 2,
+	// Indentation of the catalog files
 
-  keepRemoved: false,
-  // Keep keys from the catalog that are no longer in code
+	keepRemoved: false,
+	// Keep keys from the catalog that are no longer in code
 
-  // see below for more details
-  lexers: {
-    js: ['JsxLexer'], // if you're writing jsx inside .js files, change this to JsxLexer
-    ts: ['JsxLexer'],
-    jsx: ['JsxLexer'],
-    tsx: ['JsxLexer'],
+	// see below for more details
+	lexers: {
+		js: ['JsxLexer'], // if you're writing jsx inside .js files, change this to JsxLexer
+		ts: ['JsxLexer'],
+		jsx: ['JsxLexer'],
+		tsx: ['JsxLexer'],
 
-    default: ['JsxLexer'],
-  },
+		default: ['JsxLexer'],
+	},
 
-  // lineEnding: 'auto',
-  // Control the line ending. See options at https://github.com/ryanve/eol
+	// lineEnding: 'auto',
+	// Control the line ending. See options at https://github.com/ryanve/eol
 
-  locales: [ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE],
-  // An array of the locales in your applications
+	locales: [ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE],
+	// An array of the locales in your applications
 
-  output: 'src/i18n/locales/$LOCALE/$NAMESPACE.json',
-  // Supports $LOCALE and $NAMESPACE injection
-  // Supports JSON (.json) and YAML (.yml) file formats
-  // Where to write the locale files relative to process.cwd()
+	output: 'src/i18n/locales/$LOCALE/$NAMESPACE.json',
+	// Supports $LOCALE and $NAMESPACE injection
+	// Supports JSON (.json) and YAML (.yml) file formats
+	// Where to write the locale files relative to process.cwd()
 
-  input: ['../**/*.{js,jsx,ts,tsx}'],
-  // An array of globs that describe where to look for source files
-  // relative to the location of the configuration file
+	input: ['../**/*.{js,jsx,ts,tsx}'],
+	// An array of globs that describe where to look for source files
+	// relative to the location of the configuration file
 
-  sort: true,
-  // Whether or not to sort the catalog
+	sort: true,
+	// Whether or not to sort the catalog
 
-  // useKeysAsDefaultValue: false,
-  // Whether to use the keys as the default value; ex. "Hello": "Hello", "World": "World"
-  // The option `defaultValue` will not work if this is set to true
-  verbose: false,
-  // defaultValue: true,
-  // Display info about the parsing including some stats
+	// useKeysAsDefaultValue: false,
+	// Whether to use the keys as the default value; ex. "Hello": "Hello", "World": "World"
+	// The option `defaultValue` will not work if this is set to true
+	verbose: false,
+	// defaultValue: true,
+	// Display info about the parsing including some stats
 
-  defaultValue: (_locale, _namespace, key) => key.match(/^(.*(?=::\w*)|.*(?!::\w*))/g)?.[0],
+	defaultValue: (_locale, _namespace, key) => key.match(/^(.*(?=::\w*)|.*(?!::\w*))/g)?.[0],
 };
