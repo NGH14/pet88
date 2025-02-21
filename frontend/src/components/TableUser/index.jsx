@@ -35,10 +35,9 @@ import {
 	Tooltip,
 } from 'antd';
 import axios from 'axios';
+import { Spinner } from 'components/Spinner';
 import { Timestamp, collection, getDocs } from 'firebase/firestore';
 import moment from 'moment';
-
-import { Spinner } from 'components/Spinner';
 
 import { UserAuth } from '../../context/AuthContext';
 import { storage } from '../../utils/firebase';

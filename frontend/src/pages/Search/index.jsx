@@ -21,9 +21,8 @@ import {
 } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
-import moment from 'moment';
-
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
+import moment from 'moment';
 
 import departImg from '../../assets/images/e10adb13acb1f3da8724a9149a58bd00.jpg';
 import FooterWave from '../../components/Footer/Footer.jsx';

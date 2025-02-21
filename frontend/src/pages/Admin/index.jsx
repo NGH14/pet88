@@ -13,10 +13,6 @@ import { Button, ConfigProvider, Space, Table, Tag } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import logoWhite from 'assets/images/logo-text.png';
-import { UserAuth } from 'context/AuthContext';
-import { collection, getDocs } from 'firebase/firestore';
-import { storage } from 'utils/firebase';
-
 import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
 import ChangeLanguage from 'components/ChangeLanguage/index';
 import { Spinner } from 'components/Spinner';
@@ -26,6 +22,9 @@ import TableOrder from 'components/TableOrder';
 import TableRooms from 'components/TableRooms';
 import TableUser from 'components/TableUser/index';
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
+import { UserAuth } from 'context/AuthContext';
+import { collection, getDocs } from 'firebase/firestore';
+import { storage } from 'utils/firebase';
 
 import './style.css';
 

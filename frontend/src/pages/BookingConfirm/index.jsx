@@ -4,7 +4,6 @@ import { BsCheck2Circle } from 'react-icons/bs';
 import { useLocation } from 'react-router';
 
 import axios from 'axios';
-
 import { Spinner } from 'components/Spinner';
 
 import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';

@@ -2,11 +2,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import logo from 'assets/images/logo-text.png';
+import WaveSVG from 'components/Wave/WavePath.jsx';
 import CONTACT_DETAIL from 'constants/contact.mjs';
 
 import { FooterContainer, FooterContent, FooterTitle } from './Footer.style.mjs';
-
-import WaveSVG from 'components/Wave/WavePath.jsx';
 
 export default function FooterWave() {
 	const [t] = useTranslation();
@@ -20,14 +19,13 @@ export default function FooterWave() {
 					<ul id="menu-get-started" className="footer-menu-list">
 						<li className="menu-item menu-item-type-post_type menu-item-object-product">
 							<p>
-                    {t('Monday')} - {t('Saturday')}
-                  </p>
-                  <p>08:00 - 14:00</p>
-                  <p>
-                    {t('Sunday')} & {t('Holidays')}
-                  </p>
-                  <p>08:00 - 12:00</p>
-
+								{t('Monday')} - {t('Saturday')}
+							</p>
+							<p>08:00 - 14:00</p>
+							<p>
+								{t('Sunday')} & {t('Holidays')}
+							</p>
+							<p>08:00 - 12:00</p>
 						</li>
 					</ul>
 				</section>

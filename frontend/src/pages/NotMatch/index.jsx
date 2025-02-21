@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router';
 
 import CatPoster from 'assets/images/cat_animation.webp';
 import CatVideo from 'assets/video/cat_waving.mp4';
-
 import { Button } from 'components/Button/index';
 
 import './style.css';

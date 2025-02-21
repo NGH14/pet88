@@ -16,6 +16,7 @@ import img4 from 'assets/images/customer-logo-2.webp';
 import img3 from 'assets/images/customer-logo-4.webp';
 import SECOND from 'assets/images/dog-grooming-photography-1.jpg';
 import FIRST from 'assets/images/dog-grooming-photography-2.jpg';
+import HeroImage from 'components/HeroImageHomepage/index';
 import { motion } from 'framer-motion';
 import i18n from 'i18next';
 import MainLayout from 'layouts/MainLayout';
@@ -25,8 +26,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
-
-import HeroImage from 'components/HeroImageHomepage/index';
 
 import './style.css';
 

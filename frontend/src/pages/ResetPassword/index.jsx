@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
 
-import { motion } from 'framer-motion';
-
 import { Spinner } from 'components/Spinner';
+import { motion } from 'framer-motion';
 
 import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
 import ResetPasswordForm from '../../components/ResetPasswordForm';
