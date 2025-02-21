@@ -1,12 +1,11 @@
 import logo from 'assets/images/logo-text.png';
-import WaveSVG from 'components/Wave/WavePath.jsx';
 import CONTACT_DETAIL from 'constants/contact.mjs';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { FooterContainer, FooterContent, FooterTitle } from './Footer.style.mjs';
+import WaveSVG from 'components/Wave/WavePath.jsx';
 
-// import './style.css';
+import { FooterContainer, FooterContent, FooterTitle } from './Footer.style.mjs';
 
 export default function FooterWave() {
   const [t] = useTranslation();

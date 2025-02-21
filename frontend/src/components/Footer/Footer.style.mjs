@@ -2,9 +2,9 @@ import bgImg from 'assets/images/navy-bg.png';
 import { styled } from 'styled-components';
 
 export const FooterContainer = styled.section`
-  --footer-columns: 4;
   --footer-columns-row-gap: 1em;
   --footer-columns-col-gap: 1em;
+
   color: var(--color-white);
   background-image: url(${bgImg});
   background-size: cover;
@@ -14,10 +14,10 @@ export const FooterContainer = styled.section`
 
 export const FooterContent = styled.section`
   display: grid;
-  grid-template-columns: repeat(var(--footer-columns), minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   row-gap: var(--footer-columns-row-gap);
   column-gap: var(--footer-columns-col-gap);
-  padding: 1em 1em;
+  padding: 10em 5em;
   position: relative;
 `;
 

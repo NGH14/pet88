@@ -2,6 +2,8 @@ import { styled } from 'styled-components';
 
 export const NavBar = styled.nav`
   width: 100%;
+  padding: 0.5em 1em;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
