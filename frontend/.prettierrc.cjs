@@ -8,7 +8,14 @@ module.exports = {
   bracketSpacing: true,
   jsxBracketSameLine: false,
   arrowParens: 'avoid',
-  importOrder: ['^react', '^.(css|scss)$', '<THIRD_PARTY_MODULES>', '^components/(.*)$', '^[./]'],
+  importOrder: [
+    '^react',
+    '^.style.*',
+    '^.css$',
+    '<THIRD_PARTY_MODULES>',
+    'components/(.*)$',
+    '^[./]',
+  ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
 
