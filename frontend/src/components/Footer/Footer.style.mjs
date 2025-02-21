@@ -7,7 +7,7 @@ export const FooterContainer = styled.section`
 
   color: var(--color-white);
   background-image: url(${bgImg});
-  background-size: cover;
+  background-repeat: repeat;
   position: relative;
   z-index: 1;
 `;
@@ -17,7 +17,7 @@ export const FooterContent = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   row-gap: var(--footer-columns-row-gap);
   column-gap: var(--footer-columns-col-gap);
-  padding: 10em 5em;
+  padding: 150px 50px;
   position: relative;
 `;
 
