@@ -9,14 +9,13 @@ import { FooterContainer, FooterContent, FooterTitle } from './Footer.style.mjs'
 
 export default function FooterWave() {
 	const [t] = useTranslation();
-	const workingTime = t('workingList', { returnObjects: true });
 	return (
 		<FooterContainer>
 			<WaveSVG />
 			<FooterContent>
 				<section className="footer-menu">
 					<FooterTitle>{t('working time')}</FooterTitle>
-					<ul id="menu-get-started" className="footer-menu-list">
+					{/* <ul id="menu-get-started" className="footer-menu-list">
 						<li className="menu-item menu-item-type-post_type menu-item-object-product">
 							<p>
 								{t('Monday')} - {t('Saturday')}
@@ -27,7 +26,12 @@ export default function FooterWave() {
 							</p>
 							<p>08:00 - 12:00</p>
 						</li>
-					</ul>
+					</ul> */}
+					{CONTACT_DETAIL.workingTime.schedule.map((time, index) => (
+						<p key={index}>
+							{t(time.day)} - {time.time}
+						</p>
+					))}
 				</section>
 
 				<section className="footer-call-to-action">
@@ -40,8 +44,7 @@ export default function FooterWave() {
 					>
 						{CONTACT_DETAIL.email.address}
 					</a>
-				</section>
-				<section className="footer-call-to-action">
+
 					<FooterTitle className="footer-call-to-action-title">{t('calling us')}</FooterTitle>
 					<p className="footer-call-to-action-link-wrapper">
 						<a className="footer-call-to-action-link" href="tel:+0916x4841" target="_self">
@@ -49,6 +52,7 @@ export default function FooterWave() {
 						</a>
 					</p>
 				</section>
+
 
 				<section className="footer-menu">
 					<FooterTitle>{t('location')}</FooterTitle>
@@ -64,7 +68,7 @@ export default function FooterWave() {
 			</FooterContent>
 			<section className="footer-copyright">
 				<p className="footer-copyright-link">
-					©2022-2025. Pet88 | {t('from')}
+					©2022. Pet88 | {t('from')}
 					<a href="https://www.linkedin.com/in/vu-huu-nghia/"> Nghia </a>
 					{t('with love')}
 				</p>

@@ -53,7 +53,7 @@ const cardVariants = {
 };
 
 function HomePage() {
-	const [t] = useTranslation(['translation, homepage']);
+	const [t] = useTranslation(['homepage']);
 
 	const [countUp, setCountUp] = React.useState(false);
 

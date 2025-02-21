@@ -1,7 +1,7 @@
 export default {
 	workingTime: {
 		title: 'working time',
-		workingList: [
+		schedule: [
 			{
 				day: 'Monday - Saturday',
 				time: '08:00 - 14:00',

@@ -23,7 +23,7 @@ export const FooterContent = styled.section`
 
 export const FooterTitle = styled.h3`
 	font-size: 1.5em;
-	margin-bottom: 1em;
+	margin-block: 1em;
 	font-weight: 700;
 	color: var(--color-white);
 	text-transform: capitalize;

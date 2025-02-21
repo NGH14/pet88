@@ -8,6 +8,7 @@ export default {
 	// Indentation of the catalog files
 
 	keepRemoved: false,
+	keySeparator: '::',
 	// Keep keys from the catalog that are no longer in code
 
 	// see below for more details
