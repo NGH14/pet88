@@ -30,7 +30,7 @@
   "Booking time": "Booking time",
   "Business": "Business",
   "By continue using the webiste, you agree to the": "By continue using the webiste, you agree to the",
-  "Calling us": "Calling us",
+  "calling us": "calling us",
   "Cancel": "Cancel",
   "Cash": "Cash",
   "Change password": "Change password",
@@ -47,9 +47,6 @@
   "confirm password": "confirm password",
   "Confirm Password": "Confirm Password",
   "Confirmation Booking Successfully": "Confirmation Booking Successfully",
-  "CONTACT_DETAIL": {
-    "workingTime": "CONTACT_DETAIL.workingTime"
-  },
   "Copy UID": "Copy UID",
   "Create Deparment": "Create Deparment",
   "Create Department": "Create Department",
@@ -84,6 +81,7 @@
   "Drop off": "Drop off",
   "E-payment": "E-payment",
   "Effective as of": "Effective as of",
+  "email": "email",
   "Email": "Email",
   "Email is already used": "Email is already used",
   "Enter event title": "Enter event title",
@@ -137,7 +135,7 @@
   "Last Update Date": "Last Update Date",
   "leading partner": "leading partner",
   "list search": "list search",
-  "Location": "Location",
+  "location": "location",
   "Make an appointment": "Make an appointment",
   "Male": "Male",
   "Manage and protect your account": "Manage and protect your account",
@@ -284,6 +282,7 @@
   "Who may use the Pet88": "Who may use the Pet88",
   "with love": "with love",
   "working time": "working time",
+  "workingList": "workingList",
   "You take care of pets": {
     " We take care of you": "You take care of pets. We take care of you"
   },

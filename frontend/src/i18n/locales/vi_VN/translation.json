@@ -30,7 +30,7 @@
   "Booking time": "Vào lúc",
   "Business": "Business",
   "By continue using the webiste, you agree to the": "Việc bạn tiếp tục sử dụng trang web này đồng nghĩa bạn đồng ý với",
-  "Calling us": "điện thoại",
+  "calling us": "calling us",
   "Cancel": "Hủy",
   "Cash": "Tiền mặt",
   "Change password": "Đổi Mật Khẩu",
@@ -47,9 +47,6 @@
   "confirm password": "xác nhận mật khẩu",
   "Confirm Password": "Xác nhận mật khẩu",
   "Confirmation Booking Successfully": "Confirmation Booking Successfully",
-  "CONTACT_DETAIL": {
-    "workingTime": "CONTACT_DETAIL.workingTime"
-  },
   "Copy UID": "Copy UID",
   "Create Deparment": "Tạo mới",
   "Create Department": "Create Department",
@@ -84,6 +81,7 @@
   "Drop off": "Ngày Gửi",
   "E-payment": "Thanh toán điện tử",
   "Effective as of": "Hiệu quả từ",
+  "email": "email",
   "Email": "Email",
   "Email is already used": "Email đã được sử dụng",
   "Enter event title": "Enter event title",
@@ -137,7 +135,7 @@
   "Last Update Date": "Last Update Date",
   "leading partner": "ĐỐI TÁC HÀNG ĐẦU",
   "list search": "danh sách tìm kiếm",
-  "Location": "địa chỉ",
+  "location": "location",
   "Make an appointment": "Make an appointment",
   "Male": "Nam",
   "Manage and protect your account": "Quản lý thông tin hồ sơ để bảo mật tài khoản",
@@ -284,6 +282,7 @@
   "Who may use the Pet88": "Ai có thể sử dụng Pet88",
   "with love": "with love",
   "working time": "working time",
+  "workingList": "workingList",
   "You take care of pets": {
     " We take care of you": "You take care of pets. We take care of you"
   },

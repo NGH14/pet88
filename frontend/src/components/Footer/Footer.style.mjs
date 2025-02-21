@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 export const FooterContainer = styled.section`
   --footer-columns-row-gap: 1em;
   --footer-columns-col-gap: 1em;
-
+  --footer-padding: 150px 50px;
   color: var(--color-white);
   background-image: url(${bgImg});
   background-repeat: repeat;
@@ -14,10 +14,10 @@ export const FooterContainer = styled.section`
 
 export const FooterContent = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
   row-gap: var(--footer-columns-row-gap);
   column-gap: var(--footer-columns-col-gap);
-  padding: 150px 50px;
+  padding: var(--footer-padding);
   position: relative;
 `;
 
