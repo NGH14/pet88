@@ -10,10 +10,10 @@ module.exports = {
   arrowParens: 'avoid',
   importOrder: [
     '^react',
-    '^.style.*',
-    '^.css$',
     '<THIRD_PARTY_MODULES>',
-    'components/(.*)$',
+    './^.style(.*)$',
+    '^.css$',
+    '^components/(.*)$',
     '^[./]',
   ],
   importOrderSeparation: true,

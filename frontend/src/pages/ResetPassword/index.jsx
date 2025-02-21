@@ -4,12 +4,12 @@ import { useLocation, useNavigate } from 'react-router';
 
 import { motion } from 'framer-motion';
 
-import ResetPasswordForm from '../../components/ResetPasswordForm';
-import InValidDisplay from './../../components/InvalidCodeReset/index';
 import { Spinner } from 'components/Spinner';
 
 import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
+import ResetPasswordForm from '../../components/ResetPasswordForm';
 import { UserAuth } from '../../context/AuthContext';
+import InValidDisplay from './../../components/InvalidCodeReset/index';
 import './style.css';
 
 function useQuery() {

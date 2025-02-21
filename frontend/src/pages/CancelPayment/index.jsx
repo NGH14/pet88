@@ -22,8 +22,8 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
 
-import FooterWave from '../../components/Footer/Footer.jsx';
-import AppHeader from '../../components/Navbar';
+import FooterWave from 'components/Footer/Footer.jsx';
+import AppHeader from 'components/Navbar';
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
 import './style.css';

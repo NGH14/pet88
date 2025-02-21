@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
+import logoBlack from '../../assets/images/logo-text.png';
 import LeftSideLogin from '../../components/LoginLeft';
 import RightSideLogin from '../../components/LoginRight';
-
-import logoBlack from '../../assets/images/logo-text.png';
 import { UserAuth } from '../../context/AuthContext';
 import './style.css';
 

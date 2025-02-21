@@ -22,10 +22,10 @@ import axios from 'axios';
 import moment from 'moment';
 import { styled } from 'styled-components';
 
-import FooterWave from '../../components/Footer/Footer.jsx';
-import AppHeader from '../../components/Navbar';
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
+import FooterWave from '../../components/Footer/Footer.jsx';
+import AppHeader from '../../components/Navbar';
 import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
 import './style.css';
