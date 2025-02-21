@@ -24,10 +24,10 @@ import { toast } from 'react-toastify';
 
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
-import HeroImage from '../../components/HeroImageHomepage/index';
-import { UserAuth } from '../../context/AuthContext';
-import FooterWave from './../../components/Footer/index';
-import AppHeader from './../../components/Navbar/index';
+import HeroImage from 'components/HeroImageHomepage/index';
+import { UserAuth } from 'context/AuthContext';
+import FooterWave from 'components/Footer/Footer.jsx';
+import AppHeader from 'components/Navbar/index';
 import './style.css';
 
 const { Header, Content, Footer } = Layout;

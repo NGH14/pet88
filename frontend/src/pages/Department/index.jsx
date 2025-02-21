@@ -19,7 +19,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
-import FooterWave from '../../components/Footer';
+import FooterWave from '../../components/Footer/Footer.jsx';
 import AppHeader from '../../components/Navbar';
 import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';

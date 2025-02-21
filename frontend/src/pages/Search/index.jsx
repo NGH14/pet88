@@ -25,7 +25,7 @@ import { NavLink, useLocation } from 'react-router';
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
 import departImg from '../../assets/images/e10adb13acb1f3da8724a9149a58bd00.jpg';
-import FooterWave from '../../components/Footer';
+import FooterWave from '../../components/Footer/Footer.jsx';
 import AppHeader from '../../components/Navbar';
 import { SearchData } from '../../context/SearchContext';
 import './style.css';

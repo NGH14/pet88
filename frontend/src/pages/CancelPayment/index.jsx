@@ -23,7 +23,7 @@ import { useLocation, useNavigate } from 'react-router';
 
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
-import FooterWave from '../../components/Footer';
+import FooterWave from '../../components/Footer/Footer.jsx';
 import AppHeader from '../../components/Navbar';
 import './style.css';
 

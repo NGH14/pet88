@@ -21,7 +21,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
 
-import FooterWave from 'components/Footer';
+import FooterWave from 'components/Footer/Footer.jsx';
 import AppHeader from 'components/Navbar';
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 

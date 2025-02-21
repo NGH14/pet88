@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
 
-import FooterWave from 'components/Footer';
+import FooterWave from 'components/Footer/Footer.jsx';
 import AppHeader from 'components/Navbar/';
 import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
 
