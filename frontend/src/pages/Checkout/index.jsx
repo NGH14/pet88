@@ -18,9 +18,9 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 import Meta from 'antd/lib/card/Meta';
 import axios from 'axios';
-import FooterWave from 'components/Footer/Footer.jsx';
+import FooterWave from 'layouts/views/Footer/Footer.jsx';
 import AppHeader from 'components/Navbar';
-import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
+import SubNavBar from 'layouts/views/SubHeader/SubHeader.jsx';
 import moment from 'moment';
 import 'moment/locale/en-gb';
 import 'moment/locale/vi';

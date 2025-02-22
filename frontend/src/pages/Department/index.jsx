@@ -16,10 +16,10 @@ import {
 } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
-import SubNavBar from 'components/views/SubHeader/SubHeader.jsx';
+import SubNavBar from 'layouts/views/SubHeader/SubHeader.jsx';
 import moment from 'moment';
 
-import FooterWave from '../../components/Footer/Footer.jsx';
+import FooterWave from '../../layouts/views/Footer/Footer.jsx';
 import AppHeader from '../../components/Navbar';
 import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';

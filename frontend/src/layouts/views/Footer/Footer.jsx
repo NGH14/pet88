@@ -6,6 +6,7 @@ import WaveSVG from 'components/Wave/WavePath.jsx';
 import CONTACT_DETAIL from 'constants/contact.mjs';
 
 import { FooterContainer, FooterContent, FooterTitle } from './Footer.style.mjs';
+import HyperLink from 'components/HyperLink/HyperLink.jsx';
 
 export default function FooterWave() {
 	const [t] = useTranslation();
@@ -53,9 +54,9 @@ export default function FooterWave() {
 
 					<FooterTitle className="footer-call-to-action-title">{t('calling us')}</FooterTitle>
 					<p className="footer-call-to-action-link-wrapper">
-						<a className="footer-call-to-action-link" href="tel:+0916x4841" target="_self">
+						<HyperLink href="tel:+0916x4841" target="_self">
 							(+84) 0916x4841
-						</a>
+						</HyperLink>
 					</p>
 				</section>
 
