@@ -17,8 +17,7 @@ const i18nConfig = {
 	interpolation: {
 		escapeValue: false,
 	},
-	keySeparator: true, // this was the line that I've had to remove to make it work
-	keySeparator: '::', // if you want to re-enable it (not "true", but actual separator value)
+	keySeparator: '::',
 	detection: {
 		order: ['localStorage'],
 		lookupLocalStorage: LOCALE_KEY,
