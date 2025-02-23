@@ -2,14 +2,28 @@ export default {
 	workingTime: {
 		title: 'working time',
 		schedule: [
-			{
-				day: 'Monday - Saturday',
-				time: '08:00 - 14:00',
-			},
-			{
-				day: 'Sunday & Holidays',
-				time: '08:00 - 12:00',
-			},
+
+				{
+					"day": "Monday",
+					"time": "9:00 AM–5:00 PM"
+				},
+				{
+					"day": "Tuesday",
+					"time": "9:00 AM–6:00 PM"
+				},
+				{
+					"day": "Thursday",
+					"time": "9:00 AM–4:00 PM"
+				},
+				{
+					"day": "Friday",
+					"time": "9:00 AM–5:00 PM"
+				},
+				{
+					"day": "Saturday",
+					"time": "9:00 AM–3:00 PM"
+				}
+
 		],
 	},
 	email: {
