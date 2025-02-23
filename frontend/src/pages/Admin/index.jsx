@@ -21,9 +21,9 @@ import TableHotel from 'components/TableHotel';
 import TableOrder from 'components/TableOrder';
 import TableRooms from 'components/TableRooms';
 import TableUser from 'components/TableUser/index';
-import SubNavBar from 'layouts/views/SubHeader/SubHeader.jsx';
 import { UserAuth } from 'context/AuthContext';
 import { collection, getDocs } from 'firebase/firestore';
+import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
 import { storage } from 'utils/firebase';
 
 import './style.css';

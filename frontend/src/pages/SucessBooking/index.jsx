@@ -22,11 +22,11 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 import logo from 'assets/images/BlackLogo.png';
 import axios from 'axios';
-import SubNavBar from 'layouts/views/SubHeader/SubHeader.jsx';
+import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
 
-import FooterWave from '../../layouts/views/Footer/Footer.jsx';
-import AppHeader from '../../components/Navbar';
 import { SearchData } from '../../context/SearchContext';
+import FooterWave from '../../layouts/views/Footer/Footer.jsx';
+import AppHeader from '../../layouts/views/Navbar';
 import './style.css';
 
 const { Step } = Steps;

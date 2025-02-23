@@ -19,17 +19,7 @@ function App() {
 	return (
 		<>
 			<GlobalStyle />
-			<ToastContainer
-				position="top-right"
-				autoClose={3500}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme="light"
-			/>
+
 			<AuthContextProvider>
 				<I18nextProvider i18n={i18n}>
 					<SearchContextProvider>
@@ -40,6 +30,17 @@ function App() {
 								},
 							}}
 						>
+							<ToastContainer
+								position="top-right"
+								autoClose={3500}
+								hideProgressBar={false}
+								newestOnTop={false}
+								closeOnClick
+								pauseOnFocusLoss
+								draggable
+								pauseOnHover
+								theme="light"
+							/>
 							<BrowserRouter>
 								<Routes>{ListRoutes(routes)}</Routes>
 							</BrowserRouter>

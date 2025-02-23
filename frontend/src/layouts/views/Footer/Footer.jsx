@@ -8,7 +8,7 @@ import CONTACT_DETAIL from 'constants/contact.mjs';
 
 import { FooterContainer, FooterContent, FooterTitle } from './Footer.style.mjs';
 
-export default function FooterWave() {
+export default function Footer() {
 	const [t] = useTranslation();
 	return (
 		<FooterContainer>
@@ -16,18 +16,6 @@ export default function FooterWave() {
 			<FooterContent>
 				<section className="footer-menu">
 					<FooterTitle>{t('working time')}</FooterTitle>
-					{/* <ul id="menu-get-started" className="footer-menu-list">
-						<li className="menu-item menu-item-type-post_type menu-item-object-product">
-							<p>
-								{t('Monday')} - {t('Saturday')}
-							</p>
-							<p>08:00 - 14:00</p>
-							<p>
-								{t('Sunday')} & {t('Holidays')}
-							</p>
-							<p>08:00 - 12:00</p>
-						</li>
-					</ul> */}
 					{CONTACT_DETAIL.workingTime.schedule.map((working, index) => (
 						<p key={index}>
 							<Trans>
@@ -43,7 +31,8 @@ export default function FooterWave() {
 						<HyperLink
 							href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
 							animation={false}
-							target="_self">
+							target="_self"
+						>
 							{CONTACT_DETAIL.email.address}
 						</HyperLink>
 					</p>

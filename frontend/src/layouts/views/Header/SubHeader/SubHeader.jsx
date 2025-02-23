@@ -10,7 +10,7 @@ import { UserAuth } from 'context/AuthContext';
 
 import { StyledSubHeader } from './SubHeader.style.js';
 
-function SubNavBar() {
+function SubHeader() {
 	const locate = useLocation();
 	const navigate = useNavigate();
 	// const { user, SignOut } = UserAuth();
@@ -52,4 +52,4 @@ function SubNavBar() {
 	);
 }
 
-export default SubNavBar;
+export default SubHeader;

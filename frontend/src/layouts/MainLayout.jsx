@@ -1,22 +1,20 @@
 import { Layout } from 'antd';
-import FooterWave from 'layouts/views/Footer/Footer.jsx';
-import AppHeader from 'components/Navbar/';
-import SubNavBar from 'layouts/views/SubHeader/SubHeader.jsx';
+import Content from 'layouts/views/Content/Content.jsx';
+import Footer from 'layouts/views/Footer/Footer.jsx';
+import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
+import AppHeader from 'layouts/views/Navbar/';
 
-const { Header, Content, Footer } = Layout;
+import Header from './views/Header/Header.jsx';
+
 export default function MainLayout({ children }) {
 	return (
 		<>
-			<Layout className="mainLayout">
-				<Header>
-					<SubNavBar></SubNavBar>
-					<AppHeader></AppHeader>
-				</Header>
-				<Content>{children}</Content>
-				<Footer>
-					<FooterWave></FooterWave>
-				</Footer>
-			</Layout>
+			<Header>
+				<SubNavBar />
+				<AppHeader />
+			</Header>
+			<Content>{children}</Content>
+			<Footer></Footer>
 		</>
 	);
 }

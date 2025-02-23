@@ -21,11 +21,11 @@ import {
 import { ConfigProvider, Layout } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import TabPane from 'antd/lib/tabs/TabPane';
-import FooterWave from 'layouts/views/Footer/Footer.jsx';
 import HeroImage from 'components/HeroImageHomepage/index';
-import AppHeader from 'components/Navbar/index';
-import SubNavBar from 'layouts/views/SubHeader/SubHeader.jsx';
 import { UserAuth } from 'context/AuthContext';
+import FooterWave from 'layouts/views/Footer/Footer.jsx';
+import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
+import AppHeader from 'layouts/views/Navbar/index';
 import moment from 'moment';
 
 import './style.css';
