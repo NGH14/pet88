@@ -1,12 +1,12 @@
 import React from 'react';
-import { useTranslation, Trans } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
 import logo from 'assets/images/logo-text.png';
+import HyperLink from 'components/HyperLink/HyperLink.jsx';
 import WaveSVG from 'components/Wave/WavePath.jsx';
 import CONTACT_DETAIL from 'constants/contact.mjs';
 
 import { FooterContainer, FooterContent, FooterTitle } from './Footer.style.mjs';
-import HyperLink from 'components/HyperLink/HyperLink.jsx';
 
 export default function FooterWave() {
 	const [t] = useTranslation();
@@ -31,35 +31,30 @@ export default function FooterWave() {
 					{CONTACT_DETAIL.workingTime.schedule.map((working, index) => (
 						<p key={index}>
 							<Trans>
-									{working.day} - {working.time}
+								{working.day} - {working.time}
 							</Trans>
-
 						</p>
 					))}
 				</section>
 
 				<section className="footer-call-to-action">
 					<FooterTitle className="footer-menu-name"> {t('email')} </FooterTitle>
-										<p className="footer-call-to-action-link-wrapper">
-
-					<a
-						className="footer-call-to-action-link"
-						href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
-						target="_self"
-					>
-						{CONTACT_DETAIL.email.address}
-					</a>
+					<p className="footer-call-to-action-link-wrapper">
+						<HyperLink
+							href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
+							animation={false}
+							target="_self">
+							{CONTACT_DETAIL.email.address}
+						</HyperLink>
 					</p>
-
 
 					<FooterTitle className="footer-call-to-action-title">{t('calling us')}</FooterTitle>
 					<p className="footer-call-to-action-link-wrapper">
-						<HyperLink href="tel:+0916x4841" target="_self">
+						<HyperLink href="tel:+0916x4841" target="_self" animation={true}>
 							(+84) 0916x4841
 						</HyperLink>
 					</p>
 				</section>
-
 
 				<section className="footer-menu">
 					<FooterTitle>{t('location')}</FooterTitle>

@@ -1,61 +1,51 @@
 import { motion } from 'motion/react';
 
-import { StyledHyperLink, Container } from './HyperLink.style.js';
 
-const DURATION = 0.25;
+
+import {
+	AbsoluteSection,
+	AnimationContainer,
+	AnimateSpan,
+	StyledHyperLink,
+} from './HyperLink.style.js';
+
+const DURATION = 0.2;
 const STAGGER = 0.025;
 
-const HyperLink = ({ children, href }) => {
-  const containerStyle = {
-    position: 'relative',
-    display: 'block',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    fontSize: '1em',
-    fontWeight: '900',
-    textTransform: 'uppercase',
-  };
+const HyperLink = ({ children, href, animation = true }) => {
+	const absoluteStyle = {
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		right: 0,
+		bottom: 0,
+	};
 
-  const spanStyle = {
-    display: 'inline-block',
-  };
+	return animation ? (
+		<AnimationContainer initial="initial" whileHover="hovered" href={href}>
+			{children.split('').map((l, i) => (
+				<AnimateSpan
+					key={i}
+					variants={{ initial: { y: 0 }, hovered: { y: '-100%' } }}
+					transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}>
+					{l}
+				</AnimateSpan>
+			))}
 
-  const absoluteStyle = {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  };
-
-  return (
-    <motion.Container initial="initial" whileHover="hovered" href={href} >
-      <section>
-        {children.split('').map((l, i) => (
-          <motion.span
-            key={i}
-            variants={{ initial: { y: 0 }, hovered: { y: '-100%' } }}
-            transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}
-            style={spanStyle}
-          >
-            {l}
-          </motion.span>
-        ))}
-      </section>
-      <a style={absoluteStyle}>
-        {children.split('').map((l, i) => (
-          <motion.span
-            key={i}
-            variants={{ initial: { y: '100%' }, hovered: { y: 0 } }}
-            transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}
-            style={spanStyle}
-          >
-            {l}
-          </motion.span>
-        ))}
-      </a>
-    </motion.Container>
-  );
+			<StyledHyperLink main={true}>
+				{children.split('').map((l, i) => (
+					<AnimateSpan
+						key={i}
+						variants={{ initial: { y: '100%' }, hovered: { y: 0 } }}
+						transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}>
+						{l}
+					</AnimateSpan>
+				))}
+			</StyledHyperLink>
+		</AnimationContainer>
+	) : (
+		<StyledHyperLink href={href}>{children}</StyledHyperLink>
+	);
 };
 
 export default HyperLink;
