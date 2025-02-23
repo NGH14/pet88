@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 const Header = styled.nav`
-	background-color: var(--gray-300);
+	background-color: var(--gray-100);
 	width: 100%;
 `;
 
 export const StyledSubHeader = styled(Header)`
 	font-size: 1em;
-	padding-inline: 10px;
+	padding-inline: 50px;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
 
 	@media only screen and (max-width: 768px) {
@@ -17,8 +17,4 @@ export const StyledSubHeader = styled(Header)`
 	}
 `;
 
-// CusNavBar.defaultProps = {
-// 	theme: {
-// 		main: "red",
-// 	}
-// }
+

@@ -14,7 +14,7 @@ export const FooterContainer = styled.footer`
 `;
 
 export const FooterContent = styled.section`
-	margin-inline: 100px;
+	margin-inline: 3em;
 
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
@@ -33,6 +33,15 @@ export const FooterTitle = styled.h3`
 `;
 
 export const FooterCopyRight = styled.section`
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
 	position: relative;
-	z-index: 1;
+	padding: 1.5rem 1rem;
+	border-top: 1px solid var(--color-white);
+
+	color: var(--white-300);
+	font-size: 0.7rem;
+	font-weight: lighter;
+	text-transform: uppercase;
 `;

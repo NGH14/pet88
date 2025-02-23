@@ -6,7 +6,7 @@ import HyperLink from 'components/HyperLink/HyperLink.jsx';
 import WaveSVG from 'components/Wave/WavePath.jsx';
 import CONTACT_DETAIL from 'constants/contact.mjs';
 
-import { FooterContainer, FooterContent, FooterTitle } from './Footer.style.mjs';
+import { FooterContainer, FooterContent, FooterCopyRight, FooterTitle } from './Footer.style.mjs';
 
 export default function Footer() {
 	const [t] = useTranslation();
@@ -14,7 +14,7 @@ export default function Footer() {
 		<FooterContainer>
 			<WaveSVG />
 			<FooterContent>
-				<section className="footer-menu">
+				<section>
 					<FooterTitle>{t('working time')}</FooterTitle>
 					{CONTACT_DETAIL.workingTime.schedule.map((working, index) => (
 						<p key={index}>
@@ -25,7 +25,7 @@ export default function Footer() {
 					))}
 				</section>
 
-				<section className="footer-call-to-action">
+				<section>
 					<FooterTitle className="footer-menu-name"> {t('email')} </FooterTitle>
 					<p className="footer-call-to-action-link-wrapper">
 						<HyperLink
@@ -37,15 +37,15 @@ export default function Footer() {
 						</HyperLink>
 					</p>
 
-					<FooterTitle className="footer-call-to-action-title">{t('calling us')}</FooterTitle>
-					<p className="footer-call-to-action-link-wrapper">
+					<FooterTitle>{t('calling us')}</FooterTitle>
+
 						<HyperLink href="tel:+0916x4841" target="_self" animation={true}>
 							(+84) 916x4841
 						</HyperLink>
-					</p>
+
 				</section>
 
-				<section className="footer-menu">
+				<section>
 					<FooterTitle>{t('location')}</FooterTitle>
 					<ul id="menu-quick-links" className="footer-menu-list">
 						<li className="menu-item menu-item-type-custom menu-item-object-custom">
@@ -57,13 +57,15 @@ export default function Footer() {
 					</ul>
 				</section>
 			</FooterContent>
-			<section className="footer-copyright">
-				<p className="footer-copyright-link">
-					©2022. Pet88 | {t('from')}
-					<a href="https://www.linkedin.com/in/vu-huu-nghia/"> Nghia </a>
-					{t('with love')}
+			<FooterCopyRight>
+				<p>
+					©2025. Pet88 | {t('all rights reserved')}
 				</p>
-			</section>
+				<p>
+					 {t('made by')}
+					<a href="https://www.linkedin.com/in/vu-huu-nghia/"> NGHIA </a>
+				</p>
+			</FooterCopyRight>
 		</FooterContainer>
 	);
 }
