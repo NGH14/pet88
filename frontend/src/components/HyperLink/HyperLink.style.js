@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledHyperLink = styled.a`
 	font-size: 1em;
@@ -10,7 +10,7 @@ export const StyledHyperLink = styled.a`
 	}
 
 	${props =>
-    props.main == true &&
+		props.main == true &&
 		css`
 			position: absolute;
 			top: 0;
@@ -27,6 +27,7 @@ export const AnimationContainer = styled(motion.StyledHyperLink)`
 	font-weight: 700;
 	white-space: nowrap;
 	text-transform: uppercase;
+	max-width: fit-content;
 `;
 
 export const AnimateSpan = styled(motion.span)`

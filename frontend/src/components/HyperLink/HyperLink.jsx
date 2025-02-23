@@ -1,11 +1,9 @@
 import { motion } from 'motion/react';
 
-
-
 import {
 	AbsoluteSection,
-	AnimationContainer,
 	AnimateSpan,
+	AnimationContainer,
 	StyledHyperLink,
 } from './HyperLink.style.js';
 
@@ -27,7 +25,8 @@ const HyperLink = ({ children, href, animation = true }) => {
 				<AnimateSpan
 					key={i}
 					variants={{ initial: { y: 0 }, hovered: { y: '-100%' } }}
-					transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}>
+					transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}
+				>
 					{l}
 				</AnimateSpan>
 			))}
@@ -37,7 +36,8 @@ const HyperLink = ({ children, href, animation = true }) => {
 					<AnimateSpan
 						key={i}
 						variants={{ initial: { y: '100%' }, hovered: { y: 0 } }}
-						transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}>
+						transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}
+					>
 						{l}
 					</AnimateSpan>
 				))}
