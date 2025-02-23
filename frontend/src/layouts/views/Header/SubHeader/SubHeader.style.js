@@ -16,5 +16,3 @@ export const StyledSubHeader = styled(Header)`
 		display: none;
 	}
 `;
-
-

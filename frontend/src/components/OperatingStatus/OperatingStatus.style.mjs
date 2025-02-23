@@ -4,21 +4,23 @@ export const StyledOperatingStatus = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  gap: 10px;
+	gap: 10px;
 
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: capitalize;
+	font-size: 12px;
+	font-weight: 500;
+	text-transform: capitalize;
 	color: var(--pure-black);
-
 `;
 
-export const OpenCircle = styled.div`
+export const Cirle = styled.div`
 	width: 12px;
 	height: 12px;
 
-	background-color: var(--green-300);
 	border-radius: 50%;
+`;
+
+export const OpenCircle = styled(Cirle)`
+	background-color: var(--green-300);
 	position: relative;
 
 	&::after {

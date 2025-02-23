@@ -1,14 +1,31 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { OpenCircle, StyledOperatingStatus } from './OperatingStatus.style.mjs';
 
-export default function OperatingStatus() {
+const OpenOperating = () => {
 	const { t } = useTranslation();
-
 	return (
-		<StyledOperatingStatus>
+		<>
 			<OpenCircle />
 			<p>{t('open')}</p>
-		</StyledOperatingStatus>
+		</>
+	);
+};
+
+const ClosedOperating = () => {
+	const { t } = useTranslation();
+	return (
+		<>
+			<p>{t('closed')}</p>
+		</>
+	);
+};
+
+export default function OperatingStatus() {
+	const [open, setOpen] = useState(true);
+
+	return (
+		<StyledOperatingStatus>{open ? <OpenOperating /> : <ClosedOperating />}</StyledOperatingStatus>
 	);
 }

@@ -39,10 +39,9 @@ export default function Footer() {
 
 					<FooterTitle>{t('calling us')}</FooterTitle>
 
-						<HyperLink href="tel:+0916x4841" target="_self" animation={true}>
-							(+84) 916x4841
-						</HyperLink>
-
+					<HyperLink href="tel:+0916x4841" target="_self" animation={true}>
+						(+84) 916x4841
+					</HyperLink>
 				</section>
 
 				<section>
@@ -58,11 +57,9 @@ export default function Footer() {
 				</section>
 			</FooterContent>
 			<FooterCopyRight>
+				<p>©2025. Pet88 | {t('all rights reserved')}</p>
 				<p>
-					©2025. Pet88 | {t('all rights reserved')}
-				</p>
-				<p>
-					 {t('made by')}
+					{t('made by')}
 					<a href="https://www.linkedin.com/in/vu-huu-nghia/"> NGHIA </a>
 				</p>
 			</FooterCopyRight>

@@ -8,10 +8,10 @@ export const color = styled.css`
 	--gray-300: #d3d3d3;
 	--gray-500: #a9a9a9;
 	--gray-700: #7f7f7f;
-	--green-100: #88E788;
-	--green-300: #00B300;
+	--green-100: #88e788;
+	--green-300: #00b300;
 	--green-500: #008000;
-	--green-700: #004C00;
+	--green-700: #004c00;
 	--white-300: #fafafa;
 	--pure-white: #ffffff;
 	--light-white: #f7f6f1;
