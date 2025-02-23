@@ -9,7 +9,6 @@ import { SearchContextProvider } from 'context/SearchContext';
 import i18n from 'i18next';
 import ListRoutes from 'routes/ListRoutes';
 import { ThemeProvider } from 'styled-components';
-import 'styles/import.css';
 
 import { GlobalStyle } from 'styles/global.style.js';
 
