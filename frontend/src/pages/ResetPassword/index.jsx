@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router';
 
-import { Spinner } from 'components/Spinner';
+import { Spinner } from 'components/Spinner/Spinner.jsx';
 import { motion } from 'motion/react';
 
 import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';

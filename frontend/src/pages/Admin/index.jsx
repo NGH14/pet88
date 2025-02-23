@@ -15,7 +15,7 @@ import viVN from 'antd/es/locale/vi_VN';
 import logoWhite from 'assets/images/logo-text.png';
 import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
 import ChangeLanguage from 'components/ChangeLanguage/index';
-import { Spinner } from 'components/Spinner';
+import { Spinner } from 'components/Spinner/Spinner.jsx';
 import TableGrooming from 'components/TableGrooming/index';
 import TableHotel from 'components/TableHotel';
 import TableOrder from 'components/TableOrder';
