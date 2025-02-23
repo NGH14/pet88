@@ -2,8 +2,9 @@ import { motion } from 'motion/react';
 import styled, {css} from 'styled-components';
 
 export const StyledHyperLink = styled.a`
+	font-size: 1em;
 	text-decoration: none;
-	font-weight: 900;
+	font-weight: 700;
 	&:hover {
 		color: var(--primary-color);
 	}
@@ -23,19 +24,11 @@ export const AnimationContainer = styled(motion.StyledHyperLink)`
 	position: relative;
 	display: block;
 	overflow: hidden;
+	font-weight: 700;
 	white-space: nowrap;
-	font-size: 14px;
 	text-transform: uppercase;
 `;
 
 export const AnimateSpan = styled(motion.span)`
 	display: inline-block;
-`;
-
-export const AbsoluteSection = styled.section`
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 `;

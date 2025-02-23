@@ -51,7 +51,7 @@ export default function FooterWave() {
 					<FooterTitle className="footer-call-to-action-title">{t('calling us')}</FooterTitle>
 					<p className="footer-call-to-action-link-wrapper">
 						<HyperLink href="tel:+0916x4841" target="_self" animation={true}>
-							(+84) 0916x4841
+							(+84) 916x4841
 						</HyperLink>
 					</p>
 				</section>
