@@ -10,7 +10,7 @@ import {
 const DURATION = 0.2;
 const STAGGER = 0.025;
 
-const HyperLink = ({ children, href, animation = true }) => {
+const HyperLink = ({ children, href, target, animation = true }) => {
 	const absoluteStyle = {
 		position: 'absolute',
 		top: 0,
@@ -20,13 +20,12 @@ const HyperLink = ({ children, href, animation = true }) => {
 	};
 
 	return animation ? (
-		<AnimationContainer initial="initial" whileHover="hovered" href={href}>
+		<AnimationContainer initial="initial" whileHover="hovered" href={href} target={target}>
 			{children.split('').map((l, i) => (
 				<AnimateSpan
 					key={i}
 					variants={{ initial: { y: 0 }, hovered: { y: '-100%' } }}
-					transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}
-				>
+					transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}>
 					{l}
 				</AnimateSpan>
 			))}
@@ -36,8 +35,7 @@ const HyperLink = ({ children, href, animation = true }) => {
 					<AnimateSpan
 						key={i}
 						variants={{ initial: { y: '100%' }, hovered: { y: 0 } }}
-						transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}
-					>
+						transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}>
 						{l}
 					</AnimateSpan>
 				))}

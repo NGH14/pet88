@@ -22,7 +22,7 @@ export const StyledHyperLink = styled.a`
 
 export const AnimationContainer = styled(motion.StyledHyperLink)`
 	position: relative;
-	display: block;
+	display: inline-block;
 	overflow: hidden;
 	font-weight: 700;
 	white-space: nowrap;
