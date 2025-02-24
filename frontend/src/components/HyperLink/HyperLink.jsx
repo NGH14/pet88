@@ -24,7 +24,7 @@ const HyperLink = ({ children, href, target, animation = true }) => {
 			{children.split('').map((l, i) => (
 				<AnimateSpan
 					key={i}
-					variants={{ initial: { y: 0 }, hovered: { y: '-100%' } }}
+					variants={{ initial: { y: 0 }, hovered: { y: '-105%' } }}
 					transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}
 				>
 					{l}

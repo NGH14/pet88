@@ -4,6 +4,6 @@ import { styled } from 'styled-components';
 export const Logo = styled.img.attrs(props => ({
 	src: props.Img || IconLogo,
 }))`
-	max-height: 30px;
-	filter: brightness(0%);
+	${props => props.maxHeight ? `max-height: ${props.maxHeight}` : "max-height: 30px"};
+	${props =>props.dark && `filter: brightness(0%)`};
 `;

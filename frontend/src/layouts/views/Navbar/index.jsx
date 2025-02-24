@@ -19,6 +19,8 @@ const pages = [
 	{ title: 'Service', url: '/#service' },
 ];
 
+const SCROLL_THRESHOLD = 100;
+
 function AppHeader() {
 	const locate = useLocation();
 	const navigate = useNavigate();
@@ -27,6 +29,7 @@ function AppHeader() {
 	const { user, SignOut } = UserAuth();
 	const [visible, setVisible] = useState(false);
 	const { t, i18n } = useTranslation();
+	const isFixed = scrollPosition > SCROLL_THRESHOLD ? true : false;
 
 	const handleSignOut = async e => {
 		e.preventDefault();
@@ -47,10 +50,9 @@ function AppHeader() {
 		document.body.style.overflow = 'unset';
 		setVisible(false);
 	};
-
 	return (
 		<>
-			<NavBar>
+			<NavBar isFixed={isFixed}>
 				<section className="mobileVisible">
 					<Button
 						onClick={showDrawer}
@@ -62,8 +64,7 @@ function AppHeader() {
 								}}
 							/>
 						}
-						ghost
-					></Button>
+						ghost></Button>
 					<Drawer
 						footer={<ChangeLanguage />}
 						placement="top"
@@ -79,8 +80,7 @@ function AppHeader() {
 						headerStyle={{
 							border: 'none',
 							paddingLeft: 10,
-						}}
-					>
+						}}>
 						<p
 							style={{
 								transition: 'color 0.3s ease-in-out',
@@ -92,8 +92,7 @@ function AppHeader() {
 								fontSize: 16,
 								borderTop: '1px solid black',
 								margin: 0,
-							}}
-						>
+							}}>
 							{' '}
 						</p>
 
@@ -113,8 +112,7 @@ function AppHeader() {
 										fontSize: 16,
 										padding: 15,
 										borderBottom: '1px solid black',
-									}}
-								>
+									}}>
 									{t(page.title)}
 								</NavLink>
 							);
@@ -131,8 +129,7 @@ function AppHeader() {
 									fontSize: 16,
 									padding: 15,
 									borderBottom: '1px solid black',
-								}}
-							>
+								}}>
 								{t('account')}
 							</NavLink>
 						)}
@@ -149,8 +146,7 @@ function AppHeader() {
 									fontSize: 16,
 									padding: 15,
 									borderBottom: '1px solid black',
-								}}
-							>
+								}}>
 								{t('Admin Centre')}
 							</NavLink>
 						)}
@@ -166,14 +162,7 @@ function AppHeader() {
 				<section className="flexleft">
 					<section className="logo">
 						<NavLink to="/">
-							<Logo
-								src={Logo}
-								alt=""
-								style={{
-									maxHeight: 30,
-									transition: 'all 0.3s ease-in-out',
-								}}
-							/>
+							<Logo src={Logo} alt="" dark/>
 						</NavLink>
 					</section>
 				</section>
@@ -188,7 +177,7 @@ function AppHeader() {
 				</section>
 
 				<section className="mobileHidden">
-					<AuthButton TextColor={visible || navBg ? 'black' : 'white'} />
+					<AuthButton />
 				</section>
 			</NavBar>
 		</>

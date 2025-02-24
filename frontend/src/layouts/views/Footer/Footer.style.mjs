@@ -4,7 +4,7 @@ import { styled } from 'styled-components';
 export const FooterContainer = styled.footer`
 	--footer-columns-row-gap: 1em;
 	--footer-columns-col-gap: 1em;
-	--footer-padding: 150px 50px;
+	--footer-padding: 80px 50px;
 	color: var(--color-white);
 	background-image: url(${bgImg});
 	background-repeat: repeat;
@@ -13,14 +13,21 @@ export const FooterContainer = styled.footer`
 	font-size: 1rem;
 `;
 
-export const FooterContent = styled.section`
-	margin-inline: 3em;
+export const FooterContentFlexBox = styled.section`
+	padding: var(--footer-padding);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 1em;
+	position: relative;
+`;
 
+export const FooterContentGrid = styled.section`
+flex: 1;
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 	row-gap: var(--footer-columns-row-gap);
 	column-gap: var(--footer-columns-col-gap);
-	padding: var(--footer-padding);
 	position: relative;
 `;
 
