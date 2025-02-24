@@ -25,7 +25,7 @@ import HeroImage from 'components/HeroImageHomepage/index';
 import { UserAuth } from 'context/AuthContext';
 import FooterWave from 'layouts/views/Footer/Footer.jsx';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
-import AppHeader from 'layouts/views/Navbar/index';
+import AppHeader from 'layouts/views/NavBar/NavBar.jsx';
 import moment from 'moment';
 
 import './style.css';

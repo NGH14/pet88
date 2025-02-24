@@ -1,6 +1,6 @@
 import { css, styled } from 'styled-components';
 
-export const NavBar = styled.nav`
+export const StyledNavBar = styled.nav`
 	width: 100%;
 	margin-block: 2em;
 	margin-inline: auto;

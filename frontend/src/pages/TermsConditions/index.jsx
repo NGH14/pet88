@@ -21,7 +21,7 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
-import AppHeader from 'layouts/views/Navbar';
+import AppHeader from 'layouts/views/NavBar/NavBar.jsx';
 
 import './style.css';
 

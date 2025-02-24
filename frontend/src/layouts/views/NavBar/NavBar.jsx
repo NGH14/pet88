@@ -12,7 +12,7 @@ import { StyledNavLink } from 'components/NavLink/index.jsx';
 import { UserAuth } from 'context/AuthContext';
 import useScrollPosition from 'hooks/useScrollPosition';
 
-import { NavBar } from './Navbar.style.js';
+import { StyledNavBar } from './Navbar.style.js';
 
 const pages = [
 	{ title: 'About', url: '/#about' },
@@ -52,19 +52,9 @@ function AppHeader() {
 	};
 	return (
 		<>
-			<NavBar isFixed={isFixed}>
+			<StyledNavBar isFixed={isFixed}>
 				<section className="mobileVisible">
-					<Button
-						onClick={showDrawer}
-						type="text"
-						icon={
-							<MenuOutlined
-								style={{
-									transition: 'color 0.5s ease-in-out',
-								}}
-							/>
-						}
-						ghost></Button>
+					<Button onClick={showDrawer} type="text" icon={<MenuOutlined />} ghost></Button>
 					<Drawer
 						footer={<ChangeLanguage />}
 						placement="top"
@@ -162,7 +152,7 @@ function AppHeader() {
 				<section className="flexleft">
 					<section className="logo">
 						<NavLink to="/">
-							<Logo src={Logo} alt="" dark/>
+							<Logo src={Logo} alt="" dark />
 						</NavLink>
 					</section>
 				</section>
@@ -179,7 +169,7 @@ function AppHeader() {
 				<section className="mobileHidden">
 					<AuthButton />
 				</section>
-			</NavBar>
+			</StyledNavBar>
 		</>
 	);
 }

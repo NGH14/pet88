@@ -26,7 +26,7 @@ import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
 
 import { SearchData } from '../../context/SearchContext';
 import FooterWave from '../../layouts/views/Footer/Footer.jsx';
-import AppHeader from '../../layouts/views/Navbar';
+import AppHeader from '../../layouts/views/NavBar/NavBar.jsx';
 import './style.css';
 
 const { Step } = Steps;

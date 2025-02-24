@@ -22,7 +22,7 @@ import moment from 'moment';
 import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
 import FooterWave from '../../layouts/views/Footer/Footer.jsx';
-import AppHeader from '../../layouts/views/Navbar';
+import AppHeader from '../../layouts/views/NavBar/NavBar.jsx';
 import './style.css';
 
 const { Option } = Select;
