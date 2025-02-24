@@ -23,7 +23,7 @@ export const FooterContentFlexBox = styled.section`
 `;
 
 export const FooterContentGrid = styled.section`
-flex: 1;
+	padding: var(--footer-padding);
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
 	row-gap: var(--footer-columns-row-gap);
@@ -44,11 +44,12 @@ export const FooterCopyRight = styled.section`
 	justify-content: space-between;
 	overflow: hidden;
 	position: relative;
-	padding: 1.5rem 1rem;
-	border-top: 1px solid var(--color-white);
+	margin: 1rem;
+	padding-block: 10px;
+	border-top: 1px dashed var(--color-white);
 
-	color: var(--white-300);
-	font-size: 0.7rem;
-	font-weight: lighter;
+	color: var(--white-700);
+	font-size: 0.75rem;
+	font-weight: normal;
 	text-transform: uppercase;
 `;

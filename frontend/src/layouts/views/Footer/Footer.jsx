@@ -1,17 +1,17 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-
 import { NavLink } from 'react-router';
-import {Logo} from 'components/Logo/Logo.jsx';
+
 import HyperLink from 'components/HyperLink/HyperLink.jsx';
+import { Logo } from 'components/Logo/Logo.jsx';
 import WaveSVG from 'components/Wave/WavePath.jsx';
 import CONTACT_DETAIL from 'constants/contact.mjs';
 
 import {
+	FooterContainer,
 	FooterContentFlexBox,
 	FooterContentGrid,
 	FooterCopyRight,
-	FooterContainer,
 	FooterTitle,
 } from './Footer.style.mjs';
 
@@ -20,53 +20,50 @@ export default function Footer() {
 	return (
 		<FooterContainer>
 			<WaveSVG />
-			<FooterContentFlexBox>
-			<NavLink to="/">
-							<Logo  alt="" maxHeight='50px'/>
-			</NavLink>
-				<FooterContentGrid>
-					<section>
-						<FooterTitle>{t('working time')}</FooterTitle>
-						{CONTACT_DETAIL.workingTime.schedule.map((working, index) => (
-							<p key={index}>
-								<Trans>
-									{working.day} - {working.time}
-								</Trans>
-							</p>
-						))}
-					</section>
 
-					<section>
-						<FooterTitle className="footer-menu-name"> {t('email')} </FooterTitle>
-						<p className="footer-call-to-action-link-wrapper">
-							<HyperLink
-								href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
-								animation={false}
-								target="_self">
-								{CONTACT_DETAIL.email.address}
-							</HyperLink>
+			<FooterContentGrid>
+				<section>
+					<FooterTitle>{t('working time')}</FooterTitle>
+					{CONTACT_DETAIL.workingTime.schedule.map((working, index) => (
+						<p key={index}>
+							<Trans>
+								{working.day} - {working.time}
+							</Trans>
 						</p>
+					))}
+				</section>
 
-						<FooterTitle>{t('calling us')}</FooterTitle>
+				<section>
+					<FooterTitle className="footer-menu-name"> {t('email')} </FooterTitle>
+					<p className="footer-call-to-action-link-wrapper">
+						<HyperLink
+							href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
+							animation={false}
+							target="_self">
+							{CONTACT_DETAIL.email.address}
+						</HyperLink>
+					</p>
 
+					<FooterTitle>{t('calling us')}</FooterTitle>
+					<p>
 						<HyperLink href="tel:+0916x4841" target="_self" animation={true}>
 							(+84) 916x4841
 						</HyperLink>
-					</section>
+					</p>
+				</section>
 
-					<section>
-						<FooterTitle>{t('location')}</FooterTitle>
-						<ul id="menu-quick-links" className="footer-menu-list">
-							<li className="menu-item menu-item-type-custom menu-item-object-custom">
-								<p>{t('418 Truong Sa, Phu Nhuan, Ho Chi Minh City')}</p>
-							</li>
-							<li className="menu-item menu-item-type-custom menu-item-object-custom">
-								<p>{t('969 Xuan Thuy, Thao Dien, Ho Chi Minh City')}</p>
-							</li>
-						</ul>
-					</section>
-				</FooterContentGrid>
-			</FooterContentFlexBox>
+				<section>
+					<FooterTitle>{t('location')}</FooterTitle>
+					<ul id="menu-quick-links" className="footer-menu-list">
+						<li className="menu-item menu-item-type-custom menu-item-object-custom">
+							<p>{t('418 Truong Sa, Phu Nhuan, Ho Chi Minh City')}</p>
+						</li>
+						<li className="menu-item menu-item-type-custom menu-item-object-custom">
+							<p>{t('969 Xuan Thuy, Thao Dien, Ho Chi Minh City')}</p>
+						</li>
+					</ul>
+				</section>
+			</FooterContentGrid>
 			<FooterCopyRight>
 				<p>©2025. Pet88 | {t('all rights reserved')}</p>
 				<p>
