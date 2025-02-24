@@ -5,7 +5,6 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 
 import { CloseOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
 import { Button, Drawer } from 'antd';
-import LogoWhite from 'assets/images/WhiteLogo.png';
 import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import AuthButton from 'components/GoogleAuthButton/';
 import { Logo } from 'components/Logo/Logo.jsx';

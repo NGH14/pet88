@@ -20,7 +20,7 @@ import {
 	sectionider,
 } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
-import logo from 'assets/images/BlackLogo.png';
+import logo from 'assets/images/logo/text-logo-black.png';
 import axios from 'axios';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
 

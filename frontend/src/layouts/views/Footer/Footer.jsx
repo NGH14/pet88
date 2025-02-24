@@ -1,7 +1,6 @@
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-
-import logo from 'assets/images/logo-text.png';
+import logo from 'assets/images/logo/icon-logo-white.png';
 import HyperLink from 'components/HyperLink/HyperLink.jsx';
 import WaveSVG from 'components/Wave/WavePath.jsx';
 import CONTACT_DETAIL from 'constants/contact.mjs';
