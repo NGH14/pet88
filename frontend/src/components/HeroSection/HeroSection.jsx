@@ -8,39 +8,13 @@ import bgHeader from 'assets/images/navy-bg.png';
 import FormBookingHomepage from 'components/FormBookingHomepage/index';
 import styled from 'styled-components';
 
-import { RatingSection, TextContainer } from './HeroSection.style.mjs';
+import { HeroBlockStyled, RatingSection, TextContainer } from './HeroSection.style.mjs';
 
 import './style.css';
 
-const HeroBlockStyled = styled.section`
-	background:
-		linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)),
-		url(http://morkie.qodeinteractive.com/wp-content/uploads/2023/09/rev-home-2-slide-01.jpg)
-			no-repeat;
-	height: 800px;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	border-radius: 15px;
-	margin-inline: 3rem;
-	position: relative;
-	@media only screen and (max-width: 425px) {
-		background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), no-repeat;
-	}
-`;
-
-const HeroInlineStyled = styled.section``;
-
-const HeroBlockStyledNormal = styled.section`
-	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)), url(${bgHeader});
-	width: 100%;
-	height: 120px;
-`;
-
 function HeroImageHomePage({ HeaderText }) {
 	const locate = useLocation();
-	const {t} = useTranslation();
+	const { t } = useTranslation();
 	return (
 		<HeroBlockStyled id="hero" className="heroBlock">
 			<section className="content">
@@ -64,7 +38,9 @@ function HeroImageHomePage({ HeaderText }) {
 							fill="currentColor"></path>
 					</svg>
 				</RatingSection>
-				<p>{t('from')} 8386 {t('reviews')}</p>
+				<p>
+					{t('from')} 8386 {t('reviews')}
+				</p>
 			</TextContainer>
 		</HeroBlockStyled>
 	);

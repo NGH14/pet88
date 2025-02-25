@@ -2,8 +2,6 @@ import { styled } from 'styled-components';
 
 
 export const TextContainer = styled.section`
-
-  justify-content: center;
 	font-family: 'Quicksand', sans-serif;
 	color: var(--gray-500);
 	position: absolute;
@@ -36,7 +34,7 @@ export const RatingSection = styled.section`
     animation: stretch-bounce .5s ease-in-out;
   }
 
-  @-webkit-keyframes stretch-bounce {
+  @keyframes stretch-bounce {
   0% {
     -webkit-transform: scale(1);
   }
@@ -53,4 +51,20 @@ export const RatingSection = styled.section`
     -webkit-transform: scale(1);
   }
 }
+`;
+
+
+export const HeroBlockStyled = styled.section`
+	background:
+		linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)),
+		url(http://morkie.qodeinteractive.com/wp-content/uploads/2023/09/rev-home-2-slide-01.jpg)
+			no-repeat;
+	height: 800px;
+	background-size: cover;
+	border-radius: 20px;
+	margin-inline: 3rem;
+	position: relative;
+	@media only screen and (max-width: 425px) {
+		background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), no-repeat;
+	}
 `;
