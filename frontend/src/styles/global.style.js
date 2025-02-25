@@ -1,17 +1,16 @@
 import * as styled from 'styled-components';
+import 'styles/font.css';
 
 import { reset } from './reset.style.js';
 import { variable } from './variable.style.js';
-import 'styles/font.css';
 
 export const GlobalStyle = styled.createGlobalStyle`
 	${reset}
 	${variable}
 	:root {
 		font-size: 62.5%;
-
 	}
-   body {
+	body {
 		font-family: 'Nunito Sans', 'Quicksand', sans-serif;
 		overflow: auto;
 		max-height: 100dvh;
@@ -20,9 +19,16 @@ export const GlobalStyle = styled.createGlobalStyle`
 		caret-color: transparent;
 		scroll-behavior: smooth;
 
-		transition-property: color,background-color,border-color,text-decoration-color,fill,stroke,-webkit-text-decoration-color;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-  transition-duration: .3s;
+		transition-property:
+			color,
+			background-color,
+			border-color,
+			text-decoration-color,
+			fill,
+			stroke,
+			-webkit-text-decoration-color;
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 0.3s;
 	}
 
 	p {
