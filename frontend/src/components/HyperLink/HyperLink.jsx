@@ -8,24 +8,16 @@ import {
 } from './HyperLink.style.js';
 
 const DURATION = 0.2;
-const STAGGER = 0.025;
+const DELAY = 0.025;
 
 const HyperLink = ({ children, href, target, animation = true }) => {
-	const absoluteStyle = {
-		position: 'absolute',
-		top: 0,
-		left: 0,
-		right: 0,
-		bottom: 0,
-	};
-
 	return animation ? (
 		<AnimationContainer initial="initial" whileHover="hovered" href={href} target={target}>
 			{children.split('').map((l, i) => (
 				<AnimateSpan
 					key={i}
 					variants={{ initial: { y: 0 }, hovered: { y: '-105%' } }}
-					transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}
+					transition={{ duration: DURATION, ease: 'easeInOut', delay: DELAY * i }}
 				>
 					{l}
 				</AnimateSpan>
@@ -36,7 +28,7 @@ const HyperLink = ({ children, href, target, animation = true }) => {
 					<AnimateSpan
 						key={i}
 						variants={{ initial: { y: '100%' }, hovered: { y: 0 } }}
-						transition={{ duration: DURATION, ease: 'easeInOut', delay: STAGGER * i }}
+						transition={{ duration: DURATION, ease: 'easeInOut', delay: DELAY * i }}
 					>
 						{l}
 					</AnimateSpan>

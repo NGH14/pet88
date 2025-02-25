@@ -54,9 +54,7 @@ const cardVariants = {
 
 function HomePage() {
 	const [t] = useTranslation();
-
 	const [countUp, setCountUp] = React.useState(false);
-
 	React.useEffect(() => {
 		document.title = `Pet88 - ${t('Pet Care Services')} `;
 	}, []);
