@@ -1,7 +1,7 @@
 export default function WaveSVG() {
 	return (
 		<svg
-			fill="var(--pure-white)"
+			fill="var(--white-700)"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 1200 100"
 			preserveAspectRatio="none"

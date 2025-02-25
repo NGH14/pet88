@@ -5,16 +5,18 @@ export const StyledOperatingStatus = styled.section`
 	justify-content: center;
 	align-items: center;
 	gap: 10px;
-
+	padding-inline: 10px;
 	font-size: 12px;
 	font-weight: 500;
 	text-transform: capitalize;
-	color: var(--pure-black);
+	color: var(--black-700);
+	border: 1px solid var(--gray-500);
+	border-radius: 15px;
 `;
 
 export const Cirle = styled.div`
-	width: 12px;
-	height: 12px;
+	width: 10px;
+	height: 10px;
 
 	border-radius: 50%;
 `;

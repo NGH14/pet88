@@ -22,7 +22,7 @@
 
 .form-item_bookinghomepage,
 .ant-select-selector {
-	border-radius: 5px !important;
+	border-radius: 5px;
 	margin-inline: 0 auto;
 }
 
