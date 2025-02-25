@@ -39,7 +39,8 @@ export default function Footer() {
 						<HyperLink
 							href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
 							animation={false}
-							target="_self">
+							target="_self"
+						>
 							{CONTACT_DETAIL.email.address}
 						</HyperLink>
 					</p>

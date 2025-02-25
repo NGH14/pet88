@@ -70,7 +70,8 @@ function AppHeader() {
 						headerStyle={{
 							border: 'none',
 							paddingLeft: 10,
-						}}>
+						}}
+					>
 						<p
 							style={{
 								transition: 'color 0.3s ease-in-out',
@@ -82,7 +83,8 @@ function AppHeader() {
 								fontSize: 16,
 								borderTop: '1px solid black',
 								margin: 0,
-							}}>
+							}}
+						>
 							{' '}
 						</p>
 
@@ -102,7 +104,8 @@ function AppHeader() {
 										fontSize: 16,
 										padding: 15,
 										borderBottom: '1px solid black',
-									}}>
+									}}
+								>
 									{t(page.title)}
 								</NavLink>
 							);
@@ -119,7 +122,8 @@ function AppHeader() {
 									fontSize: 16,
 									padding: 15,
 									borderBottom: '1px solid black',
-								}}>
+								}}
+							>
 								{t('account')}
 							</NavLink>
 						)}
@@ -136,7 +140,8 @@ function AppHeader() {
 									fontSize: 16,
 									padding: 15,
 									borderBottom: '1px solid black',
-								}}>
+								}}
+							>
 								{t('Admin Centre')}
 							</NavLink>
 						)}

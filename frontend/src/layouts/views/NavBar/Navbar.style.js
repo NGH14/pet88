@@ -14,7 +14,6 @@ export const StyledNavBar = styled.nav`
 	color: var(--black-700);
 	text-transform: capitalize;
 
-
 	${props =>
 		props.isFixed &&
 		css`
@@ -26,8 +25,8 @@ export const StyledNavBar = styled.nav`
 `;
 
 export const NavBarList = styled.section`
-width: fit-content;
-background-color: var(--white-700);
-border-radius: 30px;
-padding: 1em 2em;
-`
+	width: fit-content;
+	background-color: var(--white-700);
+	border-radius: 30px;
+	padding: 1em 2em;
+`;

@@ -1,6 +1,5 @@
 import { styled } from 'styled-components';
 
-
 export const TextContainer = styled.section`
 	font-family: 'Quicksand', sans-serif;
 	color: var(--gray-500);
@@ -17,11 +16,11 @@ export const TextContainer = styled.section`
 `;
 
 export const RatingSection = styled.section`
-  display: inline-flex;
+	display: inline-flex;
 	flex-direction: row;
 	align-items: center;
-  gap: 0.2em;
-  padding-inline: 0.3em;
+	gap: 0.2em;
+	padding-inline: 0.3em;
 	color: var(--gold-color);
 	font-size: 2em;
 
@@ -30,29 +29,29 @@ export const RatingSection = styled.section`
 		font-size: 1em;
 	}
 
- svg:hover, svg:target {
-    animation: stretch-bounce .5s ease-in-out;
-  }
+	svg:hover,
+	svg:target {
+		animation: stretch-bounce 0.5s ease-in-out;
+	}
 
-  @keyframes stretch-bounce {
-  0% {
-    -webkit-transform: scale(1);
-  }
-  25% {
-    -webkit-transform: scale(1.5);
-  }
-  50% {
-    -webkit-transform: scale(0.9);
-  }
-  75% {
-    -webkit-transform: scale(1.2);
-  }
-  100% {
-    -webkit-transform: scale(1);
-  }
-}
+	@keyframes stretch-bounce {
+		0% {
+			-webkit-transform: scale(1);
+		}
+		25% {
+			-webkit-transform: scale(1.5);
+		}
+		50% {
+			-webkit-transform: scale(0.9);
+		}
+		75% {
+			-webkit-transform: scale(1.2);
+		}
+		100% {
+			-webkit-transform: scale(1);
+		}
+	}
 `;
-
 
 export const HeroBlockStyled = styled.section`
 	background:
