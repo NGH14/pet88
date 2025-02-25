@@ -149,8 +149,8 @@ function AppHeader() {
 						</section>
 					</Drawer>
 				</section>
-				<section className="flexleft">
-					<section className="logo">
+				<section>
+					<section>
 						<NavLink to="/">
 							<Logo src={Logo} alt="" dark />
 						</NavLink>
