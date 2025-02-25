@@ -7,7 +7,10 @@ import 'styles/font.css';
 export const GlobalStyle = styled.createGlobalStyle`
 	${reset}
 	${variable}
+	:root {
+		font-size: 62.5%;
 
+	}
    body {
 		font-family: 'Nunito Sans', 'Quicksand', sans-serif;
 		overflow: auto;
@@ -16,7 +19,10 @@ export const GlobalStyle = styled.createGlobalStyle`
 		height: 100%;
 		caret-color: transparent;
 		scroll-behavior: smooth;
-		font-size: 62.5%;
+
+		transition-property: color,background-color,border-color,text-decoration-color,fill,stroke,-webkit-text-decoration-color;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .3s;
 	}
 
 	p {

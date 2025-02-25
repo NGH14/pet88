@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const Header = styled.nav`
+const SubHeader = styled.nav`
 	background-color: var(--gray-100);
 	width: 100%;
 `;
 
-export const StyledSubHeader = styled(Header)`
+export const StyledSubHeader = styled(SubHeader)`
 	font-size: 1em;
 	padding-inline: 50px;
 	display: flex;

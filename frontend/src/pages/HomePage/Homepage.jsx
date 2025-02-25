@@ -63,7 +63,7 @@ function HomePage() {
 
 	return (
 		<MainLayout>
-			{/* <HeroImage /> */}
+			<HeroImage />
 			<section className="homepage_whitebackground">
 				<section className="wrap-content">
 					<p>{t('leading partner')}</p>

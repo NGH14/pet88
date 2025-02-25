@@ -2,7 +2,7 @@ import * as styled from 'styled-components';
 
 export const color = styled.css`
 	--primary-color: #F76A1A;
-	--pure-black: #171111;
+	--black-700: #171111;
 	--dark-gray: #333333;
 	--gray-100: #F5F5F5;
 	--gray-300: #D3D3D3;
@@ -13,7 +13,7 @@ export const color = styled.css`
 	--green-500: #008000;
 	--green-700: #004C00;
 	--white-300: #FAFAFA;
-	--pure-white: #FFFFFF;
+	--white-700: #FFFFFF;
 	--light-white: #F7F6F1;
 	--color-white: #E5E5E5;
 `;

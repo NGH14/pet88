@@ -10,7 +10,7 @@ export const FooterContainer = styled.footer`
 	background-repeat: repeat;
 	position: relative;
 	z-index: 1;
-	font-size: 1rem;
+	font-size: 1.5rem;
 `;
 
 export const FooterContentFlexBox = styled.section`
@@ -49,7 +49,7 @@ export const FooterCopyRight = styled.section`
 	border-top: 1px dashed var(--color-white);
 
 	color: var(--white-700);
-	font-size: 0.75rem;
+	font-size: 1rem;
 	font-weight: normal;
 	text-transform: uppercase;
 `;
