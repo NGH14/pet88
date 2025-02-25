@@ -16,4 +16,3 @@ export const LoginButton = styled.button`
 	border: none;
 	margin-bottom: 0;
 `;
-

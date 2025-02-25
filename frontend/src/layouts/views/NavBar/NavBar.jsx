@@ -5,8 +5,8 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 
 import { CloseOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
 import { Button, Drawer } from 'antd';
-import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import AuthButton from 'components/AuthButton/AuthButton.jsx';
+import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import { Logo } from 'components/Logo/Logo.jsx';
 import { StyledNavLink } from 'components/NavLink/index.jsx';
 import { UserAuth } from 'context/AuthContext';
