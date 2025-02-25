@@ -25,7 +25,6 @@ function HeroImageHomePage({ HeaderText }) {
 			<TextContainer>
 				<RatingSection>
 					<p>4.6</p>
-
 				</RatingSection>
 				<p>
 					{t('from')} 8386 {t('reviews')}
