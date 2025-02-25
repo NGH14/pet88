@@ -21,7 +21,7 @@ export const RatingSection = styled.section`
 	flex-direction: row;
 	align-items: center;
 	gap: 0.2em;
-	color: var(--gold-color);
+	color: var(--gold-500);
 	font-size: 2em;
 
 	p {
@@ -31,10 +31,10 @@ export const RatingSection = styled.section`
 
 		&::after {
 		content: "★★★★★";
-		color:: var(--gold-color);
+		color:: var(--gold-500);
 		background: linear-gradient(
 			90deg,
-			var(--gold-color) 90%,
+			var(--gold-500) 90%,
 			#fff 10%
 		);
 		background-clip: text;

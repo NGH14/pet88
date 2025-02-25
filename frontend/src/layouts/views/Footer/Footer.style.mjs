@@ -5,7 +5,7 @@ export const FooterContainer = styled.footer`
 	--footer-columns-row-gap: 1em;
 	--footer-columns-col-gap: 1em;
 	--footer-padding: 80px 50px;
-	color: var(--color-white);
+	color: var(--white-300);
 	background-image: url(${bgImg});
 	background-repeat: repeat;
 	position: relative;
@@ -35,7 +35,7 @@ export const FooterTitle = styled.h3`
 	font-size: 1.5em;
 	margin-block: 1em;
 	font-weight: 700;
-	color: var(--color-white);
+	color: var(--white-300);
 	text-transform: capitalize;
 `;
 
@@ -46,7 +46,7 @@ export const FooterCopyRight = styled.section`
 	position: relative;
 	margin: 1rem;
 	padding-block: 10px;
-	border-top: 1px dashed var(--color-white);
+	border-top: 1px dashed var(--white-300);
 
 	color: var(--white-700);
 	font-size: 1rem;

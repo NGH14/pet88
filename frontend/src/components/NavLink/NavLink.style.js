@@ -20,6 +20,6 @@ export const StyledNavLink = styled(NavLink)`
 	&:hover,
 	&:focus,
 	&:active {
-		color: var(--primary-color) !important;
+		color: var(--primary-500) !important;
 	}
 `;
