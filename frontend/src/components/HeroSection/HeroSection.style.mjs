@@ -1,7 +1,7 @@
+import StartSVG from 'assets/svg/star.svg';
 import { styled } from 'styled-components';
 
 export const TextContainer = styled.section`
-	font-family: 'Quicksand', sans-serif;
 	color: var(--gray-500);
 	position: absolute;
 	bottom: 10px;
@@ -16,17 +16,32 @@ export const TextContainer = styled.section`
 `;
 
 export const RatingSection = styled.section`
-	display: inline-flex;
+	font-family: 'Quicksand', sans-serif;
+	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 0.2em;
-	padding-inline: 0.3em;
 	color: var(--gold-color);
 	font-size: 2em;
 
 	p {
 		font-weight: 700;
 		font-size: 1em;
+	}
+
+		&::after {
+		content: "★★★★★";
+		color:: var(--gold-color);
+		background: linear-gradient(
+			90deg,
+			var(--gold-color) 90%,
+			#fff 10%
+		);
+		background-clip: text;
+		letter-spacing: 3px;
+		font-size: 0.7em;
+		color: transparent;
+		position: relative;
 	}
 
 	svg:hover,
