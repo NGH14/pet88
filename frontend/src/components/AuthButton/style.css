@@ -5,7 +5,3 @@
 	gap: 20px;
 	transition: all 0.5s ease-in-out;
 }
-
-.authbutton a:hover {
-	color: rgb(249 107 24) !important;
-}
