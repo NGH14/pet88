@@ -4,6 +4,8 @@ import { BrowserRouter, Routes } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
 import { ConfigProvider } from 'antd';
+import antdConfig from 'configs/antd.config.mjs';
+import toastConfig from 'configs/toast.config.mjs';
 import { AuthContextProvider } from 'context/AuthContext';
 import { SearchContextProvider } from 'context/SearchContext';
 import i18n from 'i18next';
@@ -21,25 +23,8 @@ function App() {
 			<AuthContextProvider>
 				<I18nextProvider i18n={i18n}>
 					<SearchContextProvider>
-						<ConfigProvider
-							theme={{
-								token: {
-									fontFamily: "Nunito Sans, Quicksand, sans-serif",
-									colorPrimary: '#F76A1A',
-								},
-							}}
-						>
-							<ToastContainer
-								position="top-right"
-								autoClose={3500}
-								hideProgressBar={false}
-								newestOnTop={false}
-								closeOnClick
-								pauseOnFocusLoss
-								draggable
-								pauseOnHover
-								theme="light"
-							/>
+						<ConfigProvider theme={antdConfig}>
+							<ToastContainer {...toastConfig} />
 							<BrowserRouter>
 								<Routes>{ListRoutes(routes)}</Routes>
 							</BrowserRouter>
