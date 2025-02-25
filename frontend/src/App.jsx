@@ -18,14 +18,14 @@ function App() {
 	return (
 		<>
 			<GlobalStyle />
-
 			<AuthContextProvider>
 				<I18nextProvider i18n={i18n}>
 					<SearchContextProvider>
 						<ConfigProvider
 							theme={{
 								token: {
-									fontFamily: "'Nunito Sans', 'Quicksand', sans-serif",
+									fontFamily: "Nunito Sans, Quicksand, sans-serif",
+									colorPrimary: '#F76A1A',
 								},
 							}}
 						>

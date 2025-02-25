@@ -12,7 +12,7 @@ import { StyledNavLink } from 'components/NavLink/index.jsx';
 import { UserAuth } from 'context/AuthContext';
 import useScrollPosition from 'hooks/useScrollPosition';
 
-import { StyledNavBar } from './Navbar.style.js';
+import { NavBarList, StyledNavBar } from './Navbar.style.js';
 
 const pages = [
 	{ title: 'About', url: '/#about' },
@@ -156,7 +156,7 @@ function AppHeader() {
 						</NavLink>
 					</section>
 				</section>
-				<section className="mobileHidden">
+				<NavBarList className="mobileHidden">
 					{pages.map(page => {
 						return (
 							<StyledNavLink key={page.title} to={page.url}>
@@ -164,7 +164,7 @@ function AppHeader() {
 							</StyledNavLink>
 						);
 					})}
-				</section>
+				</NavBarList>
 
 				<section className="mobileHidden">
 					<AuthButton />

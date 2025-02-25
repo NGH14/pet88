@@ -21,7 +21,7 @@ import {
 import { ConfigProvider, Layout } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import TabPane from 'antd/lib/tabs/TabPane';
-import HeroImage from 'components/HeroImageHomepage/index';
+import HeroImage from 'components/HeroSection/HeroSection';
 import { UserAuth } from 'context/AuthContext';
 import FooterWave from 'layouts/views/Footer/Footer.jsx';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';

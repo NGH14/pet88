@@ -7,7 +7,8 @@ const SubHeader = styled.nav`
 
 export const StyledSubHeader = styled(SubHeader)`
 	font-size: 1em;
-	padding-inline: 50px;
+	padding-inline: 0.5em;
+	margin-inline: auto;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

@@ -24,3 +24,10 @@ export const StyledNavBar = styled.nav`
 			margin-block: 1em;
 		`}
 `;
+
+export const NavBarList = styled.section`
+width: fit-content;
+background-color: var(--white-700);
+border-radius: 30px;
+padding: 1em 2em;
+`
