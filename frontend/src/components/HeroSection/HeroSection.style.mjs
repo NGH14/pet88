@@ -32,7 +32,7 @@ export const RatingSection = styled.section`
 		font-size: 1em;
 	}
 
-  svg:has( > p:is(:hover)) ,svg:hover, svg:target {
+ svg:hover, svg:target {
     animation: stretch-bounce .5s ease-in-out;
   }
 
