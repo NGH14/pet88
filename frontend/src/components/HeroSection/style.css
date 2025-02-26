@@ -1,26 +1,4 @@
-.herocontent-form {
-	position: absolute;
-	z-index: 10;
-	bottom: -10%;
-}
 
-.heroBlock .content {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	padding: 20px;
-}
-
-.content-title {
-	font-size: 3rem;
-	line-height: 1.8;
-
-	color: white;
-	text-transform: capitalize;
-	font-weight: bold;
-}
 
 @media only screen and (max-width: 767px) {
 	.content-title {
@@ -29,8 +7,5 @@
 	.herocontent-form {
 		bottom: 0;
 		transform: translateY(-50%);
-	}
-	.heroBlock {
-		margin-bottom: 200px;
 	}
 }

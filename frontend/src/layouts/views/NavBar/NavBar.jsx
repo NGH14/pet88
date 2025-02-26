@@ -25,8 +25,6 @@ import { NavBarList, StyledNavBar } from './Navbar.style.js';
 const pages = [
 	{ title: 'About', url: '/#about' },
 	{ title: 'Service', url: '/#service' },
-	{ title: 'Service', url: '/#service' },
-	{ title: 'Service', url: '/#service' },
 ];
 
 const SCROLL_THRESHOLD = 1;

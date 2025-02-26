@@ -15,16 +15,15 @@ import './style.css';
 function HeroImageHomePage({ HeaderText }) {
 	const locate = useLocation();
 	const { t } = useTranslation();
+	const RATING = 4.6;
 	return (
 		<HeroBlockStyled id="hero" className="heroBlock">
 			<section className="content">
-				<section className="herocontent-form">
-					<FormBookingHomepage />
-				</section>
+					{/* <FormBookingHomepage /> */}
 			</section>
 			<TextContainer>
-				<RatingSection>
-					<p>4.6</p>
+				<RatingSection rate={RATING}>
+					<p>{RATING}</p>
 				</RatingSection>
 				<p>
 					{t('from')} 8386 {t('reviews')}
