@@ -1,6 +1,8 @@
 import StartSVG from 'assets/svg/star.svg';
 import { styled } from 'styled-components';
 import heroImg from 'assets/images/hero_1.jpg'
+import heroImg2 from 'assets/images/hero_2.jpg'
+
 
 
 export const HeroBlockStyled = styled.section`
@@ -18,19 +20,19 @@ export const HeroBlockStyled = styled.section`
 		url(${heroImg})
 			no-repeat;
 
-	height: 700px;
+	height: 500px;
 	background-size: cover;
 	border-radius: var(--radius);
 
 	margin-inline: var(--margin-inline);
-	margin-block: -6.23em 6em;
+	margin-block: -6.35em 6em;
 	background-position: 50% 50%;
 	z-index: 1;
 	position: relative;
 
 	width: calc(100% - 2 * var(--margin-inline));
-	aspect-ratio: 1;
-	font-size: 1em;
+	aspect-ratio: 16 / 9;
+	font-size: 1rem;
 
 	mask:
 		calc(var(--_d) + var(--x)) 0 var(--_m),
