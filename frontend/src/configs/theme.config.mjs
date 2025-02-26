@@ -83,7 +83,7 @@ const baseColors = {
 		800: '#a33205',
 		900: '#7c2602',
 	},
-	gold: {
+	yellow: {
 		100: '#fdf4d9',
 		200: '#fae9b3',
 		300: '#f1d16d',
@@ -137,11 +137,7 @@ const baseColors = {
 
 // Add shorthand aliases
 const aliases = {
-	primaryColor: baseColors.primary[500],
-	goldColor: baseColors.gold[500],
-	darkGray: baseColors.gray[900],
-	lightWhite: baseColors.white[400],
-	colorWhite: baseColors.white[800],
+	'gold-color': baseColors.yellow[500],
 };
 
 // Theme for styled-components

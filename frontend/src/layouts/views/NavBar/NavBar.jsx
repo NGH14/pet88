@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 
+
+
 import { CloseOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
 import { Button, Drawer } from 'antd';
 import AuthButton from 'components/AuthButton/AuthButton.jsx';
@@ -12,14 +14,22 @@ import { StyledNavLink } from 'components/NavLink/index.jsx';
 import { UserAuth } from 'context/AuthContext';
 import useScrollPosition from 'hooks/useScrollPosition';
 
+
+
 import { NavBarList, StyledNavBar } from './Navbar.style.js';
+
+
+
+
 
 const pages = [
 	{ title: 'About', url: '/#about' },
 	{ title: 'Service', url: '/#service' },
+	{ title: 'Service', url: '/#service' },
+	{ title: 'Service', url: '/#service' },
 ];
 
-const SCROLL_THRESHOLD = 100;
+const SCROLL_THRESHOLD = 1;
 
 function AppHeader() {
 	const locate = useLocation();
@@ -29,8 +39,9 @@ function AppHeader() {
 	const { user, SignOut } = UserAuth();
 	const [visible, setVisible] = useState(false);
 	const { t, i18n } = useTranslation();
-	const isFixed = scrollPosition > SCROLL_THRESHOLD ? true : false;
+	const isScroll = scrollPosition > SCROLL_THRESHOLD ? true : false;
 
+	console.log({ isScroll });
 	const handleSignOut = async e => {
 		e.preventDefault();
 		try {
@@ -52,7 +63,7 @@ function AppHeader() {
 	};
 	return (
 		<>
-			<StyledNavBar isFixed={isFixed}>
+			<StyledNavBar scrolled={isScroll}>
 				<section className="mobileVisible">
 					<Button onClick={showDrawer} type="text" icon={<MenuOutlined />} ghost></Button>
 					<Drawer

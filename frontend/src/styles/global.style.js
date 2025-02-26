@@ -18,16 +18,6 @@ export const GlobalStyle = styled.createGlobalStyle`
 		height: 100%;
 		caret-color: transparent;
 		scroll-behavior: smooth;
-
-		transition-property:
-			color,
-			background-color,
-			border-color,
-			text-decoration-color,
-			fill,
-			stroke,
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-		transition-duration: 0.3s;
 	}
 
 	p {

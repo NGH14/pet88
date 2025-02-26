@@ -22,40 +22,47 @@ export default function Footer() {
 		<FooterContainer>
 			<WaveSVG />
 			<FooterContentGrid>
-				<FooterTitle>{t('working time')}</FooterTitle>
-				{CONTACT_DETAIL.workingTime.schedule.map((working, index) => (
-					<p key={index}>
-						{working.day} - {working.time}
+				<section>
+					<FooterTitle>{t('working time')}</FooterTitle>
+					{CONTACT_DETAIL.workingTime.schedule.map((working, index) => (
+						<p key={index}>
+							{working.day} - {working.time}
+						</p>
+					))}
+				</section>
+
+				<section>
+					<FooterTitle className="footer-menu-name"> {t('email')} </FooterTitle>
+					<p className="footer-call-to-action-link-wrapper">
+						<HyperLink
+							href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
+							animation={false}
+							target="_self"
+						>
+							{CONTACT_DETAIL.email.address}
+						</HyperLink>
 					</p>
-				))}
 
-				<FooterTitle className="footer-menu-name"> {t('email')} </FooterTitle>
-				<p className="footer-call-to-action-link-wrapper">
-					<HyperLink
-						href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
-						animation={false}
-						target="_self"
-					>
-						{CONTACT_DETAIL.email.address}
-					</HyperLink>
-				</p>
+					<FooterTitle>{t('calling us')}</FooterTitle>
+					<p>
+						<HyperLink href="tel:+0916x4841" target="_self" animation={true}>
+							(+84) 916x4841
+						</HyperLink>
+					</p>
+				</section>
 
-				<FooterTitle>{t('calling us')}</FooterTitle>
-				<p>
-					<HyperLink href="tel:+0916x4841" target="_self" animation={true}>
-						(+84) 916x4841
-					</HyperLink>
-				</p>
-
-				<FooterTitle>{t('location')}</FooterTitle>
-				<ul id="menu-quick-links" className="footer-menu-list">
-					<li className="menu-item menu-item-type-custom menu-item-object-custom">
-						<p>{t('418 Truong Sa, Phu Nhuan, Ho Chi Minh City')}</p>
-					</li>
-					<li className="menu-item menu-item-type-custom menu-item-object-custom">
-						<p>{t('969 Xuan Thuy, Thao Dien, Ho Chi Minh City')}</p>
-					</li>
-				</ul>
+				<section>
+					{' '}
+					<FooterTitle>{t('location')}</FooterTitle>
+					<ul id="menu-quick-links" className="footer-menu-list">
+						<li className="menu-item menu-item-type-custom menu-item-object-custom">
+							<p>{t('418 Truong Sa, Phu Nhuan, Ho Chi Minh City')}</p>
+						</li>
+						<li className="menu-item menu-item-type-custom menu-item-object-custom">
+							<p>{t('969 Xuan Thuy, Thao Dien, Ho Chi Minh City')}</p>
+						</li>
+					</ul>
+				</section>
 			</FooterContentGrid>
 			<FooterCopyRight>
 				<p>©2025. Pet88 | {t('all rights reserved')}</p>
