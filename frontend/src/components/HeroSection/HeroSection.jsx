@@ -9,10 +9,10 @@ import FormBookingHomepage from 'components/FormBookingHomepage/index';
 import styled from 'styled-components';
 
 import {
+	FormContainer,
 	HeroBlockStyled,
 	RatingSection,
 	TextContainer,
-	FormContainer,
 } from './HeroSection.style.mjs';
 
 import './style.css';
