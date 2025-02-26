@@ -63,7 +63,26 @@ function HomePage() {
 		<MainLayout>
 			<HeroImage />
 			<section className="homepage_whitebackground">
-				<section className="wrap-content">
+
+
+				<section className="homepage-content_flex">
+					<section className="homepage-content_flexText">
+						<HeartTwoTone style={{ fontSize: 20, color: '#08c' }} />
+						<h3 className="homepage-content_title">
+							{t('Stay motivated and build better relationships')}
+						</h3>
+						<p>
+							{t(
+								'Healthy work relationships necessitate clear, consistent, honest, and open communication, which is the foundation of trust, without which no relationship can thrive'
+							)}
+						</p>
+					</section>
+
+					<section>
+						<img src={serviceImg1} alt="" className="homepage-content_flexImg" />
+					</section>
+				</section>
+					<section className="wrap-content">
 					<p>{t('leading partner')}</p>
 					<Swiper
 						slidesPerView={4}
@@ -123,24 +142,8 @@ function HomePage() {
 						</SwiperSlide>
 					</Swiper>
 				</section>
-
-				<section className="homepage-content_flex">
-					<section className="homepage-content_flexText">
-						<HeartTwoTone style={{ fontSize: 20, color: '#08c' }} />
-						<h3 className="homepage-content_title">
-							{t('Stay motivated and build better relationships')}
-						</h3>
-						<p>
-							{t(
-								'Healthy work relationships necessitate clear, consistent, honest, and open communication, which is the foundation of trust, without which no relationship can thrive'
-							)}
-						</p>
-					</section>
-					<section>
-						<img src={serviceImg1} alt="" className="homepage-content_flexImg" />
-					</section>
-				</section>
 			</section>
+
 			<section className="grey">
 				<section className="homepage-servicecontent" variants={cardVariants}>
 					<h3 className="homepage-servicecontent_title">

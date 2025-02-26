@@ -178,7 +178,7 @@
 	line-height: 1.6;
 }
 
-/* 
+/*
   title holder
   ------------
   */
@@ -206,9 +206,9 @@
 	margin: 0;
 }
 
-/* 
+/*
   header
-  ------ 
+  ------
   */
 .mainLayout .ant-layout-header {
 	transition: all 0.5s ease-in-out;
@@ -333,7 +333,7 @@
 	display: block;
 }
 
-/* 
+/*
   responsive
   ----------
   */

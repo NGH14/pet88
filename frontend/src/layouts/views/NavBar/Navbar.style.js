@@ -20,6 +20,7 @@ export const StyledNavBar = styled.nav`
 	justify-content: space-between;
 	align-items: center;
 	gap: 0.5em;
+	z-index: 10;
 
 	color: var(--black-700);
 	text-transform: capitalize;
@@ -36,7 +37,8 @@ export const StyledNavBar = styled.nav`
 					}
 				`
 			: css`
-					position: static;
+					position: relative;
+
 					${NavBarList} {
 						border-radius: 0 0 20px 20px;
 					&:after {

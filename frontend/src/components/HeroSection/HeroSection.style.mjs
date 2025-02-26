@@ -3,11 +3,9 @@ import { styled } from 'styled-components';
 import heroImg from 'assets/images/hero_1.jpg'
 import heroImg2 from 'assets/images/hero_2.jpg'
 
-
-
 export const HeroBlockStyled = styled.section`
 	--margin-inline: 2rem;
-	--radius: 20px;
+	--radius: 28% 28% 20px 20px;
 	--inner-curve: 20px;
 	--x: 12px; /* horizontal offset (no percentage) */
 	--y: 16px; /* vertical offset (no percentage) */
@@ -15,34 +13,34 @@ export const HeroBlockStyled = styled.section`
 	--_g: conic-gradient(at var(--radius) var(--radius), #000 75%, #0000 0);
 	--_d: (var(--inner-curve) + var(--radius));
 
+	max-height: 600px;
+	width: calc(100% - 2 * var(--margin-inline));
+	margin-inline: var(--margin-inline);
+	margin-block: -6.35em 120px;
+
+	position: relative;
+	z-index: 1;
+
+
 	background:
 		linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)),
-		url(${heroImg})
+		url(${heroImg2})
 			no-repeat;
-
-	height: 500px;
+	background-position: 50% 50%;
 	background-size: cover;
 	border-radius: var(--radius);
 
-	margin-inline: var(--margin-inline);
-	margin-block: -6.35em 6em;
-	background-position: 50% 50%;
-	z-index: 1;
-	position: relative;
-
-	width: calc(100% - 2 * var(--margin-inline));
 	aspect-ratio: 16 / 9;
 	font-size: 1rem;
 
-	mask:
+	/* mask:
 		calc(var(--_d) + var(--x)) 0 var(--_m),
 		0 calc(var(--_d) + var(--y)) var(--_m),
 		radial-gradient(var(--inner-curve) at 0 0, #0000 99%, #000 calc(100% + 2px)) calc(var(--radius) + var(--x))
 			calc(var(--radius) + var(--y)),
 		var(--_g) calc(var(--_d) + var(--x)) 0,
 		var(--_g) 0 calc(var(--_d) + var(--y));
-
-	mask-repeat: no-repeat;
+	mask-repeat: no-repeat; */
 
 	@media only screen and (max-width: 425px) {
 		background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), no-repeat;
@@ -100,3 +98,12 @@ export const RatingSection = styled.section`
 		position: relative;
 	}
 `;
+
+
+export const FormContainer = styled.section`
+	position: absolute;
+	z-index: 3;
+	left: 50%;
+	bottom: 0px;
+	transform: translate(-50%, 50%);
+`

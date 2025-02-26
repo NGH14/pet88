@@ -8,7 +8,12 @@ import bgHeader from 'assets/images/navy-bg.png';
 import FormBookingHomepage from 'components/FormBookingHomepage/index';
 import styled from 'styled-components';
 
-import { HeroBlockStyled, RatingSection, TextContainer } from './HeroSection.style.mjs';
+import {
+	HeroBlockStyled,
+	RatingSection,
+	TextContainer,
+	FormContainer,
+} from './HeroSection.style.mjs';
 
 import './style.css';
 
@@ -18,9 +23,9 @@ function HeroImageHomePage({ HeaderText }) {
 	const RATING = 4.6;
 	return (
 		<HeroBlockStyled id="hero" className="heroBlock">
-			<section className="content">
-					{/* <FormBookingHomepage /> */}
-			</section>
+			<FormContainer>
+				<FormBookingHomepage />
+			</FormContainer>
 			<TextContainer>
 				<RatingSection rate={RATING}>
 					<p>{RATING}</p>
