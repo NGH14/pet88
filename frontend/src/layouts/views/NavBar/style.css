@@ -1,20 +1,20 @@
-
-.flexleft a:hover,.flexleft {
-  color: rgb(249,107,24) !important;
+.flexleft a:hover,
+.flexleft {
+	color: rgb(249, 107, 24) !important;
 }
 
 .pet88-menu .ant-drawer-body {
-    display: flex !important;
-    flex-direction: column;
-    width: 100%;
+	display: flex !important;
+	flex-direction: column;
+	width: 100%;
 }
 
 .pet88-menu .drawer-auth {
-    margin-block: auto 10px;
+	margin-block: auto 10px;
 }
 
 @media (max-width: 767px) {
-    .flexleft {
-        margin-inline: auto;
-    }
-  }
+	.flexleft {
+		margin-inline: auto;
+	}
+}
