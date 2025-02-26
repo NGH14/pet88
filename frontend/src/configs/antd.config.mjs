@@ -1,6 +1,8 @@
+import { styledTheme } from './theme.config.mjs';
+
 export default {
 	token: {
 		fontFamily: 'Nunito Sans, Quicksand, sans-serif',
-		colorPrimary: '#F76A1A',
+		colorPrimary: `${styledTheme.colors.primary[500]}`,
 	},
 };

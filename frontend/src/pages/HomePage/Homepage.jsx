@@ -63,8 +63,6 @@ function HomePage() {
 		<MainLayout>
 			<HeroImage />
 			<section className="homepage_whitebackground">
-
-
 				<section className="homepage-content_flex">
 					<section className="homepage-content_flexText">
 						<HeartTwoTone style={{ fontSize: 20, color: '#08c' }} />
@@ -82,7 +80,7 @@ function HomePage() {
 						<img src={serviceImg1} alt="" className="homepage-content_flexImg" />
 					</section>
 				</section>
-					<section className="wrap-content">
+				<section className="wrap-content">
 					<p>{t('leading partner')}</p>
 					<Swiper
 						slidesPerView={4}
