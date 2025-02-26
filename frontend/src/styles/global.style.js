@@ -1,5 +1,5 @@
 import * as styled from 'styled-components';
-import 'styles/font.css';
+import 'assets/fonts/font.css';
 
 import { reset } from './reset.style.js';
 import { variable } from './variable.style.js';
