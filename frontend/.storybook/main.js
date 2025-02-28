@@ -13,5 +13,9 @@ const config = {
     options: {},
   },
   staticDirs: ['../public'],
+  options: {
+    fastRefresh: true,
+    strictMode: true,
+  },
 };
 export default config;
