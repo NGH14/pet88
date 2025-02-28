@@ -1,4 +1,4 @@
-import IconLogo from 'assets/images/logo/icon-logo-primary.png';
+import IconLogo from 'assets/images/logo/icon-logo-primary.webp';
 import { styled } from 'styled-components';
 
 export const Logo = styled.img.attrs(props => ({

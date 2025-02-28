@@ -7,7 +7,7 @@ export const NavBarList = styled.section`
 	position: relative;
 	transition-property: all;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: 0.3s;
+	transition-duration: 0.2s;
 `;
 
 export const StyledNavBar = styled.nav`

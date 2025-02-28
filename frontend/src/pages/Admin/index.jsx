@@ -12,7 +12,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined, ReconciliationOutlined } from '@a
 import { Button, ConfigProvider, Space, Table, Tag } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
-import logoWhite from 'assets/images/logo/text-logo-white.png';
+import logoWhite from 'assets/images/logo/text-logo-white.webp';
 import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
 import ChangeLanguage from 'components/ChangeLanguage/index';
 import { Spinner } from 'components/Spinner/Spinner.jsx';
