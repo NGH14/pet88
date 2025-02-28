@@ -21,7 +21,7 @@ const pages = [
 
 const SCROLL_THRESHOLD = 1;
 
-function AppHeader() {
+function Navbar() {
 	const locate = useLocation();
 	const navigate = useNavigate();
 	const scrollPosition = useScrollPosition();
@@ -31,7 +31,6 @@ function AppHeader() {
 	const { t, i18n } = useTranslation();
 	const isScroll = scrollPosition > SCROLL_THRESHOLD ? true : false;
 
-	console.log({ isScroll });
 	const handleSignOut = async e => {
 		e.preventDefault();
 		try {
@@ -53,7 +52,7 @@ function AppHeader() {
 	};
 	return (
 		<>
-			<StyledNavBar scrolled={isScroll}>
+			<StyledNavBar $scrolled={isScroll}>
 				<section className="mobileVisible">
 					<Button onClick={showDrawer} type="text" icon={<MenuOutlined />} ghost></Button>
 					<Drawer
@@ -71,8 +70,7 @@ function AppHeader() {
 						headerStyle={{
 							border: 'none',
 							paddingLeft: 10,
-						}}
-					>
+						}}>
 						<p
 							style={{
 								transition: 'color 0.3s ease-in-out',
@@ -84,8 +82,7 @@ function AppHeader() {
 								fontSize: 16,
 								borderTop: '1px solid black',
 								margin: 0,
-							}}
-						>
+							}}>
 							{' '}
 						</p>
 
@@ -97,16 +94,13 @@ function AppHeader() {
 									// to={page.url}
 									style={{
 										transition: 'color 0.3s ease-in-out',
-
 										color: visible || navBg ? 'black' : 'white',
-
 										textTransform: 'uppercase',
 										fontWeight: 700,
 										fontSize: 16,
 										padding: 15,
 										borderBottom: '1px solid black',
-									}}
-								>
+									}}>
 									{t(page.title)}
 								</NavLink>
 							);
@@ -123,8 +117,7 @@ function AppHeader() {
 									fontSize: 16,
 									padding: 15,
 									borderBottom: '1px solid black',
-								}}
-							>
+								}}>
 								{t('account')}
 							</NavLink>
 						)}
@@ -141,8 +134,7 @@ function AppHeader() {
 									fontSize: 16,
 									padding: 15,
 									borderBottom: '1px solid black',
-								}}
-							>
+								}}>
 								{t('Admin Centre')}
 							</NavLink>
 						)}
@@ -180,4 +172,4 @@ function AppHeader() {
 	);
 }
 
-export default AppHeader;
+export default Navbar;

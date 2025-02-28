@@ -5,9 +5,6 @@ export const NavBarList = styled.section`
 	background-color: var(--white-700);
 	padding: 1em 2em;
 	position: relative;
-	transition-property: all;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: 0.2s;
 `;
 
 export const StyledNavBar = styled.nav`
@@ -26,7 +23,7 @@ export const StyledNavBar = styled.nav`
 	text-transform: capitalize;
 
 	${props =>
-		props.scrolled
+		props.$scrolled
 			? css`
 					position: fixed;
 					top: 0;

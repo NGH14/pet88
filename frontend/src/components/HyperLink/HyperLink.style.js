@@ -20,7 +20,7 @@ export const StyledHyperLink = styled.a`
 		`}
 `;
 
-export const AnimationContainer = styled(motion.StyledHyperLink)`
+export const AnimationContainer = styled(motion.create(StyledHyperLink))`
 	position: relative;
 	display: inline-block;
 	overflow: hidden;

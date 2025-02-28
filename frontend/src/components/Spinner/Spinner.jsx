@@ -6,7 +6,7 @@ import { SpinIcon, SpinnerWrapper, StyledSpin } from './Spinner.style.js';
 
 export const Spinner = ({ wrapHeight, iconSize }) => {
 	return (
-		<SpinnerWrapper heigh={wrapHeight}>
+		<SpinnerWrapper $heigh={wrapHeight}>
 			<StyledSpin indicator={<SpinIcon fontSize={iconSize} />} />
 		</SpinnerWrapper>
 	);
