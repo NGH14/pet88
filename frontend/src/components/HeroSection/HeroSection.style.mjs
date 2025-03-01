@@ -13,7 +13,7 @@ export const HeroBlockStyled = styled.section`
 	--_g: conic-gradient(at var(--radius) var(--radius), #000 75%, #0000 0);
 	--_d: (var(--inner-curve) + var(--radius));
 
-	max-height: 60rem;
+	max-height: 55rem;
 	width: calc(100% - 2 * var(--margin-inline));
 	margin-inline: var(--margin-inline);
 	margin-block: -6.35em 120px;

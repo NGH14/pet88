@@ -17,7 +17,7 @@ import {
 
 import './style.css';
 
-function HeroImageHomePage({ HeaderText }) {
+function HeroImage({ HeaderText }) {
 	const locate = useLocation();
 	const { t } = useTranslation();
 	const RATING = 4.6;
@@ -38,4 +38,4 @@ function HeroImageHomePage({ HeaderText }) {
 	);
 }
 
-export default HeroImageHomePage;
+export default HeroImage;
