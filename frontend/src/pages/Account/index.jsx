@@ -21,7 +21,7 @@ import {
 import { ConfigProvider, Layout } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import TabPane from 'antd/lib/tabs/TabPane';
-import HeroImage from 'components/HeroSection/HeroSection';
+import { HeroSection } from 'components/HeroSection/';
 import { UserAuth } from 'context/AuthContext';
 import FooterWave from 'layouts/views/Footer/Footer.jsx';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
@@ -210,8 +210,7 @@ const Account = () => {
 				style={{
 					width: 70,
 					fontSize: 14,
-				}}
-			>
+				}}>
 				<Option value="84">+84</Option>
 			</Select>
 		</Form.Item>
@@ -238,16 +237,14 @@ const Account = () => {
 							footer={null}
 							onCancel={() => setOpenModalResetPassword(false)}
 							open={openModalResetPassword}
-							confirmLoading={confirmLoadingModalResetPassword}
-						>
+							confirmLoading={confirmLoadingModalResetPassword}>
 							<section>
 								<h6
 									style={{
 										fontWeight: 700,
 										fontSize: 18,
 										paddingBottom: 10,
-									}}
-								>
+									}}>
 									{t('Reset Password')}
 								</h6>
 								<p style={{ fontWeight: 500, fontSize: 14 }}>
@@ -262,20 +259,17 @@ const Account = () => {
 										display: 'flex',
 										gap: 5,
 										justifyContent: 'flex-end',
-									}}
-								>
+									}}>
 									<Button
 										onClick={() => setOpenModalResetPassword(false)}
-										style={{ borderRadius: 8 }}
-									>
+										style={{ borderRadius: 8 }}>
 										{t('Cancel')}
 									</Button>
 									<Button
 										loading={confirmLoadingModalResetPassword}
 										onClick={SendResetPassword}
 										style={{ borderRadius: 8 }}
-										type="primary"
-									>
+										type="primary">
 										{t('Send')}
 									</Button>
 								</section>
@@ -313,8 +307,7 @@ const Account = () => {
 											onFinish={onFinish}
 											onFinishFailed={onFinishFailed}
 											autoComplete="off"
-											requiredMark={false}
-										>
+											requiredMark={false}>
 											<Form.Item
 												onChange={e => setName(e.target.value)}
 												label={t('Name')}
@@ -324,8 +317,7 @@ const Account = () => {
 														required: true,
 														message: t('Please input your username!'),
 													},
-												]}
-											>
+												]}>
 												<Input />
 											</Form.Item>
 											<Form.Item name="dob" label={t('Date of Birth')}>
@@ -346,8 +338,7 @@ const Account = () => {
 												onChange={e => setPhone(e.target.value)}
 												type="number"
 												name="phone"
-												label={t('Phone Number')}
-											>
+												label={t('Phone Number')}>
 												<Input
 													addonBefore={prefixSelector}
 													style={{
@@ -362,8 +353,7 @@ const Account = () => {
 												style={{
 													display: 'flex',
 													justifyContent: 'flex-end',
-												}}
-											>
+												}}>
 												<Button
 													className="fullwidth-button"
 													loading={loading}
@@ -375,8 +365,7 @@ const Account = () => {
 														boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
 													}}
 													type="primary"
-													htmlType="submit"
-												>
+													htmlType="submit">
 													{t('Confirm')}
 												</Button>
 											</Form.Item>
@@ -406,8 +395,7 @@ const Account = () => {
 											onFinish={onFinishPassword}
 											onFinishFailed={onFinishFailed}
 											requiredMark={false}
-											autoComplete="off"
-										>
+											autoComplete="off">
 											<Form.Item
 												onChange={e => setOldPassword(e.target.value)}
 												label={t('current password')}
@@ -417,8 +405,7 @@ const Account = () => {
 														required: true,
 														message: t('Please enter your password!'),
 													},
-												]}
-											>
+												]}>
 												<Input.Password />
 											</Form.Item>
 											<Form.Item
@@ -434,8 +421,7 @@ const Account = () => {
 														min: 6,
 														message: t('Password must be minimum 6 characters.'),
 													},
-												]}
-											>
+												]}>
 												<Input.Password />
 											</Form.Item>
 											<Form.Item
@@ -458,16 +444,14 @@ const Account = () => {
 															);
 														},
 													}),
-												]}
-											>
+												]}>
 												<Input.Password />
 											</Form.Item>
 											<Form.Item
 												style={{
 													display: 'flex',
 													justifyContent: 'flex-end',
-												}}
-											>
+												}}>
 												<Button
 													style={{
 														height: 'fit-content',
@@ -479,8 +463,7 @@ const Account = () => {
 													}}
 													loading={passwordLoading}
 													type="primary"
-													htmlType="submit"
-												>
+													htmlType="submit">
 													{t('Confirm')}
 												</Button>
 											</Form.Item>

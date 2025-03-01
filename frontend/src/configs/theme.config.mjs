@@ -1,4 +1,4 @@
-const baseColors = {
+export const baseColors = {
 	primary: {
 		100: '#fde8db',
 		200: '#fbd1b7',
@@ -62,7 +62,7 @@ const baseColors = {
 	},
 };
 
-const aliases = {
+export const aliases = {
 	'gold-color': baseColors.yellow[500],
 };
 
@@ -71,22 +71,4 @@ export const styledTheme = {
 		...baseColors,
 		...aliases,
 	},
-};
-
-export const ExtractCSSColorVar = () => {
-	let colorVar = '';
-
-	// Process each color category
-	Object.entries(baseColors).forEach(([category, shades]) => {
-		// Process each shade
-		Object.entries(shades).forEach(([shade, hexCode]) => {
-			colorVar += `--${category}-${shade}: ${hexCode};\n  `;
-		});
-	});
-
-	Object.entries(aliases).forEach(([name, value]) => {
-		colorVar += `--${name}: ${value};\n  `;
-	});
-
-	return colorVar;
 };
