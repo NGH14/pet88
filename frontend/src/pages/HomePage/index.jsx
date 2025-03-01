@@ -16,7 +16,7 @@ import img4 from 'assets/images/customer-brand/customer-logo-2.webp';
 import img3 from 'assets/images/customer-brand/customer-logo-4.webp';
 import SECOND from 'assets/images/dog-grooming-photography-1.jpg';
 import FIRST from 'assets/images/dog-grooming-photography-2.jpg';
-import HeroImage from 'components/HeroSection/HeroSection';
+import { HeroSection } from 'components/HeroSection';
 import i18n from 'i18next';
 import MainLayout from 'layouts/MainLayout';
 import moment from 'moment';
@@ -61,7 +61,7 @@ function HomePage() {
 
 	return (
 		<MainLayout>
-			<HeroImage />
+			<HeroSection />
 			<section className="homepage_whitebackground">
 				<section className="homepage-content_flex">
 					<section className="homepage-content_flexText">
@@ -91,8 +91,7 @@ function HomePage() {
 						speed={3000}
 						modules={[Autoplay]}
 						autoplay={{ delay: 1000 }}
-						className="mySwiper"
-					>
+						className="mySwiper">
 						<SwiperSlide>
 							<img src={img1} alt="" className="swiper-logo" />
 						</SwiperSlide>
@@ -200,8 +199,7 @@ function HomePage() {
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
-						}}
-					>
+						}}>
 						<img src={serviceImg2} alt="" className="homepage-content_subflexImg" />
 					</section>
 				</section>
@@ -223,8 +221,7 @@ function HomePage() {
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"
-				viewport={{ once: true, amount: 0.8 }}
-			>
+				viewport={{ once: true, amount: 0.8 }}>
 				<p className="title-homepage">{t('Service makes the difference')}</p>
 				<motion.section className="slider-beforeafter" variants={cardVariants}>
 					<section className="slider-contain">

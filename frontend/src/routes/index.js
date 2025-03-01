@@ -8,7 +8,7 @@ export const routes = [
 	},
 	{
 		path: '/',
-		element: React.lazy(() => import('pages/HomePage/Homepage.jsx')),
+		element: React.lazy(() => import('pages/HomePage')),
 		private: false,
 	},
 	{
