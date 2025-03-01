@@ -1,4 +1,4 @@
-import { ExtractCSSColorVar } from 'configs/theme.config.mjs';
+import { ExtractCSSColorVar } from 'utils/extractCSSColorVar.mjs';
 import { css } from 'styled-components';
 
 export const color = css`
