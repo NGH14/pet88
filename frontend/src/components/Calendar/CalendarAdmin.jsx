@@ -38,7 +38,7 @@ import {
 } from 'antd';
 // import 'moment/locale/en';
 
-import viVN from 'antd/locale/vi_VN';
+import vi_VN from 'antd/locale/vi_VN';
 import axios from 'axios';
 import moment from 'moment';
 import 'moment/locale/vi';
@@ -515,7 +515,7 @@ export const CalendarAdmin = () => {
 		selecteDetaildDate();
 	};
 	return (
-		<ConfigProvider locale={i18n.language === 'vi-VN' && viVN}>
+		<ConfigProvider locale={i18n.language}>
 			<section className="calendar-container">
 				<Modal
 					title={
