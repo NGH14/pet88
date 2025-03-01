@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 
 export const HeroBlockStyled = styled.section`
 	--margin-inline: 2rem;
-	--radius: 28% 28% 20px 20px;
+	--radius: 30% 30% 20px 20px;
 	--inner-curve: 20px;
 	--x: 12px; /* horizontal offset (no percentage) */
 	--y: 16px; /* vertical offset (no percentage) */
