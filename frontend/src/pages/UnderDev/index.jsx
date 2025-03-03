@@ -2,7 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 
-import img from '../../assets/images/undraw_bug_fixing_oc7a (1).png';
+import img from 'assets/images/undraw_bug_fixing_oc7a (1).png';
+
 import './style.css';
 
 export default function UnderDev() {

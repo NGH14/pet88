@@ -70,7 +70,8 @@ function Navbar() {
 						headerStyle={{
 							border: 'none',
 							paddingLeft: 10,
-						}}>
+						}}
+					>
 						<p
 							style={{
 								transition: 'color 0.3s ease-in-out',
@@ -82,7 +83,8 @@ function Navbar() {
 								fontSize: 16,
 								borderTop: '1px solid black',
 								margin: 0,
-							}}>
+							}}
+						>
 							{' '}
 						</p>
 
@@ -100,7 +102,8 @@ function Navbar() {
 										fontSize: 16,
 										padding: 15,
 										borderBottom: '1px solid black',
-									}}>
+									}}
+								>
 									{t(page.title)}
 								</NavLink>
 							);
@@ -117,7 +120,8 @@ function Navbar() {
 									fontSize: 16,
 									padding: 15,
 									borderBottom: '1px solid black',
-								}}>
+								}}
+							>
 								{t('account')}
 							</NavLink>
 						)}
@@ -134,7 +138,8 @@ function Navbar() {
 									fontSize: 16,
 									padding: 15,
 									borderBottom: '1px solid black',
-								}}>
+								}}
+							>
 								{t('Admin Centre')}
 							</NavLink>
 						)}

@@ -4,7 +4,6 @@
 		"paths": {
 			"assets/*": ["./assets/*"],
 			"components/*": ["./components/*"],
-			"components/views/*": ["./components/views/*"],
 			"context/*": ["./context/*"],
 			"routes/*": ["./routes/*"],
 			"utils/*": ["./utils/*"],
@@ -15,6 +14,6 @@
 			"config/*": ["./configs/*"]
 		}
 	},
-	"include": ["src", "./**/*.js", "./**/*.jsx"],
+	"include": ["src/**/*"],
 	"exclude": ["node_modules", "**/node_modules", "dist"]
 }
