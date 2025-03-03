@@ -17,7 +17,6 @@ export default function MainLayout({ children }) {
 
 			requestAnimationFrame(raf);
 		}
-
 		requestAnimationFrame(raf);
 	}, []);
 	return (
