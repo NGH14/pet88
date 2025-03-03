@@ -91,7 +91,8 @@ function HomePage() {
 						speed={3000}
 						modules={[Autoplay]}
 						autoplay={{ delay: 1000 }}
-						className="mySwiper">
+						className="mySwiper"
+					>
 						<SwiperSlide>
 							<img src={img1} alt="" className="swiper-logo" />
 						</SwiperSlide>
@@ -199,7 +200,8 @@ function HomePage() {
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
-						}}>
+						}}
+					>
 						<img src={serviceImg2} alt="" className="homepage-content_subflexImg" />
 					</section>
 				</section>
@@ -221,7 +223,8 @@ function HomePage() {
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"
-				viewport={{ once: true, amount: 0.8 }}>
+				viewport={{ once: true, amount: 0.8 }}
+			>
 				<p className="title-homepage">{t('Service makes the difference')}</p>
 				<motion.section className="slider-beforeafter" variants={cardVariants}>
 					<section className="slider-contain">
