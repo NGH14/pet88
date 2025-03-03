@@ -2,8 +2,11 @@ import * as React from 'react';
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
 import 'react-before-after-slider-component/dist/build.css';
 import CountUp from 'react-countup';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
+
+
 
 import { HeartTwoTone } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
@@ -27,7 +30,13 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 
+
+
 import './style.css';
+
+
+
+
 
 SwiperCore.use([Autoplay]);
 
