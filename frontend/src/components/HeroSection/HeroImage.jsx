@@ -27,7 +27,7 @@ function HeroImage({ HeaderText }) {
 				<FormBookingHomepage />
 			</FormContainer>
 			<TextContainer>
-				<RatingSection rate={RATING}>
+				<RatingSection $rate={RATING}>
 					<p>{RATING}</p>
 				</RatingSection>
 				<p>

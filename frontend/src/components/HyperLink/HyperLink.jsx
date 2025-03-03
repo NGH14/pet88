@@ -23,7 +23,7 @@ const HyperLink = ({ children, href, target, animation = true }) => {
 				</AnimateSpan>
 			))}
 
-			<StyledHyperLink main={true}>
+			<StyledHyperLink $main={true}>
 				{children.split('').map((l, i) => (
 					<AnimateSpan
 						key={i}

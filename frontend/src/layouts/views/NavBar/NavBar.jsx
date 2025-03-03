@@ -25,7 +25,6 @@ function Navbar() {
 	const locate = useLocation();
 	const navigate = useNavigate();
 	const scrollPosition = useScrollPosition();
-	const [navBg, setNavBg] = useState(false);
 	const { user, SignOut } = UserAuth();
 	const [visible, setVisible] = useState(false);
 	const { t, i18n } = useTranslation();
@@ -76,7 +75,6 @@ function Navbar() {
 							style={{
 								transition: 'color 0.3s ease-in-out',
 
-								color: visible || navBg ? 'black' : 'white',
 
 								textTransform: 'uppercase',
 								fontWeight: 700,
@@ -96,7 +94,6 @@ function Navbar() {
 									// to={page.url}
 									style={{
 										transition: 'color 0.3s ease-in-out',
-										color: visible || navBg ? 'black' : 'white',
 										textTransform: 'uppercase',
 										fontWeight: 700,
 										fontSize: 16,
@@ -114,7 +111,6 @@ function Navbar() {
 								style={{
 									transition: 'color 0.3s ease-in-out',
 
-									color: visible || navBg ? 'black' : 'white',
 
 									fontWeight: 700,
 									fontSize: 16,
@@ -132,7 +128,6 @@ function Navbar() {
 								style={{
 									transition: 'color 0.3s ease-in-out',
 
-									color: visible || navBg ? 'black' : 'white',
 
 									fontWeight: 700,
 									fontSize: 16,

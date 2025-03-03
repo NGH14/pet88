@@ -16,7 +16,6 @@ function SubHeader() {
 	const navigate = useNavigate();
 	// const { user, SignOut } = UserAuth();
 	const { t, i18n } = useTranslation();
-	const [navBg, setNavBg] = useState(false);
 
 	const handleSignOut = async e => {
 		e.preventDefault();

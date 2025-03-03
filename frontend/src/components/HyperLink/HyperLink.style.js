@@ -10,7 +10,7 @@ export const StyledHyperLink = styled.a`
 	}
 
 	${props =>
-		props.main == true &&
+		props.$main == true &&
 		css`
 			position: absolute;
 			top: 0;
