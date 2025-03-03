@@ -25,9 +25,9 @@ function App() {
 					<SearchContextProvider>
 						<ConfigProvider theme={antdConfig}>
 							<ToastContainer {...toastConfig} />
-							<BrowserRouter>
-								<Routes>{ListRoutes(routes)}</Routes>
-							</BrowserRouter>
+								<BrowserRouter>
+									<Routes>{ListRoutes(routes)}</Routes>
+								</BrowserRouter>
 						</ConfigProvider>
 					</SearchContextProvider>
 				</I18nextProvider>
