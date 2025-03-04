@@ -64,9 +64,6 @@
 	gap: 35px;
 }
 
-.slider-contain {
-	max-width: 400px !important;
-}
 .slider-text_header {
 	font-weight: 600;
 	color: #777;
@@ -131,44 +128,10 @@
 }
 
 .grey {
-	background-color: rgb(245, 242, 240);
+	background-color: var(--white-200);
 	padding: 30px 15px;
 	border-radius: 45px;
 	margin-top: 30px;
-}
-.countup-container {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 20px;
-	justify-content: center;
-	width: 100%;
-}
-
-.countup-block {
-	border-radius: 36px;
-	height: 15rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	background-color: white;
-	width: 380px;
-}
-
-.countup-number {
-	font-size: 5rem;
-	font-weight: bold;
-	color: rgb(238, 77, 45);
-}
-
-.countup-text {
-	font-size: 1.6rem;
-	font-weight: 600;
-}
-
-.ant-layout {
-	background: #fff !important;
 }
 
 .mainLayout .ant-layout-header {

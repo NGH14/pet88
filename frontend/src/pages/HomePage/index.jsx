@@ -1,10 +1,12 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
 import 'react-before-after-slider-component/dist/build.css';
 import CountUp from 'react-countup';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
+
+
 
 import { HeartTwoTone } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
@@ -15,8 +17,9 @@ import img1 from 'assets/images/customer-brand/customer-logo-1.webp';
 import img2 from 'assets/images/customer-brand/customer-logo-2.webp';
 import img4 from 'assets/images/customer-brand/customer-logo-2.webp';
 import img3 from 'assets/images/customer-brand/customer-logo-4.webp';
-import SECOND from 'assets/images/dog-grooming-photography-1.jpg';
-import FIRST from 'assets/images/dog-grooming-photography-2.jpg';
+import FIRST from 'assets/images/dog-grooming-photography-1.jpg';
+import SECOND from 'assets/images/dog-grooming-photography-2.jpg';
+import { CountUpComponent } from 'components/CountUp';
 import { HeroSection } from 'components/HeroSection';
 import i18n from 'i18next';
 import MainLayout from 'layouts/MainLayout';
@@ -28,8 +31,14 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 
+
+
 import './style.css';
-import {CountUpComponent} from 'components/CountUp';
+import GrowingUpSection from './views/GrowingUpSection';
+
+
+
+
 
 SwiperCore.use([Autoplay]);
 
@@ -42,17 +51,34 @@ const SECOND_IMAGE = {
 
 const cardVariants = {
 	offscreen: {
-		y: 150,
+		y: 120,
 	},
 	onscreen: {
 		y: 0,
 		transition: {
-			type: 'spring',
-			bounce: 0.4,
-			duration: 0.5,
+			bounce: 0.2,
+			duration: 0.2,
 		},
 	},
 };
+
+const STATISTIC_GROW_UP = [
+	{
+		title: 'hours of service',
+		number: 160,
+		prefix: 'K+',
+	},
+	{
+		title: 'pets taken care of',
+		number: 969,
+		prefix: 'K+',
+	},
+	{
+		title: 'happy pet parents',
+		number: 419,
+		prefix: 'K+',
+	},
+];
 
 function HomePage() {
 	const [t] = useTranslation();
@@ -64,7 +90,6 @@ function HomePage() {
 			<section className="homepage_whitebackground">
 				<section className="homepage-content_flex">
 					<section className="homepage-content_flexText">
-						<HeartTwoTone style={{ fontSize: 20, color: '#08c' }} />
 						<h3 className="homepage-content_title">
 							{t('Stay motivated and build better relationships')}
 						</h3>
@@ -90,8 +115,7 @@ function HomePage() {
 						speed={3000}
 						modules={[Autoplay]}
 						autoplay={{ delay: 1000 }}
-						className="mySwiper"
-					>
+						className="mySwiper">
 						<SwiperSlide>
 							<img src={img1} alt="" className="swiper-logo" />
 						</SwiperSlide>
@@ -152,37 +176,11 @@ function HomePage() {
 						)}
 					</p>
 				</section>
-				<ScrollTrigger onEnter={() => setCountUp(true)}>
-					{countUp && (
-						<section className="countup-container">
-							<section className="countup-block">
-								<section className="countup-number">
-									<CountUpComponent end={160} suffix="K+" duration={1.5} />
-								</section>
-								<section className="countup-text">
-									<p>{t('hours of service')}</p>
-								</section>
-							</section>
-							<section className="countup-block">
-								<section className="countup-number">
-									<CountUp end={969} suffix="K+" duration={1.5} />
-								</section>
 
-								<section className="countup-text">
-									<p>{t('pets taken care of')}</p>{' '}
-								</section>
-							</section>
-							<section className="countup-block">
-								<section className="countup-number">
-									<CountUp end={419} suffix="K+" duration={1.5} />
-								</section>
-								<section className="countup-text">
-									<p>{t('happy pet parents')}</p>{' '}
-								</section>
-							</section>
-						</section>
-					)}
+				<ScrollTrigger onEnter={() => setCountUp(true)}>
+					{countUp && <GrowingUpSection stats={STATISTIC_GROW_UP}/>}
 				</ScrollTrigger>
+
 				<section id="about" className="homepage-servicecontent" variants={cardVariants}>
 					<h3 className="homepage-servicecontent_title">{t('about')} Pet88</h3>
 					<p className="homepage-servicecontent_text">
@@ -199,8 +197,7 @@ function HomePage() {
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
-						}}
-					>
+						}}>
 						<img src={serviceImg2} alt="" className="homepage-content_subflexImg" />
 					</section>
 				</section>
@@ -222,13 +219,12 @@ function HomePage() {
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"
-				viewport={{ once: true, amount: 0.8 }}
-			>
+				viewport={{ once: true, amount: 0.8 }}>
 				<p className="title-homepage">{t('Service makes the difference')}</p>
 				<motion.section className="slider-beforeafter" variants={cardVariants}>
 					<section className="slider-contain">
 						<ReactBeforeSliderComponent
-							currentPercentPosition="65"
+							currentPercentPosition="40"
 							firstImage={FIRST_IMAGE}
 							secondImage={SECOND_IMAGE}
 						/>
@@ -242,7 +238,6 @@ function HomePage() {
 					</section>
 				</motion.section>
 			</motion.section>
-
 		</MainLayout>
 	);
 }
