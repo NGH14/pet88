@@ -8,17 +8,19 @@ export const FooterContainer = styled.footer`
 	--footer-padding: 80px 50px;
 
 	position: sticky;
-	bottom: 0;
+	bottom: 10px;
 	left: 0;
-	z-index: -10;
 	height: max-content;
-	width: 100%;
-
+	width: 98%;
+	padding: 15px;
 	color: var(--white-300);
 	background-image: url(${bgImg});;
 	background-repeat: repeat;
 
 	font-size: 1.5rem;
+	margin: 0 auto;
+	border-radius: 15px;
+
 `;
 
 export const FooterContentFlexBox = styled.section`

@@ -20,7 +20,7 @@ export default function Footer() {
 	const [t] = useTranslation();
 	return (
 			<FooterContainer>
-			<WaveSVG />
+			{/* <WaveSVG /> */}
 				<FooterContentGrid>
 					<section>
 						<FooterTitle>{t('working time')}</FooterTitle>
