@@ -18,13 +18,7 @@
 
 
 .swiper-slide {
-	text-align: center;
-	font-size: 18px;
-	background: #fff;
-	margin-inline: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+
 }
 
 .swiper-slide img {

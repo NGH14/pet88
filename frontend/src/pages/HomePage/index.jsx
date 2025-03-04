@@ -29,7 +29,10 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 
-import { SliderHomePage } from './views/PartnerSlider/PartnerSlider.style.mjs';
+import {
+	HomeSilderContainer,
+	HomeSliderElement,
+} from './views/PartnerSlider/PartnerSlider.style.mjs';
 
 
 
@@ -40,8 +43,6 @@ import GrowingUpSection from './views/GrowingUpSection';
 
 
 
-
-SwiperCore.use([Autoplay]);
 
 const cardVariants = {
 	offscreen: {
@@ -84,19 +85,19 @@ function HomePage() {
 				</section>
 				<section className="wrap-content">
 					<p>{t('leading partner')}</p>
-					<SliderHomePage
+					<HomeSilderContainer
 						slidesPerView={4}
 						spaceBetween={10}
 						pagination={{
 							clickable: true,
 						}}
-						speed={3000}
+						speed={4000}
 						modules={[Autoplay]}
 						autoplay={{ delay: 1000 }}
 						>
-						<SwiperSlide>
+						<HomeSliderElement>
 							<img src={img1} alt="" className="swiper-logo" />
-						</SwiperSlide>
+						</HomeSliderElement>
 						<SwiperSlide>
 							<img src={img2} alt="" className="swiper-logo" />
 						</SwiperSlide>
@@ -139,7 +140,7 @@ function HomePage() {
 						<SwiperSlide>
 							<img src={img3} alt="" className="swiper-logo" />
 						</SwiperSlide>
-					</SliderHomePage>
+					</HomeSilderContainer>
 				</section>
 			</section>
 
