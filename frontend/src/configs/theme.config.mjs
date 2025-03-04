@@ -52,7 +52,7 @@ export const baseColors = {
 	},
 	white: {
 		100: '#fdfcfa',
-		200: '#fbfaf7',
+		200: '#f8f3ee',
 		300: '#fafafa',
 		400: '#f7f6f1',
 		500: '#f2f2f2',
