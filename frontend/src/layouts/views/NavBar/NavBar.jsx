@@ -75,7 +75,6 @@ function Navbar() {
 							style={{
 								transition: 'color 0.3s ease-in-out',
 
-
 								textTransform: 'uppercase',
 								fontWeight: 700,
 								fontSize: 16,
@@ -111,7 +110,6 @@ function Navbar() {
 								style={{
 									transition: 'color 0.3s ease-in-out',
 
-
 									fontWeight: 700,
 									fontSize: 16,
 									padding: 15,
@@ -127,7 +125,6 @@ function Navbar() {
 								to="/admin"
 								style={{
 									transition: 'color 0.3s ease-in-out',
-
 
 									fontWeight: 700,
 									fontSize: 16,

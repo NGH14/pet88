@@ -1,4 +1,5 @@
 import 'assets/fonts/font.css';
+import 'lenis/dist/lenis.css';
 import * as styled from 'styled-components';
 
 import { reset } from './reset.style.js';
@@ -10,6 +11,10 @@ export const GlobalStyle = styled.createGlobalStyle`
 	:root {
 		font-size: 62.5%;
 	}
+	html {
+		height: auto;
+		width: auto;
+	}
 	body {
 		font-family: 'Nunito Sans', 'Quicksand', sans-serif;
 		overflow: auto;
@@ -17,7 +22,6 @@ export const GlobalStyle = styled.createGlobalStyle`
 		width: 100dvw;
 		height: 100%;
 		caret-color: transparent;
-		scroll-behavior: smooth;
 	}
 
 	p {

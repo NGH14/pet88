@@ -6,8 +6,6 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
 
-
-
 import { HeartTwoTone } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
@@ -30,13 +28,7 @@ import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 
-
-
 import './style.css';
-
-
-
-
 
 SwiperCore.use([Autoplay]);
 

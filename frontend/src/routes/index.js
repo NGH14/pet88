@@ -1,128 +1,138 @@
-import {lazy} from 'react';
+import { lazy } from 'react';
 
-export const routes = [
+const routesConfig = [
 	{
 		path: '*',
-		element: lazy(() => import('pages/NotMatch')),
+		element: 'NotMatch',
 		private: false,
 	},
 	{
 		path: '/',
-		element: lazy(() => import('pages/HomePage')),
+		element: 'HomePage',
 		private: false,
 	},
 	{
 		path: '/sign-in',
-		element: lazy(() => import('pages/Login')),
+		element: 'Login',
 		private: false,
 	},
 	{
 		path: '/sign-up',
-		element: lazy(() => import('pages/Login')),
+		element: 'Login',
 		private: false,
 	},
 	{
 		path: '/forgot-password',
-		element: lazy(() => import('pages/Login')),
+		element: 'Login',
 		private: false,
 	},
 	{
 		path: '/reset-password',
-		element: lazy(() => import('pages/ResetPassword')),
+		element: 'ResetPassword',
 		private: false,
 	},
 	{
 		path: '/term-and-condition',
-		element: lazy(() => import('pages/TermsConditions')),
+		element: 'TermsConditions',
 		private: false,
 	},
 	{
 		path: '/account',
-		element: lazy(() => import('pages/Account')),
+		element: 'Account',
 		private: false,
 	},
 	{
 		path: '/admin',
-		element: lazy(() => import('pages/Admin')),
+		element: 'Admin',
 		private: false,
 	},
 	{
 		path: '/admin/management-user',
-		element: lazy(() => import('pages/Admin')),
+		element: 'Admin',
 		private: false,
 	},
 	{
 		path: '/admin/management-hotel',
-		element: lazy(() => import('pages/Admin')),
+		element: 'Admin',
 		private: false,
 	},
 
 	{
 		path: '/admin/management-promotion',
-		element: lazy(() => import('pages/Admin')),
+		element: 'Admin',
 		private: false,
 	},
 
 	{
 		path: '/admin/management-room-category',
-		element: lazy(() => import('pages/Admin')),
+		element: 'Admin',
 		private: false,
 	},
 	{
 		path: '/admin/management-grooming',
-		element: lazy(() => import('pages/Admin')),
+		element: 'Admin',
 		private: false,
 	},
 	{
 		path: '/admin/management-order',
-		element: lazy(() => import('pages/Admin')),
+		element: 'Admin',
 		private: false,
 	},
 
 	{
 		path: '/confirm/:id',
-		element: lazy(() => import('pages/BookingConfirm')),
+		element: 'BookingConfirm',
 		private: false,
 	},
 	{
 		path: '/booking/success',
-		element: lazy(() => import('pages/SucessBooking')),
+		element: 'SucessBooking',
 		private: false,
 	},
 
 	{
 		path: '/search',
-		element: lazy(() => import('pages/Search')),
+		element: 'Search',
 		private: false,
 	},
 	{
 		path: '/department/:id',
-		element: lazy(() => import('pages/Department')),
+		element: 'Department',
 		private: false,
 	},
 	{
 		path: '/grooming/:id',
-		element: lazy(() => import('pages/Grooming')),
+		element: 'Grooming',
 		private: false,
 	},
 	{
 		path: '/checkout',
-		element: lazy(() => import('pages/Checkout')),
+		element: 'Checkout',
 		private: false,
 	},
 	{
 		path: '/checkout/cancel/:id',
-		element: lazy(() => import('pages/CancelPayment')),
+		element: 'CancelPayment',
 		private: false,
 	},
 	{
 		path: '/checkout/success/:id',
-		element: lazy(() => import('pages/SucessPayment')),
+		element: 'SucessPayment',
 		private: false,
 	},
 	{
 		path: '/undercontruction',
-		element: lazy(() => import('pages/UnderDev')),
+		element: 'UnderDev',
 		private: false,
 	},
 ];
+
+const lazyImport = path => lazy(() => import(`pages/${path}`));
+
+const routes = routesConfig.map(route => ({
+	...route,
+	element: lazyImport(route.element),
+	private: !!route.private,
+}));
+
+export default routes;

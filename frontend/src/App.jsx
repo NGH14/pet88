@@ -14,7 +14,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle } from 'styles/global.style.js';
 
-import { routes } from './routes/';
+import routes from './routes/';
 
 function App() {
 	return (
@@ -25,9 +25,9 @@ function App() {
 					<SearchContextProvider>
 						<ConfigProvider theme={antdConfig}>
 							<ToastContainer {...toastConfig} />
-								<BrowserRouter>
-									<Routes>{ListRoutes(routes)}</Routes>
-								</BrowserRouter>
+							<BrowserRouter>
+								<Routes>{ListRoutes(routes)}</Routes>
+							</BrowserRouter>
 						</ConfigProvider>
 					</SearchContextProvider>
 				</I18nextProvider>
