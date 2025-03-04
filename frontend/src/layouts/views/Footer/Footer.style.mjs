@@ -62,6 +62,3 @@ export const FooterCopyRight = styled.section`
 	text-transform: uppercase;
 `;
 
-export const MotionFooterContainer = styled(motion.create(FooterContainer))`
-
-`

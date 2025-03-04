@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from 'react';
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
 import 'react-before-after-slider-component/dist/build.css';
 import CountUp from 'react-countup';
@@ -29,6 +29,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 
 import './style.css';
+import {CountUpComponent} from 'components/CountUp';
 
 SwiperCore.use([Autoplay]);
 
@@ -55,10 +56,7 @@ const cardVariants = {
 
 function HomePage() {
 	const [t] = useTranslation();
-	const [countUp, setCountUp] = React.useState(false);
-	React.useEffect(() => {
-		document.title = `Pet88 - ${t('Pet Care Services')} `;
-	}, []);
+	const [countUp, setCountUp] = useState(false);
 
 	return (
 		<MainLayout>
@@ -159,7 +157,7 @@ function HomePage() {
 						<section className="countup-container">
 							<section className="countup-block">
 								<section className="countup-number">
-									<CountUp end={160} suffix="K+" duration={1.5} />
+									<CountUpComponent end={160} suffix="K+" duration={1.5} />
 								</section>
 								<section className="countup-text">
 									<p>{t('hours of service')}</p>
@@ -244,6 +242,7 @@ function HomePage() {
 					</section>
 				</motion.section>
 			</motion.section>
+
 		</MainLayout>
 	);
 }

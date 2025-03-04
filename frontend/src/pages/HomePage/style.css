@@ -210,13 +210,6 @@
   header
   ------
   */
-.mainLayout .ant-layout-header {
-	transition: all 0.5s ease-in-out;
-	position: fixed;
-	left: 0;
-	right: 0;
-	z-index: 999;
-}
 
 .container-fluid {
 	margin: 0 auto;

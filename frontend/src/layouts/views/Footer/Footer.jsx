@@ -5,9 +5,6 @@ import { NavLink } from 'react-router';
 import HyperLink from 'components/HyperLink/HyperLink.jsx';
 import { Logo } from 'components/Logo/Logo.jsx';
 import CONTACT_DETAIL from 'constants/contact.mjs';
-import { useScroll } from 'motion/react';
-import { AnimatePresence } from 'motion/react';
-import * as motion from 'motion/react-client';
 
 import {
 	FooterContainer,
@@ -15,7 +12,6 @@ import {
 	FooterContentGrid,
 	FooterCopyRight,
 	FooterTitle,
-	MotionFooterContainer,
 } from './Footer.style.mjs';
 
 import WaveSVG from './Wave.jsx';
@@ -23,8 +19,8 @@ import WaveSVG from './Wave.jsx';
 export default function Footer() {
 	const [t] = useTranslation();
 	return (
-			<MotionFooterContainer initial={{ height: '0' }} animate={{ height: 'max-content' }}>
-				<WaveSVG />
+			<FooterContainer initial={{ height: '0' }} animate={{ height: 'max-content' }}>
+			<WaveSVG />
 				<FooterContentGrid>
 					<section>
 						<FooterTitle>{t('working time')}</FooterTitle>
@@ -75,6 +71,6 @@ export default function Footer() {
 						<a href="https://www.linkedin.com/in/vu-huu-nghia/"> NGHIA </a>
 					</p>
 				</FooterCopyRight>
-			</MotionFooterContainer>
+			</FooterContainer>
 	);
 }
