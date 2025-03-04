@@ -13,6 +13,7 @@ const RESOURCES = {
 
 const i18nConfig = {
 	resources: RESOURCES,
+	supportedLngs: [ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE],
 	fallbackLng: ENGLISH_LOCALE_CODE,
 	interpolation: {
 		escapeValue: false,
