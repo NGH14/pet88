@@ -19,7 +19,7 @@ import WaveSVG from './Wave.jsx';
 export default function Footer() {
 	const [t] = useTranslation();
 	return (
-			<FooterContainer initial={{ height: '0' }} animate={{ height: 'max-content' }}>
+			<FooterContainer>
 			<WaveSVG />
 				<FooterContentGrid>
 					<section>

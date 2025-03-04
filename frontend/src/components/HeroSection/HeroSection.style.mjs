@@ -4,7 +4,7 @@ import StartSVG from 'assets/svg/star.svg';
 import { styled } from 'styled-components';
 
 export const HeroBlockStyled = styled.section`
-	--margin-inline: 3rem;
+	--margin-inline: 2rem;
 	--radius: 30% 30% 20px 20px;
 
 	max-height: 55rem;
@@ -89,6 +89,6 @@ export const FormContainer = styled.section`
 	position: absolute;
 	z-index: 3;
 	left: 50%;
-	bottom: 0px;
+	bottom: 15px;
 	transform: translate(-50%, 50%);
 `;
