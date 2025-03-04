@@ -1,15 +1,23 @@
 import bgImg from 'assets/images/navy-bg.png';
 import { styled } from 'styled-components';
+import { motion } from 'motion/react';
 
 export const FooterContainer = styled.footer`
 	--footer-columns-row-gap: 1em;
 	--footer-columns-col-gap: 1em;
 	--footer-padding: 80px 50px;
+
+	position: sticky;
+	bottom: 0;
+	left: 0;
+	z-index: -10;
+	height: max-content;
+	width: 100%;
+
 	color: var(--white-300);
-	background-image: url(${bgImg});
+	background-image: url(${bgImg});;
 	background-repeat: repeat;
-	position: relative;
-	z-index: 1;
+
 	font-size: 1.5rem;
 `;
 
@@ -53,3 +61,7 @@ export const FooterCopyRight = styled.section`
 	font-weight: normal;
 	text-transform: uppercase;
 `;
+
+export const MotionFooterContainer = styled(motion.create(FooterContainer))`
+
+`

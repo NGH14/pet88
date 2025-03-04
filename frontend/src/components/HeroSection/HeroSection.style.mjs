@@ -16,8 +16,8 @@ export const HeroBlockStyled = styled.section`
 	z-index: 1;
 
 	background:
-		linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)),
-		url(${heroImg}) no-repeat;
+		url(${heroImg}) no-repeat,
+		linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
 	background-position: 50% 50%;
 	background-size: cover;
 	border-radius: var(--radius);

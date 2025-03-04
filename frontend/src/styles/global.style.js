@@ -1,5 +1,4 @@
 import 'assets/fonts/font.css';
-import 'lenis/dist/lenis.css';
 import * as styled from 'styled-components';
 
 import { reset } from './reset.style.js';
@@ -14,6 +13,7 @@ export const GlobalStyle = styled.createGlobalStyle`
 	html {
 		height: auto;
 		width: auto;
+		scroll-behavior: smooth;
 	}
 	body {
 		font-family: 'Nunito Sans', 'Quicksand', sans-serif;
@@ -34,4 +34,5 @@ export const GlobalStyle = styled.createGlobalStyle`
 		resize: none;
 		min-height: fit-content;
 	}
+
 `;

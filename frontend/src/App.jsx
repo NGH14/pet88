@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useRef } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter, Routes } from 'react-router';
 import { ToastContainer } from 'react-toastify';
@@ -17,6 +17,7 @@ import { GlobalStyle } from 'styles/global.style.js';
 import routes from './routes/';
 
 function App() {
+
 	return (
 		<>
 			<GlobalStyle />
