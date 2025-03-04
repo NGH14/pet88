@@ -10,15 +10,15 @@ export const FooterContainer = styled.footer`
 	position: sticky;
 	bottom: 10px;
 	left: 0;
-	height: max-content;
+	height: fit-content;
 	width: 98%;
-	padding: 15px;
+	padding: 2em;
 	color: var(--white-300);
 	background-image: url(${bgImg});;
 	background-repeat: repeat;
 
 	font-size: 1.5rem;
-	margin: 0 auto;
+	margin: 2em auto;
 	border-radius: 15px;
 
 `;

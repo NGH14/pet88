@@ -5,9 +5,6 @@ import CountUp from 'react-countup';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
-
-
-
 import { HeartTwoTone } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
@@ -23,31 +20,19 @@ import { CountUpComponent } from 'components/CountUp';
 import { HeroSection } from 'components/HeroSection';
 import i18n from 'i18next';
 import MainLayout from 'layouts/MainLayout';
-import moment from 'moment';
 import { motion } from 'motion/react';
 import SwiperCore, { Autoplay } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/pagination';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.min.css';
 
-
+import { SliderContainer } from './views/PartnerSlider/PartnerSlider.style.mjs';
 
 import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
 
-
-
-
+import STATISTIC_GROW_UP from './constants/stats.mjs'
 
 SwiperCore.use([Autoplay]);
-
-const FIRST_IMAGE = {
-	imageUrl: FIRST,
-};
-const SECOND_IMAGE = {
-	imageUrl: SECOND,
-};
 
 const cardVariants = {
 	offscreen: {
@@ -62,23 +47,7 @@ const cardVariants = {
 	},
 };
 
-const STATISTIC_GROW_UP = [
-	{
-		title: 'hours of service',
-		number: 160,
-		prefix: 'K+',
-	},
-	{
-		title: 'pets taken care of',
-		number: 969,
-		prefix: 'K+',
-	},
-	{
-		title: 'happy pet parents',
-		number: 419,
-		prefix: 'K+',
-	},
-];
+
 
 function HomePage() {
 	const [t] = useTranslation();
@@ -91,11 +60,11 @@ function HomePage() {
 				<section className="homepage-content_flex">
 					<section className="homepage-content_flexText">
 						<h3 className="homepage-content_title">
-							{t('Stay motivated and build better relationships')}
+							{t('stay motivated and build better relationships')}
 						</h3>
 						<p>
 							{t(
-								'Healthy work relationships necessitate clear, consistent, honest, and open communication, which is the foundation of trust, without which no relationship can thrive'
+								'healthy work relationships necessitate clear, consistent, honest, and open communication, which is the foundation of trust, without which no relationship can thrive'
 							)}
 						</p>
 					</section>
@@ -106,7 +75,7 @@ function HomePage() {
 				</section>
 				<section className="wrap-content">
 					<p>{t('leading partner')}</p>
-					<Swiper
+					<SliderContainer
 						slidesPerView={4}
 						spaceBetween={10}
 						pagination={{
@@ -115,7 +84,7 @@ function HomePage() {
 						speed={3000}
 						modules={[Autoplay]}
 						autoplay={{ delay: 1000 }}
-						className="mySwiper">
+						>
 						<SwiperSlide>
 							<img src={img1} alt="" className="swiper-logo" />
 						</SwiperSlide>
@@ -161,7 +130,7 @@ function HomePage() {
 						<SwiperSlide>
 							<img src={img3} alt="" className="swiper-logo" />
 						</SwiperSlide>
-					</Swiper>
+					</SliderContainer>
 				</section>
 			</section>
 
@@ -225,8 +194,8 @@ function HomePage() {
 					<section className="slider-contain">
 						<ReactBeforeSliderComponent
 							currentPercentPosition="40"
-							firstImage={FIRST_IMAGE}
-							secondImage={SECOND_IMAGE}
+							firstImage={{"imageUrl":FIRST}}
+							secondImage={{"imageUrl":SECOND}}
 						/>
 					</section>
 					<section className="slider-text">

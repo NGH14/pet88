@@ -20,7 +20,6 @@ export default function Footer() {
 	const [t] = useTranslation();
 	return (
 			<FooterContainer>
-			{/* <WaveSVG /> */}
 				<FooterContentGrid>
 					<section>
 						<FooterTitle>{t('working time')}</FooterTitle>
@@ -48,7 +47,6 @@ export default function Footer() {
 								(+84) 916x4841
 							</HyperLink>
 						</p>
-						<button onClick="document.getElementById('about').scrollIntoView()">Click</button>
 					</section>
 
 					<section>

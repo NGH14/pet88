@@ -6,4 +6,6 @@ export const ContentContainer = styled.main`
 	background-color: var(--white-700);
 	position: relative;
 	z-index: 1;
+	margin-bottom: 15px;
+	padding-block: 15px;
 `;
