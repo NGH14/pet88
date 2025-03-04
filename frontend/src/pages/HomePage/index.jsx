@@ -5,6 +5,9 @@ import CountUp from 'react-countup';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
+
+
+
 import { HeartTwoTone } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
@@ -22,15 +25,21 @@ import i18n from 'i18next';
 import MainLayout from 'layouts/MainLayout';
 import { motion } from 'motion/react';
 import SwiperCore, { Autoplay } from 'swiper';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { SliderContainer } from './views/PartnerSlider/PartnerSlider.style.mjs';
 
+
+import { SliderHomePage } from './views/PartnerSlider/PartnerSlider.style.mjs';
+
+
+
+import STATISTIC_GROW_UP from './constants/stats.mjs';
 import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
 
-import STATISTIC_GROW_UP from './constants/stats.mjs'
+
+
+
 
 SwiperCore.use([Autoplay]);
 
@@ -75,7 +84,7 @@ function HomePage() {
 				</section>
 				<section className="wrap-content">
 					<p>{t('leading partner')}</p>
-					<SliderContainer
+					<SliderHomePage
 						slidesPerView={4}
 						spaceBetween={10}
 						pagination={{
@@ -130,7 +139,7 @@ function HomePage() {
 						<SwiperSlide>
 							<img src={img3} alt="" className="swiper-logo" />
 						</SwiperSlide>
-					</SliderContainer>
+					</SliderHomePage>
 				</section>
 			</section>
 

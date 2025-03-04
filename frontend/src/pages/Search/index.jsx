@@ -172,7 +172,7 @@ export default function Search() {
 											{type === 'hotel' ? (
 												<Form.Item name="datesHotels" label={t('For these days')}>
 													<RangePicker
-														ranges={{
+														presets={{
 															[t('Today')]: [moment(), moment()],
 															[t('One Week')]: [currentDate, futureWeek],
 															[t('One Month')]: [currentDate, futureMonth],

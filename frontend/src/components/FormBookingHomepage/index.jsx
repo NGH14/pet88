@@ -147,7 +147,7 @@ const FormBookingHomepage = () => {
 						label={t('For these days')}
 					>
 						<RangePicker
-							ranges={{
+							presets={{
 								[t('Today')]: [moment(), moment()],
 								[t('One Week')]: [currentDate, futureWeek],
 								[t('One Month')]: [currentDate, futureMonth],

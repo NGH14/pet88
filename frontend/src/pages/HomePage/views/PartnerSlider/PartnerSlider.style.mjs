@@ -1,10 +1,7 @@
 import styled from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/swiper-bundle.min.css';
+import { SliderContainer } from 'components/Slider/index.js';
 
-export const SliderContainer = styled(Swiper)`
+export const SliderHomePage = styled(SliderContainer)`
 	border-radius: 45px;
 	border: 0.5px solid var(--gray-300);
 

@@ -297,7 +297,7 @@ export default function Department() {
 													style={{
 														width: '100% !important',
 													}}
-													ranges={{
+													presets={{
 														[t('Today')]: [moment(), moment()],
 														[t('One Week')]: [currentDate, futureWeek],
 														[t('One Month')]: [currentDate, futureMonth],

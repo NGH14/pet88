@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import styled, { css } from 'styled-components';
 
-export const StyledHyperLink = styled.a`
+export const StyledHyperLink = styled.span`
 	font-size: 1em;
 	text-decoration: none;
 	font-weight: 700;
@@ -20,7 +20,7 @@ export const StyledHyperLink = styled.a`
 		`}
 `;
 
-export const AnimationContainer = styled(motion.create(StyledHyperLink))`
+export const AnimationContainer = styled(motion.a)`
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
