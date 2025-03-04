@@ -5,12 +5,12 @@ import { styled } from 'styled-components';
 
 export const HeroBlockStyled = styled.section`
 	--margin-inline: 2rem;
-	--radius: 30% 30% 20px 20px;
+	--radius:  15% 15%  20px 20px;
 
-	max-height: 55rem;
+	max-height: 65rem;
 	width: calc(100% - 2 * var(--margin-inline));
 	margin-inline: var(--margin-inline);
-	margin-block: -15px 12em;
+	margin-block: -1em 15em;
 
 	position: relative;
 	z-index: 1;
@@ -89,6 +89,6 @@ export const FormContainer = styled.section`
 	position: absolute;
 	z-index: 3;
 	left: 50%;
-	bottom: 15px;
+	bottom: 15%;
 	transform: translate(-50%, 50%);
 `;
