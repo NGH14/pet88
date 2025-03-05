@@ -14,7 +14,7 @@ import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyle } from 'styles/global.style.js';
 
-import routes from './routes/';
+import routes from './routes/index.jsx';
 
 function App() {
 

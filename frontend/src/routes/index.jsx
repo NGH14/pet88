@@ -1,5 +1,9 @@
 import { lazy } from 'react';
 
+
+
+
+
 const routesConfig = [
 	{
 		path: '*',
@@ -126,8 +130,8 @@ const routesConfig = [
 		private: false,
 	},
 ];
-
-const lazyImport = path => lazy(() => import(`pages/${path}`));
+/* @vite-ignore */
+const lazyImport = path => lazy(() => import(`../pages/${path}`));
 
 const routes = routesConfig.map(route => ({
 	...route,

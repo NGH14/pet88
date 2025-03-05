@@ -25,20 +25,20 @@ function Navbar() {
 	const locate = useLocation();
 	const navigate = useNavigate();
 	const scrollPosition = useScrollPosition();
-	const { user, SignOut } = UserAuth();
+	// const { user, SignOut } = UserAuth();
 	const [visible, setVisible] = useState(false);
 	const { t, i18n } = useTranslation();
 	const isScroll = scrollPosition > SCROLL_THRESHOLD ? true : false;
 
-	const handleSignOut = async e => {
-		e.preventDefault();
-		try {
-			await SignOut();
-			navigate('/sign-in');
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	// const handleSignOut = async e => {
+	// 	e.preventDefault();
+	// 	try {
+	// 		await SignOut();
+	// 		navigate('/sign-in');
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// };
 
 	const showDrawer = () => {
 		document.body.style.overflow = 'hidden';
