@@ -17,7 +17,7 @@ import {
 	Select,
 	Skeleton,
 	Typography,
-	sectionider,
+	,
 } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
@@ -233,7 +233,7 @@ export default function Search() {
 											<h3 className="hotel-page_subtitle">
 												{t('found')} {search?.foundNumber} {t('properties')}
 											</h3>
-											<sectionider></sectionider>
+											<></>
 										</>
 									) : (
 										<Skeleton

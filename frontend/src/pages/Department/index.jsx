@@ -19,7 +19,7 @@ import axios from 'axios';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
 import moment from 'moment';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
 import FooterWave from '../../layouts/views/Footer/Footer.jsx';
 import AppHeader from '../../layouts/views/NavBar/NavBar.jsx';
@@ -40,7 +40,7 @@ export default function Department() {
 	const [loadingTable, setLoadingTable] = useState(true);
 	const [form] = Form.useForm();
 	const [dataList, setDataList] = useState([]);
-	const { user } = UserAuth();
+	// const { user } = UserAuth();
 	const navigate = useNavigate();
 	const [selectedRooms, setSelectedRooms] = useState([]);
 	const [sumPrice, setSumPrice] = useState(0);

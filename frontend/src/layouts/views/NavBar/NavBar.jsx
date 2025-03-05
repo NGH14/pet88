@@ -9,7 +9,7 @@ import AuthButton from 'components/AuthButton/AuthButton.jsx';
 import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import { Logo } from 'components/Logo/Logo.jsx';
 import { StyledNavLink } from 'components/NavLink/index.jsx';
-import { UserAuth } from 'context/AuthContext';
+// import { UserAuth } from 'context/AuthContext';
 import useScrollPosition from 'hooks/useScrollPosition';
 
 import { NavBarList, StyledNavBar } from './Navbar.style.js';
@@ -104,7 +104,7 @@ function Navbar() {
 								</NavLink>
 							);
 						})}
-						{user && (
+						{/* {user && ( */}
 							<NavLink
 								to="./account"
 								style={{
@@ -118,9 +118,9 @@ function Navbar() {
 							>
 								{t('account')}
 							</NavLink>
-						)}
+						{/* )} */}
 
-						{user?.role === 'admin' && (
+						{/* {user?.role === 'admin' && ( */}
 							<NavLink
 								to="/admin"
 								style={{
@@ -134,7 +134,7 @@ function Navbar() {
 							>
 								{t('Admin Centre')}
 							</NavLink>
-						)}
+						{/* )} */}
 
 						<section className="drawer-auth">
 							<AuthButton

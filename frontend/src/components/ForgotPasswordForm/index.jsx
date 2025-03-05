@@ -9,7 +9,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { motion } from 'motion/react';
 
 import MailBoxImg from '../../assets/svg/undraw_mailbox_re_dvds.svg';
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import './style.css';
 
 const ForgotPasswordForm = () => {
@@ -20,12 +20,12 @@ const ForgotPasswordForm = () => {
 	const [sendedEmail, setSendedEmail] = useState(false);
 
 	const [email, setEmail] = useState('');
-	const { forgotPassword } = UserAuth();
+	// const { forgotPassword } = UserAuth();
 
 	const onFinish = async e => {
 		setLoading(true);
 		try {
-			await forgotPassword(email);
+			// await forgotPassword(email);
 			setSendedEmail(true);
 			setLoading(false);
 		} catch (e) {

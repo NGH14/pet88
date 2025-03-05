@@ -8,7 +8,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { AnimatePresence, motion } from 'motion/react';
 
 import completedImg from '../../assets/svg/undraw_complete_design_re_h75h.svg';
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import SignInGoogle from '../SigninGoogle';
 import './style.css';
 
@@ -24,7 +24,7 @@ const ResetPasswordForm = () => {
 
 	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
-	const { ConfirmResetPassword } = UserAuth();
+	// const { ConfirmResetPassword } = UserAuth();
 	const query = useQuery();
 
 	const oobCode = query.get('oobCode');

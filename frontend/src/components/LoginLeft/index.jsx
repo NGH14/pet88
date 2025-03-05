@@ -4,7 +4,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 
 import { AnimatePresence, motion } from 'motion/react';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import ForgotPasswordForm from '../ForgotPasswordForm';
 import LoginForm from '../SignInForm';
 import SignUpForm from '../SignUpForm';
@@ -13,7 +13,7 @@ import './style.css';
 
 const LeftSideSignin = ({ src }) => {
 	const locate = useLocation();
-	const { user } = UserAuth();
+	// const { user } = UserAuth();
 	const [t, i18n] = useTranslation();
 
 	return (

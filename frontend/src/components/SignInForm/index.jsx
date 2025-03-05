@@ -8,7 +8,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { motion } from 'motion/react';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import SignInGoogle from '../SigninGoogle';
 import './style.css';
 
@@ -18,7 +18,7 @@ const SignInForm = () => {
 	const [error, setError] = useState('');
 	const [emailSignInloadings, setEmailSignInloadings] = useState(false);
 	const [t] = useTranslation();
-	const { emailSignIn } = UserAuth();
+	// const { emailSignIn } = UserAuth();
 
 	const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const SignInForm = () => {
 		setEmailSignInloadings(true);
 
 		try {
-			await emailSignIn(email, password);
+			// await emailSignIn(email, password);
 
 			setEmailSignInloadings(false);
 			navigate('/', { replace: true });

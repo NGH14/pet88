@@ -43,7 +43,7 @@ import axios from 'axios';
 import moment from 'moment';
 import 'moment/locale/vi';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import UUID from '../../hooks/useUUID';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import './style.css';
@@ -106,7 +106,7 @@ export const CalendarAdmin = () => {
 	});
 	const [selecteDetaildDate, setSelectedDetailDate] = useState({});
 	const [selecteDetailType, setSelecteDetailType] = useState(false);
-	const { GetAllUser } = UserAuth();
+	// const { GetAllUser } = UserAuth();
 	const photo =
 		'https://res.cloudinary.com/dggxjymsy/image/upload/v1667986972/pet88_upload/e10adb13acb1f3da8724a9149a58bd00_jwdh7h.jpg';
 	const [disabled, setDisabled] = useState(false);
@@ -1075,8 +1075,8 @@ export const CalendarAdmin = () => {
 						/>
 					) : null}
 				</section>
-				<section className="sectionider">
-					<section className="sectionider-vertical">
+				<section className="">
+					<section className="-vertical">
 						<section className="center-element">
 							<Button
 								style={{}}

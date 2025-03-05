@@ -13,7 +13,6 @@ import {
 	Radio,
 	Skeleton,
 	Steps,
-	sectionider,
 } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import Meta from 'antd/lib/card/Meta';
@@ -25,7 +24,7 @@ import moment from 'moment';
 import 'moment/locale/en-gb';
 import 'moment/locale/vi';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
 import './style.css';
 
@@ -40,7 +39,7 @@ export default function Checkout() {
 	const sumPriceMap = location.state.priceList;
 	const [loading, setLoading] = React.useState(false);
 	const depart = location.state.depart;
-	const { user } = UserAuth();
+	// const { user } = UserAuth();
 	const photo =
 		location.state.photos?.length > 0
 			? location.state.photos[0]
@@ -60,8 +59,8 @@ export default function Checkout() {
 		if (value?.paymentMethod === 'e-payment') {
 			await axios
 				.post(`http://localhost:3001/api/checkout/create-checkout-session`, {
-					email: user?.email,
-					userID: user?.id || 'guest',
+					// email: user?.email,
+					// userID: user?.id || 'guest',
 					roomList: sumPriceMap,
 					photo: photo,
 					days: search.days,
@@ -82,8 +81,8 @@ export default function Checkout() {
 		if (value?.paymentMethod === 'cash') {
 			await axios
 				.post(`http://localhost:3001/api/order/cash`, {
-					email: user?.email,
-					userID: user?.id || 'guest',
+					// email: user?.email,
+					// userID: user?.id || 'guest',
 					roomList: sumPriceMap,
 					photo: photo,
 					days: search.days,
@@ -147,7 +146,7 @@ export default function Checkout() {
 												<p className="checkout-dates_text">{checkOutDate}</p>
 											</section>
 										</section>
-										<sectionider></sectionider>
+										<></>
 										<section className="checkout_days">
 											<h3 className="checkout_subtitle">
 												{t('Total length of pet stay')}
@@ -179,7 +178,7 @@ export default function Checkout() {
 												</p>
 											</section>
 										</section>
-										<sectionider></sectionider>
+										<></>
 										<section className="checkout_counting">
 											<section className="checkout_total">
 												<h3 className="checkout_subtitle">
@@ -250,14 +249,14 @@ export default function Checkout() {
 										<Form
 											validateTrigger="onBlur"
 											labelCol={{ span: 4 }}
-											name="update user"
+											// name="update user"
 											size={'large'}
 											layout="vertical"
 											initialValues={{
-												name: user?.name,
-												phone: user?.phone,
+												// name: user?.name,
+												// phone: user?.phone,
 												paymentMethod: 'e-payment',
-												email: user?.email,
+												// email: user?.email,
 											}}
 											onFinish={onFinishUpdate}
 											autoComplete="off"
@@ -269,7 +268,7 @@ export default function Checkout() {
 												rules={[
 													{
 														required: true,
-														message: t('Please input your username!'),
+														// message: t('Please input your username!'),
 													},
 												]}
 											>

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
 import { LockOutlined, SearchOutlined } from '@ant-design/icons';
-import { Button, DatePicker, Form, Input, Paragraph, Radio, Select, sectionider } from 'antd';
+import { Button, DatePicker, Form, Input, Radio, Select } from 'antd';
 import axios from 'axios';
 import { SearchData } from 'context/SearchContext';
 import moment from 'moment';

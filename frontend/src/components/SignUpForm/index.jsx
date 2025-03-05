@@ -8,7 +8,7 @@ import { MailOutlined } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import { motion } from 'motion/react';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import './style.css';
 
 const SignUpForm = () => {
@@ -19,7 +19,7 @@ const SignUpForm = () => {
 	const [emailStatus, setEmailStatus] = React.useState();
 	const [password, setPassword] = React.useState('');
 	const [loading, setLoading] = React.useState(false);
-	const { createUser, AddUserToDB } = UserAuth();
+	// const { createUser, AddUserToDB } = UserAuth();
 	const navigate = useNavigate();
 	const [t] = useTranslation();
 
@@ -30,8 +30,8 @@ const SignUpForm = () => {
 	const onFinish = async e => {
 		setLoading(true);
 		try {
-			const { user } = await createUser(email, password);
-			await AddUserToDB(user, { name: displayName });
+			// const { user } = await createUser(email, password);
+			// await AddUserToDB(user, { name: displayName });
 			localStorage.setItem('name', displayName);
 			navigate('/');
 			setLoading(false);

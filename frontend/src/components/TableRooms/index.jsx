@@ -32,8 +32,8 @@ import {
 import axios from 'axios';
 import moment from 'moment';
 
-import { UserAuth } from '../../context/AuthContext';
-import { storage } from '../../utils/firebase';
+// import { UserAuth } from '../../context/AuthContext';
+// import { storage } from '../../utils/firebase';
 import './style.css';
 
 const { Option } = Select;
@@ -60,7 +60,7 @@ export default function TableRooms() {
 	const [tableToolTip, setTableToolTip] = useState(false);
 
 	const [form] = Form.useForm();
-	const { token } = UserAuth();
+	// const { token } = UserAuth();
 	const [searchDataSource, setSearchDataSource] = React.useState(listRoomCategorys);
 	const { t, i18n } = useTranslation();
 	const [page, setPage] = React.useState(1);

@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 
 const antIcon = (
 	<LoadingOutlined
@@ -21,14 +21,14 @@ const antIcon = (
 	/>
 );
 export default function SignInGoogle({ ...props }) {
-	const { googleSignIn, AddUserToDB, user } = UserAuth();
+	// const { googleSignIn, AddUserToDB, user } = UserAuth();
 	const [loading, setLoading] = useState(false);
 	const { t, i18n } = useTranslation();
 	const handleGoogleSignIn = async () => {
 		setLoading(true);
 		try {
-			const { user } = await googleSignIn();
-			await AddUserToDB(user, {});
+			// const { user } = await googleSignIn();
+			// await AddUserToDB(user, {});
 		} catch (error) {
 			toast.error(t('Fail to login in Google'));
 			setLoading(false);

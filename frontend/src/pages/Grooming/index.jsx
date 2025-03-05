@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { RiFileUserLine, RiMailSendLine, RiPhoneLine } from 'react-icons/ri';
+// import { RiFileUserLine, RiMailSendLine, RiPhoneLine } from 'react-icons/ri';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 
 import {
@@ -23,7 +23,7 @@ import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
 import moment from 'moment';
 import { styled } from 'styled-components';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
 import FooterWave from '../../layouts/views/Footer/Footer.jsx';
 import AppHeader from '../../layouts/views/NavBar/NavBar.jsx';
@@ -46,7 +46,7 @@ export default function Department() {
 	const [form3] = Form.useForm();
 
 	const [dataList, setDataList] = useState([]);
-	const { user } = UserAuth();
+	// const { user } = UserAuth();
 	const navigate = useNavigate();
 	const [selectedRooms, setSelectedRooms] = useState([]);
 	const [sumPrice, setSumPrice] = useState(0);
@@ -87,7 +87,7 @@ export default function Department() {
 		axios
 			.post(`http://localhost:3001/api/order/grooming/booking`, {
 				email: value?.email,
-				userID: user?.id || 'guest',
+				// userID: user?.id || 'guest',
 				name: value?.name || 'guest',
 				phone: value?.phone || '-1',
 				roomList: selectedRooms,
@@ -257,9 +257,9 @@ export default function Department() {
 											name="horizontal_appointment"
 											layout="horizontal"
 											initialValues={{
-												name: user?.name,
-												email: user?.email,
-												phone: user?.phone,
+												// name: user?.name,
+												// email: user?.email,
+												// phone: user?.phone,
 											}}
 											onFinish={onFinishConfirm}
 											requiredMark={false}
@@ -272,7 +272,7 @@ export default function Department() {
 													},
 												]}
 												name="name"
-												label={<RiFileUserLine />}
+												// label={<RiFileUserLine />}
 											>
 												<Input placeholder={t('Name')} />
 											</Form.Item>

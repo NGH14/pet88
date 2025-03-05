@@ -19,7 +19,7 @@ import { ExportTableButton, SearchTableInput, Table } from 'ant-table-extensions
 import { Button, Drawer, Form, Input, InputNumber, Modal, Popconfirm, Select, Space } from 'antd';
 import axios from 'axios';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import './style.css';
 
 const { Option } = Select;
@@ -36,7 +36,7 @@ export default function TableGrooming() {
 	const [tableToolTip, setTableToolTip] = useState(false);
 
 	const [form] = Form.useForm();
-	const { token } = UserAuth();
+	// const { token } = UserAuth();
 	const [searchDataSource, setSearchDataSource] = React.useState(listGroomings);
 	const { t, i18n } = useTranslation();
 	const [page, setPage] = React.useState(1);

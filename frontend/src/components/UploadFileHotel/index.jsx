@@ -5,7 +5,7 @@ import { Button, Form, Modal, Upload, message } from 'antd';
 import 'antd/dist/antd.css';
 import axios from 'axios';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import './style.css';
 
 const getBase64 = file =>
@@ -27,7 +27,7 @@ const UploadFileHotel = () => {
 	const [form] = Form.useForm();
 
 	const [uploading, setUploading] = React.useState(false);
-	const { CreateHotel } = UserAuth();
+	// const { CreateHotel } = UserAuth();
 	console.log(fileList);
 
 	React.useEffect(() => form.resetFields(), [resetUpload]);

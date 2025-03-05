@@ -7,7 +7,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Image, Menu, Select } from 'antd';
 import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import OperatingStatus from 'components/OperatingStatus/OperatingStatus.jsx';
-import { UserAuth } from 'context/AuthContext';
+// import { UserAuth } from 'context/AuthContext';
 
 import { StyledSubHeader } from './SubHeader.style.js';
 

@@ -7,7 +7,7 @@ import { motion } from 'motion/react';
 
 import DogImg from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
 import ResetPasswordForm from '../../components/ResetPasswordForm';
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import InValidDisplay from './../../components/InvalidCodeReset/index';
 import './style.css';
 
@@ -16,7 +16,7 @@ function useQuery() {
 }
 
 export default function ResetPassword() {
-	const { user, VerifyPasswordResetCode } = UserAuth();
+	// const { user, VerifyPasswordResetCode } = UserAuth();
 	const [verified, setVerified] = React.useState();
 	const [loading, setLoading] = React.useState(true);
 	const [t] = useTranslation();
@@ -27,7 +27,7 @@ export default function ResetPassword() {
 	const oobCode = query.get('oobCode');
 	const onFinish = async () => {
 		try {
-			await VerifyPasswordResetCode(oobCode);
+			// await VerifyPasswordResetCode(oobCode);
 			setVerified(true);
 		} catch (e) {
 			console.log(e.message);

@@ -41,6 +41,9 @@ import moment from 'moment';
 import { storage } from 'utils/firebase';
 import { ToVND } from 'utils/formatCurrency';
 
+// import { UserAuth } from '../../context/AuthContext';
+// import { storage } from '../../utils/firebase';
+import { ToVND } from './../../utils/FormatCurrency';
 import './style.css';
 
 const { Option } = Select;
@@ -72,7 +75,7 @@ export default function TableOrder() {
 	const [searchDataSource, setSearchDataSource] = React.useState(listorders);
 	const { t, i18n } = useTranslation();
 	const [page, setPage] = React.useState(1);
-	const { user, GetAllUser } = UserAuth();
+	// const { user, GetAllUser } = UserAuth();
 
 	const [userData, setUserData] = React.useState([]);
 	const [userDataOption, setUserDataOpion] = React.useState([]);
@@ -170,8 +173,8 @@ export default function TableOrder() {
 		setLoadingCreate(true);
 		try {
 			const bookingUser = value.account
-				? userData.find(u => u.email === value.user)
-				: { id: 'guest', email: value.user, phone: -1 };
+				// ? userData.find(u => u.email === value.user)
+				// : { id: 'guest', email: value.user, phone: -1 };
 
 			console.log({ value, bookingUser });
 
@@ -203,7 +206,7 @@ export default function TableOrder() {
 			const list = [];
 			const option = [];
 
-			const users = await GetAllUser();
+			// const users = await GetAllUser();
 			users.forEach(doc => {
 				list.push({ id: doc.id, ...doc.data(), key: doc.id });
 			});

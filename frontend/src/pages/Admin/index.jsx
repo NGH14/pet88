@@ -21,10 +21,10 @@ import TableHotel from 'components/TableHotel';
 import TableOrder from 'components/TableOrder';
 import TableRooms from 'components/TableRooms';
 import TableUser from 'components/TableUser/index';
-import { UserAuth } from 'context/AuthContext';
-import { collection, getDocs } from 'firebase/firestore';
+// import { UserAuth } from 'context/AuthContext';
+// import { collection, getDocs } from 'firebase/firestore';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
-import { storage } from 'utils/firebase';
+// import { storage } from 'utils/firebase';
 
 import './style.css';
 
@@ -43,7 +43,7 @@ export default function Admin() {
 	const location = useLocation();
 	const [loading, setLoading] = useState(false);
 	const { t, i18n } = useTranslation();
-	const { user } = UserAuth();
+	// const { user } = UserAuth();
 	const navigate = useNavigate();
 	const [collapsed, setCollapsed] = useState(true);
 	const [openUpdate, setOpenUpdate] = useState(false);

@@ -17,7 +17,7 @@ import { ExportTableButton, SearchTableInput, Table } from 'ant-table-extensions
 import { Button, Drawer, Form, Input, Modal, Popconfirm, Select, Space, Tag, Upload } from 'antd';
 import axios from 'axios';
 
-import { UserAuth } from '../../context/AuthContext';
+// import { UserAuth } from '../../context/AuthContext';
 import './style.css';
 
 const { Option } = Select;
@@ -47,14 +47,14 @@ export default function TableHotel() {
 	const [form] = Form.useForm();
 	const [searchDataSource, setSearchDataSource] = React.useState(listHotels);
 	const { t, i18n } = useTranslation();
-	const {
-		CreateHotel,
-		DeleteHotel,
+	// const {
+	// 	CreateHotel,
+	// 	DeleteHotel,
 
-		GetAllHotel,
-		UpdateHotel,
-		MultipleDeleteDepart,
-	} = UserAuth();
+	// 	GetAllHotel,
+	// 	UpdateHotel,
+	// 	MultipleDeleteDepart,
+	// } = UserAuth();
 
 	const [previewOpen, setPreviewOpen] = React.useState(false);
 	const [previewImage, setPreviewImage] = React.useState('');
@@ -191,7 +191,7 @@ export default function TableHotel() {
 				...value,
 				photos: listImg,
 			};
-			await CreateHotel(data);
+			// await CreateHotel(data);
 
 			setLoadingCreate(false);
 			setOpenCreate(false);
