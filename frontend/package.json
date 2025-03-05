@@ -54,8 +54,7 @@
 		"sb": "storybook dev -p 6006",
 		"sb:build": "storybook build",
 		"chromatic": "npx chromatic --project-token=b60e7e753a90",
-		"extract:i18n": "i18next --config ./src/configs/extract.config.mjs",
-		"dev": "vite"
+		"extract:i18n": "i18next --config ./src/configs/extract.config.mjs"
 	},
 	"eslintConfig": {
 		"extends": [
