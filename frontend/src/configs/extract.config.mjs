@@ -27,7 +27,7 @@ export default {
 	locales: [ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE],
 	// An array of the locales in your applications
 
-	output: 'src/i18n/locales/$LOCALE/$NAMESPACE.json',
+	output: 'src/utils/i18n/locales/$LOCALE/$NAMESPACE.json',
 	// Supports $LOCALE and $NAMESPACE injection
 	// Supports JSON (.json) and YAML (.yml) file formats
 	// Where to write the locale files relative to process.cwd()
