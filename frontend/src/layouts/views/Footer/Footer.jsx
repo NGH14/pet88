@@ -50,7 +50,6 @@ export default function Footer() {
 				</section>
 
 				<section>
-					{' '}
 					<FooterTitle>{t('location')}</FooterTitle>
 					<ul id="menu-quick-links" className="footer-menu-list">
 						<li className="menu-item menu-item-type-custom menu-item-object-custom">
