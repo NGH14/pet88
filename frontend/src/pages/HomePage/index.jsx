@@ -6,17 +6,11 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
 
-
-
 import { HeartTwoTone } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import serviceImg1 from 'assets/images/Illustration-Bond.png';
 import serviceImg2 from 'assets/images/Illustration-Schedule.png';
-import img1 from 'assets/images/customer-brand/customer-logo-1.webp';
-import img2 from 'assets/images/customer-brand/customer-logo-2.webp';
-import img4 from 'assets/images/customer-brand/customer-logo-2.webp';
-import img3 from 'assets/images/customer-brand/customer-logo-4.webp';
 import FIRST from 'assets/images/dog-grooming-photography-1.jpg';
 import SECOND from 'assets/images/dog-grooming-photography-2.jpg';
 import { CountUpComponent } from 'components/CountUp';
@@ -27,22 +21,16 @@ import { motion } from 'motion/react';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-
-
 import {
 	HomeSilderContainer,
 	HomeSliderElement,
 } from './views/PartnerSlider/PartnerSlider.style.mjs';
 
-
-
-import STATISTIC_GROW_UP from './constants/stats.mjs';
+import PARTNER_IMAGE from './data/partnerImage.mjs';
+import partnerImage from './data/partnerImage.mjs';
+import STATISTIC_GROW_UP from './data/stats.mjs';
 import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
-
-
-
-
 
 const cardVariants = {
 	offscreen: {
@@ -56,8 +44,6 @@ const cardVariants = {
 		},
 	},
 };
-
-
 
 function HomePage() {
 	const [t] = useTranslation();
@@ -88,58 +74,17 @@ function HomePage() {
 					<HomeSilderContainer
 						slidesPerView={4}
 						spaceBetween={10}
-						pagination={{
-							clickable: true,
-						}}
-						speed={4000}
+						speed={3000}
 						modules={[Autoplay]}
-						autoplay={{ delay: 1000 }}
-						>
-						<HomeSliderElement>
-							<img src={img1} alt="" className="swiper-logo" />
-						</HomeSliderElement>
-						<SwiperSlide>
-							<img src={img2} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img3} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img4} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img1} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img2} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img3} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img4} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img1} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img2} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img3} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img4} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img1} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img2} alt="" className="swiper-logo" />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={img3} alt="" className="swiper-logo" />
-						</SwiperSlide>
+						autoplay={{ delay: 1000 }}>
+						{PARTNER_IMAGE.map(({ id, src, fallback, alt }) => (
+							<HomeSliderElement key={id}>
+								<picture key={id}>
+									<source srcSet={src} type="image/webp" />
+									<img src={fallback} alt={alt} loading="lazy" />
+								</picture>
+							</HomeSliderElement>
+						))}
 					</HomeSilderContainer>
 				</section>
 			</section>
@@ -157,7 +102,7 @@ function HomePage() {
 				</section>
 
 				<ScrollTrigger onEnter={() => setCountUp(true)}>
-					{countUp && <GrowingUpSection stats={STATISTIC_GROW_UP}/>}
+					{countUp && <GrowingUpSection stats={STATISTIC_GROW_UP} />}
 				</ScrollTrigger>
 
 				<section id="about" className="homepage-servicecontent" variants={cardVariants}>
@@ -204,8 +149,8 @@ function HomePage() {
 					<section className="slider-contain">
 						<ReactBeforeSliderComponent
 							currentPercentPosition="40"
-							firstImage={{"imageUrl":FIRST}}
-							secondImage={{"imageUrl":SECOND}}
+							firstImage={{ imageUrl: FIRST }}
+							secondImage={{ imageUrl: SECOND }}
 						/>
 					</section>
 					<section className="slider-text">

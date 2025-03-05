@@ -20,4 +20,12 @@ export const HomeSliderElement = styled(SliderElement)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	img {
+		display: inline-block;
+		width: 100px;
+		height: 32px;
+		object-fit: contain;
+		aspect-ratio: 3/2;
+	}
 `;
