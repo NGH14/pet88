@@ -1,8 +1,4 @@
-import { StyledSliderContainer, StyledSlider } from './Slider.style.mjs';
-
-
-
-
+import { StyledSlider, StyledSliderContainer } from './Slider.style.mjs';
 
 const SliderComponent = props => {
 	const { data, ...rest } = props;

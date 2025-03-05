@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const StyledSliderContainer = styled(Swiper)`
 	display: flex;
@@ -14,6 +13,4 @@ export const StyledSliderContainer = styled(Swiper)`
 	}
 `;
 
-export const StyledSlider = styled(SwiperSlide)`
-
-`
+export const StyledSlider = styled(SwiperSlide)``;

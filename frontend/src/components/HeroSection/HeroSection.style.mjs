@@ -5,7 +5,7 @@ import { styled } from 'styled-components';
 
 export const HeroBlockStyled = styled.section`
 	--margin-inline: 2rem;
-	--radius:  15% 15%  20px 20px;
+	--radius: 15% 15% 20px 20px;
 
 	max-height: 65rem;
 	width: calc(100% - 2 * var(--margin-inline));

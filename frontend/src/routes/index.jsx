@@ -1,8 +1,5 @@
+/* @vite-ignore */
 import { lazy } from 'react';
-
-
-
-
 
 const routesConfig = [
 	{
@@ -130,8 +127,8 @@ const routesConfig = [
 		private: false,
 	},
 ];
-/* @vite-ignore */
-const lazyImport = path => lazy(() => import(`../pages/${path}`));
+
+const lazyImport = path => lazy(() => import(`@/pages/${path}/index.jsx`));
 
 const routes = routesConfig.map(route => ({
 	...route,

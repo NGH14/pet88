@@ -17,21 +17,20 @@ import { GlobalStyle } from 'styles/global.style.js';
 import routes from './routes/index.jsx';
 
 function App() {
-
 	return (
 		<>
 			<GlobalStyle />
 			{/* <AuthContextProvider> */}
-				<I18nextProvider i18n={i18n}>
-					<SearchContextProvider>
-						<ConfigProvider theme={antdConfig}>
-							<ToastContainer {...toastConfig} />
-							<BrowserRouter>
-								<Routes>{ListRoutes(routes)}</Routes>
-							</BrowserRouter>
-						</ConfigProvider>
-					</SearchContextProvider>
-				</I18nextProvider>
+			<I18nextProvider i18n={i18n}>
+				<SearchContextProvider>
+					<ConfigProvider theme={antdConfig}>
+						<ToastContainer {...toastConfig} />
+						<BrowserRouter>
+							<Routes>{ListRoutes(routes)}</Routes>
+						</BrowserRouter>
+					</ConfigProvider>
+				</SearchContextProvider>
+			</I18nextProvider>
 			{/* </AuthContextProvider> */}
 		</>
 	);

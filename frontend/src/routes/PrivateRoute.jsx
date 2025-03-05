@@ -4,7 +4,7 @@ import { redirect } from 'react-router';
 
 export const PrivateRoute = ({ children }) => {
 	// const { user } = UserAuth();
-	const user={}
+	const user = {};
 	if (!user) {
 		return <redirect to="/" />;
 	}

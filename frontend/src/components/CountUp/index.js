@@ -1,1 +1,1 @@
-export { default as CountUpComponent } from './CountComponent.jsx'
+export { default as CountUpComponent } from './CountComponent.jsx';

@@ -1,6 +1,6 @@
 {
-  "address": {
-    "Truong_Sa":"Alley 418 Truong Sa, Ward 2, Phu Nhuan, Ho Chi Minh",
-	  "Cong_Hoa": "20 Cong Hoa Ward 12, Tan Binh, Ho Chi Minh"
-  }
+	"address": {
+		"Truong_Sa": "Alley 418 Truong Sa, Ward 2, Phu Nhuan, Ho Chi Minh",
+		"Cong_Hoa": "20 Cong Hoa Ward 12, Tan Binh, Ho Chi Minh"
+	}
 }

@@ -21,14 +21,14 @@ function AuthButton({ TextColor, FullWitdh }) {
 	return (
 		<section className="authbutton">
 			{/* {!user && !localStorage.getItem('name') && ( */}
-				<>
-					<NavLink to="/sign-in">
-						<LoginButton>
-							{t('Sign in')} &nbsp;
-							<ArrowRightOutlined />
-						</LoginButton>
-					</NavLink>
-				</>
+			<>
+				<NavLink to="/sign-in">
+					<LoginButton>
+						{t('Sign in')} &nbsp;
+						<ArrowRightOutlined />
+					</LoginButton>
+				</NavLink>
+			</>
 			{/* )} */}
 		</section>
 	);

@@ -256,11 +256,13 @@ export default function Department() {
 											form={form3}
 											name="horizontal_appointment"
 											layout="horizontal"
-											initialValues={{
-												// name: user?.name,
-												// email: user?.email,
-												// phone: user?.phone,
-											}}
+											initialValues={
+												{
+													// name: user?.name,
+													// email: user?.email,
+													// phone: user?.phone,
+												}
+											}
 											onFinish={onFinishConfirm}
 											requiredMark={false}
 										>

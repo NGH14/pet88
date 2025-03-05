@@ -1,10 +1,6 @@
 import { motion } from 'motion/react';
 
-import {
-	AnimateSpan,
-	AnimationContainer,
-	StyledHyperLink,
-} from './HyperLink.style.js';
+import { AnimateSpan, AnimationContainer, StyledHyperLink } from './HyperLink.style.js';
 
 const DURATION = 0.2;
 const DELAY = 0.025;

@@ -36,7 +36,8 @@ export default function Footer() {
 						<HyperLink
 							href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
 							animation={false}
-							target="_self">
+							target="_self"
+						>
 							{CONTACT_DETAIL.email.address}
 						</HyperLink>
 					</p>
@@ -56,7 +57,7 @@ export default function Footer() {
 							<p>{t('address@Cong_Hoa')}</p>
 						</li>
 						<li className="menu-item menu-item-type-custom menu-item-object-custom">
-								<p>{t('address@Truong_Sa')}</p>
+							<p>{t('address@Truong_Sa')}</p>
 						</li>
 					</ul>
 				</section>

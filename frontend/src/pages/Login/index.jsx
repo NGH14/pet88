@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import logoBlack from 'assets/images/logo/icon-logo-primary.webp';
 import LeftSideLogin from 'components/LoginLeft';
 import RightSideLogin from 'components/LoginRight';
+
 // import { UserAuth } from 'context/AuthContext';
 
 import './style.css';
@@ -22,10 +23,10 @@ export default function SignIn() {
 	return (
 		<>
 			{/* {!user && ( */}
-				<section className="loginpage-wrapper">
-					<LeftSideLogin src={logoBlack} />
-					<RightSideLogin />
-				</section>
+			<section className="loginpage-wrapper">
+				<LeftSideLogin src={logoBlack} />
+				<RightSideLogin />
+			</section>
 			{/* )} */}
 		</>
 	);

@@ -34,5 +34,4 @@ export const GlobalStyle = styled.createGlobalStyle`
 		resize: none;
 		min-height: fit-content;
 	}
-
 `;

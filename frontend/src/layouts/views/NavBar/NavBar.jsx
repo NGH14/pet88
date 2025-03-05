@@ -105,35 +105,35 @@ function Navbar() {
 							);
 						})}
 						{/* {user && ( */}
-							<NavLink
-								to="./account"
-								style={{
-									transition: 'color 0.3s ease-in-out',
+						<NavLink
+							to="./account"
+							style={{
+								transition: 'color 0.3s ease-in-out',
 
-									fontWeight: 700,
-									fontSize: 16,
-									padding: 15,
-									borderBottom: '1px solid black',
-								}}
-							>
-								{t('account')}
-							</NavLink>
+								fontWeight: 700,
+								fontSize: 16,
+								padding: 15,
+								borderBottom: '1px solid black',
+							}}
+						>
+							{t('account')}
+						</NavLink>
 						{/* )} */}
 
 						{/* {user?.role === 'admin' && ( */}
-							<NavLink
-								to="/admin"
-								style={{
-									transition: 'color 0.3s ease-in-out',
+						<NavLink
+							to="/admin"
+							style={{
+								transition: 'color 0.3s ease-in-out',
 
-									fontWeight: 700,
-									fontSize: 16,
-									padding: 15,
-									borderBottom: '1px solid black',
-								}}
-							>
-								{t('Admin Centre')}
-							</NavLink>
+								fontWeight: 700,
+								fontSize: 16,
+								padding: 15,
+								borderBottom: '1px solid black',
+							}}
+						>
+							{t('Admin Centre')}
+						</NavLink>
 						{/* )} */}
 
 						<section className="drawer-auth">
