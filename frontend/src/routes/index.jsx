@@ -1,4 +1,3 @@
-/* @vite-ignore */
 import { lazy } from 'react';
 
 const routesConfig = [
@@ -48,7 +47,12 @@ const routesConfig = [
 		private: false,
 	},
 	{
-		path: '/admin/management-user',
+		path: '/admin',
+		element: 'Admin',
+		private: false,
+	},
+	{
+		path: '/admin/*',
 		element: 'Admin',
 		private: false,
 	},
