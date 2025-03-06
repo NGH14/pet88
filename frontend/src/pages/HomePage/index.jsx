@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
 import 'react-before-after-slider-component/dist/build.css';
-import CountUp from 'react-countup';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
@@ -31,6 +30,7 @@ import partnerImage from './data/partnerImage.mjs';
 import STATISTIC_GROW_UP from './data/stats.mjs';
 import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
+import HomeSlider from './views/PartnerSlider';
 
 const cardVariants = {
 	offscreen: {
@@ -71,22 +71,16 @@ function HomePage() {
 				</section>
 				<section className="wrap-content">
 					<p>{t('leading partner')}</p>
-					<HomeSilderContainer
-						slidesPerView={4}
-						spaceBetween={10}
-						speed={3000}
-						modules={[Autoplay]}
-						autoplay={{ delay: 1000 }}
-					>
-						{PARTNER_IMAGE.map(({ id, src, fallback, alt }) => (
-							<HomeSliderElement key={id}>
-								<picture key={id}>
-									<source srcSet={src} type="image/webp" />
-									<img src={fallback} alt={alt} loading="lazy" />
-								</picture>
-							</HomeSliderElement>
-						))}
-					</HomeSilderContainer>
+					<HomeSlider
+						data={PARTNER_IMAGE}
+						config={{
+							slidesPerView: 4,
+							spaceBetween: 10,
+							speed: 3000,
+							modules: [Autoplay],
+							autoplay: { delay: 1000 },
+						}}
+					/>
 				</section>
 			</section>
 
@@ -122,8 +116,7 @@ function HomePage() {
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
-						}}
-					>
+						}}>
 						<img src={serviceImg2} alt="" className="homepage-content_subflexImg" />
 					</section>
 				</section>
@@ -145,8 +138,7 @@ function HomePage() {
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"
-				viewport={{ once: true, amount: 0.8 }}
-			>
+				viewport={{ once: true, amount: 0.8 }}>
 				<p className="title-homepage">{t('Service makes the difference')}</p>
 				<motion.section className="slider-beforeafter" variants={cardVariants}>
 					<section className="slider-contain">

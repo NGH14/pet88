@@ -14,7 +14,7 @@ const GrowUpSection = ({ stats }) => {
 				stats?.map((stat, index) => (
 					<GrowUpElement key={index}>
 						<GrowUpCount end={stat.number} suffix={stat.prefix} duration={DURATION} />
-						<GrowUpSubText>{t(stat.title)}</GrowUpSubText>;
+						<GrowUpSubText>{t(stat.title)}</GrowUpSubText>
 					</GrowUpElement>
 				))}
 		</GrowUpContainer>
