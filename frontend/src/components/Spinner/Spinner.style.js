@@ -8,7 +8,7 @@ export const SpinnerWrapper = styled.section`
 	align-items: center;
 	justify-content: center;
 	position: relative;
-  height: ${props => props.$height || '100vh'}}
+  height: ${props => props.$height ? `${props.$height} !important` : '100vh'}}
 `;
 
 export const StyledSpin = styled(Spin)`
@@ -16,5 +16,5 @@ export const StyledSpin = styled(Spin)`
 `;
 
 export const SpinIcon = styled(LoadingOutlined)`
-	font-size: ${props => `${props.fontSize} !important` || '100px !important'};
+	font-size: ${props => `${props.$fontSize} !important` || '100px !important'};
 `;

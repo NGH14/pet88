@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { CountUpComponent as GrowUpCount } from 'components/CountUp';
+import { CountUpComponent as GrowUpNumber } from 'components/CountUp';
 
 import { GrowUpContainer, GrowUpElement, GrowUpSubText } from './GrowingUpSection.style.mjs';
 
@@ -13,7 +13,7 @@ const GrowUpSection = ({ stats }) => {
 			{stats &&
 				stats?.map((stat, index) => (
 					<GrowUpElement key={index}>
-						<GrowUpCount end={stat.number} suffix={stat.prefix} duration={DURATION} />
+						<GrowUpNumber end={stat.number} suffix={stat.prefix} duration={DURATION} />
 						<GrowUpSubText>{t(stat.title)}</GrowUpSubText>
 					</GrowUpElement>
 				))}

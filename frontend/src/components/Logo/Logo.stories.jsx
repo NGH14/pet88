@@ -9,6 +9,4 @@ export default {
 	tags: ['autodocs'],
 	args: {},
 };
-const Template = args => <Logo {...args} />;
 
-export const defaultSpinner = Template.bind({});

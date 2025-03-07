@@ -12,7 +12,6 @@ import serviceImg1 from 'assets/images/Illustration-Bond.png';
 import serviceImg2 from 'assets/images/Illustration-Schedule.png';
 import FIRST from 'assets/images/dog-grooming-photography-1.jpg';
 import SECOND from 'assets/images/dog-grooming-photography-2.jpg';
-import { CountUpComponent } from 'components/CountUp';
 import { HeroSection } from 'components/HeroSection';
 import i18n from 'i18next';
 import MainLayout from 'layouts/MainLayout';

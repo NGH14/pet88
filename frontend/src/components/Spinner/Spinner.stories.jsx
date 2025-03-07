@@ -1,4 +1,4 @@
-import { Spinner } from './Spinner.jsx';
+import Spinner from './Spinner.jsx';
 
 export default {
 	title: 'COMPONENTS/Spinner',
@@ -14,6 +14,6 @@ const Template = args => <Spinner {...args} />;
 export const defaultSpinner = Template.bind({});
 
 defaultSpinner.args = {
-	wrapHeight: '100%',
+	wrapHeight: '300px',
 	iconSize: '100px',
 };
