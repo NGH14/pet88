@@ -1,4 +1,4 @@
-export default {
+export default [{
   env: {
     node: true,
     commonjs: true,
@@ -27,7 +27,6 @@ export default {
       },
     },
   },
-
   rules: {
     // suppress errors for missing 'import React' in files
     'react/react-in-jsx-scope': 'off',
@@ -35,4 +34,4 @@ export default {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }], //should add ".ts" if typescript project
     'no-unused-vars': 'off',
   },
-};
+}];
