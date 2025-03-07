@@ -1,5 +1,22 @@
 import { aliases, baseColors } from 'configs/theme.config.mjs';
 
+/**
+ * Generates a string containing CSS variable definitions for colors.
+ *
+ * This function extracts color values from `baseColors` and `aliases` objects,
+ * then formats them into CSS variable declarations.
+ *
+ * @returns {string} A formatted string of CSS variable definitions.
+ *
+ * @example
+ * const cssVars = ExtractCSSColorVar();
+ * console.log(cssVars);
+ * // Output:
+ * // --primary-100: #f0f0f0;
+ * // --primary-200: #e0e0e0;
+ * // --secondary-100: #d0d0d0;
+ * // --alias-color: var(--primary-100);
+ */
 export const ExtractCSSColorVar = () => {
 	let colorVar = '';
 
