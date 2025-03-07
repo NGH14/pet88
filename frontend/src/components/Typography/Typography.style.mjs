@@ -1,7 +1,7 @@
-import { createElement } from 'react'
+import { createElement } from 'react';
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const StyledTypography = styled(({ tag, children, ...props }) =>
-  createElement(tag, props, children),
-)
+	createElement(tag, props, children)
+);

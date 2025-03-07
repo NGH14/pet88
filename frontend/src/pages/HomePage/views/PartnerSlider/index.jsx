@@ -1,12 +1,6 @@
 import { memo } from 'react';
 
-
-
 import { HomeSilderContainer, HomeSliderElement } from './PartnerSlider.style.mjs';
-
-
-
-
 
 const HomeSlider = props => {
 	const { config, data, ...rest } = props;
@@ -27,4 +21,4 @@ const HomeSlider = props => {
 
 export default memo(HomeSlider);
 
-export {HomeSilderContainer, HomeSliderElement, }
+export { HomeSilderContainer, HomeSliderElement };
