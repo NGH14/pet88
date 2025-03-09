@@ -9,11 +9,17 @@ import {
 	VIETNAMESE_HOMEPAGE,
 } from './locales/translations.js';
 
+const NAMESPACE = {
+	defaultNS: 'translation',
+	commonNS: 'common',
+	homePageNS: 'homepage',
+};
+
 const RESOURCES = {
 	[ENGLISH_LOCALE_CODE]: {
-		translation: ENGLISH_DEFAULT,
-		common: ENGLISH_COMMON,
-		homepage: ENGLISH_HOMEPAGE,
+		[NAMESPACE.defaultNS]: ENGLISH_DEFAULT,
+		[NAMESPACE.commonNS]: ENGLISH_COMMON,
+		[NAMESPACE.homePageNS]: ENGLISH_HOMEPAGE,
 	},
 	[VIETNAM_LOCALE_CODE]: {
 		translation: VIETNAMESE_DEFAULT,
@@ -24,7 +30,7 @@ const RESOURCES = {
 
 const i18nConfig = {
 	resources: RESOURCES,
-	ns: ['translation', 'common', 'homepage'],
+	ns: [[NAMESPACE.defaultNS], [NAMESPACE.commonNS], [NAMESPACE.homePageNS]],
 	defaultNS: 'translation',
 	supportedLngs: [ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE],
 	fallbackLng: ENGLISH_LOCALE_CODE,
