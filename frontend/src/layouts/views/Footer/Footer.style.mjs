@@ -10,7 +10,7 @@ export const FooterContainer = styled.footer`
 	position: sticky;
 	bottom: 10px;
 	left: 0;
-	height: fit-content;
+	height: max-content;
 	width: 98%;
 	padding: 2em;
 	color: var(--white-300);
