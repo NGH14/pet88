@@ -6,7 +6,7 @@ export const StyledHyperLink = styled.span`
 	text-decoration: none;
 	font-weight: 700;
 	&:hover {
-		color: var(--primary-500);
+		color: var(--primary-600);
 	}
 
 	${props =>

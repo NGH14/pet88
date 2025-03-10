@@ -3,6 +3,7 @@
   "name": "pet88",
   "version": "2.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1",
     "ant-table-extensions": "^1.1.7",

@@ -2,7 +2,7 @@ import { css, styled } from 'styled-components';
 
 export const LoginButton = styled.button`
 	border-radius: 30px;
-	background-color: var(--primary-500);
+	background-color: var(--primary-600);
 	padding: 12px 24px;
 	text-align: center;
 	color: white;

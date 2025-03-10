@@ -1,8 +1,9 @@
 import { css } from 'styled-components';
-import { ExtractCSSColorVar } from 'utils/extractCSSColorVar.mjs';
+import {colorVars} from './color.style.mjs'
+
 
 export const color = css`
-	${() => ExtractCSSColorVar()}
+	${colorVars}
 `;
 
 export const variable = css`
