@@ -64,6 +64,8 @@ export const baseColors = {
 
 export const aliases = {
 	'gold-color': baseColors.yellow[500],
+	'primary-color': baseColors.primary[500],
+	'disabled-color': baseColors.gray[400],
 };
 
 export const styledTheme = {
