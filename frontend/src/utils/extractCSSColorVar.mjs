@@ -12,16 +12,14 @@ import { aliases, baseColors } from 'configs/theme.config.mjs';
  * const cssVars = ExtractCSSColorVar();
  * console.log(cssVars);
  * // Output:
- * // --primary-100: #f0f0f0;
- * // --primary-200: #e0e0e0;
- * // --secondary-100: #d0d0d0;
+ * // --primary-100: #fde8db;
+ * // --primary-200: #fbd1b7;
  * // --alias-color: var(--primary-100);
  */
 export const ExtractCSSColorVar = () => {
 	let colorVar = '';
 
 	Object.entries(baseColors).forEach(([category, shades]) => {
-		// Process each shade
 		Object.entries(shades).forEach(([shade, hexCode]) => {
 			colorVar += `--${category}-${shade}: ${hexCode};\n  `;
 		});
