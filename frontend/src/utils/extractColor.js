@@ -1,0 +1,62 @@
+// extract-colors.js
+import fs from 'node:fs/promises';
+
+import { aliases, baseColors } from '../configs/theme.config.mjs';
+
+/**
+ * Generates a string containing CSS variable definitions for colors.
+ *
+ * This function extracts color values from `baseColors` and `aliases` objects,
+ * then formats them into CSS variable declarations.
+ *
+ * @returns {string} A formatted string of CSS variable definitions.
+ *
+ * @example
+ * const cssVars = ExtractCSSColorVar();
+ * console.log(cssVars);
+ * // Output:
+ * // --primary-100: #fde8db;
+ * // --primary-200: #fbd1b7;
+ * // --alias-color: var(--primary-100);
+ */
+export const ExtractCSSColorVar = () => {
+  let colorVar = '';
+
+  Object.entries(baseColors).forEach(([category, shades]) => {
+    Object.entries(shades).forEach(([shade, hexCode]) => {
+      colorVar += `--${category}-${shade}: ${hexCode};\n  `;
+    });
+  });
+
+  Object.entries(aliases).forEach(([name, value]) => {
+    colorVar += `--${name}: ${value};\n  `;
+  });
+
+  return colorVar;
+};
+
+
+
+async function extractToFile() {
+	try {
+		const cssVariables = ExtractCSSColorVar();
+
+		const fileContent = `/**
+  * Extract CSS color variables
+  * Generated on ${new Date().toLocaleString()}
+*/
+
+export const colorVars = \`
+  ${cssVariables}
+\`;
+`;
+
+		// Write to the styles/color.style.js file
+		await fs.writeFile('./src/styles/color.style.mjs', fileContent);
+		console.log('Successfully extracted color variables to styles/color.style.js');
+	} catch (error) {
+		console.error('Error extracting color variables:', error);
+	}
+}
+
+extractToFile();
