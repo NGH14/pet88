@@ -52,19 +52,14 @@ export const baseColors = {
 	},
 	white: {
 		100: '#fdfcfa',
-		200: '#f8f3ee',
 		300: '#fafafa',
-		400: '#f7f6f1',
-		500: '#f2f2f2',
-		600: '#e9e9e9',
+		500: '#f6f6f6',
 		700: '#ffffff',
-		800: '#e5e5e5',
 	},
 };
 
 export const aliases = {
 	'gold-color': baseColors.yellow[500],
-	'primary-color': baseColors.primary[500],
 	'disabled-color': baseColors.gray[400],
 };
 

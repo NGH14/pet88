@@ -7,6 +7,7 @@ export default {
 		layout: 'centered',
 	},
 	tags: ['autodocs'],
-	args: {},
 };
+
+export const Lg = <Logo />
 

@@ -50,7 +50,6 @@ export const colorVars = \`
   ${cssVariables}
 \`;
 `;
-
 		// Write to the styles/color.style.js file
 		await fs.writeFile('./src/styles/color.style.mjs', fileContent);
 		console.log('Successfully extracted color variables to styles/color.style.js');

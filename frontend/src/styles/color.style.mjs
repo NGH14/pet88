@@ -1,7 +1,7 @@
 /**
   * Extract CSS color variables
-  * Generated on 3/10/2025, 8:23:37 PM
- */
+  * Generated on 3/11/2025, 11:58:31 PM
+*/
 
 export const colorVars = `
   --primary-100: #fff4e8;
@@ -46,15 +46,10 @@ export const colorVars = `
   --green-800: #003300;
   --green-900: #001a00;
   --white-100: #fdfcfa;
-  --white-200: #f8f3ee;
   --white-300: #fafafa;
-  --white-400: #f7f6f1;
-  --white-500: #f2f2f2;
-  --white-600: #e9e9e9;
+  --white-500: #f6f6f6;
   --white-700: #ffffff;
-  --white-800: #e5e5e5;
   --gold-color: #ebb512;
-  --primary-color: #ff8f45;
   --disabled-color: #bebebe;
   
 `;
