@@ -5,9 +5,6 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
 
-
-
-import { NAMESPACE } from '~/config/i18n/config.mjs';
 import { HeartTwoTone } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
@@ -19,15 +16,9 @@ import { HeroSection } from 'components/HeroSection';
 import i18n from 'i18next';
 import MainLayout from 'layouts/MainLayout';
 import { motion } from 'motion/react';
-import SwiperCore, { Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-
+import { NAMESPACE } from '~/utils/i18n/config.mjs';
 
 import { LightBackground } from './HomePage.style.mjs';
-import { HomeSilderContainer, HomeSliderElement } from './views/PartnerSlider/PartnerSlider.style.mjs';
-
-
 
 import PARTNER_IMAGE from './data/partnerImage.mjs';
 import partnerImage from './data/partnerImage.mjs';
@@ -35,10 +26,6 @@ import STATISTIC_GROW_UP from './data/stats.mjs';
 import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
 import HomeSlider from './views/PartnerSlider';
-
-
-
-
 
 const cardVariants = {
 	offscreen: {
@@ -82,17 +69,18 @@ function HomePage() {
 					<HomeSlider
 						data={PARTNER_IMAGE}
 						config={{
-							slidesPerView: 4,
+							slidesPerView: 5,
 							spaceBetween: 10,
 							speed: 3000,
-							modules: [Autoplay],
+							allowTouchMove: false,
 							autoplay: { delay: 1000 },
+							loop: true,
 						}}
 					/>
 				</section>
 			</section>
 
-		<LightBackground>
+			<LightBackground>
 				<section className="homepage-servicecontent" variants={cardVariants}>
 					<h3 className="homepage-servicecontent_title">
 						{t('one platform, everything pet service')}
@@ -124,8 +112,7 @@ function HomePage() {
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
-						}}
-					>
+						}}>
 						<img src={serviceImg2} alt="" className="homepage-content_subflexImg" />
 					</section>
 				</section>
@@ -143,12 +130,11 @@ function HomePage() {
 						)}
 					</p>
 				</section>
-</LightBackground>
+			</LightBackground>
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"
-				viewport={{ once: true, amount: 0.8 }}
-			>
+				viewport={{ once: true, amount: 0.8 }}>
 				<p className="title-homepage">{t('Service makes the difference')}</p>
 				<motion.section className="slider-beforeafter" variants={cardVariants}>
 					<section className="slider-contain">
@@ -160,8 +146,7 @@ function HomePage() {
 					</section>
 					<section className="slider-text">
 						<h2 className="slider-text_header">
-							"{t('You take care of pets. We take care of you')}
-							."
+							"{t('You take care of pets. We take care of you')}."
 						</h2>
 						<p className="slider-text_span">Pet88</p>
 					</section>

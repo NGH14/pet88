@@ -1,12 +1,13 @@
 import { memo } from 'react';
 
-import { HomeSilderContainer, HomeSliderElement } from './PartnerSlider.style.mjs';
+import { Autoplay} from 'swiper';
+import { HomeSliderContainer, HomeSliderElement } from './PartnerSlider.style.mjs';
 
 const HomeSlider = props => {
 	const { config, data, ...rest } = props;
 
 	return (
-		<HomeSilderContainer {...config}>
+		<HomeSliderContainer {...config} modules={[Autoplay]}>
 			{data?.map(({ id, src, fallback, alt }) => (
 				<HomeSliderElement key={id}>
 					<picture key={id}>
@@ -15,10 +16,10 @@ const HomeSlider = props => {
 					</picture>
 				</HomeSliderElement>
 			))}
-		</HomeSilderContainer>
+		</HomeSliderContainer>
 	);
 };
 
 export default memo(HomeSlider);
 
-export { HomeSilderContainer, HomeSliderElement };
+export { HomeSliderContainer, HomeSliderElement };

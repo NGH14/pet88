@@ -1,7 +1,7 @@
-import { SliderContainer, SliderElement } from 'components/Slider/index.js';
+import { SliderContainer, SliderElement } from '~/components/Slider/index.js';
 import styled from 'styled-components';
 
-export const HomeSilderContainer = styled(SliderContainer)`
+export const HomeSliderContainer = styled(SliderContainer)`
 	border-radius: 45px;
 	border: 0.5px solid var(--gray-300);
 
