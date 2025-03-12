@@ -37,25 +37,26 @@ export const ExtractCSSColorVar = () => {
 
 
 
-async function extractToFile() {
+async function extractColorToFile() {
+  const opFile = process.argv[2] || "src/styles/color.style.mjs";
 	try {
 		const cssVariables = ExtractCSSColorVar();
 
 		const fileContent = `/**
   * Extract CSS color variables
   * Generated on ${new Date().toLocaleString()}
-*/
+**/
 
 export const colorVars = \`
   ${cssVariables}
 \`;
 `;
 		// Write to the styles/color.style.js file
-		await fs.writeFile('./src/styles/color.style.mjs', fileContent);
-		console.log('Successfully extracted color variables to styles/color.style.js');
+    await fs.writeFile(opFile, fileContent);
+    console.log(`Successfully extracted color variables to ${opFile}`);
 	} catch (error) {
 		console.error('Error extracting color variables:', error);
 	}
 }
 
-extractToFile();
+extractColorToFile();

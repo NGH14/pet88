@@ -3,16 +3,16 @@ import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter, Routes } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
-import { ConfigProvider } from 'antd';
-import antdConfig from '@/configs/antd.config.mjs';
-import toastConfig from '@/configs/toast.config.mjs';
+import antdConfig from '~/configs/antd.config.mjs';
+import toastConfig from '~/configs/toast.config.mjs';
 // import { AuthContextProvider } from 'context/AuthContext';
-import { SearchContextProvider } from '@/context/SearchContext';
+import { SearchContextProvider } from '~/context/SearchContext';
+import { ConfigProvider } from 'antd';
 import i18n from 'i18next';
 import ListRoutes from 'routes/ListRoutes';
 import { ThemeProvider } from 'styled-components';
 
-import { GlobalStyle } from '@/styles/global.style.js';
+import { GlobalStyle } from '~/styles/global.style.js';
 
 import routes from './routes/index.jsx';
 

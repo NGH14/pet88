@@ -132,7 +132,7 @@ const routesConfig = [
 	},
 ];
 
-const lazyImport = path => lazy(() => import(`@/pages/${path}/index.jsx`));
+const lazyImport = path => lazy(() => import(`~/pages/${path}/index.jsx`));
 
 const routes = routesConfig.map(route => ({
 	...route,

@@ -1,4 +1,4 @@
-import { ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE } from '../constants/i18n.mjs';
+import { ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE } from '../utils/i18n/config.mjs';
 
 export default {
 	createOldCatalogs: false,
@@ -8,7 +8,6 @@ export default {
 	// Indentation of the catalog files
 
 	keepRemoved: true,
-	keySeparator: '::',
 	// Keep keys from the catalog that are no longer in code
 
 	// see below for more details
@@ -31,7 +30,7 @@ export default {
 	// Supports $LOCALE and $NAMESPACE injection
 	// Supports JSON (.json) and YAML (.yml) file formats
 	// Where to write the locale files relative to process.cwd()
-
+	keySeparator: '@',
 	input: ['../**/*.{js,jsx,ts,tsx}'],
 	// An array of globs that describe where to look for source files
 	// relative to the location of the configuration file

@@ -5,6 +5,9 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
 
+
+
+import { NAMESPACE } from '~/config/i18n/config.mjs';
 import { HeartTwoTone } from '@ant-design/icons';
 import { ConfigProvider } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
@@ -19,10 +22,12 @@ import { motion } from 'motion/react';
 import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import {
-	HomeSilderContainer,
-	HomeSliderElement,
-} from './views/PartnerSlider/PartnerSlider.style.mjs';
+
+
+import { LightBackground } from './HomePage.style.mjs';
+import { HomeSilderContainer, HomeSliderElement } from './views/PartnerSlider/PartnerSlider.style.mjs';
+
+
 
 import PARTNER_IMAGE from './data/partnerImage.mjs';
 import partnerImage from './data/partnerImage.mjs';
@@ -30,6 +35,10 @@ import STATISTIC_GROW_UP from './data/stats.mjs';
 import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
 import HomeSlider from './views/PartnerSlider';
+
+
+
+
 
 const cardVariants = {
 	offscreen: {
@@ -45,7 +54,7 @@ const cardVariants = {
 };
 
 function HomePage() {
-	const { t } = useTranslation(['homepage', 'translation']);
+	const { t } = useTranslation(NAMESPACE.homePageNS);
 	const [countUp, setCountUp] = useState(false);
 
 	return (
@@ -83,7 +92,7 @@ function HomePage() {
 				</section>
 			</section>
 
-			<section className="grey">
+		<LightBackground>
 				<section className="homepage-servicecontent" variants={cardVariants}>
 					<h3 className="homepage-servicecontent_title">
 						{t('one platform, everything pet service')}
@@ -134,7 +143,7 @@ function HomePage() {
 						)}
 					</p>
 				</section>
-			</section>
+</LightBackground>
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"

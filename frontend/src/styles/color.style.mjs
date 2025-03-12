@@ -51,5 +51,4 @@ export const colorVars = `
   --white-700: #ffffff;
   --gold-color: #ebb512;
   --disabled-color: #bebebe;
-  
 `;

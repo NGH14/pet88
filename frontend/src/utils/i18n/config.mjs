@@ -1,15 +1,8 @@
-import { ENGLISH_LOCALE_CODE, LOCALE_KEY, VIETNAM_LOCALE_CODE } from 'constants/i18n.mjs';
+export const VIETNAM_LOCALE_CODE = 'vi_VN';
+export const ENGLISH_LOCALE_CODE = 'en_US';
+export const LOCALE_KEY = 'lang';
 
-import {
-	ENGLISH_COMMON,
-	ENGLISH_DEFAULT,
-	ENGLISH_HOMEPAGE,
-	VIETNAMESE_COMMON,
-	VIETNAMESE_DEFAULT,
-	VIETNAMESE_HOMEPAGE,
-} from './locales/translations.js';
-
-const NAMESPACE = {
+export const NAMESPACE = {
 	defaultNS: 'translation',
 	commonNS: 'common',
 	homePageNS: 'homepage',
