@@ -1,1 +1,1 @@
-export { default as HeroSection } from './HeroImage.jsx';
+export { default as HeroSection } from './HeroSection.jsx';

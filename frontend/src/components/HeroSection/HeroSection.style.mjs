@@ -7,10 +7,10 @@ export const HeroBlockStyled = styled.section`
 	--margin-inline: 2rem;
 	--radius: 15% 15% 20px 20px;
 
-	max-height: 65rem;
+	max-height: 60rem;
 	width: calc(100% - 2 * var(--margin-inline));
 	margin-inline: var(--margin-inline);
-	margin-block: -1em 15em;
+	margin-block: 0 15em;
 
 	position: relative;
 	z-index: 1;
