@@ -25,7 +25,7 @@ import partnerImage from './data/partnerImage.mjs';
 import STATISTIC_GROW_UP from './data/stats.mjs';
 import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
-import HomeSlider from './views/PartnerSlider';
+import {HomeSlider} from './views/PartnerSlider';
 
 const cardVariants = {
 	offscreen: {

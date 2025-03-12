@@ -3,20 +3,33 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 
+
+
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Image, Menu, Select } from 'antd';
 import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
 import OperatingStatus from 'components/OperatingStatus/OperatingStatus.jsx';
+import useScrollPosition from '~/hooks/useScrollPosition.js';
+
+
 
 // import { UserAuth } from 'context/AuthContext';
 
 import { StyledSubHeader } from './SubHeader.style.js';
 
+
+
+
+
+const SCROLL_THRESHOLD = 1;
+
 function SubHeader() {
 	const locate = useLocation();
 	const navigate = useNavigate();
+	const scrollPosition = useScrollPosition();
 	// const { user, SignOut } = UserAuth();
 	const { t, i18n } = useTranslation();
+	const isScroll = scrollPosition > SCROLL_THRESHOLD ? true : false;
 
 	const handleSignOut = async e => {
 		e.preventDefault();
@@ -47,7 +60,7 @@ function SubHeader() {
 		/>
 	);
 	return (
-		<StyledSubHeader>
+		<StyledSubHeader $scrolled={isScroll}>
 			<OperatingStatus />
 			<ChangeLanguage />
 		</StyledSubHeader>

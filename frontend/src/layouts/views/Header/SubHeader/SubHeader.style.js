@@ -9,9 +9,11 @@ export const StyledSubHeader = styled(SubHeader)`
 	font-size: 0.75em;
 	padding-inline: 30px;
 	margin-inline: auto;
-	display: flex;
+
+	display: ${props => props.$scrolled ? 'none' : 'flex'};
 	justify-content: space-between;
 	align-items: center;
+
 	@media only screen and (max-width: 768px) {
 		display: none;
 	}

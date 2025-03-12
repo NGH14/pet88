@@ -5,6 +5,7 @@ import { NavLink } from 'react-router';
 import HyperLink from 'components/HyperLink/HyperLink.jsx';
 import { Logo } from 'components/Logo/Logo.jsx';
 import CONTACT_DETAIL from 'constants/contact.mjs';
+import { NAMESPACE } from '~/utils/i18n/config.mjs';
 
 import {
 	FooterContainer,
@@ -17,7 +18,7 @@ import {
 import WaveSVG from './Wave.jsx';
 
 export default function Footer() {
-	const { t } = useTranslation('common');
+	const { t } = useTranslation(NAMESPACE.commonNS);
 	return (
 		<FooterContainer>
 			<FooterContentGrid>
@@ -36,8 +37,7 @@ export default function Footer() {
 						<HyperLink
 							href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
 							animation={false}
-							target="_self"
-						>
+							target="_self">
 							{CONTACT_DETAIL.email.address}
 						</HyperLink>
 					</p>

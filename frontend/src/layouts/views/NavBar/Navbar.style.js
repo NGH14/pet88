@@ -11,11 +11,10 @@ export const NavBarList = styled.section`
 export const StyledNavBar = styled.nav`
 	width: 100%;
 	margin: auto;
-	padding: 0.5em 20px;
+	padding: 1em 2em;
 	font-size: 1.2rem;
 	display: flex;
 	justify-content: space-between;
-
 	align-items: center;
 	gap: 0.5em;
 	z-index: 10;

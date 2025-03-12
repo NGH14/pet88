@@ -19,16 +19,15 @@ const pages = [
 	{ title: 'Service', url: '/#service' },
 ];
 
-const SCROLL_THRESHOLD = 1;
+
 
 function Navbar() {
 	const locate = useLocation();
 	const navigate = useNavigate();
-	const scrollPosition = useScrollPosition();
+
 	// const { user, SignOut } = UserAuth();
 	const [visible, setVisible] = useState(false);
 	const { t, i18n } = useTranslation();
-	const isScroll = scrollPosition > SCROLL_THRESHOLD ? true : false;
 
 	// const handleSignOut = async e => {
 	// 	e.preventDefault();
@@ -51,7 +50,7 @@ function Navbar() {
 	};
 	return (
 		<>
-			<StyledNavBar $scrolled={isScroll}>
+			<StyledNavBar >
 				<section className="mobileVisible">
 					<Button onClick={showDrawer} type="text" icon={<MenuOutlined />} ghost></Button>
 					<Drawer
