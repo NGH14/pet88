@@ -14,7 +14,7 @@ import FIRST from 'assets/images/dog-grooming-photography-1.jpg';
 import SECOND from 'assets/images/dog-grooming-photography-2.jpg';
 import { HeroSection } from 'components/HeroSection';
 import i18n from 'i18next';
-import MainLayout from 'layouts/MainLayout';
+import MainLayout from '~/layouts/MainLayout';
 import { motion } from 'motion/react';
 import { NAMESPACE } from '~/utils/i18n/config.mjs';
 
@@ -71,9 +71,9 @@ function HomePage() {
 						config={{
 							slidesPerView: 5,
 							spaceBetween: 10,
-							speed: 3000,
+							speed: 2000,
 							allowTouchMove: false,
-							autoplay: { delay: 1000 },
+							autoplay: { delay: 0 },
 							loop: true,
 						}}
 					/>

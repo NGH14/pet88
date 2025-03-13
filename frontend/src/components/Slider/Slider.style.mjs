@@ -6,11 +6,10 @@ import 'swiper/css/scrollbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const StyledSliderContainer = styled(Swiper)`
-	display: flex;
+	display: ${props => props.$display ? props.$display : "flex"};
 	justify-content: center;
-	.swiper-wrapper {
-		padding: 20px;
-	}
 `;
 
-export const StyledSlider = styled(SwiperSlide)``;
+export const StyledSlider = styled(SwiperSlide)`
+	object-fit: ${props => props.$fit ? props.$fit : "cover"};
+`;

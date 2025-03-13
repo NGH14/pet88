@@ -8,13 +8,13 @@ export const HomeSliderContainer = styled(SliderContainer)`
 	display: flex;
 	justify-content: center;
 	.swiper-wrapper {
-		padding: 20px;
+		padding: 1.5em;
 	}
+
 `;
 
 export const HomeSliderElement = styled(SliderElement)`
 	text-align: center;
-	font-size: 18px;
 	background: #fff;
 	margin-inline: auto;
 	display: flex;
