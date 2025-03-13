@@ -27,13 +27,13 @@ import { HomeSlider } from './views/PartnerSlider';
 
 const cardVariants = {
 	offscreen: {
-		y: 120,
+		y: 80,
 	},
 	onscreen: {
 		y: 0,
 		transition: {
-			bounce: 0.2,
-			duration: 0.2,
+			bounce: 0.5,
+			duration: 0.3,
 		},
 	},
 };
