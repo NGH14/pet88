@@ -1,10 +1,10 @@
-import React from 'react';
+import { memo } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 
-import HyperLink from 'components/HyperLink/HyperLink.jsx';
-import { Logo } from 'components/Logo/Logo.jsx';
-import CONTACT_DETAIL from 'constants/contact.mjs';
+import HyperLink from '~/components/HyperLink/HyperLink.jsx';
+import { Logo } from '~/components/Logo/Logo.jsx';
+import CONTACT_DETAIL from '~/constants/contact.mjs';
 import { NAMESPACE } from '~/utils/i18n/config.mjs';
 
 import {
@@ -15,7 +15,7 @@ import {
 	FooterTitle,
 } from './Footer.style.mjs';
 
-export default function Footer() {
+function Footer() {
 	const { t } = useTranslation(NAMESPACE.commonNS);
 	return (
 		<FooterContainer>
@@ -35,8 +35,7 @@ export default function Footer() {
 						<HyperLink
 							href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
 							animation={false}
-							target="_self"
-						>
+							target="_self">
 							{CONTACT_DETAIL.email.address}
 						</HyperLink>
 					</p>
@@ -71,3 +70,5 @@ export default function Footer() {
 		</FooterContainer>
 	);
 }
+
+export default memo(Footer);
