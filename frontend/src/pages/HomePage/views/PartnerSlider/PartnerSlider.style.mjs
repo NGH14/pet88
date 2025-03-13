@@ -10,7 +10,6 @@ export const HomeSliderContainer = styled(SliderContainer)`
 	.swiper-wrapper {
 		padding: 1.5em;
 	}
-
 `;
 
 export const HomeSliderElement = styled(SliderElement)`

@@ -1,8 +1,3 @@
-
-
-
-const SideBySideSlider = (props) => {
-
-}
+const SideBySideSlider = props => {};
 
 export default SideBySideSlider;

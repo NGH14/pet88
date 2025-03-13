@@ -6,6 +6,7 @@ import { CountUpComponent as GrowUpNumber } from 'components/CountUp';
 import { GrowUpContainer, GrowUpElement, GrowUpSubText } from './GrowingUpSection.style.mjs';
 
 const DURATION = 1.5;
+
 const GrowUpSection = ({ stats }) => {
 	const [t] = useTranslation('homepage');
 	return (

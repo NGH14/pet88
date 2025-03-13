@@ -14,8 +14,8 @@ import FIRST from 'assets/images/dog-grooming-photography-1.jpg';
 import SECOND from 'assets/images/dog-grooming-photography-2.jpg';
 import { HeroSection } from 'components/HeroSection';
 import i18n from 'i18next';
-import MainLayout from '~/layouts/MainLayout';
 import { motion } from 'motion/react';
+import MainLayout from '~/layouts/MainLayout';
 import { NAMESPACE } from '~/utils/i18n/config.mjs';
 
 import { LightBackground } from './HomePage.style.mjs';
