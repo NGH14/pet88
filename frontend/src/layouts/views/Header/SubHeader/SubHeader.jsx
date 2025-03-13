@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
@@ -67,4 +67,4 @@ function SubHeader() {
 	);
 }
 
-export default SubHeader;
+export default memo(SubHeader);

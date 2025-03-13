@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
+
+
 
 import { CloseOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
 import { Button, Drawer } from 'antd';
@@ -12,7 +14,13 @@ import { StyledNavLink } from 'components/NavLink/index.jsx';
 // import { UserAuth } from 'context/AuthContext';
 import useScrollPosition from 'hooks/useScrollPosition';
 
+
+
 import { NavBarList, StyledNavBar } from './Navbar.style.js';
+
+
+
+
 
 const pages = [
 	{ title: 'About', url: '/#about' },
@@ -168,4 +176,4 @@ function Navbar() {
 	);
 }
 
-export default Navbar;
+export default memo(Navbar);

@@ -15,7 +15,6 @@ import {
 	FooterTitle,
 } from './Footer.style.mjs';
 
-import WaveSVG from './Wave.jsx';
 
 export default function Footer() {
 	const { t } = useTranslation(NAMESPACE.commonNS);
