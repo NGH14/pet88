@@ -25,7 +25,7 @@ import partnerImage from './data/partnerImage.mjs';
 import STATISTIC_GROW_UP from './data/stats.mjs';
 import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
-import {HomeSlider} from './views/PartnerSlider';
+import { HomeSlider } from './views/PartnerSlider';
 
 const cardVariants = {
 	offscreen: {
@@ -112,7 +112,8 @@ function HomePage() {
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
-						}}>
+						}}
+					>
 						<img src={serviceImg2} alt="" className="homepage-content_subflexImg" />
 					</section>
 				</section>
@@ -134,7 +135,8 @@ function HomePage() {
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"
-				viewport={{ once: true, amount: 0.8 }}>
+				viewport={{ once: true, amount: 0.8 }}
+			>
 				<p className="title-homepage">{t('Service makes the difference')}</p>
 				<motion.section className="slider-beforeafter" variants={cardVariants}>
 					<section className="slider-contain">

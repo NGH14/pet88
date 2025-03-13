@@ -15,7 +15,6 @@ import {
 	FooterTitle,
 } from './Footer.style.mjs';
 
-
 export default function Footer() {
 	const { t } = useTranslation(NAMESPACE.commonNS);
 	return (
@@ -36,7 +35,8 @@ export default function Footer() {
 						<HyperLink
 							href={`mailto:${CONTACT_DETAIL.email.address}?subject=Feedback&body = Message"`}
 							animation={false}
-							target="_self">
+							target="_self"
+						>
 							{CONTACT_DETAIL.email.address}
 						</HyperLink>
 					</p>

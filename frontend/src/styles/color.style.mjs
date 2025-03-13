@@ -1,7 +1,7 @@
 /**
-  * Extract CSS color variables
-  * Generated on 3/11/2025, 11:58:31 PM
-*/
+ * Extract CSS color variables
+ * Generated on 3/11/2025, 11:58:31 PM
+ */
 
 export const colorVars = `
   --primary-100: #fff4e8;

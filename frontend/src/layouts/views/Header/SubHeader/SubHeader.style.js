@@ -10,7 +10,7 @@ export const StyledSubHeader = styled(SubHeader)`
 	padding-inline: 30px;
 	margin-inline: auto;
 
-	display: ${props => props.$scrolled ? 'none' : 'flex'};
+	display: ${props => (props.$scrolled ? 'none' : 'flex')};
 	justify-content: space-between;
 	align-items: center;
 

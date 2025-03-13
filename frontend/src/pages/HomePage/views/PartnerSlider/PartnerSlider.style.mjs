@@ -1,5 +1,5 @@
-import { SliderContainer, SliderElement } from '~/components/Slider/index.js';
 import styled from 'styled-components';
+import { SliderContainer, SliderElement } from '~/components/Slider/index.js';
 
 export const HomeSliderContainer = styled(SliderContainer)`
 	border-radius: 45px;

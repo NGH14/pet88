@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { SpinIcon, SpinnerWrapper, StyledSpin } from './Spinner.style.js';
 
-const Spinner = ({ wrapHeight , iconSize  }) => {
+const Spinner = ({ wrapHeight, iconSize }) => {
 	return (
 		<SpinnerWrapper $height={wrapHeight}>
 			<StyledSpin indicator={<SpinIcon $fontSize={iconSize} />} />

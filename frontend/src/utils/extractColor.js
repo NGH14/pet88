@@ -20,25 +20,23 @@ import { aliases, baseColors } from '../configs/theme.config.mjs';
  * // --alias-color: var(--primary-100);
  */
 export const ExtractCSSColorVar = () => {
-  let colorVar = '';
+	let colorVar = '';
 
-  Object.entries(baseColors).forEach(([category, shades]) => {
-    Object.entries(shades).forEach(([shade, hexCode]) => {
-      colorVar += `--${category}-${shade}: ${hexCode};\n  `;
-    });
-  });
+	Object.entries(baseColors).forEach(([category, shades]) => {
+		Object.entries(shades).forEach(([shade, hexCode]) => {
+			colorVar += `--${category}-${shade}: ${hexCode};\n  `;
+		});
+	});
 
-  Object.entries(aliases).forEach(([name, value]) => {
-    colorVar += `--${name}: ${value};\n  `;
-  });
+	Object.entries(aliases).forEach(([name, value]) => {
+		colorVar += `--${name}: ${value};\n  `;
+	});
 
-  return colorVar;
+	return colorVar;
 };
 
-
-
 async function extractColorToFile() {
-  const opFile = process.argv[2] || "src/styles/color.style.mjs";
+	const opFile = process.argv[2] || 'src/styles/color.style.mjs';
 	try {
 		const cssVariables = ExtractCSSColorVar();
 
@@ -52,8 +50,8 @@ export const colorVars = \`
 \`;
 `;
 		// Write to the styles/color.style.js file
-    await fs.writeFile(opFile, fileContent);
-    console.log(`Successfully extracted color variables to ${opFile}`);
+		await fs.writeFile(opFile, fileContent);
+		console.log(`Successfully extracted color variables to ${opFile}`);
 	} catch (error) {
 		console.error('Error extracting color variables:', error);
 	}

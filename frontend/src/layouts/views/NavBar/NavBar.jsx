@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 
-
-
 import { CloseOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
 import { Button, Drawer } from 'antd';
 import AuthButton from 'components/AuthButton/AuthButton.jsx';
@@ -14,20 +12,12 @@ import { StyledNavLink } from 'components/NavLink/index.jsx';
 // import { UserAuth } from 'context/AuthContext';
 import useScrollPosition from 'hooks/useScrollPosition';
 
-
-
 import { NavBarList, StyledNavBar } from './Navbar.style.js';
-
-
-
-
 
 const pages = [
 	{ title: 'About', url: '/#about' },
 	{ title: 'Service', url: '/#service' },
 ];
-
-
 
 function Navbar() {
 	const locate = useLocation();
@@ -58,7 +48,7 @@ function Navbar() {
 	};
 	return (
 		<>
-			<StyledNavBar >
+			<StyledNavBar>
 				<section className="mobileVisible">
 					<Button onClick={showDrawer} type="text" icon={<MenuOutlined />} ghost></Button>
 					<Drawer

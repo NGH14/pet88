@@ -8,7 +8,7 @@ const SliderComponent = props => {
 	return (
 		<StyledSliderContainer modules={[Autoplay]}>
 			{data.map((slide, index) => (
-				<StyledSlider key={index}  {...rest} >
+				<StyledSlider key={index} {...rest}>
 					{slide}
 				</StyledSlider>
 			))}

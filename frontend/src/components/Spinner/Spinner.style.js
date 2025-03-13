@@ -8,7 +8,7 @@ export const SpinnerWrapper = styled.section`
 	align-items: center;
 	justify-content: center;
 	position: relative;
-  height: ${props => props.$height ? `${props.$height} !important` : '100vh'}}
+  height: ${props => (props.$height ? `${props.$height} !important` : '100vh')}}
 `;
 
 export const StyledSpin = styled(Spin)`

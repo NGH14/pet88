@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
-import {colorVars} from './color.style.mjs'
 
+import { colorVars } from './color.style.mjs';
 
 export const color = css`
 	${colorVars}

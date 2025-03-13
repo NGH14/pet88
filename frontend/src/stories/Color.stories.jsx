@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-
-
 import { colorVars } from '../styles/color.style.mjs';
-
-
-
-
 
 export default {
 	title: 'Design System/Colors',
@@ -85,7 +79,8 @@ export const ColorPalette = () => {
 									borderRadius: '4px',
 									overflow: 'hidden',
 									boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
-								}}>
+								}}
+							>
 								<div
 									style={{
 										height: '100px',
