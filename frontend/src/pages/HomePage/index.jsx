@@ -17,7 +17,7 @@ import { motion } from 'motion/react';
 import MainLayout from '~/layouts/MainLayout';
 import { NAMESPACE } from '~/utils/i18n/config.mjs';
 
-import { LightBackground } from './HomePage.style.mjs';
+import { ColoredBackGround } from './HomePage.style.mjs';
 
 import PARTNER_IMAGE from './data/partnerImage.mjs';
 import partnerImage from './data/partnerImage.mjs';
@@ -79,7 +79,7 @@ function HomePage() {
 				</section>
 			</section>
 
-			<LightBackground>
+			<ColoredBackGround $bgColor={'var(--primary-200)'}>
 				<section className="homepage-servicecontent" variants={cardVariants}>
 					<h3 className="homepage-servicecontent_title">
 						{t('one platform, everything pet service')}
@@ -130,7 +130,7 @@ function HomePage() {
 						)}
 					</p>
 				</section>
-			</LightBackground>
+			</ColoredBackGround>
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"
