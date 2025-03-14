@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-import Routesconfig from './config.mjs';
+import routesConfig from './config.mjs';
 
 const lazyImport = path => lazy(() => import(`~/pages/${path}/index.jsx`));
 
