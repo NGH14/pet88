@@ -105,6 +105,8 @@ function HomePage() {
 					</section>
 				</section>
 
+
+			</ColoredBackGround>
 				<section id="service_section" className="homepage-servicecontent">
 					<h3 className="homepage-servicecontent_title">{t('service')} Pet88</h3>
 					<p className="homepage-servicecontent_text">
@@ -118,7 +120,6 @@ function HomePage() {
 						)}
 					</p>
 				</section>
-			</ColoredBackGround>
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"

@@ -15,8 +15,8 @@ export const StyledSBSContainer = styled.section`
 
 	img {
 		border-radius: 45px;
-		height: 400px;
+		max-height: 350px;
 	}
 `;
 
-export 
+export const StyledSideBySide = styled(ReactBeforeSliderComponent)``
