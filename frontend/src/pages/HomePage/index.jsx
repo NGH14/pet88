@@ -7,10 +7,10 @@ import ScrollTrigger from 'react-scroll-trigger';
 
 import { HeartTwoTone } from '@ant-design/icons';
 import viVN from 'antd/es/locale/vi_VN';
-import serviceImg1 from 'assets/images/Illustration-Bond.png';
-import serviceImg2 from 'assets/images/Illustration-Schedule.png';
-import FIRST from 'assets/images/dog-grooming-photography-1.jpg';
-import SECOND from 'assets/images/dog-grooming-photography-2.jpg';
+import serviceImg1 from '~/assets/images/Illustration-Bond.png';
+import serviceImg2 from '~/assets/images/Illustration-Schedule.png';
+import FIRST from '~/assets/images/dog-grooming-photography-1.jpg';
+import SECOND from '~/assets/images/dog-grooming-photography-2.jpg';
 import { HeroSection } from 'components/HeroSection';
 import i18n from 'i18next';
 import { motion } from 'motion/react';
@@ -137,7 +137,7 @@ function HomePage() {
 				viewport={{ once: true, amount: 0.8 }}
 			>
 				<p className="title-homepage">{t('Service makes the difference')}</p>
-				<motion.section className="slider-beforeafter" variants={cardVariants}>
+				<motion.section className="slider-beforeafter" >
 					<section className="slider-contain">
 						<ReactBeforeSliderComponent
 							currentPercentPosition="40"

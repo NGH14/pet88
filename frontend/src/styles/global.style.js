@@ -22,6 +22,7 @@ export const GlobalStyle = styled.createGlobalStyle`
 		width: 100%;
 		height: 100%;
 		caret-color: transparent;
+		background-color: (--white-500);
 	}
 
 	p {

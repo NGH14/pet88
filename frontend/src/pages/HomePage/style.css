@@ -90,13 +90,6 @@
 	text-transform: capitalize;
 }
 
-.grey {
-	background-color: color-mix(in hsl, var(--primary-200) 20%, transparent);
-	padding: 30px 15px;
-	border-radius: 45px;
-	margin-top: 30px;
-}
-
 .mainLayout .ant-layout-header {
 	background-color: transparent;
 	padding: 0;
