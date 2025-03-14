@@ -7,37 +7,26 @@ import ScrollTrigger from 'react-scroll-trigger';
 
 import { HeartTwoTone } from '@ant-design/icons';
 import viVN from 'antd/es/locale/vi_VN';
+import i18n from 'i18next';
+import { motion } from 'motion/react';
 import serviceImg1 from '~/assets/images/Illustration-Bond.png';
 import serviceImg2 from '~/assets/images/Illustration-Schedule.png';
 import FIRST from '~/assets/images/dog-grooming-photography-1.jpg';
 import SECOND from '~/assets/images/dog-grooming-photography-2.jpg';
-import { HeroSection } from 'components/HeroSection';
-import i18n from 'i18next';
-import { motion } from 'motion/react';
+import { HeroSection } from '~/components/HeroSection';
+import { SideBySide } from '~/components/SideBySide';
 import MainLayout from '~/layouts/MainLayout';
 import { NAMESPACE } from '~/utils/i18n/config.mjs';
 
 import { ColoredBackGround } from './HomePage.style.mjs';
 
+import { cardVariants } from './Homepage.animate.mjs';
 import PARTNER_IMAGE from './data/partnerImage.mjs';
 import partnerImage from './data/partnerImage.mjs';
 import STATISTIC_GROW_UP from './data/stats.mjs';
 import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
 import { HomeSlider } from './views/PartnerSlider';
-
-const cardVariants = {
-	offscreen: {
-		y: 80,
-	},
-	onscreen: {
-		y: 0,
-		transition: {
-			bounce: 0.5,
-			duration: 0.3,
-		},
-	},
-};
 
 function HomePage() {
 	const { t } = useTranslation(NAMESPACE.homePageNS);
@@ -111,13 +100,12 @@ function HomePage() {
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
-						}}
-					>
+						}}>
 						<img src={serviceImg2} alt="" className="homepage-content_subflexImg" />
 					</section>
 				</section>
 
-				<section id="service_section" className="homepage-servicecontent" variants={cardVariants}>
+				<section id="service_section" className="homepage-servicecontent">
 					<h3 className="homepage-servicecontent_title">{t('service')} Pet88</h3>
 					<p className="homepage-servicecontent_text">
 						{t(
@@ -134,10 +122,10 @@ function HomePage() {
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"
-				viewport={{ once: true, amount: 0.8 }}
-			>
-				<p className="title-homepage">{t('Service makes the difference')}</p>
-				<motion.section className="slider-beforeafter" >
+				viewport={{ once: true, amount: 0.8 }}>
+				<p className="title-homepage">{t('service makes the difference')}</p>
+				<motion.div className="slider-beforeafter" variants={cardVariants}>
+					<SideBySide>
 					<section className="slider-contain">
 						<ReactBeforeSliderComponent
 							currentPercentPosition="40"
@@ -151,7 +139,8 @@ function HomePage() {
 						</h2>
 						<p className="slider-text_span">Pet88</p>
 					</section>
-				</motion.section>
+					</SideBySide>
+				</motion.div>
 			</motion.section>
 		</MainLayout>
 	);

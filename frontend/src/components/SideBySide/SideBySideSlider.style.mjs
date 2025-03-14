@@ -3,7 +3,7 @@ import 'react-before-after-slider-component/dist/build.css';
 
 import { styled } from 'styled-components';
 
-export const StyledSBSContainer = styled(ReactBeforeSliderComponent)`
+export const StyledSBSContainer = styled.section`
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -18,3 +18,5 @@ export const StyledSBSContainer = styled(ReactBeforeSliderComponent)`
 		height: 400px;
 	}
 `;
+
+export 
