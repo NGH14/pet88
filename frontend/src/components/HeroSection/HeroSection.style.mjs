@@ -4,12 +4,11 @@ import StartSVG from 'assets/svg/star.svg';
 import { styled } from 'styled-components';
 
 export const HeroBlockStyled = styled.section`
-	--margin-inline: 2rem;
-	--radius: 15% 15% 20px 20px;
+	--mil: 2rem;
 
 	max-height: 60rem;
-	width: calc(100% - 2 * var(--margin-inline));
-	margin-inline: var(--margin-inline);
+	width: calc(100% - 2 * var(--mil));
+	margin-inline: var(--mil);
 	margin-block: 0 15em;
 
 	position: relative;
@@ -20,16 +19,15 @@ export const HeroBlockStyled = styled.section`
 		linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
 	background-position: 50% 50%;
 	background-size: cover;
-	border-radius: var(--radius);
+	border-radius: 15% 15% 20px 20px;
 
 	aspect-ratio: 16 / 9;
 	font-size: 1rem;
 
 	@media only screen and (max-width: 625px) {
+		--mil: 0rem;
 		max-height: 15rem;
 		width: 100%;
-		--margin-inline: 0rem;
-		/* background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), no-repeat; */
 	}
 `;
 

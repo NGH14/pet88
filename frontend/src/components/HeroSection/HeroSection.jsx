@@ -3,9 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router';
 
 import { Button, Form, Input } from 'antd';
-import dogImg from 'assets/images/Summer-Header.jpg';
-import bgHeader from 'assets/images/navy-bg.png';
-import FormBookingHomepage from 'components/FormBookingHomepage/index';
+import dogImg from '~/assets/images/Summer-Header.jpg';
+import FormBookingHomepage from '~/components/FormBookingHomepage';
 import styled from 'styled-components';
 
 import {
