@@ -41,7 +41,7 @@ async function extractColorToFile() {
 		const cssVariables = ExtractCSSColorVar();
 
 		const fileContent = `/**
-  * Extract CSS color variables
+  * Extract CSS Color Variables
   * Generated on ${new Date().toLocaleString()}
 **/
 
@@ -49,7 +49,6 @@ export const colorVars = \`
   ${cssVariables}
 \`;
 `;
-		// Write to the styles/color.style.js file
 		await fs.writeFile(opFile, fileContent);
 		console.log(`Successfully extracted color variables to ${opFile}`);
 	} catch (error) {
