@@ -1,6 +1,7 @@
 /**
   * Extract CSS Color Variables
-  * Generated on 3/14/2025, 9:30:35 PM
+  * Generated on 3/16/2025, 10:16:32 PM
+	* Note: DO NOT CHANGE ON THIS MODIFY ON THE CONFIG THEME INSTEAD
 **/
 
 export const colorVars = `
@@ -51,5 +52,5 @@ export const colorVars = `
   --white-700: hsl(0, 0%, 100%);
   --gold-color: hsl(47, 84%, 50%);
   --disabled-color: hsl(0, 0%, 75%);
-
+  
 `;

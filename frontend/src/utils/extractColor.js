@@ -43,7 +43,7 @@ async function extractColorToFile() {
 		const fileContent = `/**
   * Extract CSS Color Variables
   * Generated on ${new Date().toLocaleString()}
-	* Note: DO NOT CHANGE ON THIS CHANGE ON THE CONFIG THEME INSTEAD
+	* Note: DO NOT CHANGE ON THIS MODIFY ON THE CONFIG THEME INSTEAD
 **/
 
 export const colorVars = \`
