@@ -35,7 +35,7 @@ function HomePage() {
 	return (
 		<MainLayout>
 			<HeroSection />
-			<section className="homepage_whitebackground">
+			<ColoredBackGround $bgColor={'var(--white-500)'}>
 				<section className="homepage-content_flex">
 					<section className="homepage-content_flexText">
 						<h3 className="homepage-content_title">
@@ -66,7 +66,7 @@ function HomePage() {
 						}}
 					/>
 				</section>
-			</section>
+			</ColoredBackGround>
 
 			<ColoredBackGround $bgColor={'var(--primary-200)'}>
 				<section className="homepage-servicecontent" variants={cardVariants}>
