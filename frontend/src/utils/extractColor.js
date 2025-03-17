@@ -22,9 +22,9 @@ import { aliases, baseColors } from '../configs/theme.config.mjs';
 export const ExtractCSSColorVar = () => {
 	let colorVar = '';
 
-	Object.entries(baseColors).forEach(([category, shades]) => {
+	Object.entries(baseColors).forEach(([name, shades]) => {
 		Object.entries(shades).forEach(([shade, hexCode]) => {
-			colorVar += `--${category}-${shade}: ${hexCode};\n  `;
+			colorVar += `--${name}-${shade}: ${hexCode};\n  `;
 		});
 	});
 
@@ -43,7 +43,7 @@ async function extractColorToFile() {
 		const fileContent = `/**
   * Extract CSS Color Variables
   * Generated on ${new Date().toLocaleString()}
-	* Note: DO NOT CHANGE ON THIS MODIFY ON THE CONFIG THEME INSTEAD
+	* Note: DO NOT CHANGE ON THIS MODIFY ON THE 'configs/theme.config.mjs' INSTEAD
 **/
 
 export const colorVars = \`
