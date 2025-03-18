@@ -1,8 +1,8 @@
 /**
-  * Extract CSS Color Variables
-  * Generated on 3/16/2025, 10:16:32 PM
-	* Note: DO NOT CHANGE ON THIS MODIFY ON THE CONFIG THEME INSTEAD
-**/
+ * Extract CSS Color Variables
+ * Generated on 3/16/2025, 10:16:32 PM
+ * Note: DO NOT CHANGE ON THIS MODIFY ON THE CONFIG THEME INSTEAD
+ **/
 
 export const colorVars = `
   --primary-100: hsl(33, 100%, 95%);

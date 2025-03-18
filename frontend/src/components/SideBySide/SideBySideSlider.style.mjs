@@ -19,4 +19,4 @@ export const StyledSBSContainer = styled.section`
 	}
 `;
 
-export const StyledSideBySide = styled(ReactBeforeSliderComponent)``
+export const StyledSideBySide = styled(ReactBeforeSliderComponent)``;

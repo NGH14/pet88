@@ -100,46 +100,46 @@ function HomePage() {
 						style={{
 							display: 'flex',
 							justifyContent: 'center',
-						}}>
+						}}
+					>
 						<img src={serviceImg2} alt="" className="homepage-content_subflexImg" />
 					</section>
 				</section>
-
-
 			</ColoredBackGround>
-				<section id="service_section" className="homepage-servicecontent">
-					<h3 className="homepage-servicecontent_title">{t('service')} Pet88</h3>
-					<p className="homepage-servicecontent_text">
-						{t(
-							'The interactive user interface includes two main views categories based on the user role, one for the customer who has the demand to book the pet service and another one for the manager and staff who can manage the system that not only CRUD but also other interaction like download, drag and drop to modify the service booking, etc'
-						)}
-					</p>
-					<p className="homepage-servicecontent_text">
-						{t(
-							'The service helps to communicate between the front-end app and the database, which also store the keys to connect the third-party service, for example, this project has used the APIs from Firebase to store and authenticate the user by the Google account'
-						)}
-					</p>
-				</section>
+			<section id="service_section" className="homepage-servicecontent">
+				<h3 className="homepage-servicecontent_title">{t('service')} Pet88</h3>
+				<p className="homepage-servicecontent_text">
+					{t(
+						'The interactive user interface includes two main views categories based on the user role, one for the customer who has the demand to book the pet service and another one for the manager and staff who can manage the system that not only CRUD but also other interaction like download, drag and drop to modify the service booking, etc'
+					)}
+				</p>
+				<p className="homepage-servicecontent_text">
+					{t(
+						'The service helps to communicate between the front-end app and the database, which also store the keys to connect the third-party service, for example, this project has used the APIs from Firebase to store and authenticate the user by the Google account'
+					)}
+				</p>
+			</section>
 			<motion.section
 				initial="offscreen"
 				whileInView="onscreen"
-				viewport={{ once: true, amount: 0.8 }}>
+				viewport={{ once: true, amount: 0.8 }}
+			>
 				<p className="title-homepage">{t('service makes the difference')}</p>
 				<motion.div className="slider-beforeafter" variants={cardVariants}>
 					<SideBySide>
-					<section className="slider-contain">
-						<ReactBeforeSliderComponent
-							currentPercentPosition="40"
-							firstImage={{ imageUrl: FIRST }}
-							secondImage={{ imageUrl: SECOND }}
-						/>
-					</section>
-					<section className="slider-text">
-						<h2 className="slider-text_header">
-							"{t('You take care of pets. We take care of you')}."
-						</h2>
-						<p className="slider-text_span">Pet88</p>
-					</section>
+						<section className="slider-contain">
+							<ReactBeforeSliderComponent
+								currentPercentPosition="40"
+								firstImage={{ imageUrl: FIRST }}
+								secondImage={{ imageUrl: SECOND }}
+							/>
+						</section>
+						<section className="slider-text">
+							<h2 className="slider-text_header">
+								"{t('You take care of pets. We take care of you')}."
+							</h2>
+							<p className="slider-text_span">Pet88</p>
+						</section>
 					</SideBySide>
 				</motion.div>
 			</motion.section>

@@ -6,7 +6,6 @@ const color = css`
 	${colorVars}
 `;
 
-
 export const variable = css`
 	:root {
 		${color}
