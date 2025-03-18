@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
+
+
 import { colorVars } from '../styles/color.style.mjs';
+
+
+
+
 
 export default {
 	title: 'Design System/Colors',
 	parameters: {
-		componentSubtitle: 'Color palette used throughout the application',
-	},
-	parameters: {
 		// Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
 		layout: 'centered',
+		componentSubtitle: 'Color palette used in Pet88',
 	},
 };
 
