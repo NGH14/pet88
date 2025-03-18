@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { colorVars } from 'styles/color.style.mjs';
+import { colorVars } from '~/styles/color.style.mjs';
 
 export default {
 	title: 'Design System/Colors',
@@ -77,8 +77,7 @@ export const ColorPalette = () => {
 									borderRadius: '4px',
 									overflow: 'hidden',
 									boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
-								}}
-							>
+								}}>
 								<div
 									style={{
 										height: '100px',
@@ -106,23 +105,23 @@ export const Usage = () => (
 		<h1>How to Use Colors</h1>
 
 		<h2>CSS Usage</h2>
-		<pre>
+		<code>
 			{`.button {
   background-color: var(--primary-200);
-  color: var(--alias-color);
+  color: var(--white-500);
 }`}
-		</pre>
+		</code>
 
 		<h2>React Inline Style Usage</h2>
-		<pre>
+		<code>
 			{`<button
   style={{
     backgroundColor: 'var(--primary-200)',
-    color: 'var(--alias-color)'
+    color: 'var(--white-500)'
   }}
 >
   Click Me
 </button>`}
-		</pre>
+		</code>
 	</div>
 );

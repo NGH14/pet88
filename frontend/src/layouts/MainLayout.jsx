@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import Content from './views/Content/Content.jsx';
 import Footer from './views/Footer/Footer.jsx';
 import Header from './views/Header/Header.jsx';
