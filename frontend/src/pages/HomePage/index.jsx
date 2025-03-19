@@ -15,6 +15,7 @@ import FIRST from '~/assets/images/dog-grooming-photography-1.jpg';
 import SECOND from '~/assets/images/dog-grooming-photography-2.jpg';
 import { HeroSection } from '~/components/HeroSection';
 import { SideBySide } from '~/components/SideBySide';
+import SliderComponent from '~/components/Slider/Slider.jsx';
 import MainLayout from '~/layouts/MainLayout';
 import { NAMESPACE } from '~/utils/i18n/config.mjs';
 
@@ -35,7 +36,7 @@ function HomePage() {
 	return (
 		<MainLayout>
 			<HeroSection />
-			<ColoredBackGround $bgColor={'var(--white-500)'}>
+			<ColoredBackGround>
 				<section className="homepage-content_flex">
 					<section className="homepage-content_flexText">
 						<h3 className="homepage-content_title">
@@ -53,6 +54,7 @@ function HomePage() {
 					</section>
 				</section>
 				<section className="wrap-content">
+					{/* <SliderComponent data={PARTNER_IMAGE} /> */}
 					<p>{t('leading partner')}</p>
 					<HomeSlider
 						data={PARTNER_IMAGE}
@@ -68,7 +70,7 @@ function HomePage() {
 				</section>
 			</ColoredBackGround>
 
-			<ColoredBackGround $bgColor={'var(--primary-200)'}>
+			<ColoredBackGround $bgColor={'var(--gray-300)'}>
 				<section className="homepage-servicecontent" variants={cardVariants}>
 					<h3 className="homepage-servicecontent_title">
 						{t('one platform, everything pet service')}

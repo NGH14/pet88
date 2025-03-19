@@ -26,7 +26,7 @@ export const GlobalStyle = styled.createGlobalStyle`
 	}
 
 	p {
-		font-size: 1.25em;
+		font-size: 1.5em;
 		line-height: 1.5em;
 	}
 

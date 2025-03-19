@@ -50,7 +50,7 @@ function Navbar() {
 		<>
 			<StyledNavBar>
 				<section className="mobileVisible">
-					<Button onClick={showDrawer} type="text" icon={<MenuOutlined />} ghost></Button>
+					<Button onClick={showDrawer} type="text" icon={<MenuOutlined />}></Button>
 					<Drawer
 						footer={<ChangeLanguage />}
 						placement="top"

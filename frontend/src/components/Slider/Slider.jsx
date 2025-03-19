@@ -3,10 +3,9 @@ import { Autoplay } from 'swiper';
 import { StyledSlider, StyledSliderContainer } from './Slider.style.mjs';
 
 const SliderComponent = props => {
-	const { data, ...rest } = props;
-
+	const { data, config, ...rest } = props;
 	return (
-		<StyledSliderContainer modules={[Autoplay]}>
+		<StyledSliderContainer spaceBetween={50} slidesPerView={3} modules={[Autoplay]}>
 			{data.map((slide, index) => (
 				<StyledSlider key={index} {...rest}>
 					{slide}
