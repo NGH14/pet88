@@ -1,6 +1,6 @@
 import { LoadingOutlined } from '@ant-design/icons';
 import { Spin } from 'antd';
-import { styled } from 'styled-components';
+import { styled,css } from 'styled-components';
 
 export const SpinnerWrapper = styled.section`
 	overflow: hidden;
@@ -12,7 +12,7 @@ export const SpinnerWrapper = styled.section`
 `;
 
 export const StyledSpin = styled(Spin)`
-	color: #f76a1a;
+	${props => (props.$color ? props.$color : css`color: var(--primary-600)`)};
 `;
 
 export const SpinIcon = styled(LoadingOutlined)`

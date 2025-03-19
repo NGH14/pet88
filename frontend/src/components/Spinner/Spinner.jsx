@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 import { SpinIcon, SpinnerWrapper, StyledSpin } from './Spinner.style.js';
 
-const Spinner = ({ wrapHeight, iconSize }) => {
+const Spinner = ({ wrapHeight, iconSize, spinColor }) => {
 	return (
 		<SpinnerWrapper $height={wrapHeight}>
-			<StyledSpin indicator={<SpinIcon $fontSize={iconSize} />} />
+			<StyledSpin indicator={<SpinIcon $fontSize={iconSize} $color={spinColor} />} />
 		</SpinnerWrapper>
 	);
 };
@@ -15,6 +15,7 @@ const Spinner = ({ wrapHeight, iconSize }) => {
 Spinner.propTypes = {
 	wrapHeight: PropTypes.string,
 	iconSize: PropTypes.string,
+	spinColor: PropTypes.string,
 };
 
 Spinner.defaultProps = {
