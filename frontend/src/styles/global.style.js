@@ -26,7 +26,7 @@ export const GlobalStyle = styled.createGlobalStyle`
 	}
 
 	p {
-		font-size: 1.5em;
+		font-size: 1.2em;
 		line-height: 1.5em;
 	}
 
@@ -34,5 +34,9 @@ export const GlobalStyle = styled.createGlobalStyle`
 		padding: 12px;
 		resize: none;
 		min-height: fit-content;
+	}
+
+	.mobileVisible {
+		display: none;
 	}
 `;

@@ -52,5 +52,4 @@ export const colorVars = `
   --white-700: hsl(0, 0%, 100%);
   --gold-color: hsl(47, 84%, 50%);
   --disabled-color: hsl(0, 0%, 75%);
-  
 `;
