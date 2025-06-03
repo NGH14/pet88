@@ -1,4 +1,3 @@
-// extract-colors.js
 import fs from 'node:fs/promises';
 
 import { aliases, baseColors } from '../configs/theme.config.mjs';
