@@ -38,7 +38,8 @@
 		"start:prd": "gulp start:prd & doppler run -- nodemon",
 		"build": "node esbuild.config.cjs",
 		"dev": "gulp dev & doppler run -- nodemon",
-		"test": "NODE_ENV=test gulp test & doppler run -- mocha --config .mocharc.cjs -r ts-node/register tests/mocha/*.ts  --loader=ts-node/esm --no-warnings --timeout 10000 --exit && open-cli ./tests/.reports/index.html"
+		"test": "NODE_ENV=test gulp test & doppler run -- mocha --config .mocharc.cjs -r ts-node/register tests/mocha/*.ts  --loader=ts-node/esm --no-warnings --timeout 10000 --exit && open-cli ./tests/.reports/index.html",
+		"prepare": "husky"
 	},
 	"devDependencies": {
 		"@ngneat/falso": "^7.1.0",
@@ -64,6 +65,7 @@
 		"gulp-uglify": "^3.0.2",
 		"gulplog": "^2.0.1",
 		"http-server": "^14.1.1",
+		"husky": "^9.1.7",
 		"mocha": "^10.2.0",
 		"mocha-logger": "^1.0.8",
 		"mochawesome": "^7.1.3",
