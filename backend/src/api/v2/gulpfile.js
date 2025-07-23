@@ -19,7 +19,7 @@ gulp.task('server', function () {
 	};
 	return gulp
 		.src('./')
-		.on('end', () => log.info('⚙️ Start server'))
+		.on('end', () => log.info(`⚙️ Start server at ${process.env.LOCAL_PORT}` ))
 		.pipe(exec(() => `npm start`, options))
 		.pipe(exec.reporter(reportOptions));
 });

@@ -1,7 +1,8 @@
 import { Express, Request, Response } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import packageJSON from '../../package.json' assert { type: 'json' };
+import * as packageJSON from '../../package.json' assert { type: 'json' };
+
 import logger from './logger.ts';
 
 function swaggerDocs(app: Express, PORT: number) {
@@ -18,7 +19,7 @@ function swaggerDocs(app: Express, PORT: number) {
 					description: 'Development server',
 				},
 			],
-			
+
 			explorer: true,
 			components: {
 				securitySchemes: {
