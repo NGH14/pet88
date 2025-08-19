@@ -15,6 +15,7 @@ const ChangeLanguage = () => {
 	return (
 		<>
 			<Select
+				aria-label="Change language"
 				prefix={<GlobalOutlined />}
 				suffixIcon={null}
 				style={{ width: '8em' }}
