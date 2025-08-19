@@ -4,6 +4,7 @@ import { BrowserRouter, Routes } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 
 import { ConfigProvider } from 'antd';
+import locale from 'antd/locale/vi_VN';
 import i18n from 'i18next';
 import ListRoutes from 'routes/ListRoutes';
 import { ThemeProvider } from 'styled-components';
@@ -23,7 +24,7 @@ function App() {
 			{/* <AuthContextProvider> */}
 			<I18nextProvider i18n={i18n}>
 				<SearchContextProvider>
-					<ConfigProvider theme={antdConfig}>
+					<ConfigProvider locale={locale} theme={antdConfig}>
 						<ToastContainer {...toastConfig} />
 						<BrowserRouter>
 							<Routes>{ListRoutes(routes)}</Routes>

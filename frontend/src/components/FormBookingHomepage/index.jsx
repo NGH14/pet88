@@ -2,13 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 
+
+
 import { LockOutlined, SearchOutlined } from '@ant-design/icons';
-import { Button, DatePicker, Form, Input, Radio, Select } from 'antd';
+import { Button, ConfigProvider, DatePicker, Form, Input, Radio, Select } from 'antd';
+import locale from 'antd/locale/vi_VN';
 import axios from 'axios';
 import { SearchData } from 'context/SearchContext';
 import dayjs from 'dayjs';
+import 'dayjs/locale/vi';
+
+
 
 import './style.css';
+
+
+
+
+
+// dayjs.locale('vi');
+
+
 
 const { RangePicker } = DatePicker;
 const { Option } = Select;
@@ -106,6 +120,7 @@ const FormBookingHomepage = () => {
 					<Radio value="grooming">{t('grooming')}</Radio>
 				</Radio.Group>
 			</section>
+			<ConfigProvider locale={locale}>
 			<Form
 				className="form_bookinghomepage"
 				size="large"
@@ -155,7 +170,6 @@ const FormBookingHomepage = () => {
 							placeholder={[t('Drop off'), t('Pick up')]}
 							placement="bottomRight"
 							className="form-item_bookinghomepage"
-							format={i18n.language === 'vi' ? 'DD-MM-YYYY' : null}
 						/>
 					</Form.Item>
 				) : null}
@@ -175,7 +189,7 @@ const FormBookingHomepage = () => {
 							minuteStep={15}
 							use12Hours
 							placement="bottomLeft"
-							format={i18n.language === 'vi_VN' ? `HH:mm A, DD-MM-YYYY` : 'HH:mm A, YYYY-MM-DD '}
+							format={i18n.language === 'vi' ? `HH:mm A, DD-MM-YYYY` : 'HH:mm A, YYYY-MM-DD '}
 							className="form-item_bookinghomepage booking_grooming"
 						/>
 					</Form.Item>
@@ -191,6 +205,7 @@ const FormBookingHomepage = () => {
 					</Button>
 				</Form.Item>
 			</Form>
+			</ConfigProvider>
 		</section>
 	);
 };
