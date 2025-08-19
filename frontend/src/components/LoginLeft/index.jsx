@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import ForgotPasswordForm from '../ForgotPasswordForm';
 import LoginForm from '../SignInForm';
 import SignUpForm from '../SignUpForm';
-import ChangeLanguage from './../ChangeLanguage';
+import ChangeLanguageButton from './../ChangeLanguageButton';
 import './style.css';
 
 const LeftSideSignin = ({ src }) => {
@@ -30,7 +30,7 @@ const LeftSideSignin = ({ src }) => {
 					<NavLink to="/">
 						<img src={src} alt="" className="leftside_logo" />
 					</NavLink>
-					<ChangeLanguage />
+					<ChangeLanguageButton />
 				</section>
 				<section style={{ width: '100%' }}>
 					{(() => {

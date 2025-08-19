@@ -14,7 +14,7 @@ import { Breadcrumb, Layout, Menu } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import logoWhite from 'assets/images/logo/text-logo-white.webp';
 import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
-import ChangeLanguage from 'components/ChangeLanguage/index';
+import ChangeLanguageButton from 'components/ChangeLanguageButton/index';
 import { Spinner } from 'components/Spinner/Spinner.jsx';
 import TableGrooming from 'components/TableGrooming/index';
 import TableHotel from 'components/TableHotel';
@@ -59,7 +59,7 @@ export default function Admin() {
 		getItem(t('User'), '/admin/management-user', <CgUserList />),
 
 		getItem(t('Order'), '/admin/management-order', <MdOutlinePayments />),
-		// getItem(<ChangeLanguage fullWidth></ChangeLanguage>, '', null),
+		// getItem(<ChangeLanguageButton fullWidth></ChangeLanguageButton>, '', null),
 	];
 
 	const handleClickMenu = path => {

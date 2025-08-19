@@ -3,16 +3,24 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 
+
+
 import { CloseOutlined, LogoutOutlined, MenuOutlined } from '@ant-design/icons';
 import { Button, Drawer } from 'antd';
-import AuthButton from 'components/AuthButton/AuthButton.jsx';
-import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
-import { Logo } from 'components/Logo/Logo.jsx';
-import { StyledNavLink } from 'components/NavLink/index.jsx';
 // import { UserAuth } from 'context/AuthContext';
 import useScrollPosition from 'hooks/useScrollPosition';
+import AuthButton from '~/components/AuthButton/AuthButton.jsx';
+import ChangeLanguageButton from '~/components/ChangeLanguageButton/index.jsx';
+import { Logo } from '~/components/Logo/Logo.jsx';
+import { StyledNavLink } from '~/components/NavLink/index.jsx';
+
+
 
 import { NavBarList, StyledNavBar } from './Navbar.style.js';
+
+
+
+
 
 const pages = [
 	{ title: 'About', url: '/#about' },
@@ -52,7 +60,7 @@ function Navbar() {
 				<section className="mobileVisible">
 					<Button onClick={showDrawer} type="text" icon={<MenuOutlined />}></Button>
 					<Drawer
-						footer={<ChangeLanguage />}
+						footer={<ChangeLanguageButton />}
 						placement="top"
 						width={300}
 						className="pet88-menu"

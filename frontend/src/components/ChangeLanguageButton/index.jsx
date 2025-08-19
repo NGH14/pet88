@@ -1,11 +1,18 @@
 import { useTranslation } from 'react-i18next';
 
+
+
 import { GlobalOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
 import { ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE } from '~/utils/i18n/config.mjs';
 
+
+
+
+
+console.log(ENGLISH_LOCALE_CODE, VIETNAM_LOCALE_CODE);
 const { Option } = Select;
-const ChangeLanguage = () => {
+const ChangeLanguageButton = () => {
 	const { i18n } = useTranslation();
 
 	const handleChange = code => {
@@ -15,7 +22,6 @@ const ChangeLanguage = () => {
 	return (
 		<>
 			<Select
-				aria-label="Change language"
 				prefix={<GlobalOutlined />}
 				suffixIcon={null}
 				style={{ width: '8em' }}
@@ -28,4 +34,4 @@ const ChangeLanguage = () => {
 		</>
 	);
 };
-export default ChangeLanguage;
+export default ChangeLanguageButton;

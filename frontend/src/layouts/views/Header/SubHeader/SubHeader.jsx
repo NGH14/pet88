@@ -3,15 +3,23 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 
+
+
 import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Image, Menu, Select } from 'antd';
-import ChangeLanguage from 'components/ChangeLanguage/index.jsx';
-import OperatingStatus from 'components/OperatingStatus/OperatingStatus.jsx';
+import ChangeLanguageButton from '~/components/ChangeLanguageButton/index.jsx';
+import OperatingStatus from '~/components/OperatingStatus/OperatingStatus.jsx';
 import useScrollPosition from '~/hooks/useScrollPosition.js';
+
+
 
 // import { UserAuth } from 'context/AuthContext';
 
 import { StyledSubHeader } from './SubHeader.style.js';
+
+
+
+
 
 const SCROLL_THRESHOLD = 1;
 
@@ -54,7 +62,7 @@ function SubHeader() {
 	return (
 		<StyledSubHeader $scrolled={isScroll}>
 			<OperatingStatus />
-			<ChangeLanguage />
+			<ChangeLanguageButton />
 		</StyledSubHeader>
 	);
 }
