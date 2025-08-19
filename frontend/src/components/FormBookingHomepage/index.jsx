@@ -6,7 +6,7 @@ import { LockOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button, DatePicker, Form, Input, Radio, Select } from 'antd';
 import axios from 'axios';
 import { SearchData } from 'context/SearchContext';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 import './style.css';
 
@@ -18,9 +18,9 @@ const FormBookingHomepage = () => {
 	const navigate = useNavigate();
 	const [type, setType] = useState('hotel');
 	const { t, i18n } = useTranslation();
-	const currentDate = moment();
-	const futureMonth = moment(currentDate).add(1, 'M');
-	const futureWeek = moment(currentDate).add(1, 'W');
+	const currentDate = dayjs();
+	const futureMonth = dayjs(currentDate).add(1, 'M');
+	const futureWeek = dayjs(currentDate).add(1, 'W');
 	const { search, setSearchList } = SearchData();
 
 	const getDatesInRange = (startDate, endDate) => {
@@ -69,7 +69,7 @@ const FormBookingHomepage = () => {
 	};
 	const disabledDate = current => {
 		// Can not select days before today and today
-		return current && current < moment().endOf('day');
+		return current && current < dayjs().endOf('day');
 	};
 
 	return (
@@ -148,14 +148,14 @@ const FormBookingHomepage = () => {
 					>
 						<RangePicker
 							presets={{
-								[t('Today')]: [moment(), moment()],
+								[t('Today')]: [dayjs(), dayjs()],
 								[t('One Week')]: [currentDate, futureWeek],
 								[t('One Month')]: [currentDate, futureMonth],
 							}}
 							placeholder={[t('Drop off'), t('Pick up')]}
 							placement="bottomRight"
 							className="form-item_bookinghomepage"
-							format={i18n.language === 'vi_VN' ? 'DD-MM-YYYY' : null}
+							format={i18n.language === 'vi' ? 'DD-MM-YYYY' : null}
 						/>
 					</Form.Item>
 				) : null}

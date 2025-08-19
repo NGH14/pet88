@@ -6,13 +6,13 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-import moment from 'moment';
+import dayjs from 'dayjs';
 import PropTypes from 'prop-types';
 
 import events from '../../mocks/events';
 
 // const DnDCalendar = withDragAndDrop(Calendar);
-const mLocalizer = momentLocalizer(moment);
+const mLocalizer = momentLocalizer(dayjs);
 
 const ColoredDateCellWrapper = ({ children }) =>
 	React.cloneElement(React.Children.only(children), {

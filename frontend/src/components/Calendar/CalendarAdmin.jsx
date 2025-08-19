@@ -36,12 +36,12 @@ import {
 	Select,
 	Typography,
 } from 'antd';
-// import 'moment/locale/en';
+// import 'dayjs/locale/en';
 
 import vi_VN from 'antd/locale/vi_VN';
 import axios from 'axios';
-import moment from 'moment';
-import 'moment/locale/vi';
+import dayjs from 'dayjs';
+import 'dayjs/locale/vi';
 
 // import { UserAuth } from '../../context/AuthContext';
 import UUID from '../../hooks/useUUID';
@@ -113,7 +113,7 @@ export const CalendarAdmin = () => {
 	const [userData, setUserData] = React.useState([]);
 	const [userDataOption, setUserDataOption] = React.useState([]);
 	const { t, i18n } = useTranslation();
-	const localizer = momentLocalizer(moment);
+	const localizer = momentLocalizer(dayjs);
 	const [openCreateModal, setOpenCreateModal] = useState(false);
 	const [openDetailModal, setOpenDetailModal] = useState(false);
 	const [accountType, setAccountType] = React.useState(false);
@@ -126,7 +126,7 @@ export const CalendarAdmin = () => {
 		right: 0,
 	});
 	const draggleRef = useRef(null);
-	moment.locale(i18n.language);
+	dayjs.locale(i18n.language);
 
 	React.useEffect(() => form.resetFields());
 
@@ -408,13 +408,13 @@ export const CalendarAdmin = () => {
 	const slotPropGetter = useCallback(
 		date => ({
 			className: 'slotDefault',
-			...(moment(date).hour() < 8 && {
+			...(dayjs(date).hour() < 8 && {
 				style: {
 					backgroundColor: '#e6e6e6',
 					color: 'black',
 				},
 			}),
-			...(moment(date).hour() > 22.25 && {
+			...(dayjs(date).hour() > 22.25 && {
 				style: {
 					backgroundColor: '#e6e6e6',
 					color: 'black',
@@ -647,10 +647,10 @@ export const CalendarAdmin = () => {
 								}}
 							>
 								<span>
-									{moment(new Date(selectedDate?.start).getTime()).format(
+									{dayjs(new Date(selectedDate?.start).getTime()).format(
 										'dddd, DD MMM YYYY _ hh:mm A'
 									)}{' '}
-									- {moment(new Date(selectedDate?.end).getTime()).format('hh:mm A')}{' '}
+									- {dayjs(new Date(selectedDate?.end).getTime()).format('hh:mm A')}{' '}
 								</span>
 							</Form.Item>
 						</Form.Item>
@@ -858,8 +858,8 @@ export const CalendarAdmin = () => {
 								}}
 							>
 								<span>
-									{moment(new Date(selecteDetaildDate?.start).getTime()).format('hh:mm A')} -{' '}
-									{moment(new Date(selecteDetaildDate?.end).getTime()).format('hh:mm A')}
+									{dayjs(new Date(selecteDetaildDate?.start).getTime()).format('hh:mm A')} -{' '}
+									{dayjs(new Date(selecteDetaildDate?.end).getTime()).format('hh:mm A')}
 								</span>
 							</Form.Item>
 						</Form.Item>
@@ -954,7 +954,7 @@ export const CalendarAdmin = () => {
 											block
 											size="middle"
 											onClick={() => {
-												const newValue = moment(value).add(1, 'W');
+												const newValue = dayjs(value).add(1, 'W');
 												onChange(newValue);
 											}}
 										>
@@ -966,7 +966,7 @@ export const CalendarAdmin = () => {
 											block
 											size="middle"
 											onClick={() => {
-												const newValue = moment(value).add(2, 'W');
+												const newValue = dayjs(value).add(2, 'W');
 												onChange(newValue);
 											}}
 										>
@@ -978,7 +978,7 @@ export const CalendarAdmin = () => {
 											block
 											size="middle"
 											onClick={() => {
-												const newValue = moment(value).add(3, 'W');
+												const newValue = dayjs(value).add(3, 'W');
 												onChange(newValue);
 											}}
 										>
@@ -990,7 +990,7 @@ export const CalendarAdmin = () => {
 											block
 											size="middle"
 											onClick={() => {
-												const newValue = moment(value).add(4, 'W');
+												const newValue = dayjs(value).add(4, 'W');
 												onChange(newValue);
 											}}
 										>
@@ -1022,7 +1022,7 @@ export const CalendarAdmin = () => {
 												style={{ padding: 0 }}
 												type="text"
 												onClick={() => {
-													const newValue = moment(value).subtract(1, 'M');
+													const newValue = dayjs(value).subtract(1, 'M');
 													onChange(newValue);
 												}}
 											>
@@ -1032,7 +1032,7 @@ export const CalendarAdmin = () => {
 												style={{ padding: 0 }}
 												type="text"
 												onClick={() => {
-													const newValue = moment(value).add(1, 'M');
+													const newValue = dayjs(value).add(1, 'M');
 													onChange(newValue);
 												}}
 											>
