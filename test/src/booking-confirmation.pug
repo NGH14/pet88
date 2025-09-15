@@ -1,0 +1,80 @@
+extends layouts/main.pug
+
+block content
+  table.card-wrapper(cellpadding="0", cellspacing="0")
+    tbody
+      tr
+        td(align="")
+          table.card(cellpadding="0", cellspacing="0")
+            tbody
+              tr
+                td.card-container(align="")
+                  table.card-body(cellpadding="0", cellspacing="0")
+                    tbody
+                      tr
+                        td
+                          table.spacer(border="0", cellpadding="0", cellspacing="0", width="100%")
+                            tbody
+                              tr
+                                td(height="32")
+                                  div &nbsp;
+                          table.card-content(cellpadding="0", cellspacing="0")
+                            tbody
+                              tr
+                                td.card-content-spacer-left &nbsp;
+                                td
+                                  table(cellpadding="0", cellspacing="0", width="100%")
+                                    tbody
+                                      tr
+                                        td
+                                          table(cellpadding="0", cellspacing="0", width="100%")
+                                            tbody
+                                              tr
+                                                td.booking-title(align="")
+                                                  span Booking #${order.id}
+                                          table(cellpadding="0", cellspacing="0", width="100%")
+                                            tbody
+                                              tr
+                                                td.booking-price(align="")
+                                                  span ${price}
+                                          table.divider(cellpadding="0", cellspacing="0", width="100%")
+                                            tbody
+                                              tr
+                                                td.divider-spacer(colspan="1", height="16") &nbsp;
+                                              tr
+                                                td.divider-line(height="1") &nbsp;
+                                              tr
+                                                td.divider-spacer(colspan="1", height="12") &nbsp;
+                                        td.booking-image-container
+                                          img.booking-image(src="images/booking-illustration.png", width="94", height="91", alt="Booking illustration")
+                                  table.booking-details(cellpadding="0", cellspacing="0")
+                                    tbody
+                                      tr
+                                        td.booking-details-label To
+                                        td.booking-details-spacer &nbsp;
+                                        td.booking-details-value ${order.name}
+                                      tr
+                                        td.booking-details-spacer-y(colspan="2", height="8") &nbsp;
+                                      tr
+                                        td.booking-details-label From
+                                        td.booking-details-spacer &nbsp;
+                                        td.booking-details-value Pet88
+                                      tr
+                                        td.booking-details-spacer-y(colspan="2", height="8") &nbsp;
+                                  table.spacer(border="0", cellpadding="0", cellspacing="0", width="100%")
+                                    tbody
+                                      tr
+                                        td(height="24")
+                                          div &nbsp;
+                                  table.confirm-button-wrapper(cellpadding="0", cellspacing="0")
+                                    tbody
+                                      tr
+                                        td.confirm-button-container(align="")
+                                          a.confirm-button-link(href="${link}", target="_blank")
+                                            span.confirm-button-text Confirm Booking
+                                td.card-content-spacer-right &nbsp;
+                          table.spacer(border="0", cellpadding="0", cellspacing="0", width="100%")
+                            tbody
+                              tr
+                                td(height="24")
+                                  div &nbsp;

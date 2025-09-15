@@ -1,0 +1,14 @@
+Welcome to Pet88!
+
+Hi Jane Doe,
+
+Thanks for joining our community. We are excited to have you on board.
+
+You can now book our services and manage your appointments.
+
+Go to your dashboard: https://example.com/dashboard
+
+Questions? Contact us at servicepet88@gmail.com.
+
+You are receiving this email because you signed up on Pet88.
+To unsubscribe, please visit: https://example.com/unsubscribe?email=janedoe@example.com

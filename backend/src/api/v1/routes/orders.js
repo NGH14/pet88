@@ -2996,7 +2996,7 @@ router.put('/success/:id', async (req, res) => {
 																>
 																	Receipt
 																	#${order._id}
-														
+
 																</td>
 															</tr>
 															<tr>
@@ -3729,10 +3729,10 @@ router.put('/success/:id', async (req, res) => {
 																											"
 																										>PRICE
 
-																											
+
 																										</td>
-																									</tr>							
-																										
+																									</tr>
+
 																											<tr>
 																												<td></td>
 																											</tr>
@@ -3801,7 +3801,7 @@ router.put('/success/:id', async (req, res) => {
 																											}).format(
 																												VAT,
 																											)}
-																												
+
 																											</td>
 																										</tr>
 																											<tr>

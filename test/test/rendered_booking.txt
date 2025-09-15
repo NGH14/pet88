@@ -1,0 +1,13 @@
+New Booking from Pet88: #12345
+
+Hi John Doe,
+
+This is a confirmation for your booking with Pet88 for the amount of 500.000 ₫.
+
+Please confirm your booking by clicking the following link:
+http://localhost:3000/confirm/12345
+
+Questions? Contact us at servicepet88@gmail.com.
+
+You are receiving this email because you made a booking on Pet88.
+To unsubscribe, please visit: https://example.com/unsubscribe?email=johndoe@example.com

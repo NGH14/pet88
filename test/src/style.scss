@@ -1,0 +1,376 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+}
+
+.body-wrapper {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.st-Wrapper {
+  width: 480px;
+  min-width: 480px;
+  max-width: 480px;
+}
+
+.hidden-preview {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  display: none !important;
+  font-size: 1px;
+  line-height: 1px;
+  max-height: 0;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.hidden-preview-text {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.spacer {
+  td {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 1px;
+    line-height: 1px;
+    max-height: 1px;
+  }
+}
+
+.logo {
+  a {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    outline: 0;
+  }
+}
+
+.logo-image-container {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  height: 32px;
+}
+
+.logo-image {
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  background-color: white;
+  background-position: center;
+  background: url('images/logo.png');
+  background-origin: border-box;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  line-height: 100%;
+}
+
+.logo-spacer {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 12px;
+  span {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+    text-decoration: none;
+  }
+}
+
+.logo-text-container {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+
+.logo-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+  text-decoration: none;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+}
+
+.card-wrapper {
+  width: 100%;
+}
+
+.card {
+  width: 100%;
+}
+
+.card-container {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  width: 482px;
+  border-radius: 12px;
+  background-color: #e3e8ee;
+  padding: 1px;
+}
+
+.card-body {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 12px;
+  td {
+    border: 0;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.card-content {
+  width: 100%;
+}
+
+.card-content-spacer-left {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  min-width: 32px;
+  width: 32px;
+  font-size: 1px;
+}
+
+.card-content-spacer-right {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  min-width: 32px;
+  width: 32px;
+  font-size: 1px;
+}
+
+.booking-title {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  padding-bottom: 2px;
+  span {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+    text-decoration: none;
+    color: #7a7a7a;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+  }
+}
+
+.booking-price {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  padding-bottom: 2px;
+  span {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 600;
+  }
+}
+
+.divider {
+  width: 100%;
+}
+
+.divider-spacer {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  font-size: 1px;
+  line-height: 1px;
+}
+
+.divider-line {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  height: 1px;
+  font-size: 1px;
+  background-color: #ebebeb;
+  line-height: 1px;
+}
+
+.booking-image-container {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 76px;
+  max-width: 76px;
+}
+
+.booking-image {
+  border: 0;
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  border-radius: 8px;
+}
+
+.booking-details {
+  td {
+    border: 0;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.booking-details-label {
+  vertical-align: top;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+  text-decoration: none;
+  color: #7a7a7a;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.booking-details-spacer {
+  width: 24px;
+}
+
+.booking-details-spacer-y {
+  font-size: 1px;
+  line-height: 1px;
+}
+
+.booking-details-value {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.confirm-button-wrapper {
+  width: 100%;
+}
+
+.confirm-button-container {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #0074d4;
+  border-radius: 6px;
+  height: 44px;
+}
+
+.confirm-button-link {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  outline: 0;
+  display: block;
+  text-align: center;
+  padding-right: 60px;
+  padding-left: 60px;
+}
+
+.confirm-button-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 44px;
+  color: rgb(255, 255, 255);
+}
+
+.questions {
+  width: 100%;
+}
+
+.questions-spacer-left {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  min-width: 32px;
+  width: 32px;
+  font-size: 1px;
+}
+
+.questions-text {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Ubuntu, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  color: #999999;
+}
+
+.questions-link {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: #625afa !important;
+  font-weight: bold;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.questions-spacer-right {
+  border: 0;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  min-width: 32px;
+  width: 32px;
+  font-size: 1px;
+}
+
+.footer-spacer {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 1px;
+  line-height: 1px;
+}
+
+.footer-unsubscribe {
+  td {
+    text-align: center;
+    font-size: 12px;
+    color: #999999;
+    padding: 20px 0;
+  }
+  a {
+    color: #625afa;
+    text-decoration: underline;
+  }
+}
