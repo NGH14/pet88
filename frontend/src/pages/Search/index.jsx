@@ -17,7 +17,7 @@ import {
 	Select,
 	Skeleton,
 	Typography,
-	,
+
 } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
