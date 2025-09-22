@@ -1,3 +1,5 @@
+// 	https://fkhadra.github.io/react-toastify/introduction for configuration details
+
 export default {
 	position: 'top-right',
 	autoClose: 3500,
