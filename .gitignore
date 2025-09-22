@@ -31,7 +31,9 @@ coverage
 .lock-wscript
 
 # Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
+*/build/Release
+*/build/
+build/
 
 # Dependency directories
 node_modules/
@@ -66,5 +68,10 @@ web_modules/
 .env.production.local
 .env.local
 
+*/.env
+*/.env.development.local
+*/.env.test.local
+*/.env.production.local
+*/.env.local
 
 *storybook.log
