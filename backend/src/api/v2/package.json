@@ -37,7 +37,7 @@
 		"start": "npm run test & doppler run -- node build/server.cjs",
 		"start:prd": "gulp start:prd & doppler run -- nodemon",
 		"build": "node esbuild.config.cjs",
-		"dev": "gulp dev & doppler run -- nodemon",
+		"dev": "NODE_ENV=development gulp dev && doppler run -- nodemon",
 		"test": "NODE_ENV=test gulp test & doppler run -- mocha --config .mocharc.cjs -r ts-node/register tests/mocha/*.ts  --loader=ts-node/esm --no-warnings --timeout 10000 --exit && open-cli ./tests/.reports/index.html",
 		"prepare": "husky"
 	},
