@@ -1,7 +1,7 @@
 import { Express, Request, Response } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import * as packageJSON from '../../package.json' assert { type: 'json' };
+import * as packageJSON from '../../package.json' with { type: 'json' };
 
 import logger from './logger.ts';
 
