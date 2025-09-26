@@ -13,9 +13,11 @@ export const connectDB = async () => {
 		};
 
 		const mongo = await mongoose.connect(process.env.MONGO, dbOptions);
+
 		if (process.env.NODE_ENV === Environment.Development) {
 			logger.log({ level: LogLevel.Info, message: `${mongoDBConnectMessage} in PORT:${mongo.connection.port} DB: ${mongo.connection.name}`  });
 		}
+
 	} catch (error) {
 		logger.log({
 			level: LogLevel.Error,
