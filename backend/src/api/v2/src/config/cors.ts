@@ -5,7 +5,7 @@ const whitelist = [
 	`http://localhost:${process.env.LOCAL_PORT}`,
 ];
 
-// Configuring CORS w/ Dynamic Origin
+
 const corsOptions = {
 	origin: (origin, callback) => {
 		if (whitelist.indexOf(origin) !== -1 || !origin) {

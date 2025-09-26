@@ -9,7 +9,6 @@ export async function GetAllUser(
 	try {
 		const { data, paginationInfo } = res.locals.paginatedResults;
 
-		// Send the paginated data a response
 		res.status(200).json({ data, paginationInfo });
 	} catch (error) {
 		next(error);
@@ -36,7 +35,6 @@ export async function UpdateUserById(
 		const updatedUser = await User.findByIdAndUpdate(
 			req.params.id,
 			req.body,
-			// want to insert when field not exist
 			{ setDefaultsOnInsert: true, upsert: true },
 		);
 
