@@ -9,12 +9,14 @@ export const connectDB = async () => {
 
 		const dbOptions = {
 			dbName: process.env.DB,
-			serverSelectionTimeoutMS: 20000,
+			serverSelectionTimeoutMS: 30000,
 		};
 
 		const mongo = await mongoose.connect(process.env.MONGO, dbOptions);
+		console.log(`MongoDB connected in PORT: ${mongo.connection.port} DB: ${mongo.connection.name}`);
 
-		if (process.env.NODE_ENV === Environment.Development) {
+		if (process.env.NODE_ENV === Environment.DEVELOPMENT) {
+			console.log(true)
 			logger.log({ level: LogLevel.Info, message: `${mongoDBConnectMessage} in PORT:${mongo.connection.port} DB: ${mongo.connection.name}`  });
 		}
 

@@ -22,7 +22,7 @@ app.listen(SERVER_PORT, () => {
 				data: `http://localhost:${SERVER_PORT}`,
 			});
 			break;
-		case Environment.Testing:
+		case Environment.TESTING:
 			break;
 
 		default:

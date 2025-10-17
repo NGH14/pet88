@@ -8,7 +8,7 @@ const ErrorHandler = (
 	res: Response,
 	next: NextFunction,
 ) => {
-	if (process.env.NODE_ENV === Environment.Testing) return;
+	if (process.env.NODE_ENV === Environment.TESTING) return;
 	const status = error.status || 500;
 
 	res.status(status).json({
