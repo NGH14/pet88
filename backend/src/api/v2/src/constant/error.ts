@@ -1,2 +1,2 @@
-export const ERROR_MESSAGE_DEFAULT = "Something went wrong"
-export const ERROR_MESSAGE_CORS = "Not allowed by CORS"
+export const ERROR_MESSAGE_DEFAULT: string = "Something went wrong"
+export const ERROR_MESSAGE_CORS: string = "Not allowed by CORS"
