@@ -1,8 +1,9 @@
 export enum Roles {
+  SuperAdmin = "SUPER_ADMINISTRATOR",
   Admin = "ADMIN",
-  Lead ="LEAD",
-  ProjectManager = "PROJECT_MANAGER",
   Owner = "OWNER",
-  STAFF = "STAFF",
+  Staff = "STAFF",
   User = "USER",
+  Vet = 'VETERINARIAN',
+  Guest = 'GUEST'
 }
