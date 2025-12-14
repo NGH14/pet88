@@ -79,6 +79,15 @@
 	text-decoration: underline;
 }
 
+.rbc-off-range-bg {
+	background: #e6e6e6;
+		background-image: none;
+		background-size: auto;
+		opacity: 0.8;
+		background-size: 8px 8px;
+		background-image: repeating-linear-gradient(45deg, #ffffffc8 0, #ffffffcd 0.8px, #4f4f5038 0, #1f1f2233 50%);
+}
+
 .separator_calendar-admin{
 	position: relative;
 	margin-right: 30px;

@@ -9,9 +9,9 @@ import localeData from 'dayjs/plugin/localeData';
 import minMax from 'dayjs/plugin/minMax';
 import utc from 'dayjs/plugin/utc';
 import isLeapYear from 'dayjs/plugin/isLeapYear';
+import duration from 'dayjs/plugin/duration';
 
-
-
+dayjs.extend(duration);
 dayjs.extend(localizedFormat)
 dayjs.extend(weekday)
 dayjs.extend(weekOfYear)
