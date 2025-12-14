@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { message } from 'antd';
+import {t} from 'i18next';
 import copy from 'copy-to-clipboard';
 
 export default function useCopyToClipboard() {
@@ -8,7 +9,7 @@ export default function useCopyToClipboard() {
 	const [success, setSuccess] = useState();
 
 	const successMessage = () => {
-		message.success('Copied to clipboard');
+		message.success(t('Copied to clipboard'));
 	};
 	const copyToClipboard = (text, options) => {
 		const result = copy(text, options);
