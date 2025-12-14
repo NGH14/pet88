@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import photo2 from '../../assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
-import photo1 from '../../assets/images/j-balla-photography-cMtiWjiAvq4-unsplash-_1_.webp';
-import photo3 from '../../assets/images/page-image.60943b86 (1).webp';
+import photo2 from '~assets/images/Wallpaper-Linz-Doggies-Turquiose-1.webp';
+import photo1 from '~assets/images/j-balla-photography-cMtiWjiAvq4-unsplash-_1_.webp';
+import photo3 from '~assets/images/page-image.60943b86 (1).webp';
 import './style.css';
 
 const RightSideLogin = () => {

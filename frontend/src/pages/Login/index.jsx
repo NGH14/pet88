@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
-import logoBlack from 'assets/images/logo/icon-logo-primary.webp';
-import LeftSideLogin from 'components/LoginLeft';
-import RightSideLogin from 'components/LoginRight';
+import logoBlack from '~assets/images/logo/icon-logo-primary.webp';
+import LeftSideLogin from './LoginLeft';
+import RightSideLogin from './LoginRight';
 
 // import { UserAuth } from 'context/AuthContext';
 

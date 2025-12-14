@@ -1,7 +1,7 @@
 .loginpage-rightside {
 	width: 57%;
 	position: relative;
-	overflow-x: hidden;
+	overflow: hidden;
 }
 
 .loginpage-rightside .loginpage-rightside_image {
@@ -34,7 +34,7 @@
 	transform: translate(-50%, -50%);
 	z-index: 2;
 
-	color: #fff;
+	color: hsl(0, 0%, 100%);
 
 	font-style: normal;
 	font-weight: bold;

@@ -5,10 +5,10 @@ import { NavLink, useLocation, useNavigate } from 'react-router';
 import { AnimatePresence, motion } from 'motion/react';
 
 // import { UserAuth } from '../../context/AuthContext';
-import ForgotPasswordForm from '../ForgotPasswordForm';
-import LoginForm from '../SignInForm';
-import SignUpForm from '../SignUpForm';
-import ChangeLanguageButton from './../ChangeLanguageButton';
+import ForgotPasswordForm from '~components/ForgotPasswordForm';
+import LoginForm from '~components/SignInForm';
+import SignUpForm from '~components/SignUpForm';
+import ChangeLanguageButton from '~components/ChangeLanguageButton';
 import './style.css';
 
 const LeftSideSignin = ({ src }) => {

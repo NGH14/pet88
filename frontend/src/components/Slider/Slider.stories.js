@@ -1,6 +1,6 @@
-import IMG_1_PNG from '~/assets/images/customer-brand/customer-logo-2.png';
-import IMG_2_PNG from '~/assets/images/customer-brand/customer-logo-2.png';
-import IMG_3_PNG from '~/assets/images/customer-brand/customer-logo-3.png';
+import IMG_1_PNG from '~/assets/images/brand/customer-logo-2.png';
+import IMG_2_PNG from '~/assets/images/brand/customer-logo-2.png';
+import IMG_3_PNG from '~/assets/images/brand/customer-logo-3.png';
 
 import Slider from './Slider.jsx';
 
