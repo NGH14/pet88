@@ -212,7 +212,7 @@ export const CalendarAdmin = () => {
 			const res = await axios.get(`${API}/grooming`);
 
 			const list = [];
-			res.data.map(data => {
+			res?.data?.map(data => {
 				const children = data.roomNumbers?.map(r => {
 					return {
 						value: r?._id,
