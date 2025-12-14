@@ -1,4 +1,4 @@
-import React from 'react';
+import {Fragment} from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 
@@ -9,7 +9,7 @@ import './style.css';
 export default function UnderDev() {
 	const { t, i18n } = useTranslation();
 	return (
-		<>
+		<Fragment>
 			<section className="underpage">
 				<section className="underpage-form">
 					<img src={img} alt="" style={{ height: 200 }} />
@@ -28,6 +28,6 @@ export default function UnderDev() {
 					<NavLink to={'/'}>Go Back</NavLink>
 				</section>
 			</section>
-		</>
+		</Fragment>
 	);
 }

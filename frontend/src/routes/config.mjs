@@ -45,11 +45,6 @@ export default [
 		private: false,
 	},
 	{
-		path: '/admin',
-		element: 'Admin',
-		private: false,
-	},
-	{
 		path: '/admin/*',
 		element: 'Admin',
 		private: false,

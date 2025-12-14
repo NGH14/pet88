@@ -12,20 +12,19 @@ import { MenuFoldOutlined, MenuUnfoldOutlined, ReconciliationOutlined } from '@a
 import { Button, ConfigProvider, Space, Table, Tag } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import viVN from 'antd/es/locale/vi_VN';
-import logoWhite from 'assets/images/logo/text-logo-white.webp';
-import { CalendarAdmin } from 'components/Calendar/CalendarAdmin';
-import ChangeLanguageButton from 'components/ChangeLanguageButton/index';
-import  Spinner from 'components/Spinner/Spinner.jsx';
-import TableGrooming from 'components/TableGrooming/index';
-import TableHotel from 'components/TableHotel';
-import TableOrder from 'components/TableOrder';
-import TableRooms from 'components/TableRooms';
-// import TableUser from 'components/TableUser/index';
+import logoWhite from '~assets/images/logo/text-logo-white.webp';
+import { CalendarAdmin } from '~components/Calendar/CalendarAdmin';
+import ChangeLanguageButton from '~components/ChangeLanguageButton/index';
+import  Spinner from '~components/Spinner/Spinner.jsx';
+import TableGrooming from '~components/TableGrooming/index';
+import TableHotel from '~components/TableHotel';
+import TableOrder from '~components/TableOrder';
+import TableRooms from '~components/TableRooms';
+// import TableUser from '~components/TableUser/index';
 // import { UserAuth } from 'context/AuthContext';
 // import { collection, getDocs } from 'firebase/firestore';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
 
-// import { storage } from 'utils/firebase';
 
 import './style.css';
 

@@ -20,7 +20,7 @@ import {
 import viVN from 'antd/es/locale/vi_VN';
 import axios from 'axios';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
-import moment from 'moment';
+// import moment from 'moment';
 import { styled } from 'styled-components';
 
 // import { UserAuth } from '../../context/AuthContext';
