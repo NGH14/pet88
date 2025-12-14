@@ -1121,8 +1121,8 @@ export const CalendarAdmin = () => {
 						/>
 					) : null}
 				</section>
-				<section className="">
-					<section className="-vertical">
+				<section className="separator_calendar-admin">
+					<section className="vertical">
 						<section className="center-element">
 							<Button
 								style={{}}
