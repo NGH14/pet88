@@ -4,14 +4,14 @@ import Header from './views/Header/Header.jsx';
 import SubHeader from './views/Header/SubHeader/SubHeader.jsx';
 import NavBar from './views/NavBar/NavBar.jsx';
 
-export default function MainLayout({ childrens }) {
+export default function MainLayout({ children }) {
 	return (
 		<>
 			<Header>
 				<SubHeader />
 				<NavBar />
 			</Header>
-			<Content>{childrens}</Content>
+			<Content>{children}</Content>
 			<Footer></Footer>
 		</>
 	);
