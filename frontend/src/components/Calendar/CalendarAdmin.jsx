@@ -368,7 +368,7 @@ export const CalendarAdmin = () => {
 	const handleSelectEvent = event => {
 		console.log('Event selected:', event);
 		setOpenDetailModal(true);
-		setSelecteDetailType(false);
+		setSelectedDetailType(false);
 		setSelectedDetailDate(event);
 	};
 
@@ -805,7 +805,7 @@ export const CalendarAdmin = () => {
 							<Button
 								className="drag-button_modal"
 								type="text"
-								onClick={() => setSelecteDetailType(!selectedDetailType)}
+								onClick={() => setSelectedDetailType(!selectedDetailType)}
 							>
 								<RiEditLine></RiEditLine>{' '}
 							</Button>
