@@ -408,13 +408,13 @@ export const CalendarAdmin = () => {
 	const slotPropGetter = useCallback(
 		date => ({
 			className: 'slotDefault',
-			...(dayjs(date).hour() < 8 && {
+			...(dayjs(date).utc().hour() < 8 && {
 				style: {
 					backgroundColor: '#e6e6e6',
 					color: 'black',
 				},
 			}),
-			...(dayjs(date).hour() > 22.25 && {
+			...(dayjs(date).utc().hour() > 22.25 && {
 				style: {
 					backgroundColor: '#e6e6e6',
 					color: 'black',

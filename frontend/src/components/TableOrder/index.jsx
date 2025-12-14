@@ -37,8 +37,7 @@ import {
 } from 'antd';
 import axios from 'axios';
 // import { UserAuth } from 'context/AuthContext';
-import moment from 'moment';
-import { storage } from 'utils/firebase';
+// import { storage } from 'utils/firebase';
 import { ToVND } from 'utils/formatCurrency';
 
 // import { UserAuth } from '../../context/AuthContext';
