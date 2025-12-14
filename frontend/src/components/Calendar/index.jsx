@@ -56,7 +56,7 @@ Basic.propTypes = {
 	showDemoLink: PropTypes.bool,
 };
 
-export function Selectable({ localizer }) {
+export default function Selectable({ localizer }) {
 	const [myEvents, setEvents] = useState(events);
 
 	const handleSelectSlot = useCallback(
@@ -152,6 +152,7 @@ export function DragAndDrop({ localizer }) {
 		</Fragment>
 	);
 }
+
 DragAndDrop.propTypes = {
 	localizer: PropTypes.instanceOf(DateLocalizer),
 };

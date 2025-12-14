@@ -4,8 +4,10 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-datepicker/dist/react-datepicker.css';
+
 import Draggable from 'react-draggable';
 import { useTranslation } from 'react-i18next';
+
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import {
 	RiCalendarEventFill,
@@ -36,7 +38,7 @@ import {
 	Select,
 	Typography,
 } from 'antd';
-// import 'dayjs/locale/en';
+import 'dayjs/locale/en';
 
 import vi_VN from 'antd/locale/vi_VN';
 import axios from 'axios';
@@ -60,8 +62,6 @@ const events = [
 		end: new Date(2022, 11, 15),
 	},
 ];
-
-console.log(events);
 
 const API = process.env.REACT_APP_API;
 
@@ -91,7 +91,7 @@ const langMessage = {
 
 export const CalendarAdmin = () => {
 	const [allEvents, setAllEvents] = useState(events);
-	const [setEvent] = useState({});
+	const [event, setEvent] = useState(null);
 	const [selectedGroomingRoomId, setSelectedGroomingRoomId] = useState('');
 	const [selectedGroomingRoomData, setSelectedGroomingRoomData] = useState({});
 	const [subCalendarCollapse, setSubCalendarCollapse] = useState(false);
@@ -336,24 +336,21 @@ export const CalendarAdmin = () => {
 		}),
 		[i18n.language]
 	);
-	console.log(accountType);
+
 	const handleSelectSlot = ({ start, end }) => {
-		const price =
-			(new Date(end).getHours() - new Date(start).getHours()) * 1 * selectedGroomingRoomData?.price;
-
-		if (price > 0) {
-			setOpenCreateModal(true);
-			setSelectedDate({ start, end, price });
-		}
-
+		const hours = new Date(end).getHours() - new Date(start).getHours();
+		const roomPrice = selectedGroomingRoomData?.price || 0;
+		let price = hours * roomPrice;
 		if (price <= 0) {
-			setOpenCreateModal(true);
-			setSelectedDate({
-				start,
-				end,
-				price: selectedGroomingRoomData?.price,
-			});
+			price = roomPrice;
 		}
+
+		setOpenCreateModal(true);
+		setSelectedDate({
+			start,
+			end,
+			price: price,
+		});
 	};
 
 	const moveEvent = ({ event, start, end }) => {
@@ -470,6 +467,7 @@ export const CalendarAdmin = () => {
 					title,
 					order: order.data,
 				};
+				console.log('Created event:', event);
 				FetchAddEvent(event);
 				setEvent(event);
 
