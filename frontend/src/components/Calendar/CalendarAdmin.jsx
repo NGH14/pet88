@@ -48,10 +48,36 @@ import 'dayjs/locale/vi';
 // import { UserAuth } from '../../context/AuthContext';
 import UUID from '../../hooks/useUUID';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
+import { ToVND } from '../../utils/formatCurrency';
 import './style.css';
 
 const DnDCalendar = withDragAndDrop(RB);
 const { Paragraph } = Typography;
+
+const EventComponent = React.memo(({ event }) => {
+	return (
+		<div style={{ position: 'relative' }}>
+			{event.title}
+			{event.status && (
+				<span
+					style={{
+						position: 'absolute',
+						top: '0px',
+						right: '0px',
+						padding: '2px',
+						backgroundColor: 'white',
+						color: 'black',
+						fontSize: '8px',
+						borderRadius: '4px',
+					}}
+				>
+					{event.status}
+				</span>
+			)}
+		</div>
+	);
+});
+EventComponent.displayName = 'EventComponent';
 
 const events = [
 	{
@@ -104,8 +130,8 @@ export const CalendarAdmin = () => {
 		end: 0,
 		price: 0,
 	});
-	const [selecteDetaildDate, setSelectedDetailDate] = useState({});
-	const [selecteDetailType, setSelecteDetailType] = useState(false);
+	const [selectedDetailDate, setSelectedDetailDate] = useState({});
+	const [selectedDetailType, setSelectedDetailType] = useState(false);
 	// const { GetAllUser } = UserAuth();
 	const photo =
 		'https://res.cloudinary.com/dggxjymsy/image/upload/v1667986972/pet88_upload/e10adb13acb1f3da8724a9149a58bd00_jwdh7h.jpg';
@@ -128,7 +154,17 @@ export const CalendarAdmin = () => {
 	const draggleRef = useRef(null);
 	dayjs.locale(i18n.language);
 
-	React.useEffect(() => form.resetFields());
+	React.useEffect(() => {
+		if (openDetailModal) {
+			console.log('Populating update form with:', selectedDetailDate);
+			form.setFieldsValue({
+				title: selectedDetailDate?.title,
+				name: selectedDetailDate?.order?.name,
+				email: selectedDetailDate?.order?.email,
+				phone: selectedDetailDate?.order?.phone,
+			});
+		}
+	}, [openDetailModal, selectedDetailDate, form]);
 
 	const onChange = (value, selectedOptions) => {
 		setSelectedGroomingRoomId(selectedOptions[1].value);
@@ -208,9 +244,15 @@ export const CalendarAdmin = () => {
 
 			const list = [];
 			res.data.unavailableDates.map(data => {
+				const start = new Date(data.startDate);
+				const end = new Date(data.endDate);
+				if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+					console.error('Invalid date received from server:', data);
+					return;
+				}
 				return list.push({
-					start: new Date(data.startDate),
-					end: new Date(data.endDate),
+					start: start,
+					end: end,
 					id: data.id,
 					title: data.title,
 					order: data.order,
@@ -235,24 +277,23 @@ export const CalendarAdmin = () => {
 					order: value.order,
 				},
 			});
-			form.resetFields();
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
 	const FetchUpdateEvent = async value => {
-		const startDate = value?.start || selecteDetaildDate?.start;
-		const endDate = value?.end || selecteDetaildDate?.end;
-		const title = value?.title || selecteDetaildDate?.title;
-		const id = value?.id || selecteDetaildDate.id;
+		const startDate = value?.start || selectedDetailDate?.start;
+		const endDate = value?.end || selectedDetailDate?.end;
+		const title = value?.title || selectedDetailDate?.title;
+		const id = value?.id || selectedDetailDate.id;
 		const order =
 			{
-				...selecteDetaildDate?.order,
+				...selectedDetailDate?.order,
 				name: value.name,
 				email: value.email,
 				phone: value.phone,
-			} || selecteDetaildDate?.order;
+			} || selectedDetailDate?.order;
 
 		try {
 			await axios.put(`${API}/grooming/room/event/${id}`, {
@@ -268,10 +309,10 @@ export const CalendarAdmin = () => {
 	};
 
 	const FetchUpdateReSizeEvent = async value => {
-		const startDate = value?.start || selecteDetaildDate?.start;
-		const endDate = value?.end || selecteDetaildDate?.end;
-		const title = value?.title || selecteDetaildDate?.title;
-		const id = value?.id || selecteDetaildDate.id;
+		const startDate = value?.start || selectedDetailDate?.start;
+		const endDate = value?.end || selectedDetailDate?.end;
+		const title = value?.title || selectedDetailDate?.title;
+		const id = value?.id || selectedDetailDate.id;
 		const order = value?.order;
 		const price =
 			(new Date(endDate).getHours() - new Date(startDate).getHours()) *
@@ -302,11 +343,11 @@ export const CalendarAdmin = () => {
 	};
 
 	const FetchDeleteEvent = async value => {
-		const id = value.id || selecteDetaildDate.id;
+		const id = value.id || selectedDetailDate.id;
 		try {
 			await Promise.all([
 				axios.put(`${API}/grooming/room/event/delete/${id}`),
-				axios.put(`${API}/order/update-status/${selecteDetaildDate.order._id}`, {
+				axios.put(`${API}/order/update-status/${selectedDetailDate.order._id}`, {
 					paid: 'cancel',
 					confirm: 'cancel',
 				}),
@@ -325,6 +366,7 @@ export const CalendarAdmin = () => {
 	};
 
 	const handleSelectEvent = event => {
+		console.log('Event selected:', event);
 		setOpenDetailModal(true);
 		setSelecteDetailType(false);
 		setSelectedDetailDate(event);
@@ -335,6 +377,13 @@ export const CalendarAdmin = () => {
 			messages: langMessage[i18n.language],
 		}),
 		[i18n.language]
+	);
+
+	const components = useMemo(
+		() => ({
+			event: EventComponent,
+		}),
+		[]
 	);
 
 	const handleSelectSlot = ({ start, end }) => {
@@ -429,6 +478,11 @@ export const CalendarAdmin = () => {
 			(new Date(selectedDate?.end).getHours() - new Date(selectedDate?.start).getHours()) *
 			1 *
 			selectedGroomingRoomData.price;
+		const orderPrice = price !== 0 ? price : selectedGroomingRoomData?.price;
+
+		if (!title) {
+			return;
+		}
 
 		const bookingUser = values.account
 			? userData.find(u => u.email === values.email)
@@ -437,46 +491,61 @@ export const CalendarAdmin = () => {
 					email: values.email || 'guest',
 					phone: values.phone,
 					name: values.name,
-				};
+			  };
 
-		if (values?.title) {
-			const eventID = UUID();
+		const eventID = UUID();
+		const newEvent = {
+			id: eventID,
+			start: start,
+			end: end,
+			title,
+			status: 'local', // Immediately add with 'local' status
+			order: {
+				// Local order data for immediate display
+				name: bookingUser.name,
+				email: bookingUser.email,
+				phone: bookingUser.phone,
+				price: orderPrice,
+			},
+		};
 
-			const orderPrice = price !== 0 ? price : selectedGroomingRoomData?.price;
+		// Add to state immediately
+		setAllEvents(prev => [...prev, newEvent]);
+		setOpenCreateModal(false);
+		form.resetFields();
 
-			try {
-				const order = await axios.post(`${API}/order/admin/grooming`, {
-					email: bookingUser.email || 'guest',
-					eventID,
-					userID: bookingUser.id || 'guest',
-					phone: bookingUser.phone || '0',
-					roomList: selectedGroomingRoomId,
-					photo: photo,
-					days: 0,
-					price: orderPrice,
-					start,
-					name: bookingUser.name || 'guest',
-					end,
-					paymentMethod: 'cash',
-					service: 'grooming',
-				});
-				const event = {
-					id: eventID,
-					start: start,
-					end: end,
-					title,
-					order: order.data,
-				};
-				console.log('Created event:', event);
-				FetchAddEvent(event);
-				setEvent(event);
+		try {
+			const order = await axios.post(`${API}/order/admin/grooming`, {
+				email: bookingUser.email || 'guest',
+				eventID,
+				userID: bookingUser.id || 'guest',
+				phone: bookingUser.phone || '0',
+				roomList: selectedGroomingRoomId,
+				photo: photo,
+				days: 0,
+				price: orderPrice,
+				start,
+				name: bookingUser.name || 'guest',
+				end,
+				paymentMethod: 'cash',
+				service: 'grooming',
+			});
 
-				setAllEvents(prev => [...prev, event]);
-				setOpenCreateModal(false);
-			} catch (error) {
-				console.error(error);
-				setOpenCreateModal(false);
-			}
+			const eventWithOrder = {
+				...newEvent,
+				order: order.data, // now it has the full order from server
+			};
+
+			await FetchAddEvent(eventWithOrder);
+
+			// Update status to 'synced'
+			setAllEvents(prev =>
+				prev.map(e => (e.id === eventID ? { ...eventWithOrder, status: 'synced' } : e))
+			);
+		} catch (error) {
+			console.error(error);
+			// Update status to 'error'
+			setAllEvents(prev => prev.map(e => (e.id === eventID ? { ...newEvent, status: 'error' } : e)));
 		}
 	};
 
@@ -486,7 +555,7 @@ export const CalendarAdmin = () => {
 			FetchUpdateEvent(values);
 			setAllEvents(
 				allEvents.map(obj => {
-					if (obj.id === selecteDetaildDate.id) {
+					if (obj.id === selectedDetailDate.id) {
 						return {
 							...obj,
 							title,
@@ -501,16 +570,15 @@ export const CalendarAdmin = () => {
 					return obj;
 				})
 			);
-			setOpenCreateModal(false);
+			setOpenDetailModal(false);
 		}
 		setOpenDetailModal(false);
 	};
 
 	const handleDeleteEvent = () => {
-		FetchDeleteEvent(selecteDetaildDate.id);
-		setAllEvents(allEvents.filter(item => item.id !== selecteDetaildDate.id));
+		FetchDeleteEvent(selectedDetailDate.id);
+		setAllEvents(allEvents.filter(item => item.id !== selectedDetailDate.id));
 		setOpenDetailModal(false);
-		selecteDetaildDate();
 	};
 	return (
 		<ConfigProvider locale={i18n.language}>
@@ -552,7 +620,10 @@ export const CalendarAdmin = () => {
 					open={openCreateModal}
 					onOk={() => setOpenCreateModal(false)}
 					footer={null}
-					onCancel={() => setOpenCreateModal(false)}
+					onCancel={() => {
+						setOpenCreateModal(false);
+						form.resetFields();
+					}}
 				>
 					<Form
 						className="createEvent_form"
@@ -645,10 +716,8 @@ export const CalendarAdmin = () => {
 								}}
 							>
 								<span>
-									{dayjs(new Date(selectedDate?.start).getTime()).format(
-										'dddd, DD MMM YYYY _ hh:mm A'
-									)}{' '}
-									- {dayjs(new Date(selectedDate?.end).getTime()).format('hh:mm A')}{' '}
+									{dayjs(selectedDate?.start).format('dddd, DD MMM YYYY _ hh:mm A')} -{' '}
+									{dayjs(selectedDate?.end).format('hh:mm A')}{' '}
 								</span>
 							</Form.Item>
 						</Form.Item>
@@ -667,12 +736,7 @@ export const CalendarAdmin = () => {
 								alignContent: 'center',
 							}}
 						>
-							<span>
-								{new Intl.NumberFormat('vi-VN', {
-									style: 'currency',
-									currency: 'VND',
-								}).format(selectedDate?.price)}
-							</span>
+							<span>{ToVND(selectedDate?.price)}</span>
 						</Form.Item>
 						<Form.Item
 							className="drag-button_modal"
@@ -741,7 +805,7 @@ export const CalendarAdmin = () => {
 							<Button
 								className="drag-button_modal"
 								type="text"
-								onClick={() => setSelecteDetailType(!selecteDetailType)}
+								onClick={() => setSelecteDetailType(!selectedDetailType)}
 							>
 								<RiEditLine></RiEditLine>{' '}
 							</Button>
@@ -782,12 +846,6 @@ export const CalendarAdmin = () => {
 						form={form}
 						name="horizontal_login"
 						layout="horizontal"
-						initialValues={{
-							title: selecteDetaildDate?.title,
-							name: selecteDetaildDate?.order?.name,
-							email: selecteDetaildDate?.order?.email,
-							phone: selecteDetaildDate?.order?.phone,
-						}}
 						onFinish={onFinishUpdateEvent}
 						requiredMark={false}
 					>
@@ -809,31 +867,31 @@ export const CalendarAdmin = () => {
 								},
 							]}
 						>
-							{selecteDetailType ? (
+							{selectedDetailType ? (
 								<Input placeholder={t('Enter event title')} />
 							) : (
-								<span>{selecteDetaildDate?.title}</span>
+								<span>{selectedDetailDate?.title}</span>
 							)}
 						</Form.Item>
 						<Form.Item name="name" label={<RiUser3Line />}>
-							{selecteDetailType ? (
+							{selectedDetailType ? (
 								<Input placeholder={t('Enter event title')} />
 							) : (
-								<span>{selecteDetaildDate?.order?.name}</span>
+								<span>{selectedDetailDate?.order?.name}</span>
 							)}
 						</Form.Item>
 						<Form.Item name="email" label={<RiMailLine />}>
-							{selecteDetailType ? (
+							{selectedDetailType ? (
 								<Input placeholder={t('Enter event title')} />
 							) : (
-								<span>{selecteDetaildDate?.order?.email}</span>
+								<span>{selectedDetailDate?.order?.email}</span>
 							)}
 						</Form.Item>
 						<Form.Item name="phone" label={<RiPhoneLine />}>
-							{selecteDetailType ? (
+							{selectedDetailType ? (
 								<Input placeholder={t('Enter event title')} />
 							) : (
-								<span>{selecteDetaildDate?.order?.phone}</span>
+								<span>{selectedDetailDate?.order?.phone}</span>
 							)}
 						</Form.Item>
 						<Form.Item
@@ -856,8 +914,8 @@ export const CalendarAdmin = () => {
 								}}
 							>
 								<span>
-									{dayjs(new Date(selecteDetaildDate?.start).getTime()).format('hh:mm A')} -{' '}
-									{dayjs(new Date(selecteDetaildDate?.end).getTime()).format('hh:mm A')}
+									{dayjs(selectedDetailDate?.start).format('hh:mm A')} -{' '}
+									{dayjs(selectedDetailDate?.end).format('hh:mm A')}
 								</span>
 							</Form.Item>
 						</Form.Item>
@@ -876,17 +934,7 @@ export const CalendarAdmin = () => {
 								alignContent: 'center',
 							}}
 						>
-							<span>
-								{new Intl.NumberFormat('vi-VN', {
-									style: 'currency',
-									currency: 'VND',
-								}).format(
-									(new Date(selecteDetaildDate?.end).getHours() -
-										new Date(selecteDetaildDate?.start).getHours()) *
-										1 *
-										selectedGroomingRoomData.price
-								)}
-							</span>
+							<span>{ToVND(selectedDetailDate?.order?.price)}</span>
 						</Form.Item>
 						<Form.Item label={<RiShoppingCartLine />}>
 							<Paragraph
@@ -894,7 +942,7 @@ export const CalendarAdmin = () => {
 									tooltips: false,
 								}}
 							>
-								{selecteDetaildDate?.order?._id}
+								{selectedDetailDate?.order?._id || 'N/A'}
 							</Paragraph>
 						</Form.Item>
 						<Form.Item
@@ -919,7 +967,7 @@ export const CalendarAdmin = () => {
 							>
 								{t('Close')}
 							</Button>
-							{selecteDetailType ? (
+							{selectedDetailType ? (
 								<Button
 									className="drag-button_modal"
 									style={{
@@ -1098,19 +1146,36 @@ export const CalendarAdmin = () => {
 					resizable={calendarAdminPanel !== 'month' ? true : false}
 					startAccessor="start"
 					endAccessor="end"
-					eventPropGetter={_ => {
-						return {
-							style: {
-								backgroundColor: calendarAdminPanel !== 'agenda' && '#94795C',
-								border: calendarAdminPanel !== 'agenda' && '#94795C',
-							},
+					eventPropGetter={event => {
+						const style = {
+							backgroundColor: calendarAdminPanel !== 'agenda' && '#94795C',
+							border: calendarAdminPanel !== 'agenda' && '#94795C',
 						};
+
+						switch (event.status) {
+							case 'local':
+								style.backgroundColor = 'orange';
+								style.borderColor = 'darkorange';
+								break;
+							case 'syncing':
+								style.backgroundColor = 'lightblue';
+								style.borderColor = 'blue';
+								break;
+							case 'error':
+								style.backgroundColor = 'red';
+								style.borderColor = 'darkred';
+								break;
+							default:
+								break;
+						}
+						return { style };
 					}}
 					selectable={calendarAdminPanel !== 'month' ? true : false}
 					longPressThreshold={10}
 					onSelectEvent={e => handleSelectEvent(e)}
 					onSelectSlot={handleSelectSlot}
 					messages={messages}
+					components={components}
 					localizer={localizer}
 					date={defaultDate}
 					culture={i18n.language}

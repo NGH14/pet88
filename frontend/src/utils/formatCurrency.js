@@ -1,4 +1,7 @@
 const ToVND = num => {
+	if (isNaN(num) || num === null || num === undefined) {
+		num = 0;
+	}
 	return new Intl.NumberFormat('vi-VN', {
 		style: 'currency',
 		currency: 'VND',
