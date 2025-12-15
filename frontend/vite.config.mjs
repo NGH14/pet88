@@ -10,6 +10,10 @@ export default defineConfig(({ mode }) => {
 	setEnv(mode);
 	return {
 		base: '',
+		server: {
+			port: 3000,
+			strictPort: true
+		},
 		plugins: [
 			react(),
 			tsconfigPaths(),
