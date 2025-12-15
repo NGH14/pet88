@@ -1,3 +1,8 @@
+import localeVN from 'antd/locale/vi_VN';
+import localeEN from 'antd/locale/en_US';
+import 'dayjs/locale/vi';
+import 'dayjs/locale/en';
+
 import {
 	ENGLISH_COMMON,
 	ENGLISH_DEFAULT,
@@ -10,6 +15,21 @@ import {
 export const VIETNAM_LOCALE_CODE = 'vi';
 export const ENGLISH_LOCALE_CODE = 'en_US';
 export const LOCALE_KEY = 'lang';
+
+export const LOCALE_MAP = {
+	[ENGLISH_LOCALE_CODE]: {
+		antd: localeEN,
+		dayjs: 'en',
+	},
+	[VIETNAM_LOCALE_CODE]: {
+		antd: localeVN,
+		dayjs: 'vi',
+	},
+};
+
+export const getLocaleConfig = (language) => {
+	return LOCALE_MAP[language] || LOCALE_MAP[ENGLISH_LOCALE_CODE];
+};
 
 export const NAMESPACE = {
 	defaultNS: 'translation',

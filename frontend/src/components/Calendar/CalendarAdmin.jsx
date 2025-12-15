@@ -579,154 +579,133 @@ export const CalendarAdmin = () => {
 		setOpenDetailModal(false);
 	};
 	return (
-		// <ConfigProvider locale={i18n.language}>
-			<section className="calendar-container">
-				<Modal
-					title={
-						<section
-							className="createEvent_btn"
-							style={{
-								width: '100%',
-								cursor: 'move',
-							}}
-							onMouseOver={() => {
-								if (disabled) {
-									setDisabled(false);
-								}
-							}}
-							onMouseOut={() => {
-								setDisabled(true);
-							}}
-							onFocus={() => { }}
-							onBlur={() => { }}
-						// end
-						>
-							{t('Add new event')}
-						</section>
-					}
-					modalRender={modal => (
-						<Draggable
-							cancel=".drag-button_modal .createEvent_form .createEvent_btn"
-							disabled={disabled}
-							bounds={bounds}
-							onStart={(event, uiData) => onStart(event, uiData)}
-						>
-							<section ref={draggleRef}>{modal}</section>
-						</Draggable>
-					)}
-					centered
-					open={openCreateModal}
-					onOk={() => setOpenCreateModal(false)}
-					footer={null}
-					onCancel={() => {
-						setOpenCreateModal(false);
-						form.resetFields();
-					}}
-				>
-					<Form
-						className="createEvent_form"
-						colon={false}
-						form={form}
-						name="horizontal_login"
-						layout="horizontal"
-						onFinish={onFinishCreateEvent}
-						requiredMark={false}
-					>
-						<Form.Item
-							label={
-								<RiFileTextLine
-									style={{
-										fontSize: 14,
-										textTransform: 'capitalize',
-									}}
-								></RiFileTextLine>
+
+		<section className="calendar-container">
+			<Modal
+				title={
+					<section
+						className="createEvent_btn"
+						style={{
+							width: '100%',
+							cursor: 'move',
+						}}
+						onMouseOver={() => {
+							if (disabled) {
+								setDisabled(false);
 							}
-							name="title"
-							rules={[
-								{
-									required: true,
-									message: t('Please enter the title'),
-								},
-							]}
-						>
-							<Input placeholder={t('Enter event title')} />
+						}}
+						onMouseOut={() => {
+							setDisabled(true);
+						}}
+						onFocus={() => { }}
+						onBlur={() => { }}
+					// end
+					>
+						{t('Add new event')}
+					</section>
+				}
+				modalRender={modal => (
+					<Draggable
+						cancel=".drag-button_modal .createEvent_form .createEvent_btn"
+						disabled={disabled}
+						bounds={bounds}
+						onStart={(event, uiData) => onStart(event, uiData)}
+					>
+						<section ref={draggleRef}>{modal}</section>
+					</Draggable>
+				)}
+				centered
+				open={openCreateModal}
+				onOk={() => setOpenCreateModal(false)}
+				footer={null}
+				onCancel={() => {
+					setOpenCreateModal(false);
+					form.resetFields();
+				}}
+			>
+				<Form
+					className="createEvent_form"
+					colon={false}
+					form={form}
+					name="horizontal_login"
+					layout="horizontal"
+					onFinish={onFinishCreateEvent}
+					requiredMark={false}
+				>
+					<Form.Item
+						label={
+							<RiFileTextLine
+								style={{
+									fontSize: 14,
+									textTransform: 'capitalize',
+								}}
+							></RiFileTextLine>
+						}
+						name="title"
+						rules={[
+							{
+								required: true,
+								message: t('Please enter the title'),
+							},
+						]}
+					>
+						<Input placeholder={t('Enter event title')} />
+					</Form.Item>
+
+					{accountType ? (
+						<Form.Item name="email" label={<RiMailLine />}>
+							<Select
+								showSearch
+								options={userDataOption}
+								filterOption={(input, option) =>
+									(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+								}
+							></Select>
 						</Form.Item>
-
-						{accountType ? (
-							<Form.Item name="email" label={<RiMailLine />}>
-								<Select
-									showSearch
-									options={userDataOption}
-									filterOption={(input, option) =>
-										(option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-									}
-								></Select>
+					) : (
+						<>
+							<Form.Item name="name" label={<RiUser3Line />}>
+								<Input />
 							</Form.Item>
-						) : (
-							<>
-								<Form.Item name="name" label={<RiUser3Line />}>
-									<Input />
-								</Form.Item>
-								<Form.Item name="email" label={<RiMailLine />}>
-									<Input />
-								</Form.Item>
+							<Form.Item name="email" label={<RiMailLine />}>
+								<Input />
+							</Form.Item>
 
-								<Form.Item name="phone" label={<RiPhoneLine />}>
-									<Input />
-								</Form.Item>
-							</>
-						)}
+							<Form.Item name="phone" label={<RiPhoneLine />}>
+								<Input />
+							</Form.Item>
+						</>
+					)}
 
-						<Form label={<RiUserSettingsLine />} name="account">
-							{/* <Radio.Group
+					<Form label={<RiUserSettingsLine />} name="account">
+						{/* <Radio.Group
 								value={accountType}
 								onChange={(e) => setAccountType(e.target.value)}
 							>
 								<Radio value={false}>{t('Guest')}</Radio>
 								<Radio value={true}>{t('Has Account')}</Radio>
 							</Radio.Group> */}
-							<Checkbox
-								checked={accountType}
-								defaultChecked={accountType}
-								onChange={e => setAccountType(e.target.checked)}
-							>
-								Has Account
-							</Checkbox>
-						</Form>
-						<Form.Item
-							style={{
-								marginBottom: 0,
-							}}
+						<Checkbox
+							checked={accountType}
+							defaultChecked={accountType}
+							onChange={e => setAccountType(e.target.checked)}
 						>
-							<Form.Item
-								label={
-									<RiCalendarEventFill
-										style={{
-											fontSize: 14,
-											textTransform: 'capitalize',
-										}}
-									></RiCalendarEventFill>
-								}
-								name="start"
-								style={{
-									display: 'flex',
-									alignContent: 'center',
-								}}
-							>
-								<span>
-									{dayjs(selectedDate?.start).format('dddd, DD MMM YYYY _ hh:mm A')} -{' '}
-									{dayjs(selectedDate?.end).format('hh:mm A')}{' '}
-								</span>
-							</Form.Item>
-						</Form.Item>
+							Has Account
+						</Checkbox>
+					</Form>
+					<Form.Item
+						style={{
+							marginBottom: 0,
+						}}
+					>
 						<Form.Item
 							label={
-								<RiCoinLine
+								<RiCalendarEventFill
 									style={{
 										fontSize: 14,
 										textTransform: 'capitalize',
 									}}
-								></RiCoinLine>
+								></RiCalendarEventFill>
 							}
 							name="start"
 							style={{
@@ -734,30 +713,259 @@ export const CalendarAdmin = () => {
 								alignContent: 'center',
 							}}
 						>
-							<span>{ToVND(selectedDate?.price)}</span>
+							<span>
+								{dayjs(selectedDate?.start).format('dddd, DD MMM YYYY _ hh:mm A')} -{' '}
+								{dayjs(selectedDate?.end).format('hh:mm A')}{' '}
+							</span>
 						</Form.Item>
-						<Form.Item
+					</Form.Item>
+					<Form.Item
+						label={
+							<RiCoinLine
+								style={{
+									fontSize: 14,
+									textTransform: 'capitalize',
+								}}
+							></RiCoinLine>
+						}
+						name="start"
+						style={{
+							display: 'flex',
+							alignContent: 'center',
+						}}
+					>
+						<span>{ToVND(selectedDate?.price)}</span>
+					</Form.Item>
+					<Form.Item
+						className="drag-button_modal"
+						style={{
+							display: 'flex',
+							justifyContent: 'flex-end',
+							marginBlock: '5px -5px',
+						}}
+					>
+						<Button
 							className="drag-button_modal"
 							style={{
+								marginInline: '0px 15px',
+								height: 'fit-content',
+								fontSize: 16,
+								lineHeight: 1.8,
+								borderRadius: 5,
+							}}
+							type="text"
+							onClick={() => setOpenCreateModal(false)}
+						>
+							{t('Close')}
+						</Button>
+						<Button
+							className="drag-button_modal"
+							style={{
+								height: 'fit-content',
+								fontSize: 16,
+								lineHeight: 1.8,
+								borderRadius: 5,
+								boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
+							}}
+							type="primary"
+							htmlType="submit"
+						>
+							{t('Confirm')}
+						</Button>
+					</Form.Item>
+				</Form>
+			</Modal>
+
+			<Modal
+				closable={false}
+				title={
+					<section
+						style={{
+							width: '100%',
+							cursor: 'move',
+							display: 'flex',
+							justifyContent: 'flex-end',
+						}}
+						onMouseOver={() => {
+							if (disabled) {
+								setDisabled(false);
+							}
+						}}
+						onMouseOut={() => {
+							setDisabled(true);
+						}}
+						onFocus={() => { }}
+						onBlur={() => { }}
+					>
+						<Button className="drag-button_modal" type="text" onClick={() => handleDeleteEvent()}>
+							<RiDeleteBinLine></RiDeleteBinLine>{' '}
+						</Button>
+						<Button
+							className="drag-button_modal"
+							type="text"
+							onClick={() => setSelectedDetailType(!selectedDetailType)}
+						>
+							<RiEditLine></RiEditLine>{' '}
+						</Button>
+						<Button
+							className="drag-button_modal"
+							type="text"
+							onClick={() => setOpenDetailModal(false)}
+						>
+							<RiCloseFill
+								style={{
+									fontSize: 18,
+								}}
+							></RiCloseFill>{' '}
+						</Button>
+					</section>
+				}
+				modalRender={modal => (
+					<Draggable
+						cancel=".drag-button_modal .updateEvent_form"
+						disabled={disabled}
+						bounds={bounds}
+						onStart={(event, uiData) => onStart(event, uiData)}
+					>
+						<section ref={draggleRef} style={{}}>
+							{modal}
+						</section>
+					</Draggable>
+				)}
+				centered
+				open={openDetailModal}
+				onOk={() => setOpenDetailModal(false)}
+				footer={null}
+				onCancel={() => setOpenDetailModal(false)}
+			>
+				<Form
+					className="updateEvent_form"
+					colon={false}
+					form={form}
+					name="horizontal_login"
+					layout="horizontal"
+					onFinish={onFinishUpdateEvent}
+					requiredMark={false}
+				>
+					<Form.Item
+						label={
+							<RiFileTextLine
+								style={{
+									fontSize: 14,
+
+									textTransform: 'capitalize',
+								}}
+							></RiFileTextLine>
+						}
+						name="title"
+						rules={[
+							{
+								required: true,
+								message: t('Please enter the title'),
+							},
+						]}
+					>
+						{selectedDetailType ? (
+							<Input placeholder={t('Enter event title')} />
+						) : (
+							<span>{selectedDetailDate?.title}</span>
+						)}
+					</Form.Item>
+					<Form.Item name="name" label={<RiUser3Line />}>
+						{selectedDetailType ? (
+							<Input placeholder={t('Enter event title')} />
+						) : (
+							<span>{selectedDetailDate?.order?.name}</span>
+						)}
+					</Form.Item>
+					<Form.Item name="email" label={<RiMailLine />}>
+						{selectedDetailType ? (
+							<Input placeholder={t('Enter event title')} />
+						) : (
+							<span>{selectedDetailDate?.order?.email}</span>
+						)}
+					</Form.Item>
+					<Form.Item name="phone" label={<RiPhoneLine />}>
+						{selectedDetailType ? (
+							<Input placeholder={t('Enter event title')} />
+						) : (
+							<span>{selectedDetailDate?.order?.phone}</span>
+						)}
+					</Form.Item>
+					<Form.Item
+						style={{
+							marginBottom: 0,
+						}}
+					>
+						<Form.Item
+							label={
+								<RiCalendarEventFill
+									style={{
+										fontSize: 14,
+										textTransform: 'capitalize',
+									}}
+								></RiCalendarEventFill>
+							}
+							style={{
 								display: 'flex',
-								justifyContent: 'flex-end',
-								marginBlock: '5px -5px',
+								alignContent: 'center',
 							}}
 						>
-							<Button
-								className="drag-button_modal"
+							<span>
+								{dayjs(selectedDetailDate?.start).format('hh:mm A')} -{' '}
+								{dayjs(selectedDetailDate?.end).format('hh:mm A')}
+							</span>
+						</Form.Item>
+					</Form.Item>
+					<Form.Item
+						label={
+							<RiCoinLine
 								style={{
-									marginInline: '0px 15px',
-									height: 'fit-content',
-									fontSize: 16,
-									lineHeight: 1.8,
-									borderRadius: 5,
+									fontSize: 14,
+									textTransform: 'capitalize',
 								}}
-								type="text"
-								onClick={() => setOpenCreateModal(false)}
-							>
-								{t('Close')}
-							</Button>
+							></RiCoinLine>
+						}
+						name="start"
+						style={{
+							display: 'flex',
+							alignContent: 'center',
+						}}
+					>
+						<span>{ToVND(selectedDetailDate?.order?.price)}</span>
+					</Form.Item>
+					<Form.Item label={<RiShoppingCartLine />}>
+						<Paragraph
+							copyable={{
+								tooltips: false,
+							}}
+						>
+							{selectedDetailDate?.order?._id || 'N/A'}
+						</Paragraph>
+					</Form.Item>
+					<Form.Item
+						style={{
+							display: 'flex',
+							justifyContent: 'flex-end',
+
+							marginBlock: '5px -5px',
+						}}
+					>
+						<Button
+							className="drag-button_modal"
+							style={{
+								marginInline: '0px 15px',
+								height: 'fit-content',
+								fontSize: 16,
+								lineHeight: 1.8,
+								borderRadius: 5,
+							}}
+							type="text"
+							onClick={() => setOpenDetailModal(false)}
+						>
+							{t('Close')}
+						</Button>
+						{selectedDetailType ? (
 							<Button
 								className="drag-button_modal"
 								style={{
@@ -772,319 +980,108 @@ export const CalendarAdmin = () => {
 							>
 								{t('Confirm')}
 							</Button>
-						</Form.Item>
-					</Form>
-				</Modal>
+						) : null}
+					</Form.Item>
+				</Form>
+			</Modal>
+			<section
+				className="site-calendar-customize-header-wrapper"
+				style={subCalendarCollapse ? { display: 'none' } : null}
+			>
+				<Calendar
+					headerRender={({ value, onChange }) => {
+						const date = value.format('MMMM, YYYY');
 
-				<Modal
-					closable={false}
-					title={
-						<section
-							style={{
-								width: '100%',
-								cursor: 'move',
-								display: 'flex',
-								justifyContent: 'flex-end',
-							}}
-							onMouseOver={() => {
-								if (disabled) {
-									setDisabled(false);
-								}
-							}}
-							onMouseOut={() => {
-								setDisabled(true);
-							}}
-							onFocus={() => { }}
-							onBlur={() => { }}
-						>
-							<Button className="drag-button_modal" type="text" onClick={() => handleDeleteEvent()}>
-								<RiDeleteBinLine></RiDeleteBinLine>{' '}
-							</Button>
-							<Button
-								className="drag-button_modal"
-								type="text"
-								onClick={() => setSelectedDetailType(!selectedDetailType)}
-							>
-								<RiEditLine></RiEditLine>{' '}
-							</Button>
-							<Button
-								className="drag-button_modal"
-								type="text"
-								onClick={() => setOpenDetailModal(false)}
-							>
-								<RiCloseFill
-									style={{
-										fontSize: 18,
-									}}
-								></RiCloseFill>{' '}
-							</Button>
-						</section>
-					}
-					modalRender={modal => (
-						<Draggable
-							cancel=".drag-button_modal .updateEvent_form"
-							disabled={disabled}
-							bounds={bounds}
-							onStart={(event, uiData) => onStart(event, uiData)}
-						>
-							<section ref={draggleRef} style={{}}>
-								{modal}
-							</section>
-						</Draggable>
-					)}
-					centered
-					open={openDetailModal}
-					onOk={() => setOpenDetailModal(false)}
-					footer={null}
-					onCancel={() => setOpenDetailModal(false)}
-				>
-					<Form
-						className="updateEvent_form"
-						colon={false}
-						form={form}
-						name="horizontal_login"
-						layout="horizontal"
-						onFinish={onFinishUpdateEvent}
-						requiredMark={false}
-					>
-						<Form.Item
-							label={
-								<RiFileTextLine
-									style={{
-										fontSize: 14,
-
-										textTransform: 'capitalize',
-									}}
-								></RiFileTextLine>
-							}
-							name="title"
-							rules={[
-								{
-									required: true,
-									message: t('Please enter the title'),
-								},
-							]}
-						>
-							{selectedDetailType ? (
-								<Input placeholder={t('Enter event title')} />
-							) : (
-								<span>{selectedDetailDate?.title}</span>
-							)}
-						</Form.Item>
-						<Form.Item name="name" label={<RiUser3Line />}>
-							{selectedDetailType ? (
-								<Input placeholder={t('Enter event title')} />
-							) : (
-								<span>{selectedDetailDate?.order?.name}</span>
-							)}
-						</Form.Item>
-						<Form.Item name="email" label={<RiMailLine />}>
-							{selectedDetailType ? (
-								<Input placeholder={t('Enter event title')} />
-							) : (
-								<span>{selectedDetailDate?.order?.email}</span>
-							)}
-						</Form.Item>
-						<Form.Item name="phone" label={<RiPhoneLine />}>
-							{selectedDetailType ? (
-								<Input placeholder={t('Enter event title')} />
-							) : (
-								<span>{selectedDetailDate?.order?.phone}</span>
-							)}
-						</Form.Item>
-						<Form.Item
-							style={{
-								marginBottom: 0,
-							}}
-						>
-							<Form.Item
-								label={
-									<RiCalendarEventFill
-										style={{
-											fontSize: 14,
-											textTransform: 'capitalize',
-										}}
-									></RiCalendarEventFill>
-								}
-								style={{
-									display: 'flex',
-									alignContent: 'center',
-								}}
-							>
-								<span>
-									{dayjs(selectedDetailDate?.start).format('hh:mm A')} -{' '}
-									{dayjs(selectedDetailDate?.end).format('hh:mm A')}
-								</span>
-							</Form.Item>
-						</Form.Item>
-						<Form.Item
-							label={
-								<RiCoinLine
-									style={{
-										fontSize: 14,
-										textTransform: 'capitalize',
-									}}
-								></RiCoinLine>
-							}
-							name="start"
-							style={{
-								display: 'flex',
-								alignContent: 'center',
-							}}
-						>
-							<span>{ToVND(selectedDetailDate?.order?.price)}</span>
-						</Form.Item>
-						<Form.Item label={<RiShoppingCartLine />}>
-							<Paragraph
-								copyable={{
-									tooltips: false,
-								}}
-							>
-								{selectedDetailDate?.order?._id || 'N/A'}
-							</Paragraph>
-						</Form.Item>
-						<Form.Item
-							style={{
-								display: 'flex',
-								justifyContent: 'flex-end',
-
-								marginBlock: '5px -5px',
-							}}
-						>
-							<Button
-								className="drag-button_modal"
-								style={{
-									marginInline: '0px 15px',
-									height: 'fit-content',
-									fontSize: 16,
-									lineHeight: 1.8,
-									borderRadius: 5,
-								}}
-								type="text"
-								onClick={() => setOpenDetailModal(false)}
-							>
-								{t('Close')}
-							</Button>
-							{selectedDetailType ? (
+						// Define menu items array for 12 weeks in 2 columns
+						const menuItems = Array.from({ length: 12 }, (_, i) => ({
+							key: `${i + 1}week`,
+							label: (
 								<Button
-									className="drag-button_modal"
-									style={{
-										height: 'fit-content',
-										fontSize: 16,
-										lineHeight: 1.8,
-										borderRadius: 5,
-										boxShadow: 'rgb(0 0 0 / 25%) 0px 2px 4px 0px',
+									block
+									size="middle"
+									onClick={() => {
+										const newValue = dayjs(value).add(i + 1, 'w');
+										onChange(newValue);
 									}}
-									type="primary"
-									htmlType="submit"
 								>
-									{t('Confirm')}
+									{i + 1} {i === 0 ? t('week') : t('weeks')}
 								</Button>
-							) : null}
-						</Form.Item>
-					</Form>
-				</Modal>
-				<section
-					className="site-calendar-customize-header-wrapper"
-					style={subCalendarCollapse ? { display: 'none' } : null}
-				>
-					<Calendar
-						headerRender={({ value, onChange }) => {
-							const date = value.format('MMMM, YYYY');
-							const menu = (
-								<Menu>
-									<Menu.Item>
-										<Button
-											block
-											size="middle"
-											onClick={() => {
-												const newValue = dayjs(value).add(1, 'W');
-												onChange(newValue);
-											}}
-										>
-											1 {t('week')}
-										</Button>
-									</Menu.Item>
-									<Menu.Item>
-										<Button
-											block
-											size="middle"
-											onClick={() => {
-												const newValue = dayjs(value).add(2, 'W');
-												onChange(newValue);
-											}}
-										>
-											2 {t('weeks')}
-										</Button>
-									</Menu.Item>
-									<Menu.Item>
-										<Button
-											block
-											size="middle"
-											onClick={() => {
-												const newValue = dayjs(value).add(3, 'W');
-												onChange(newValue);
-											}}
-										>
-											3 {t('weeks')}
-										</Button>
-									</Menu.Item>
-									<Menu.Item>
-										<Button
-											block
-											size="middle"
-											onClick={() => {
-												const newValue = dayjs(value).add(4, 'W');
-												onChange(newValue);
-											}}
-										>
-											4 {t('weeks')}
-										</Button>
-									</Menu.Item>
-								</Menu>
-							);
-							return (
-								<section>
-									<section
+							),
+						}));
+
+						return (
+							<section>
+								<section
+									style={{
+										display: 'flex',
+										justifyContent: 'space-between',
+										alignItems: 'center',
+									}}
+								>
+									<span
 										style={{
-											display: 'flex',
-											justifyContent: 'space-between',
-											alignItems: 'center',
+											textTransform: 'capitalize',
+											fontSize: 14,
+											fontWeight: 600,
 										}}
 									>
-										<span
-											style={{
-												textTransform: 'capitalize',
-												fontSize: 14,
-												fontWeight: 600,
+										{date}
+									</span>
+									<section style={{ display: 'flex', gap: 5 }}>
+										<Button
+											style={{ padding: 0 }}
+											type="text"
+											onClick={() => {
+												const newValue = dayjs(value).subtract(1, 'M');
+												onChange(newValue);
 											}}
 										>
-											{date}
-										</span>
-										<section style={{ display: 'flex', gap: 5 }}>
-											<Button
-												style={{ padding: 0 }}
-												type="text"
-												onClick={() => {
-													const newValue = dayjs(value).subtract(1, 'M');
-													onChange(newValue);
-												}}
-											>
-												<IoIosArrowBack />
-											</Button>
-											<Button
-												style={{ padding: 0 }}
-												type="text"
-												onClick={() => {
-													const newValue = dayjs(value).add(1, 'M');
-													onChange(newValue);
-												}}
-											>
-												<IoIosArrowForward />
-											</Button>
-										</section>
+											<IoIosArrowBack />
+										</Button>
+										<Button
+											style={{ padding: 0 }}
+											type="text"
+											onClick={() => {
+												const newValue = dayjs(value).add(1, 'M');
+												onChange(newValue);
+											}}
+										>
+											<IoIosArrowForward />
+										</Button>
 									</section>
-
+								</section>
+								<Dropdown
+									menu={{ items: menuItems }}
+									placement="bottom"
+									dropdownRender={(menu) => (
+										<div style={{
+											background: '#fff',
+											borderRadius: 8,
+											boxShadow: '0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08)',
+											padding: 8,
+										}}>
+											<div style={{
+												display: 'grid',
+												gridTemplateColumns: '1fr 1fr',
+												gap: 8,
+											}}>
+												{Array.from({ length: 12 }, (_, i) => (
+													<Button
+														key={i}
+														block
+														size="middle"
+														onClick={() => {
+															const newValue = dayjs(value).add(i + 1, 'w');
+															onChange(newValue);
+														}}
+													>
+														{i + 1} {i === 0 ? t('week') : t('weeks')}
+													</Button>
+												))}
+											</div>
+										</div>
+									)}
+								>
 									<Button
 										block
 										style={{
@@ -1094,100 +1091,98 @@ export const CalendarAdmin = () => {
 									>
 										{t('Quick Jump')}
 									</Button>
-
-								</section>
-							);
+								</Dropdown>
+							</section>
+						);
+					}}
+					fullscreen={false}
+					onSelect={onSubCalendarSelected}
+				/>
+				{groomingListOption.length > 0 ? (
+					<Cascader
+						style={{ width: '100%' }}
+						size="middle"
+						matchInputWidth
+						defaultValue={defaulGroomingOpion}
+						block
+						options={groomingListOption}
+						onChange={onChange}
+						placeholder="Please select"
+						showSearch={{
+							filter,
 						}}
-						fullscreen={false}
-						onSelect={onSubCalendarSelected}
+						onSearch={value => console.log(value)}
 					/>
-
-					{groomingListOption.length > 0 ? (
-						<Cascader
-							style={{ width: '100%' }}
-							size="middle"
-							matchInputWidth
-							defaultValue={defaulGroomingOpion}
-							block
-							options={groomingListOption}
-							onChange={onChange}
-							placeholder="Please select"
-							showSearch={{
-								filter,
-							}}
-							onSearch={value => console.log(value)}
+				) : null}
+			</section>
+			<section className="separator_calendar-admin">
+				<section className="vertical">
+					<section className="center-element">
+						<Button
+							style={{}}
+							// type='text'
+							shape="circle"
+							icon={
+								!subCalendarCollapse ? (
+									<IoIosArrowBack style={{ fontSize: 12 }} />
+								) : (
+									<IoIosArrowForward style={{ fontSize: 12 }} />
+								)
+							}
+							onClick={() => setSubCalendarCollapse(!subCalendarCollapse)}
 						/>
-					) : null}
-				</section>
-				<section className="separator_calendar-admin">
-					<section className="vertical">
-						<section className="center-element">
-							<Button
-								style={{}}
-								// type='text'
-								shape="circle"
-								icon={
-									!subCalendarCollapse ? (
-										<IoIosArrowBack style={{ fontSize: 12 }} />
-									) : (
-										<IoIosArrowForward style={{ fontSize: 12 }} />
-									)
-								}
-								onClick={() => setSubCalendarCollapse(!subCalendarCollapse)}
-							/>
-						</section>
 					</section>
 				</section>
-				<DnDCalendar
-					allDayAccessor={false}
-					views={['day', 'week', 'month', 'agenda']}
-					resizable={calendarAdminPanel !== 'month' ? true : false}
-					startAccessor="start"
-					endAccessor="end"
-					eventPropGetter={event => {
-						const style = {
-							backgroundColor: calendarAdminPanel !== 'agenda' && '#94795C',
-							border: calendarAdminPanel !== 'agenda' && '#94795C',
-						};
-
-						switch (event.status) {
-							case 'local':
-								style.backgroundColor = 'orange';
-								style.borderColor = 'darkorange';
-								break;
-							case 'syncing':
-								style.backgroundColor = 'lightblue';
-								style.borderColor = 'blue';
-								break;
-							case 'error':
-								style.backgroundColor = 'red';
-								style.borderColor = 'darkred';
-								break;
-							default:
-								break;
-						}
-						return { style };
-					}}
-					selectable={calendarAdminPanel !== 'month' ? true : false}
-					longPressThreshold={10}
-					onSelectEvent={e => handleSelectEvent(e)}
-					onSelectSlot={handleSelectSlot}
-					messages={messages}
-					components={components}
-					localizer={localizer}
-					date={defaultDate}
-					culture={i18n.language}
-					events={allEvents}
-					defaultView="day"
-					onNavigate={onNavigate}
-					onEventResize={resizeEvent}
-					onEventDrop={moveEvent}
-					step={30}
-					onView={onPanelChange}
-					popup
-					slotPropGetter={slotPropGetter}
-				/>
 			</section>
-		// </ConfigProvider>
+			<DnDCalendar
+				allDayAccessor={false}
+				views={['day', 'week', 'month', 'agenda']}
+				resizable={calendarAdminPanel !== 'month' ? true : false}
+				startAccessor="start"
+				endAccessor="end"
+				eventPropGetter={event => {
+					const style = {
+						backgroundColor: calendarAdminPanel !== 'agenda' && '#94795C',
+						border: calendarAdminPanel !== 'agenda' && '#94795C',
+					};
+
+					switch (event.status) {
+						case 'local':
+							style.backgroundColor = 'orange';
+							style.borderColor = 'darkorange';
+							break;
+						case 'syncing':
+							style.backgroundColor = 'lightblue';
+							style.borderColor = 'blue';
+							break;
+						case 'error':
+							style.backgroundColor = 'red';
+							style.borderColor = 'darkred';
+							break;
+						default:
+							break;
+					}
+					return { style };
+				}}
+				selectable={calendarAdminPanel !== 'month' ? true : false}
+				longPressThreshold={10}
+				onSelectEvent={e => handleSelectEvent(e)}
+				onSelectSlot={handleSelectSlot}
+				messages={messages}
+				components={components}
+				localizer={localizer}
+				date={defaultDate}
+				culture={i18n.language}
+				events={allEvents}
+				defaultView="day"
+				onNavigate={onNavigate}
+				onEventResize={resizeEvent}
+				onEventDrop={moveEvent}
+				step={30}
+				onView={onPanelChange}
+				popup
+				slotPropGetter={slotPropGetter}
+			/>
+		</section>
 	);
 };

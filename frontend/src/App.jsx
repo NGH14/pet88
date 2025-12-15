@@ -4,8 +4,6 @@ import { BrowserRouter, Routes } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 import { ConfigProvider } from 'antd';
 
-import localeVN from 'antd/locale/vi_VN';
-import localeEN from 'antd/locale/en_US';
 
 import i18n from 'i18next';
 
@@ -17,14 +15,12 @@ import toastConfig from '~/configs/toast.config.mjs';
 import { SearchContextProvider } from '~/context/SearchContext';
 
 import { GlobalStyle } from '~/styles/global.style.js';
+import { useAntdLocale } from './hooks/useAntdLocalize.jsx';
 
 import routes from './routes/index.jsx';
 
 function App() {
-	let locale = localeEN;
-	if (i18n.language === 'vi') {
-		locale = localeVN;
-	}
+	const locale = useAntdLocale();
 
 	return (
 		<>
