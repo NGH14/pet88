@@ -990,7 +990,7 @@ export const CalendarAdmin = () => {
 			>
 				<Calendar
 					headerRender={({ value, onChange }) => {
-						const date = value.format('MMMM, YYYY');
+						  const date = value.locale(i18n.language).format('MMMM, YYYY');
 
 						// Define menu items array for 12 weeks in 2 columns
 						const menuItems = Array.from({ length: 12 }, (_, i) => ({
