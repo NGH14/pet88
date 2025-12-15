@@ -15,6 +15,7 @@ const ErrorHandler = (
 		success: false,
 		status,
 		message: error.message || ERROR_MESSAGE_DEFAULT,
+
 		// Just show to stack (file directory got error) when development
 		stack: process.env.NODE_ENV !== Environment.Development ? {} : error.stack,
 	});
