@@ -21,11 +21,11 @@ import { GlobalStyle } from '~/styles/global.style.js';
 import routes from './routes/index.jsx';
 
 function App() {
+	let locale = localeEN;
 	if (i18n.language === 'vi') {
 		locale = localeVN;
-	} else {
-		locale = localeEN;
 	}
+
 	return (
 		<>
 			<GlobalStyle />
