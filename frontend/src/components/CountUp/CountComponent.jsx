@@ -19,21 +19,9 @@ import { CountingContainer } from './CountComponent.style.mjs';
  * @param {object} [props.rest] - Other CountUp props.
  */
 
-const defaultProps = {
-	size: '5em',
-	weight: 800,
-	color: 'var(--primary-600)',
-	start: 0,
-	end: 100,
-	duration: 2,
-	onEnd: undefined,
-	onStart: undefined,
-};
 
-const CountUpComponent = React.memo(function CountUpComponent({
-	defaultProps,
-	...rest
-}) {
+const CountUpComponent = React.memo((props) => {
+	const { size, weight, color, start, end, duration, onEnd, onStart, ...rest } = props;
 	return (
 		<CountingContainer $size={size} $weight={weight} $color={color}>
 			<CountUp

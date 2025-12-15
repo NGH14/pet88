@@ -38,9 +38,8 @@ import {
 	Select,
 	Typography,
 } from 'antd';
-import 'dayjs/locale/en';
+// import 'dayjs/locale/vi';
 
-import vi_VN from 'antd/locale/vi_VN';
 import axios from 'axios';
 import dayjs from 'dayjs';
 
@@ -95,7 +94,7 @@ const langMessage = {
 		previous: '<',
 		next: '>',
 	},
-	vi_VN: {
+	vi: {
 		week: 'Tuần',
 		work_week: 'Ngày trong tuần',
 		day: 'Ngày',

@@ -15,7 +15,7 @@ import './style.css';
 
 
 
-dayjs.locale('vi');
+// dayjs.locale('vi');
 
 
 
@@ -115,7 +115,7 @@ const FormBookingHomepage = () => {
 					<Radio value="grooming">{t('grooming')}</Radio>
 				</Radio.Group>
 			</section>
-			<ConfigProvider locale={locale}>
+
 			<Form
 				className="form_bookinghomepage"
 				size="large"
@@ -200,7 +200,6 @@ const FormBookingHomepage = () => {
 					</Button>
 				</Form.Item>
 			</Form>
-			</ConfigProvider>
 		</section>
 	);
 };

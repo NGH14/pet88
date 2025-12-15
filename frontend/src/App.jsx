@@ -2,10 +2,13 @@ import { useEffect, useRef } from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { BrowserRouter, Routes } from 'react-router';
 import { ToastContainer } from 'react-toastify';
-
 import { ConfigProvider } from 'antd';
-import locale from 'antd/locale/vi_VN';
+
+import localeVN from 'antd/locale/vi_VN';
+import localeEN from 'antd/locale/en_US';
+
 import i18n from 'i18next';
+
 import ListRoutes from 'routes/ListRoutes';
 import { ThemeProvider } from 'styled-components';
 import antdConfig from '~/configs/antd.config.mjs';
@@ -18,6 +21,11 @@ import { GlobalStyle } from '~/styles/global.style.js';
 import routes from './routes/index.jsx';
 
 function App() {
+	if (i18n.language === 'vi') {
+		locale = localeVN;
+	} else {
+		locale = localeEN;
+	}
 	return (
 		<>
 			<GlobalStyle />
