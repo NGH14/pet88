@@ -4,7 +4,6 @@
 	"compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "node",
-
     "target": "ESNext",
     "baseUrl": ".",
     "outDir": "build",

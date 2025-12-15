@@ -3,9 +3,11 @@ import { Model, Document } from 'mongoose';
 
 import {
 	MAXIMUM_LIMIT,
+	MINIMUM_LIMIT,
 	PAGE_LIMIT,
 	PAGE_NUMBER,
 } from '../constant/pagination.ts';
+
 import { PaginationMessage } from '../constant/message.js';
 
 interface PaginationInfo {
@@ -44,14 +46,14 @@ const pagination = (model: Model<any>) => {
 		const page: number = Number(req.query.page) || PAGE_NUMBER;
 		const limit: number = Number(req.query.limit) || PAGE_LIMIT;
 		const skip: number = (page - 1) * limit;
-		if (page < 1) {
+		if (page < MINIMUM_LIMIT || skip < 0) {
 			return next({
 				message: PaginationMessage.PAGE_NUMBER_ERROR,
 				status: 400,
 			});
 		}
 
-		if (limit < 1 || limit > MAXIMUM_LIMIT) {
+		if (limit < MINIMUM_LIMIT || limit > MAXIMUM_LIMIT) {
 			return next({
 				message: PaginationMessage.PAGE_NUMBER_ERROR,
 				status: 400,
