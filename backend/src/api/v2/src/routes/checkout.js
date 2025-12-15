@@ -1,6 +1,7 @@
 import express from 'express';
 import stripe from '../config/stripe.js';
 import { Order } from '../models/order.js';
+import { concurrency_VIETNAMESE } from '../constant/concurrency.js';
 
 const router = express.Router();
 const orderURL = process.env.CLIENT_URL + '/checkout';
@@ -29,7 +30,7 @@ router.post('/create-checkout-session', async (req, res) => {
 			line_items: [
 				{
 					price_data: {
-						currency: 'vnd',
+						currency: concurrency_VIETNAMESE,
 						product_data: {
 							description: `${req.body.days} days`,
 							name: 'Booking Pet88',

@@ -43,7 +43,7 @@ import 'dayjs/locale/en';
 import vi_VN from 'antd/locale/vi_VN';
 import axios from 'axios';
 import dayjs from 'dayjs';
-import 'dayjs/locale/vi';
+import 'dayjs/locale/vi_VN';
 
 // import { UserAuth } from '../../context/AuthContext';
 import UUID from '../../hooks/useUUID';
