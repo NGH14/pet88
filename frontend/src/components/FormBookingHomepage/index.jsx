@@ -8,9 +8,6 @@ import locale from 'antd/locale/vi_VN';
 import axios from 'axios';
 import { SearchData } from 'context/SearchContext';
 import dayjs from 'dayjs';
-import 'dayjs/locale/vi_VN';
-
-
 
 import './style.css';
 
@@ -18,7 +15,7 @@ import './style.css';
 
 
 
-// dayjs.locale('vi');
+dayjs.locale('vi');
 
 
 

@@ -18,15 +18,20 @@ import { CountingContainer } from './CountComponent.style.mjs';
  * @param {function} [props.onStart] - Callback when animation starts.
  * @param {object} [props.rest] - Other CountUp props.
  */
+
+const defaultProps = {
+	size: '5em',
+	weight: 800,
+	color: 'var(--primary-600)',
+	start: 0,
+	end: 100,
+	duration: 2,
+	onEnd: undefined,
+	onStart: undefined,
+};
+
 const CountUpComponent = React.memo(function CountUpComponent({
-	size = '5em',
-	weight = 800,
-	color = 'var(--primary-600)',
-	start = 0,
-	end = 100,
-	duration = 2,
-	onEnd,
-	onStart,
+	defaultProps,
 	...rest
 }) {
 	return (

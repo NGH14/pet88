@@ -43,7 +43,6 @@ import 'dayjs/locale/en';
 import vi_VN from 'antd/locale/vi_VN';
 import axios from 'axios';
 import dayjs from 'dayjs';
-import 'dayjs/locale/vi_VN';
 
 // import { UserAuth } from '../../context/AuthContext';
 import UUID from '../../hooks/useUUID';
@@ -487,11 +486,11 @@ export const CalendarAdmin = () => {
 		const bookingUser = values.account
 			? userData.find(u => u.email === values.email)
 			: {
-					id: 'guest',
-					email: values.email || 'guest',
-					phone: values.phone,
-					name: values.name,
-			  };
+				id: 'guest',
+				email: values.email || 'guest',
+				phone: values.phone,
+				name: values.name,
+			};
 
 		const eventID = UUID();
 		const newEvent = {
@@ -581,7 +580,7 @@ export const CalendarAdmin = () => {
 		setOpenDetailModal(false);
 	};
 	return (
-		<ConfigProvider locale={i18n.language}>
+		// <ConfigProvider locale={i18n.language}>
 			<section className="calendar-container">
 				<Modal
 					title={
@@ -599,9 +598,9 @@ export const CalendarAdmin = () => {
 							onMouseOut={() => {
 								setDisabled(true);
 							}}
-							onFocus={() => {}}
-							onBlur={() => {}}
-							// end
+							onFocus={() => { }}
+							onBlur={() => { }}
+						// end
 						>
 							{t('Add new event')}
 						</section>
@@ -796,8 +795,8 @@ export const CalendarAdmin = () => {
 							onMouseOut={() => {
 								setDisabled(true);
 							}}
-							onFocus={() => {}}
-							onBlur={() => {}}
+							onFocus={() => { }}
+							onBlur={() => { }}
 						>
 							<Button className="drag-button_modal" type="text" onClick={() => handleDeleteEvent()}>
 								<RiDeleteBinLine></RiDeleteBinLine>{' '}
@@ -1086,17 +1085,17 @@ export const CalendarAdmin = () => {
 											</Button>
 										</section>
 									</section>
-									<Dropdown overlay={menu}>
-										<Button
-											block
-											style={{
-												marginBlock: 20,
-												boxShadow: 'rgb(112 144 176 / 20%) 0px 2px 8px',
-											}}
-										>
-											{t('Quick Jump')}
-										</Button>
-									</Dropdown>
+
+									<Button
+										block
+										style={{
+											marginBlock: 20,
+											boxShadow: 'rgb(112 144 176 / 20%) 0px 2px 8px',
+										}}
+									>
+										{t('Quick Jump')}
+									</Button>
+
 								</section>
 							);
 						}}
@@ -1190,6 +1189,6 @@ export const CalendarAdmin = () => {
 					slotPropGetter={slotPropGetter}
 				/>
 			</section>
-		</ConfigProvider>
+		// </ConfigProvider>
 	);
 };

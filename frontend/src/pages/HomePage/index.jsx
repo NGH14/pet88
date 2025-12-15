@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import ScrollTrigger from 'react-scroll-trigger';
 
 import { HeartTwoTone } from '@ant-design/icons';
-import viVN from 'antd/es/locale/vi_VN';
+
 import i18n from 'i18next';
 import { motion } from 'motion/react';
 import serviceImg1 from '~/assets/images/Illustration-Bond.png';
@@ -20,14 +20,13 @@ import MainLayout from '~/layouts/MainLayout';
 import { NAMESPACE } from '~/utils/i18n/config.mjs';
 
 import { ColoredBackGround } from './HomePage.style.mjs';
-
 import { cardVariants } from './Homepage.animate.mjs';
 import PARTNER_IMAGE from './data/partnerImage.mjs';
-import partnerImage from './data/partnerImage.mjs';
 import STATISTIC_GROW_UP from './data/stats.mjs';
-import './style.css';
 import GrowingUpSection from './views/GrowingUpSection';
 import { HomeSlider } from './views/PartnerSlider';
+
+import './style.css';
 
 function HomePage() {
 	const { t } = useTranslation(NAMESPACE.homePageNS);
