@@ -21,8 +21,3 @@ async function sendMail(
 
 export default sendMail;
 
-
-sendMail({
-	to: 'vuhuunghia2001@gmail.com',
-	subject: 'Test Send Mail from Pet88',
-}, "test")
