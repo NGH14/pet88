@@ -1,9 +1,8 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Calendar as RB, momentLocalizer } from 'react-big-calendar';
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import 'react-datepicker/dist/react-datepicker.css';
+
+
 
 import Draggable from 'react-draggable';
 import { useTranslation } from 'react-i18next';
@@ -38,19 +37,22 @@ import {
 	Select,
 	Typography,
 } from 'antd';
-// import 'dayjs/locale/vi';
 
 import axios from 'axios';
 import dayjs from 'dayjs';
 
-// import { UserAuth } from '../../context/AuthContext';
-import UUID from '../../hooks/useUUID';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
-import { ToVND } from '../../utils/formatCurrency';
+// import { UserAuth } from '~context/AuthContext';
+import UUID from '~hooks/useUUID';
+import useWindowDimensions from '~hooks/useWindowDimensions';
+import { ToVND } from '~utils/formatCurrency';
+import { ListWeekJump } from './CalendarUtils.jsx';
+import '~/styles/rbc.style.mjs';
 import './style.css';
+import { useCalendarLocale } from '~hooks/useRbcLocalize.jsx';
 
 const DnDCalendar = withDragAndDrop(RB);
 const { Paragraph } = Typography;
+const API = process.env.REACT_APP_API;
 
 const EventComponent = React.memo(({ event }) => {
 	return (
@@ -87,31 +89,8 @@ const events = [
 	},
 ];
 
-const API = process.env.REACT_APP_API;
 
-const langMessage = {
-	en: {
-		previous: '<',
-		next: '>',
-	},
-	vi: {
-		week: 'Tuần',
-		work_week: 'Ngày trong tuần',
-		day: 'Ngày',
-		month: 'Tháng',
-		previous: '<',
-		next: '>',
-		today: 'Hôm nay',
-		agenda: 'Lịch trình',
-		date: 'Ngày',
-		time: 'Thời gian',
-		event: 'Sự kiện',
-		allDay: 'cả ngày',
-		noEventsInRange: 'Không có sự kiện nào',
 
-		showMore: total => `+${total} Xem Thêm`,
-	},
-};
 
 export const CalendarAdmin = () => {
 	const [allEvents, setAllEvents] = useState(events);
@@ -138,6 +117,7 @@ export const CalendarAdmin = () => {
 	const [userDataOption, setUserDataOption] = React.useState([]);
 	const { t, i18n } = useTranslation();
 	const localizer = momentLocalizer(dayjs);
+	const { messages, culture } = useCalendarLocale(i18n.language);
 	const [openCreateModal, setOpenCreateModal] = useState(false);
 	const [openDetailModal, setOpenDetailModal] = useState(false);
 	const [accountType, setAccountType] = React.useState(false);
@@ -370,12 +350,7 @@ export const CalendarAdmin = () => {
 		setSelectedDetailDate(event);
 	};
 
-	const { messages } = useMemo(
-		() => ({
-			messages: langMessage[i18n.language],
-		}),
-		[i18n.language]
-	);
+
 
 	const components = useMemo(
 		() => ({
@@ -497,7 +472,7 @@ export const CalendarAdmin = () => {
 			start: start,
 			end: end,
 			title,
-			status: 'local', // Immediately add with 'local' status
+			status: 'local',
 			order: {
 				// Local order data for immediate display
 				name: bookingUser.name,
@@ -989,25 +964,10 @@ export const CalendarAdmin = () => {
 				style={subCalendarCollapse ? { display: 'none' } : null}
 			>
 				<Calendar
+					key={i18n.language}
 					headerRender={({ value, onChange }) => {
-						  const date = value.locale(i18n.language).format('MMMM, YYYY');
+						const date = value.locale(i18n.language).format('MMMM, YYYY');
 
-						// Define menu items array for 12 weeks in 2 columns
-						const menuItems = Array.from({ length: 12 }, (_, i) => ({
-							key: `${i + 1}week`,
-							label: (
-								<Button
-									block
-									size="middle"
-									onClick={() => {
-										const newValue = dayjs(value).add(i + 1, 'w');
-										onChange(newValue);
-									}}
-								>
-									{i + 1} {i === 0 ? t('week') : t('weeks')}
-								</Button>
-							),
-						}));
 
 						return (
 							<section>
@@ -1051,36 +1011,16 @@ export const CalendarAdmin = () => {
 									</section>
 								</section>
 								<Dropdown
-									menu={{ items: menuItems }}
 									placement="bottom"
-									dropdownRender={(menu) => (
-										<div style={{
-											background: '#fff',
-											borderRadius: 8,
-											boxShadow: '0 3px 6px -4px rgba(0,0,0,.12), 0 6px 16px 0 rgba(0,0,0,.08)',
-											padding: 8,
-										}}>
-											<div style={{
-												display: 'grid',
-												gridTemplateColumns: '1fr 1fr',
-												gap: 8,
-											}}>
-												{Array.from({ length: 12 }, (_, i) => (
-													<Button
-														key={i}
-														block
-														size="middle"
-														onClick={() => {
-															const newValue = dayjs(value).add(i + 1, 'w');
-															onChange(newValue);
-														}}
-													>
-														{i + 1} {i === 0 ? t('week') : t('weeks')}
-													</Button>
-												))}
-											</div>
-										</div>
-									)}
+									dropdownRender={
+										() => (
+											<ListWeekJump
+												weekCount={16}
+												value={value}
+												onChange={onChange}
+												t={t}
+											/>
+										)}
 								>
 									<Button
 										block
@@ -1140,6 +1080,7 @@ export const CalendarAdmin = () => {
 				resizable={calendarAdminPanel !== 'month' ? true : false}
 				startAccessor="start"
 				endAccessor="end"
+				culture={culture}
 				eventPropGetter={event => {
 					const style = {
 						backgroundColor: calendarAdminPanel !== 'agenda' && '#94795C',

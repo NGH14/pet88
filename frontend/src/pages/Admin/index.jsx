@@ -11,7 +11,6 @@ import { toast } from 'react-toastify';
 import { MenuFoldOutlined, MenuUnfoldOutlined, ReconciliationOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider, Space, Table, Tag } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
-import viVN from 'antd/es/locale/vi_VN';
 import logoWhite from '~assets/images/logo/text-logo-white.webp';
 import { CalendarAdmin } from '~components/Calendar/CalendarAdmin';
 import ChangeLanguageButton from '~components/ChangeLanguageButton/index';
@@ -77,7 +76,7 @@ export default function Admin() {
 		<Spinner />
 	) : (
 		<>
-			<ConfigProvider locale={i18n.lang === 'vi_VN' && viVN}>
+
 				<Layout
 					style={{
 						minHeight: '100vh',
@@ -176,7 +175,7 @@ export default function Admin() {
 						</Content>
 					</Layout>
 				</Layout>
-			</ConfigProvider>
+
 		</>
 	);
 }

@@ -20,10 +20,12 @@ export const LOCALE_MAP = {
 	[ENGLISH_LOCALE_CODE]: {
 		antd: localeEN,
 		dayjs: 'en',
+		rbc: 'en',
 	},
 	[VIETNAM_LOCALE_CODE]: {
 		antd: localeVN,
 		dayjs: 'vi',
+		rbc: 'vi',
 	},
 };
 
