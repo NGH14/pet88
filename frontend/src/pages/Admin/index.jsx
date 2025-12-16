@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import { Fragment,useEffect, useState } from 'react';
 import { CSVLink } from 'react-csv';
 import { useTranslation } from 'react-i18next';
 import { CgUserList } from 'react-icons/cg';
@@ -7,7 +6,7 @@ import { MdOutlinePayments } from 'react-icons/md';
 import { RiCalendarEventLine, RiCoupon3Line } from 'react-icons/ri';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
-
+import { IoIosMenu } from "react-icons/io";
 import { MenuFoldOutlined, MenuUnfoldOutlined, ReconciliationOutlined } from '@ant-design/icons';
 import { Button, ConfigProvider, Space, Table, Tag } from 'antd';
 import { Breadcrumb, Layout, Menu } from 'antd';
@@ -75,37 +74,21 @@ export default function Admin() {
 	return loading ? (
 		<Spinner />
 	) : (
-		<>
-
+		<Fragment>
 				<Layout
 					style={{
 						minHeight: '100vh',
 					}}
 				>
 					<Sider collapsed={collapsed} className={collapsed && 'admin-sitebar'}>
-						<NavLink to="/admin">
-							<section className="logo_admin-container">
-								{collapsed ? (
-									<img
-										src={logoWhite}
-										alt=""
-										style={{
-											height: 30,
-											objectFit: 'cover',
-										}}
-									/>
-								) : (
-									<img
-										src={logoWhite}
-										alt=""
-										style={{
-											height: 40,
-											objectFit: 'cover',
-										}}
-									/>
-								)}
-							</section>
-						</NavLink>
+						<Button
+						size="middle"
+							shape="circle"
+							className="trigger_admin-sitebar"
+							onClick={() => setCollapsed(!collapsed)}
+							icon={collapsed ? <IoIosMenu /> : <MenuFoldOutlined />}
+						>
+						</Button>
 						<Menu
 							onClick={({ key }) => handleClickMenu(key)}
 							theme="light"
@@ -124,24 +107,12 @@ export default function Admin() {
 								margin: 'auto',
 							}}
 						>
-							<Button
-								style={{ backgroundColor: 'white' }}
-								ghost
-								type="text"
-								className="trigger"
-								onClick={() => setCollapsed(!collapsed)}
-							>
-								{collapsed ? (
-									<MenuUnfoldOutlined></MenuUnfoldOutlined>
-								) : (
-									<MenuFoldOutlined></MenuFoldOutlined>
-								)}
-							</Button>
-							<SubNavBar></SubNavBar>
+
+							<SubNavBar />
 						</Header>
 						<Content
 							style={{
-								backgroundColor: '#F7F8FA',
+								backgroundColor: 'var(--gray-100)',
 							}}
 						>
 							<section
@@ -151,7 +122,7 @@ export default function Admin() {
 									minHeight: 360,
 								}}
 							>
-								{' '}
+
 								{(() => {
 									switch (location.pathname) {
 										case '/admin':
@@ -160,7 +131,6 @@ export default function Admin() {
 											return <TableUser />;
 										case '/admin/management-hotel':
 											return <TableHotel />;
-
 										case '/admin/management-room-category':
 											return <TableRooms />;
 										case '/admin/management-grooming':
@@ -176,6 +146,6 @@ export default function Admin() {
 					</Layout>
 				</Layout>
 
-		</>
+		</Fragment>
 	);
 }

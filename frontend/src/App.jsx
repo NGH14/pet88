@@ -28,7 +28,7 @@ function App() {
 			{/* <AuthContextProvider> */}
 			<I18nextProvider i18n={i18n}>
 				<SearchContextProvider>
-					<ConfigProvider locale={locale} theme={antdConfig}>
+					<ConfigProvider locale={locale} theme={antdConfig} >
 						<ToastContainer {...toastConfig} />
 						<BrowserRouter>
 							<Routes>{ListRoutes(routes)}</Routes>

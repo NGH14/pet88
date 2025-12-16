@@ -12,6 +12,20 @@
 	background-color: rgb(255, 255, 255);
 }
 
+.ant-menu-title-content {
+	font-weight: 600;
+	font-size: 1em;
+
+	&:hover,
+	&:focus,
+	&:active {
+		font-weight: 700;
+	}
+}
+.ant-menu-item-selected .ant-menu-title-content {
+	font-weight: 700;
+}
+
 .ant-layout-sider-children {
 	display: flex;
 	flex-direction: column;
@@ -21,13 +35,6 @@
 	background-color: white;
 	border-right: 0.5px solid rgb(224, 225, 226);
 	box-shadow: rgb(0 0 0 / 10%) 0px 4px 10px 0px;
-}
-
-.logo_admin-container {
-	padding: 15px;
-	margin: 15px;
-	display: flex;
-	justify-content: center;
 }
 
 .ant-layout-header {
@@ -56,8 +63,12 @@
 	text-transform: lowercase;
 }
 
-@media (max-width: 800px) {
-	.admin-sitebar {
-		display: none;
-	}
+.trigger_admin-sitebar {
+	inset-inline-start: 0;
+	width: 100%;
+	margin-inline: 1.6em;
+	margin-block: 1em;
+	padding-inline: calc(50% - calc(var(--ant-menu-collapsed-icon-size) / 2) - var(--ant-menu-item-margin-inline));
 }
+
+
