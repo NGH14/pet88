@@ -21,8 +21,9 @@ import TableRooms from '~components/TableRooms';
 // import TableUser from '~components/TableUser/index';
 // import { UserAuth } from 'context/AuthContext';
 // import { collection, getDocs } from 'firebase/firestore';
-import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
+import SubNavBar from '~layouts/views/Header/SubHeader/SubHeader.jsx';
 
+import { UserSVGComponent, DepartmentSVGComponent, OrderSVGComponent, SettingSVGComponent } from '~assets/icons/index.jsx';
 
 import './style.css';
 
@@ -37,6 +38,8 @@ function getItem(label, key, icon, children) {
 	};
 }
 
+
+
 export default function Admin() {
 	const location = useLocation();
 	const [loading, setLoading] = useState(false);
@@ -47,15 +50,17 @@ export default function Admin() {
 	const [openUpdate, setOpenUpdate] = useState(false);
 
 	const items = [
-		getItem(t('Appointment'), '/admin', <RiCalendarEventLine />),
+		getItem(t('Appointment'), '/admin', <DepartmentSVGComponent size="1.3em" />),
 		getItem(t('Business'), 'depart', <ReconciliationOutlined />, [
 			getItem(t('Departments'), '/admin/management-hotel'),
 			getItem(t('Hotel Service'), '/admin/management-room-category'),
 			getItem(t('Grooming Service'), '/admin/management-grooming'),
 		]),
-		getItem(t('User'), '/admin/management-user', <CgUserList />),
+		getItem(t('User'), '/admin/management-user', <UserSVGComponent size="1.3em" />),
 
-		getItem(t('Order'), '/admin/management-order', <MdOutlinePayments />),
+		getItem(t('Order'), '/admin/management-order', <OrderSVGComponent size="1.3em" />),
+		getItem(t('Setting'), '/admin/management-setting', <SettingSVGComponent size="1.3em" />),
+
 		// getItem(<ChangeLanguageButton fullWidth></ChangeLanguageButton>, '', null),
 	];
 
