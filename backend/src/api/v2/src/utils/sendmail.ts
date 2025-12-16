@@ -5,7 +5,7 @@ async function sendMail(
 	dataSend: nodemailer.SendMailOptions,
 	template: string,
 ) {
-	let transport = nodemailer.createTransport(EMAIL_HOSTING);
+	let transport = nodemailer.createTransport(EMAIL_GMAIL_HOSTING);
 
 	// send mail with defined transport object
 	 const info = await transport.sendMail({

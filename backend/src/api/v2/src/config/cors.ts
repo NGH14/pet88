@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE_CORS } from './../constant/error';
+import { ERROR_MESSAGE_CORS } from '../constant/error.ts';
 
 const whitelist = [
 	process.env.CLIENT_URL,

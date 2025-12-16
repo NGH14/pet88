@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { ERROR_MESSAGE_DEFAULT } from '../constant/error.ts';
 import { Environment } from '../constant/environment.js';
+import { ERROR_MESSAGE_DEFAULT } from '../constant/error.ts';
 
 const ErrorHandler = (
 	error: any,
@@ -17,7 +17,7 @@ const ErrorHandler = (
 		message: error.message || ERROR_MESSAGE_DEFAULT,
 
 		// Just show to stack (file directory got error) when development
-		stack: process.env.NODE_ENV !== Environment.Development ? {} : error.stack,
+		stack: process.env.NODE_ENV !== Environment.DEVELOPMENT ? {} : error.stack,
 	});
 };
 
