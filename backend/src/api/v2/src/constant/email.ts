@@ -10,4 +10,4 @@ export const EMAIL_GMAIL_HOSTING = {
 	auth: JSON.parse(process.env.MAIL_ACCOUNT),
 };
 
-export const VERIFICATION_SUBJECT = 'Please verify your email for Pet88';
+export const VERIFICATION_SUBJECT = 'Please verify your email for Pet88 Application';

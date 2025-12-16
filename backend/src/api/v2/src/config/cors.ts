@@ -1,7 +1,7 @@
 import { ERROR_MESSAGE_CORS } from '../constant/error.ts';
 
 const whitelist = [
-	process.env.CLIENT_URL,
+	{...process.env.CLIENT_URL},
 	`http://localhost:${process.env.LOCAL_PORT}`,
 ];
 
