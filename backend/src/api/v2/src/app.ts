@@ -4,7 +4,7 @@ import express from 'express';
 import multer from 'multer';
 import sharp from 'sharp';
 import helmet from 'helmet';
-
+import { clerkClient, clerkMiddleware, getAuth } from '@clerk/express'
 
 import cloudinary from './config/cloudinary.js';
 import ErrorHandler from './middleware/error.ts';
@@ -42,6 +42,24 @@ app.use(
 
 app.use('/api/v2/', rootRouter);
 app.use(ErrorHandler);
+
+app.use(clerkMiddleware());
+
+app.get('/protect-auth', async (req, res) => {
+	// Use `getAuth()` to access `isAuthenticated` and the user's ID
+	const { isAuthenticated, userId } = getAuth(req)
+
+	// If user isn't authenticated, return a 401 error
+	if (!isAuthenticated) {
+		return res.status(401).json({ error: 'User not authenticated' })
+	}
+
+	// Use `clerkClient` to access Clerk's JS Backend SDK methods
+	// and get the user's User object
+	const user = await clerkClient.users.getUser(userId)
+
+	res.json(user)
+})
 
 
 export default app;

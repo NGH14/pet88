@@ -9,9 +9,6 @@ import { SERVER_PORT, serverListeningMessage } from './constant/app.ts';
 
 app.listen(SERVER_PORT, () => {
 	connectDB();
-	console.log(`Environment: ${process.env.NODE_ENV}`);
-	console.log(`Doppler Project: ${process.env.DOPPLER_PROJECT}`);
-	console.log(`port: ${SERVER_PORT}`);
 
 	switch (process.env.NODE_ENV) {
 		case Environment.DEVELOPMENT:
