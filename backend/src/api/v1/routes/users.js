@@ -4,7 +4,6 @@ import { getFirestore, Timestamp } from 'firebase-admin/firestore';
 
 const router = express.Router();
 
-const db = getFirestore();
 
 router.get('/', (req, res) => {
 	const listAllUsers = (nextPageToken) => {
