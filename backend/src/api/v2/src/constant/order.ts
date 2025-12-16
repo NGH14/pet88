@@ -1,2 +1,2 @@
-export const concurrency_VIETNAMESE:string = 'VND';
-export const concurrency_GLOBAL:string = 'USD';
+export const CONCURRENCY_VIETNAMESE:string = 'VND';
+export const CONCURRENCY_GLOBAL:string = 'USD';

@@ -8,18 +8,15 @@ import mongoose, { Model, Document } from 'mongoose';
  *     User:
  *       type: object
  *       properties:
+ *         clerkId:
+ *           type: string
+ *           description: The user's Clerk ID.
  *         name:
  *           type: string
  *           description: The user's name.
  *         email:
  *           type: string
  *           description: The user's email address.
- *         password:
- *           type: string
- *           description: The hashed password.
- *         emailVerified:
- *           type: boolean
- *           description: Indicates if the email is verified.
  *         displayName:
  *           type: string
  *           description: The user's display name.
@@ -54,12 +51,12 @@ import mongoose, { Model, Document } from 'mongoose';
  */
 
 export interface IUser extends Document {
+	clerkId: string;
 	email: string;
-	password: string;
-	emailVerified: boolean;
+	password?: string;
 	displayName: string;
 	photos?: string[];
-	roles: string[];
+	roles?: string[];
 	metadata: {
 		lastSignInTime?: string;
 		creationTime?: string;
@@ -73,6 +70,11 @@ export interface IUser extends Document {
 
 const UserSchema = new mongoose.Schema<IUser>(
 	{
+		clerkId: {
+			type: String,
+			required: true,
+			unique: true,
+		},
 		email: {
 			type: String,
 			required: true,
@@ -80,12 +82,7 @@ const UserSchema = new mongoose.Schema<IUser>(
 		},
 		password: {
 			type: String,
-			require: true,
 			minLength: 6,
-		},
-		emailVerified: {
-			type: Boolean,
-			required: true,
 		},
 		displayName: {
 			type: String,
@@ -95,7 +92,6 @@ const UserSchema = new mongoose.Schema<IUser>(
 		},
 		roles: {
 			type: [String],
-			required: true,
 			default: [Roles.User],
 		},
 		metadata: {

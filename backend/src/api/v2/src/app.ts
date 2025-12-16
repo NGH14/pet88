@@ -7,7 +7,6 @@ import helmet from 'helmet';
 
 
 import cloudinary from './config/cloudinary.js';
-import './config/firebase.js';
 import ErrorHandler from './middleware/error.ts';
 import rootRouter from './routes/index.ts';
 import corsOptions from './config/cors.ts';

@@ -1,7 +1,7 @@
 import express from 'express';
 import stripe from '../config/stripe.js';
 import { Order } from '../models/order.js';
-import { concurrency_VIETNAMESE } from '../constant/concurrency.js';
+import { CONCURRENCY_VIETNAMESE } from '../constant/order.ts';
 
 const router = express.Router();
 const orderURL = process.env.CLIENT_URL + '/checkout';

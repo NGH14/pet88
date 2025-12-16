@@ -1,15 +1,16 @@
 import falso from '@ngneat/falso';
 
+const NUMBER_DOCUMENT = 100;
+
 const generateFakePerson = () => ({
 	email: falso.randEmail(),
 	name: falso.randFullName(),
 	passwordHash: falso.password(),
 });
 
-const numberOfDocuments = 100;
 
 const fakePeople = Array.from(
-	{ length: numberOfDocuments },
+	{ length: NUMBER_DOCUMENT },
 	() => generateFakePerson,
 );
 

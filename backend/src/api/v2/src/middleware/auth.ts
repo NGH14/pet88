@@ -13,6 +13,7 @@ async function auth(
   res: Response,
   next: NextFunction,
 ): Promise<void> {
+
   const authorizationHeader = req.headers?.authorization;
   if (!authorizationHeader) {
     res.status(403).json({ message: 'Forbidden: Unauthorized' });
