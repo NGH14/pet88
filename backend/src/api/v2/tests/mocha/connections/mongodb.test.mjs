@@ -32,7 +32,7 @@ describe('MongoDB Connection', function () {
   });
 
   it('should handle connection errors gracefully', async () => {
-    const invalidUri = 'mongodb://invalid:27017/test';
+    const invalidUri = 'mongodb://invalid:27017/test/thatdoesnotexist';
     try {
       await mongoose.createConnection(invalidUri, {
         serverSelectionTimeoutMS: 2000,

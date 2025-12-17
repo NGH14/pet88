@@ -35,8 +35,6 @@ export function GetAllDepartment(
 ) {
 	try {
 		const { data, paginationInfo } = res.locals.paginatedResults;
-
-		// Send the paginated da a response
 		res.status(200).json({ data, paginationInfo });
 		next();
 	} catch (error) {

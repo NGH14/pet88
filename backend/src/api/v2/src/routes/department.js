@@ -43,7 +43,6 @@ router.post('/list', CreateDepartments);
  */
 
 router.get('/', pagination(Department), GetAllDepartment);
-
 /**
  * @swagger
  * /departments/{id}:
@@ -67,7 +66,7 @@ router.get('/', pagination(Department), GetAllDepartment);
  *         description: The department was not found
  *     tags:
  *      - departments
- 
+
  */
 router.get('/:id', GetDepartmentByID);
 
