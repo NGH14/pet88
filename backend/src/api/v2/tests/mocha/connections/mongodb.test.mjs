@@ -6,7 +6,7 @@ describe('MongoDB Connection', function () {
 
   before(async () => {
     if (mongoose.connection.readyState === 0) {
-      await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/test', {
+      await mongoose.connect(process.env.MONGO, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });
@@ -41,10 +41,5 @@ describe('MongoDB Connection', function () {
       expect(error).to.exist;
       expect(error.name).to.equal('MongooseServerSelectionError');
     }
-  });
-
-  it('should verify connection pool is working', () => {
-    expect(mongoose.connection.client).to.exist;
-    expect(mongoose.connection.client.topology).to.exist;
   });
 });

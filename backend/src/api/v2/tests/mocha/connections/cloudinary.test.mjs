@@ -1,4 +1,3 @@
-// test/connections/cloudinary.test.mjs
 import { expect } from 'chai';
 import { v2 as cloudinary } from 'cloudinary';
 
