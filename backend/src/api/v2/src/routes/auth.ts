@@ -1,8 +1,15 @@
+
 import express from 'express';
-import { clerkWebhook } from '../controller/auth.ts';
+import {
+  register,
+  login,
+  refresh
+} from '../controller/auth.ts';
 
 const router = express.Router();
 
-router.post("/webhook", clerkWebhook);
+router.post('/register', register);
+router.post('/login', login);
+router.post('/refresh', refresh);
 
 export default router;
