@@ -20,6 +20,19 @@ export const FooterContainer = styled.footer`
 	font-size: 1.5rem;
 	margin: 2em auto;
 	border-radius: 15px;
+
+	@media (max-width: 768px) {
+	--footer-padding: 40px 20px;
+		display: block;
+		position: relative;
+
+		width: 100%;
+		height: fit-content;
+
+		margin-block: 0.5em 0;
+		bottom: unset;
+		border-radius: 0px;
+	}
 `;
 
 export const FooterContentFlexBox = styled.section`
