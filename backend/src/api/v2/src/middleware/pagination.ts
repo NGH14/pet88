@@ -43,6 +43,7 @@ const pagination = (model: Model<any>) => {
 		res: Response,
 		next: NextFunction,
 	): Promise<void> => {
+
 		const page: number = Number(req.query.page) || PAGE_NUMBER;
 		const limit: number = Number(req.query.limit) || PAGE_LIMIT;
 		const skip: number = (page - 1) * limit;

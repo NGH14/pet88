@@ -54,6 +54,7 @@ gulp.task('dev-doppler', () => {
 			.pipe(gulp.dest('./'));
 	}
 });
+
 gulp.task('test-doppler', () => {
 	const extraFile = 'doppler.yaml';
 
