@@ -75,3 +75,36 @@ export const FooterCopyRight = styled.section`
 	font-weight: normal;
 	text-transform: uppercase;
 `;
+
+export const WorkingTimeContainer = styled.div`
+	display: flex;
+	gap: 0.5em;
+	justify-content: flex-start;
+	align-items: center;
+`;
+
+export const WorkingHourSpan = styled.span`
+	opacity: 0.6;
+  font-size: 1.5em;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--white-300);
+`;
+
+export const WorkingDaySpan = styled.span`
+	font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 8px;
+  border: solid 1px var(--white-300);
+	background-color: rgba(255, 255, 255, 0.1);
+`

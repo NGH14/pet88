@@ -13,6 +13,9 @@ import {
 	FooterContentGrid,
 	FooterCopyRight,
 	FooterTitle,
+	WorkingDaySpan,
+	WorkingHourSpan,
+	WorkingTimeContainer,
 } from './Footer.style.mjs';
 
 function Footer() {
@@ -23,9 +26,10 @@ function Footer() {
 				<section>
 					<FooterTitle>{t('working time')}</FooterTitle>
 					{CONTACT_DETAIL.workingTime.schedule.map((working, index) => (
-						<p key={index}>
-							{working.day} - {working.time}
-						</p>
+						<WorkingTimeContainer key={index}>
+							<WorkingHourSpan>{working.time}</WorkingHourSpan>
+							<WorkingDaySpan>{working.day}</WorkingDaySpan>
+						</WorkingTimeContainer>
 					))}
 				</section>
 

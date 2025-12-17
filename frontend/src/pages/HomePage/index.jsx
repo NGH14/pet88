@@ -25,12 +25,12 @@ import PARTNER_IMAGE from './data/partnerImage.mjs';
 import STATISTIC_GROW_UP from './data/stats.mjs';
 import GrowingUpSection from './views/GrowingUpSection';
 import { HomeSlider } from './views/PartnerSlider';
-
 import './style.css';
 
 function HomePage() {
 	const { t } = useTranslation(NAMESPACE.homePageNS);
 	const [countUp, setCountUp] = useState(false);
+
 
 	return (
 		<MainLayout>
@@ -62,8 +62,8 @@ function HomePage() {
 							spaceBetween: 10,
 							speed: 2000,
 							allowTouchMove: false,
-							autoplay: { delay: 0 },
 							loop: true,
+							autoplay: { delay: 0, disableOnInteraction: false, },
 						}}
 					/>
 				</section>
@@ -107,7 +107,7 @@ function HomePage() {
 					</section>
 				</section>
 			</ColoredBackGround>
-			<section id="service_section" className="homepage-servicecontent">
+			<section id="service" className="homepage-servicecontent">
 				<h3 className="homepage-servicecontent_title">{t('service')} Pet88</h3>
 				<p className="homepage-servicecontent_text">
 					{t(

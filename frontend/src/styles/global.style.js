@@ -14,6 +14,7 @@ export const GlobalStyle = styled.createGlobalStyle`
 		width: 100lvw;
 		height: 100lvh;
 		scroll-behavior: smooth;
+		scroll-padding-top: 80px;
 	}
 
 	body {
@@ -40,3 +41,4 @@ export const GlobalStyle = styled.createGlobalStyle`
 		display: none;
 	}
 `;
+

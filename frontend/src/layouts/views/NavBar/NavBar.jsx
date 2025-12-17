@@ -19,12 +19,13 @@ import { StyledNavLink } from '~/components/NavLink/index.jsx';
 import { NavBarList, StyledNavBar } from './Navbar.style.js';
 
 
+import useJumpToSection from '~/hooks/useJumpToSection.jsx';
 
 
 
 const pages = [
-	{ title: 'About', url: '/#about' },
-	{ title: 'Service', url: '/#service' },
+	{ title: 'About', id: 'about', url: '/#about' },
+	{ title: 'Service', id: 'service_section', url: '/#service_section' },
 ];
 
 function Navbar() {
@@ -34,6 +35,17 @@ function Navbar() {
 	// const { user, SignOut } = UserAuth();
 	const [visible, setVisible] = useState(false);
 	const { t, i18n } = useTranslation();
+	const jumpToSection = useJumpToSection();
+
+	const handleNav = (e, page) => {
+		e.preventDefault();
+		if (locate.pathname !== '/') {
+			navigate(page.url);
+		} else {
+			jumpToSection(page.id);
+		}
+		onClose(); // Close drawer on mobile after click
+	};
 
 	// const handleSignOut = async e => {
 	// 	e.preventDefault();
@@ -44,6 +56,13 @@ function Navbar() {
 	// 		console.log(error);
 	// 	}
 	// };
+
+	const handleLogoClick = e => {
+		if (locate.pathname === '/') {
+			e.preventDefault();
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		}
+	};
 
 	const showDrawer = () => {
 		document.body.style.overflow = 'hidden';
@@ -94,8 +113,8 @@ function Navbar() {
 							return (
 								<NavLink
 									key={page.title}
-									to="about"
-									// to={page.url}
+									to={page.url}
+									onClick={e => handleNav(e, page)}
 									style={{
 										transition: 'color 0.3s ease-in-out',
 										textTransform: 'uppercase',
@@ -151,7 +170,7 @@ function Navbar() {
 				</section>
 				<section>
 					<section>
-						<NavLink to="/">
+						<NavLink to="/" onClick={handleLogoClick}>
 							<Logo src={Logo} />
 						</NavLink>
 					</section>
@@ -159,7 +178,11 @@ function Navbar() {
 				<NavBarList className="mobileHidden">
 					{pages.map(page => {
 						return (
-							<StyledNavLink key={page.title} to={page.url}>
+							<StyledNavLink
+								key={page.title}
+								to={page.url}
+								onClick={e => handleNav(e, page)}
+							>
 								{t(page.title)}
 							</StyledNavLink>
 						);
