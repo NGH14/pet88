@@ -1,5 +1,5 @@
 import { Roles } from './../constant/roles.ts';
-import { clerkAuth, requireAuth } from '../middleware/clerk-auth.ts';
+import authMiddleware from '../middleware/better-auth.ts';
 
 /**
  * @swagger
@@ -22,7 +22,7 @@ import UserModel from '../models/user.js';
 import paginateResults from '../middleware/pagination.ts';
 
 const router = express.Router();
-router.use(clerkAuth);
+router.use(authMiddleware);
 
 /**
  * @swagger
@@ -51,7 +51,7 @@ router.use(clerkAuth);
  *                       type: boolean
  *                       description: the exist next page in pagination
  */
-router.get('/', requireAuth, paginateResults(UserModel), GetAllUser);
+router.get('/', authMiddleware, paginateResults(UserModel), GetAllUser);
 
 /**
  * @swagger
@@ -79,7 +79,7 @@ router.get('/', requireAuth, paginateResults(UserModel), GetAllUser);
  *       '500':
  *         description: Internal server error.
  */
-router.get('/:id', requireAuth, GetUserByID);
+router.get('/:id', authMiddleware, GetUserByID);
 
 /**
  * @swagger
@@ -112,13 +112,13 @@ router.get('/:id', requireAuth, GetUserByID);
  *           $ref: '#/components/schemas/User'  # Replace with your User schema reference
  */
 
-router.post('/', requireAuth, CreateUsers);
+router.post('/', authMiddleware, CreateUsers);
 
-router.put('/:id', requireAuth, UpdateUserById);
+router.put('/:id', authMiddleware, UpdateUserById);
 
-router.delete('/:id', requireAuth, DeleteUserById);
-router.patch('/:email', requireAuth, DeleteUserByEmail);
+router.delete('/:id', authMiddleware, DeleteUserById);
+router.patch('/:email', authMiddleware, DeleteUserByEmail);
 
-router.patch('/multiple-delete', requireAuth, DeleteUsers);
+router.patch('/multiple-delete', authMiddleware, DeleteUsers);
 
 export default router;

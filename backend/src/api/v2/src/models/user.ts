@@ -8,9 +8,6 @@ import mongoose, { Model, Document } from 'mongoose';
  *     User:
  *       type: object
  *       properties:
- *         clerkId:
- *           type: string
- *           description: The user's Clerk ID.
  *         name:
  *           type: string
  *           description: The user's name.
@@ -51,7 +48,6 @@ import mongoose, { Model, Document } from 'mongoose';
  */
 
 export interface IUser extends Document {
-	clerkId: string;
 	email: string;
 	password?: string;
 	displayName: string;
@@ -70,11 +66,6 @@ export interface IUser extends Document {
 
 const UserSchema = new mongoose.Schema<IUser>(
 	{
-		clerkId: {
-			type: String,
-			required: true,
-			unique: true,
-		},
 		email: {
 			type: String,
 			required: true,
