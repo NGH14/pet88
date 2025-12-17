@@ -1,41 +1,48 @@
-import { Request, Response, NextFunction } from 'express';
-import UserModel from '../models/user.ts';
 
-export const clerkWebhook = async (
-	req: Request,
-	res: Response,
-	next: NextFunction,
-): Promise<void> => {
-	const { type, data } = req.body;
+import {
+  auth
+} from "../config/better-auth.ts";
+import {
+  type Request,
+  type Response
+} from "express";
 
-	try {
-		switch (type) {
-			case 'user.created':
-				const newUser = new UserModel({
-					clerkId: data.id,
-					email: data.email_addresses[0].email_address,
-					displayName: data.first_name + ' ' + data.last_name,
-					photos: [{ value: data.profile_image_url }],
-				});
-				await newUser.save();
-				break;
-			case 'user.updated':
-				await UserModel.findOneAndUpdate(
-					{ clerkId: data.id },
-					{
-						email: data.email_addresses[0].email_address,
-						displayName: data.first_name + ' ' + data.last_name,
-						photos: [{ value: data.profile_image_url }],
-					},
-				);
-				break;
-			case 'user.deleted':
-				await UserModel.findOneAndDelete({ clerkId: data.id });
-				break;
-		}
-		res.status(200).json({ message: 'Webhook processed successfully' });
-	} catch (error) {
-		next(error);
-	}
+export const register = async (req: Request, res: Response): Promise < void > => {
+  const {
+    email,
+    password
+  } = req.body;
+  try {
+    const user = await auth.register(email, password);
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(400).json(error);
+  }
 };
+
+export const login = async (req: Request, res: Response): Promise < void > => {
+  const {
+    email,
+    password
+  } = req.body;
+  try {
+    const user = await auth.login(email, password);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(401).json(error);
+  }
+};
+
+export const refresh = async (req: Request, res: Response): Promise < void > => {
+  const {
+    refreshToken
+  } = req.body;
+  try {
+    const user = await auth.refresh(refreshToken);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(401).json(error);
+  }
+};
+
 

@@ -9,7 +9,7 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('Send Mail API', () => {
-	const baseUrl = '/api/v2/email/';
+	const baseUrl = '/api/v2/email';
 
 	it('should POST to send mail', (done) => {
 		const dataSend = {

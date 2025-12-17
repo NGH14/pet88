@@ -15,7 +15,7 @@
 		"@types/multer": "^1.4.7",
 		"@types/node": "^20.5.6",
 		"bcrypt": "^5.1.1",
-		"better-auth": "^1.3.24",
+		"better-auth": "^1.4.7",
 		"body-parser": "^1.20.1",
 		"chai-http": "^4.4.0",
 		"cloudinary": "^2.8.0",
@@ -24,6 +24,7 @@
 		"dotenv": "^16.3.1",
 		"express": "^4.18.1",
 		"helmet": "^7.0.0",
+		"jose": "^6.1.3",
 		"jsonwebtoken": "^9.0.2",
 		"mongodb": "^4.8.1",
 		"mongoose": "^6.5.2",
@@ -41,6 +42,8 @@
 		"build": "node esbuild.config.cjs",
 		"dev": "NODE_ENV=development gulp dev && doppler run -- nodemon",
 		"test": "NODE_ENV=test gulp test & doppler run -- mocha --config .mocharc.cjs -r ts-node/register tests/mocha/*.ts  --loader=ts-node/esm --no-warnings --timeout 10000 --exit && open-cli ./tests/.reports/index.html",
+		"test:mongodb": "mocha ./tests/mocha/connections/mongodb.test.mjs",
+		"test:cloudinary": "mocha ./tests/mocha/connections/cloudinary.test.mjs",
 		"prepare": "husky"
 	},
 	"devDependencies": {
