@@ -1,13 +1,13 @@
 
 import {
   auth
-} from "../config/better-auth.ts";
+} from "../lib/better-auth.ts";
 import {
   type Request,
   type Response
 } from "express";
 
-export const register = async (req: Request, res: Response): Promise < void > => {
+export const register = async (req: Request, res: Response): Promise<void> => {
   const {
     email,
     password
@@ -20,7 +20,7 @@ export const register = async (req: Request, res: Response): Promise < void > =>
   }
 };
 
-export const login = async (req: Request, res: Response): Promise < void > => {
+export const login = async (req: Request, res: Response): Promise<void> => {
   const {
     email,
     password
@@ -33,7 +33,7 @@ export const login = async (req: Request, res: Response): Promise < void > => {
   }
 };
 
-export const refresh = async (req: Request, res: Response): Promise < void > => {
+export const refresh = async (req: Request, res: Response): Promise<void> => {
   const {
     refreshToken
   } = req.body;

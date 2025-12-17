@@ -42,8 +42,8 @@
 		"build": "node esbuild.config.cjs",
 		"dev": "NODE_ENV=development gulp dev && doppler run -- nodemon",
 		"test": "NODE_ENV=test gulp test & doppler run -- mocha --config .mocharc.cjs -r ts-node/register tests/mocha/*.ts  --loader=ts-node/esm --no-warnings --timeout 10000 --exit && open-cli ./tests/.reports/index.html",
-		"test:mongodb": "mocha ./tests/mocha/connections/mongodb.test.mjs",
-		"test:cloudinary": "mocha ./tests/mocha/connections/cloudinary.test.mjs",
+		"test:mongodb": "doppler run -- mocha ./tests/mocha/connections/mongodb.test.mjs",
+		"test:cloudinary": "doppler run -- mocha ./tests/mocha/connections/cloudinary.test.mjs",
 		"prepare": "husky"
 	},
 	"devDependencies": {

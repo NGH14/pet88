@@ -4,7 +4,7 @@ import {
   type Request,
   type Response
 } from "express";
-import { auth } from "../config/better-auth.ts";
+import { auth } from "../lib/better-auth.ts";
 import { toNodeHandler } from "better-auth/node";
 
 const authMiddleware = toNodeHandler(auth);

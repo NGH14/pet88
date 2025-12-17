@@ -5,6 +5,9 @@ import multer from 'multer';
 import sharp from 'sharp';
 import helmet from 'helmet';
 
+import { auth } from './lib/better-auth.ts';
+import { toNodeHandler } from 'better-auth/node';
+
 import cloudinary from './config/cloudinary.js';
 import ErrorHandler from './middleware/error.ts';
 import rootRouter from './routes/index.ts';
@@ -39,17 +42,9 @@ app.use(
 
 // app.use(middleware.decodeToken);
 
-
-import { auth } from './config/better-auth.ts';
-import { toNodeHandler } from 'better-auth/node';
-
 app.all('/api/auth/*', toNodeHandler(auth));
 app.use('/api/v2/', rootRouter);
 
 app.use(ErrorHandler);
-
-
-
-
 
 export default app;

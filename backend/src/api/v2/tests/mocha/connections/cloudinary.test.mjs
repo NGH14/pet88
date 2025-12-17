@@ -4,12 +4,12 @@ import { v2 as cloudinary } from 'cloudinary';
 
 describe('Cloudinary Connection', function () {
   this.timeout(10000);
-
+  const cloudinaryConfig = JSON.parse(process.env.CLOUDINARY_KEY || '{}');
   before(() => {
     cloudinary.config({
-      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-      api_key: process.env.CLOUDINARY_API_KEY,
-      api_secret: process.env.CLOUDINARY_API_SECRET,
+      cloud_name: cloudinaryConfig.cloud_name,
+      api_key: cloudinaryConfig.api_key,
+      api_secret: cloudinaryConfig.api_secret,
     });
   });
 
