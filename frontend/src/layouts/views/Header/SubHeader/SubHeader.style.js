@@ -7,7 +7,7 @@ const SubHeader = styled.nav`
 
 export const StyledSubHeader = styled(SubHeader)`
 	font-size: 0.75em;
-	padding-inline: 30px;
+	padding-inline: 2em 1em;
 	margin-inline: auto;
 
 	display: ${props => (props.$scrolled ? 'none' : 'flex')};

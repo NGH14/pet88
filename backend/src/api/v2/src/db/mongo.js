@@ -6,7 +6,6 @@ import { LogLevel } from '../constant/log.js';
 
 export const connectDB = async () => {
 	try {
-
 		const dbOptions = {
 			dbName: process.env.DB,
 			serverSelectionTimeoutMS: 30000,

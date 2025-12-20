@@ -10,3 +10,8 @@ console.log({props});
 	border-radius: 45px;
 	margin: 1.5em 0;
 `;
+
+export const HomepageStyle = styled.section`
+	padding: 2em 1em;
+	margin: 1em;
+`;
