@@ -9,7 +9,7 @@ function Maintenance() {
       padding: '20px',
       textAlign: 'center'
     }}>
-      <h1>🔧 Under Maintenance</h1>
+      <h1>Under Maintenance</h1>
       <p>We're currently performing scheduled maintenance.</p>
       <p>Please check back soon!</p>
     </div>
