@@ -7,6 +7,8 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
+		"preview": "vite preview",
+		"deploy": "npm run build && gh-pages -d build -b gh-pages",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"lint": "eslint .",
@@ -121,6 +123,7 @@
 		"eslint-plugin-prettier": "^5.2.3",
 		"eslint-plugin-react": "^7.37.4",
 		"eslint-plugin-storybook": "^0.11.3",
+		"gh-pages": "^6.3.0",
 		"prettier": "3.5.1",
 		"prettier-plugin-hermes-parser": "^0.26.0",
 		"prop-types": "^15.8.1",

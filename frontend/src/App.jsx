@@ -18,8 +18,14 @@ import { GlobalStyle } from '~/styles/global.style.js';
 import { useAntdLocale } from './hooks/useAntdLocalize.jsx';
 
 import routes from './routes/index.jsx';
+import { MAINTENANCE_MODE } from '~/configs/app.config.mjs';
+import Maintenance from "~/pages/Maintenance"
 
 function App() {
+	if (MAINTENANCE_MODE) {
+		return <Maintenance />;
+	}
+
 	const locale = useAntdLocale();
 
 	return (

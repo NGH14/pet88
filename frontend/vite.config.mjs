@@ -9,7 +9,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig(({ mode }) => {
 	setEnv(mode);
 	return {
-		base: '',
+		base: 'pet88',
 		server: {
 			port: 3000,
 			strictPort: true

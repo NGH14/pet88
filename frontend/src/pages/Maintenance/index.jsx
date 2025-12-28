@@ -1,0 +1,19 @@
+function Maintenance() {
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      padding: '20px',
+      textAlign: 'center'
+    }}>
+      <h1>🔧 Under Maintenance</h1>
+      <p>We're currently performing scheduled maintenance.</p>
+      <p>Please check back soon!</p>
+    </div>
+  );
+}
+
+export default Maintenance;

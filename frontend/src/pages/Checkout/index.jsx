@@ -20,9 +20,7 @@ import axios from 'axios';
 import FooterWave from 'layouts/views/Footer/Footer.jsx';
 import SubNavBar from 'layouts/views/Header/SubHeader/SubHeader.jsx';
 import AppHeader from 'layouts/views/NavBar/NavBar.jsx';
-import moment from 'moment';
-import 'moment/locale/en-gb';
-import 'moment/locale/vi_VN';
+
 
 // import { UserAuth } from '../../context/AuthContext';
 import { SearchData } from '../../context/SearchContext';
