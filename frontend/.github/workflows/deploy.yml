@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'front-end/**'  # Only trigger when front-end changes
+      - 'front-end/**'
 
 jobs:
   build-and-deploy:
