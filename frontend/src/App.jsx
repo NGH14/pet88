@@ -11,7 +11,6 @@ import ListRoutes from 'routes/ListRoutes';
 import { ThemeProvider } from 'styled-components';
 import antdConfig from '~/configs/antd.config.mjs';
 import toastConfig from '~/configs/toast.config.mjs';
-// import { AuthContextProvider } from 'context/AuthContext';
 import { SearchContextProvider } from '~/context/SearchContext';
 
 import { GlobalStyle } from '~/styles/global.style.js';
@@ -20,6 +19,7 @@ import { useAntdLocale } from './hooks/useAntdLocalize.jsx';
 import routes from './routes/index.jsx';
 import { MAINTENANCE_MODE } from '~/configs/app.config.mjs';
 import Maintenance from "~/pages/Maintenance"
+// import { AuthContextProvider } from 'context/AuthContext';
 
 function App() {
 	if (MAINTENANCE_MODE) {
